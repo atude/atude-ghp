@@ -1,15 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Drawer from '@material-ui/core/Drawer';
-import Hidden from '@material-ui/core/Hidden';
 import { withStyles } from '@material-ui/core/styles';
-import { Menu, AccountBox, Buffer, ChevronDown, ChevronUp, } from 'mdi-material-ui';
+import { AccountBox, Buffer, ChevronDown, ChevronUp, Menu, } from 'mdi-material-ui';
+import { createMuiTheme, AppBar, Typography, IconButton, Toolbar, SwipeableDrawer, List, ListItem, ListItemText, ListItemIcon, Collapse, Hidden, CssBaseline, MuiThemeProvider, Drawer, } from '@material-ui/core';
 import icAtude from '../assets/ic_atude.png';
-import { AppBar, Typography, IconButton, Button, Toolbar, SwipeableDrawer, List, ListItem, ListItemText, Divider, ListItemIcon, Collapse, Paper, } from '@material-ui/core';
-
 
 const drawerWidth = 330;
+
+const muiTheme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#011936",
+    },
+    secondary: {
+      main: "#2176FF",
+    },
+
+    contrastThreshold: 3,
+    tonalOffset: 0.2,
+    typography: { useNextVariants: true },
+  },
+});
 
 const styles = theme => ({
   root: {
@@ -45,15 +56,27 @@ const styles = theme => ({
 
 class ResponsiveDrawer extends React.Component {
   state = {
+    tab: "About Me",
     mobileOpen: false,
+    open: false,
   };
 
   handleDrawerToggle = () => {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
   };
+  
+  handleClick = () => {
+    this.setState(state => ({ open: !state.open }));
+  };
+
+  getAppBarIcon = () => {
+    switch(this.state.tab){
+      case "About Me": return <AccountBox className="AppbarIcon"/>;
+    }
+  }
 
   render() {
-    const { classes, theme } = this.props;
+    const { classes } = this.props;
 
     const getSideHead = 
       <div className="SidebarHead">
@@ -98,36 +121,37 @@ class ResponsiveDrawer extends React.Component {
 
     return (
       <div className={classes.root}>
+      <MuiThemeProvider theme={muiTheme}>
+
         <CssBaseline />
         <AppBar position="fixed" className={classes.appBar}>
           <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="Open drawer"
-              onClick={this.handleDrawerToggle}
-              className={classes.menuButton}
-            >
+            <IconButton color="inherit" aria-label="Open drawer"
+              onClick={this.handleDrawerToggle} className={classes.menuButton}>
+              <Menu/>
             </IconButton>
-            <Typography variant="h6" color="inherit" noWrap>
-              Responsive drawer
+            <Typography style={{fontSize: "24px"}} variant="h2" color="inherit" noWrap>
+              {this.state.tab}
             </Typography>
+            {this.getAppBarIcon}
           </Toolbar>
         </AppBar>
         <nav className={classes.drawer}>
           {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
           <Hidden smUp implementation="css">
-            <Drawer
+            <SwipeableDrawer
               container={this.props.container}
               variant="temporary"
-              anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+              anchor="left"
               open={this.state.mobileOpen}
               onClose={this.handleDrawerToggle}
+              onOpen={this.handleDrawerToggle}
               classes={{
                 paper: classes.drawerPaper,
               }}
             >
               {drawer}
-            </Drawer>
+            </SwipeableDrawer>
           </Hidden>
           <Hidden xsDown implementation="css">
             <Drawer
@@ -141,6 +165,7 @@ class ResponsiveDrawer extends React.Component {
             </Drawer>
           </Hidden>
         </nav>
+        </MuiThemeProvider>
       </div>
     );
   }
@@ -148,8 +173,6 @@ class ResponsiveDrawer extends React.Component {
 
 ResponsiveDrawer.propTypes = {
   classes: PropTypes.object.isRequired,
-  // Injected by the documentation to work in an iframe.
-  // You won't need it on your project.
   container: PropTypes.object,
   theme: PropTypes.object.isRequired,
 };
