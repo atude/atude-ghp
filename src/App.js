@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import './App.css';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import {blue, indigo, pink, red, } from '@material-ui/core/colors';
-import { AppBar, Typography, IconButton, Button, Toolbar, SwipeableDrawer, List, ListItem, ListItemText, Divider, ListItemIcon, } from '@material-ui/core';
-import { Menu, AccountBox, Buffer, } from 'mdi-material-ui';
+import { red } from '@material-ui/core/colors';
+import { AppBar, Typography, IconButton, Button, Toolbar, SwipeableDrawer, List, ListItem, ListItemText, Divider, ListItemIcon, Collapse, } from '@material-ui/core';
+import { Menu, AccountBox, Buffer, ChevronDown, ChevronUp, } from 'mdi-material-ui';
 
 const theme = createMuiTheme({
   palette: {
-    primary: indigo,
-    secondary: pink,
+    primary: {
+      main: "#31393C",
+    },
+    secondary: {
+      main: "#2176FF",
+    },
+    
     error: red,
     contrastThreshold: 3,
     tonalOffset: 0.2,
@@ -21,13 +26,18 @@ class App extends Component {
   }
 
   state = {
-    left: false,
+    sidebarState: false,
+    open: false,
   }
 
-  toggleDrawer = (side, open) => () => {
+  toggleDrawer = (side, state) => () => {
     this.setState({
-      [side]: open,
+      [side]: state,
     });
+  };
+
+  handleClick = () => {
+    this.setState(state => ({ open: !state.open }));
   };
 
   getIcon = (index) => {
@@ -38,20 +48,27 @@ class App extends Component {
   }
 
   render() {
-    const subjects = [
-      'About Me',
-      'My Projects'
-    ];
-
     const sideList = (
       <div className="Sidebar">
         <List>
-          {subjects.map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{this.getIcon(index)}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          <ListItem button key="About Me">
+            <ListItemIcon>{this.getIcon(0)}</ListItemIcon>
+            <ListItemText primary="About Me"/>
+          </ListItem>
+
+          <ListItem button onClick={this.handleClick} key="My Projects">
+            <ListItemIcon>{this.getIcon(1)}</ListItemIcon>
+            <ListItemText primary="My Projects"/>
+            {this.state.open ? <ChevronDown/> : <ChevronUp/>}
+          </ListItem>
+            <Collapse in={this.state.open} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItem button>
+                <ListItemIcon></ListItemIcon>
+                <ListItemText inset primary="Devote"/>
+              </ListItem>
+            </List>
+            </Collapse>
         </List>       
       </div>
     );
@@ -62,7 +79,7 @@ class App extends Component {
      
       <AppBar style={{zIndex: "100000"}} position="relative">
         <Toolbar>
-          <IconButton onClick={this.toggleDrawer('left', !this.state.left)} color="inherit" aria-label="Menu">
+          <IconButton onClick={this.toggleDrawer('sidebarState', !this.state.sidebarState)} color="inherit" aria-label="Menu">
             <Menu />
           </IconButton>
           <Typography variant="h6" color="inherit">
@@ -71,11 +88,11 @@ class App extends Component {
         </Toolbar>
       </AppBar>
 
-      <SwipeableDrawer open={this.state.left}
-      onClose={this.toggleDrawer('left', false)}
-      onOpen={this.toggleDrawer('left', true)}>
+      <SwipeableDrawer open={this.state.sidebarState}
+      onClose={this.toggleDrawer('sidebarState', false)}
+      onOpen={this.toggleDrawer('sidebarState', true)}>
         <div tabIndex={0} role="button"
-          onClose={this.toggleDrawer('left', false)} onKeyDown={this.toggleDrawer('left', false)}>
+          onClose={this.toggleDrawer('sidebarState', false)} onKeyDown={this.toggleDrawer('sidebarState', false)}>
           {sideList}
         </div>
       </SwipeableDrawer>
