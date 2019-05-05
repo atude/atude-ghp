@@ -7,33 +7,6 @@ import { Menu, AccountBox, Buffer, ChevronDown, ChevronUp, } from 'mdi-material-
 import icAtude from './assets/ic_atude.png';
 import DrawerCustom from './components/Drawer.js';
 
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: "#31393C",
-    },
-    secondary: {
-      main: "#2176FF",
-    },
-
-    error: red,
-    contrastThreshold: 3,
-    tonalOffset: 0.2,
-    typography: { useNextVariants: true },
-  },
-});
-
-const themeSidebar = createMuiTheme({
-  palette: {
-    type: "dark",
-    secondary: {
-      main: "#ffffff",
-      dark: "#ffffff",
-    },
-    typography: { useNextVariants: true },
-  },
-});
-
 class App extends Component {  
   constructor(props) {
     super(props);    
@@ -42,12 +15,9 @@ class App extends Component {
   
     return (
       <div>
-      <DrawerCustom/>
-      <MuiThemeProvider theme={theme}>
-        <div className="HomeContainer">
-          <Typography>hello</Typography>
-        </div>
-      </MuiThemeProvider>
+        {/* DrawerCustom renders everything, check in Drawer.js 
+        for redirects into content pages. */}
+        <DrawerCustom/>
       </div>
     );
   }

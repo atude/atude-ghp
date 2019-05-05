@@ -1,25 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { AccountBox, Buffer, ChevronDown, ChevronUp, Menu, } from 'mdi-material-ui';
-import { createMuiTheme, AppBar, Typography, IconButton, Toolbar, SwipeableDrawer, List, ListItem, ListItemText, ListItemIcon, Collapse, Hidden, CssBaseline, MuiThemeProvider, Drawer, } from '@material-ui/core';
+import { AccountBox, Buffer, ChevronDown, ChevronUp, Menu, GithubBox, LinkedinBox, } from 'mdi-material-ui';
+import { createMuiTheme, AppBar, Typography, IconButton, Toolbar, SwipeableDrawer, List, ListItem, ListItemText, ListItemIcon, Collapse, Hidden, CssBaseline, MuiThemeProvider, Drawer, Divider, Grid, } from '@material-ui/core';
 import icAtude from '../assets/ic_atude.png';
+import PageController from '../components/PageController.js';
 
-const drawerWidth = 330;
+const drawerWidth = 340;
+const mainColor = "#D81E5B"
+const secondaryColor = "#011936"
 
 const muiTheme = createMuiTheme({
   palette: {
     primary: {
-      main: "#011936",
+      main: mainColor,
     },
     secondary: {
-      main: "#2176FF",
+      main: secondaryColor,
     },
 
     contrastThreshold: 3,
     tonalOffset: 0.2,
     typography: { useNextVariants: true },
   },
+});
+
+const muiSidebarTheme = createMuiTheme({
+  palette: {
+    type: "dark",
+    primary: {
+      main: mainColor,
+    },
+    secondary: {
+      main: secondaryColor,
+    },
+  },
+  typography: { useNextVariants: true },
 });
 
 const styles = theme => ({
@@ -69,9 +85,28 @@ class ResponsiveDrawer extends React.Component {
     this.setState(state => ({ open: !state.open }));
   };
 
-  getAppBarIcon = () => {
-    switch(this.state.tab){
-      case "About Me": return <AccountBox className="AppbarIcon"/>;
+  getIcon = (isAppbar, type) => {
+    var cStyle, cClass;
+    var renderType = type;
+    
+    if(isAppbar) {
+      cClass = "AppbarIcon";
+      cStyle = {fontSize: "100px"};
+    } else {
+      cClass = "ListIcon"
+      cStyle = null;
+    }
+
+    if(type === undefined) renderType = this.state.tab;
+    switch(renderType){
+      case "About Me": 
+        return <AccountBox style={cStyle} className={cClass}/>;
+      case "My Projects": 
+        return <Buffer style={cStyle} className={cClass}/>;
+      case "Github":
+        return 
+      case "LinkedIn":
+        return <LinkedinBox style={cStyle} className={cClass}/>
     }
   }
 
@@ -85,22 +120,39 @@ class ResponsiveDrawer extends React.Component {
           variant="overline" color="textPrimary">
             Mozamel<br/><b>Anwary</b>
         </Typography>
-        <br/>
+        <br/><br/><br/>
+
+        <Grid container direction="row" alignItems="stretch" justify="flex-end">
+          <a href="https://github.com/atude" target="_blank" style={{textDecoration: "none"}}>
+          <Grid item>
+            <IconButton button key="Github">
+              <GithubBox fontSize="large"/>
+            </IconButton>
+          </Grid>
+          </a>
+          <a href="https://www.linkedin.com/in/mozamel-a-b211b4114/" target="_blank" style={{textDecoration: "none"}}>
+          <Grid item>
+            <IconButton button key="LinkedIn">
+              <LinkedinBox fontSize="large"/>
+            </IconButton>
+          </Grid>
+          </a>
+        </Grid>
       </div>       
     
     const getSideList = 
       <List>
         <ListItem button key="About Me">
-          <ListItemIcon><AccountBox/></ListItemIcon>
+          <ListItemIcon>{this.getIcon(false, "About Me")}</ListItemIcon>
           <ListItemText primary="About Me"/>
         </ListItem>
 
         <ListItem button onClick={this.handleClick} key="My Projects">
-          <ListItemIcon><Buffer/></ListItemIcon>
+          <ListItemIcon>{this.getIcon(false, "My Projects")}</ListItemIcon>
           <ListItemText primary="My Projects"/>
           {this.state.open 
-            ? <ChevronDown color="secondary"/> 
-            : <ChevronUp  color="secondary"/>}
+            ? <ChevronDown color="primary"/> 
+            : <ChevronUp  color="primary"/>}
         </ListItem>
           <Collapse in={this.state.open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
@@ -113,9 +165,12 @@ class ResponsiveDrawer extends React.Component {
       </List>       
 
     const drawer = (
-      <div>
+      <div className="Sidebar">
+      <MuiThemeProvider theme={muiSidebarTheme}>
         {getSideHead}
+        <Divider/>
         {getSideList}
+      </MuiThemeProvider>
       </div>
     );
 
@@ -130,10 +185,10 @@ class ResponsiveDrawer extends React.Component {
               onClick={this.handleDrawerToggle} className={classes.menuButton}>
               <Menu/>
             </IconButton>
-            <Typography style={{fontSize: "24px"}} variant="h2" color="inherit" noWrap>
+            <Typography className="AppbarText" style={{fontSize: "28px"}} variant="h2" color="inherit" noWrap>
               {this.state.tab}
             </Typography>
-            {this.getAppBarIcon}
+              {this.getIcon(true)}
           </Toolbar>
         </AppBar>
         <nav className={classes.drawer}>
@@ -154,17 +209,16 @@ class ResponsiveDrawer extends React.Component {
             </SwipeableDrawer>
           </Hidden>
           <Hidden xsDown implementation="css">
-            <Drawer
-              classes={{
-                paper: classes.drawerPaper,
-              }}
-              variant="permanent"
-              open
-            >
+            <Drawer classes={{ paper: classes.drawerPaper,}}
+              variant="permanent" open>
               {drawer}
             </Drawer>
           </Hidden>
         </nav>
+        
+        {/* PageController manages rendering of content per page */}
+        <PageController tab={this.state.tab} theme={muiTheme}/>
+
         </MuiThemeProvider>
       </div>
     );

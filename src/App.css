@@ -1,11 +1,9 @@
 .HomeContainer{
-  background-color: #31393C;
+
 }
 
 .Sidebar{
-  background-image: linear-gradient(to right,#31393C 20%,#31393C 100%);
-  background-blend-mode: normal;
-  width: 350px;
+  background-color: #0C090D;
   height: 100%;
 }
 
@@ -13,7 +11,7 @@
   padding-top: 80px;
   padding-bottom: 50px;
   padding-left: 20px;
-  padding-right: 20px;
+  padding-right: 30px;
 }
 
 .SidebarIconHead{
@@ -26,4 +24,13 @@
 
 .AppbarIcon{
   float: right;
+  width: 200%;
+  padding: 20px;
 }
+
+.AppbarText{
+  width: 100%;
+  padding-left: 16px;
+}
+
+
