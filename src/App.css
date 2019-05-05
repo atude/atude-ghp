@@ -1,18 +1,26 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.Appbar{
-
+.HomeContainer{
+  background-color: #31393C;
+  margin-left: 350px;
 }
 
 .Sidebar{
-  padding-top: 70px;
-  width: 250px;
+  background-image: linear-gradient(to right,#31393C 20%,#31393C 100%);
+  background-blend-mode: normal;
+  width: 350px;
+  height: 100%;
+}
+
+.SidebarHead{
+  padding-top: 80px;
+  padding-bottom: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.SidebarIconHead{
+  width: 90px;
+  height: 90px;
+  float: left;
+  margin-left: 20px;
+  margin-top: -16px;
 }
