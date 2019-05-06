@@ -27,8 +27,10 @@ class PageController extends React.Component {
           body={TxtChunks["About me"]}
         />
       </Grid>
-
-      <Grid item xs={12} sm={10}>
+      
+     
+      
+      <Grid item md={10} sm={6}>
         <ContentCard 
           headingIcon={<CubeOutline color="primary" fontSize="large" className="ContentCardHeadIcon"/>}
           heading="Skills" 

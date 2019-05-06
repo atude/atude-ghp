@@ -6,7 +6,7 @@ class App extends Component {
   render() {
   
     return (
-      <div>
+      <div style={{overflowX: "hidden"}}>
         {/* DrawerCustom renders everything, check in Drawer.js 
         for redirects into content pages. */}
         <DrawerCustom/>
