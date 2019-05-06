@@ -1,10 +1,17 @@
 import React from 'react';
+import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { AccountBox, Buffer, ChevronDown, ChevronUp, Menu, GithubBox, LinkedinBox, } from 'mdi-material-ui';
-import { createMuiTheme, AppBar, Typography, IconButton, Toolbar, SwipeableDrawer, List, ListItem, ListItemText, ListItemIcon, Collapse, Hidden, CssBaseline, MuiThemeProvider, Drawer, Divider, Grid, } from '@material-ui/core';
+import { Menu, AccountBox, Buffer, GithubBox, LinkedinBox, EmailBox } from 'mdi-material-ui';
+import { createMuiTheme, Typography, IconButton, SwipeableDrawer, List, ListItem, ListItemText, ListItemIcon, Hidden, CssBaseline, MuiThemeProvider, Drawer, Divider, Grid, AppBar, Toolbar, } from '@material-ui/core';
+
 import icAtude from '../assets/ic_atude.png';
-import PageController from '../components/PageController.js';
+
+import '../App.css'
+import HomePage from '../pages/HomePage.js';
+import AboutPage from '../pages/AboutPage.js';
+import ProjectsPage from '../pages/ProjectsPage.js';
 
 const drawerWidth = 340;
 const mainColor = "#3C91E6"
@@ -60,6 +67,7 @@ const styles = theme => ({
     [theme.breakpoints.up('sm')]: {
       display: 'none',
     },
+    zIndex: 100000000000000,
   },
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
@@ -73,22 +81,24 @@ const styles = theme => ({
 
 class ResponsiveDrawer extends React.Component {
   state = {
-    tab: "About Me",
+    selected: "",
     mobileOpen: false,
-    open: false,
   };
 
   handleDrawerToggle = () => {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
   };
-  
-  handleClick = () => {
-    this.setState(state => ({ open: !state.open }));
-  };
+
+  getTitle = (type) => {
+    switch(type){
+      case "/about": return "About Me";
+      case "/projects": return "My Projects";
+      default: return;
+    }
+  }
 
   getIcon = (isAppbar, type) => {
     var cStyle, cClass;
-    var renderType = type;
     
     if(isAppbar) {
       cClass = "AppbarIcon";
@@ -98,11 +108,10 @@ class ResponsiveDrawer extends React.Component {
       cStyle = null;
     }
 
-    if(type === undefined) renderType = this.state.tab;
-    switch(renderType){
-      case "About Me": 
+    switch(type){
+      case "/about": 
         return <AccountBox style={cStyle} className={cClass}/>;
-      case "My Projects": 
+      case "/projects": 
         return <Buffer style={cStyle} className={cClass}/>;
       default: return;
     }
@@ -110,8 +119,9 @@ class ResponsiveDrawer extends React.Component {
 
   render() {
     const { classes } = this.props;
+    var currentLocation = window.location.pathname;
 
-    const getSideHead = 
+    const getSideHead = (
       <div className="SidebarHead">
         <img src={icAtude} alt="icAtude" className="SidebarIconHead"/>
         <Typography style={{fontSize: "24px", lineHeight: "32px", textAlign: "right"}} 
@@ -120,7 +130,7 @@ class ResponsiveDrawer extends React.Component {
         </Typography>
         <br/><br/><br/>
 
-        <Grid container direction="row" alignItems="stretch" justify="flex-end">
+        <Grid container direction="row" alignItems="stretch" justify="space-around">
           <a href="https://github.com/atude" target="_blank" rel="noopener noreferrer" 
           style={{textDecoration: "none"}}>
           <Grid item>
@@ -137,47 +147,56 @@ class ResponsiveDrawer extends React.Component {
             </IconButton>
           </Grid>
           </a>
+          <a href="mailto:mozamel.anwary1@gmail.com" rel="noopener noreferrer" 
+          style={{textDecoration: "none"}}>
+          <Grid item>
+            <IconButton key="Email">
+              <EmailBox fontSize="large"/>
+            </IconButton>
+          </Grid>
+          </a>
         </Grid>
-      </div>       
+      </div>      
+    );
     
-    const getSideList = 
+    const getSideList = (
       <List>
-        <ListItem button key="About Me">
-          <ListItemIcon>{this.getIcon(false, "About Me")}</ListItemIcon>
-          <ListItemText primary="About Me"/>
+        <Divider/>
+        <Link to="/about" style={{textDecoration: "none"}}>
+        <ListItem selected={this.state.selected === "About Me"} button className="SideListItem"
+        onClick={() => this.setState({selected: "About Me"})} key="About Me">
+          <ListItemIcon className="SideListItem">{this.getIcon(false, "/about")}</ListItemIcon>
+          <ListItemText primary={<Typography variant="button">About Me</Typography>}/>
         </ListItem>
+        </Link>
 
-        <ListItem button onClick={this.handleClick} key="My Projects">
-          <ListItemIcon>{this.getIcon(false, "My Projects")}</ListItemIcon>
-          <ListItemText primary="My Projects"/>
-          {this.state.open 
-            ? <ChevronDown color="primary"/> 
-            : <ChevronUp  color="primary"/>}
+        <Link to="/projects" style={{textDecoration: "none"}}>
+        
+        <ListItem selected={this.state.selected === "My Projects"} button className="SideListItem"
+        onClick={() => this.setState({selected: "My Projects"})} key="My Projects">
+          <ListItemIcon className="SideListItem">{this.getIcon(false, "/projects")}</ListItemIcon>
+          <ListItemText primary={<Typography variant="button">My Projects</Typography>}/>
+
         </ListItem>
-          <Collapse in={this.state.open} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            <ListItem button>
-              <ListItemIcon></ListItemIcon>
-              <ListItemText inset primary="Devote"/>
-            </ListItem>
-          </List>
-          </Collapse>
-      </List>       
+        
+        </Link>
+    
+      </List>  
+    );     
 
     const drawer = (
-      <div className="Sidebar">
+      <div style={{backgroundColor: secondaryColor}} className="Sidebar">
       <MuiThemeProvider theme={muiSidebarTheme}>
         {getSideHead}
-        <Divider/>
         {getSideList}
       </MuiThemeProvider>
       </div>
     );
 
     return (
-      <div className={classes.root}>
-      <MuiThemeProvider theme={muiTheme}>
-
+      <Router>
+        <div className={classes.root}>
+        <MuiThemeProvider theme={muiTheme}>
         <CssBaseline />
         <AppBar position="fixed" className={classes.appBar}>
           <Toolbar>
@@ -185,42 +204,48 @@ class ResponsiveDrawer extends React.Component {
               onClick={this.handleDrawerToggle} className={classes.menuButton}>
               <Menu/>
             </IconButton>
-            <Typography className="AppbarText" style={{fontSize: "28px"}} variant="h2" color="inherit" noWrap>
-              {this.state.tab}
+            <Typography className="AppbarText" style={{fontSize: "28px"}} variant="h2" color="inherit" inline>
+              {this.getTitle(currentLocation)}
             </Typography>
-              {this.getIcon(true)}
+              {this.getIcon(true, currentLocation)}
           </Toolbar>
         </AppBar>
-        <nav className={classes.drawer}>
-          {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-          <Hidden smUp implementation="css">
-            <SwipeableDrawer
-              container={this.props.container}
-              variant="temporary"
-              anchor="left"
-              open={this.state.mobileOpen}
-              onClose={this.handleDrawerToggle}
-              onOpen={this.handleDrawerToggle}
-              classes={{
-                paper: classes.drawerPaper,
-              }}
-            >
-              {drawer}
-            </SwipeableDrawer>
-          </Hidden>
-          <Hidden xsDown implementation="css">
-            <Drawer classes={{ paper: classes.drawerPaper,}}
-              variant="permanent" open>
-              {drawer}
-            </Drawer>
-          </Hidden>
-        </nav>
-        
-        {/* PageController manages rendering of content per page */}
-        <PageController tab={this.state.tab} theme={muiTheme}/>
+          <nav className={classes.drawer}>
+            {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+            <Hidden smUp implementation="css">
+              <SwipeableDrawer
+                container={this.props.container}
+                variant="temporary"
+                anchor="left"
+                open={this.state.mobileOpen}
+                onClose={this.handleDrawerToggle}
+                onOpen={this.handleDrawerToggle}
+                classes={{
+                  paper: classes.drawerPaper,
+                }}
+              >
+                {drawer}
+              </SwipeableDrawer>
+            </Hidden>
+            <Hidden xsDown implementation="css">
+              <Drawer classes={{ paper: classes.drawerPaper,}}
+                variant="permanent" open>
+                {drawer}
+              </Drawer>
+            </Hidden>
+          </nav>
+          
+          <div className="MainContentCont">
+            <Switch>
+              <Route exact path="/" render={() => <HomePage/>}/>
+              <Route path="/about" render={() => <AboutPage/>}/>
+              <Route path="/projects" render={() => <ProjectsPage/>}/>
+            </Switch>
+          </div>
 
-        </MuiThemeProvider>
-      </div>
+          </MuiThemeProvider>
+        </div>
+      </Router>
     );
   }
 }

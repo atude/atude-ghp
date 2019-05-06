@@ -15,7 +15,7 @@ class ContentCard extends React.Component {
         </Typography>
         <br/>
         {/* Body */}
-        <Typography style={{fontSize: "16px"}} variant="body1">
+        <Typography style={{fontSize: "15px"}} variant="body1">
           {body}
         </Typography>
 

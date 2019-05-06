@@ -1,5 +1,4 @@
 .Sidebar{
-  background-color: #342E37;
   height: 100%;
 }
 
@@ -28,4 +27,7 @@
   padding-left: 16px;
 }
 
+.SideListItem{
+  padding: 10px;
+}
 

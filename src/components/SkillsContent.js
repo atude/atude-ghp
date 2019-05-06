@@ -27,7 +27,7 @@ class SkillsContent extends React.Component {
       <div>
         {skillsList.map(item => (
           
-          <Grid className="SkillRowCont" item xs>
+          <Grid key={item} className="SkillRowCont" item xs>
           <Grid container direction="row" justify="space-evenly" alignItems="center" spacing={24}>
             <Grid item>
               {this.getIconSkills(item)}
