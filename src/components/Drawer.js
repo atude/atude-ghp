@@ -91,8 +91,8 @@ class ResponsiveDrawer extends React.Component {
 
   getTitle = (type) => {
     switch(type){
-      case "/about": return "About Me";
-      case "/projects": return "My Projects";
+      case "/atude-ghp/about": return "About Me";
+      case "/atude-ghp/projects": return "My Projects";
       default: return;
     }
   }
@@ -109,9 +109,9 @@ class ResponsiveDrawer extends React.Component {
     }
 
     switch(type){
-      case "/about": 
+      case "/atude-ghp/about": 
         return <AccountBox style={cStyle} className={cClass}/>;
-      case "/projects": 
+      case "/atude-ghp/projects": 
         return <Buffer style={cStyle} className={cClass}/>;
       default: return;
     }
@@ -166,7 +166,7 @@ class ResponsiveDrawer extends React.Component {
         <Link to="/about" style={{textDecoration: "none"}}>
         <ListItem selected={this.state.selected === "About Me"} button className="SideListItem"
         onClick={() => this.setState({selected: "About Me"})} key="About Me">
-          <ListItemIcon className="SideListItem">{this.getIcon(false, "/about")}</ListItemIcon>
+          <ListItemIcon className="SideListItem">{this.getIcon(false, "/atude-ghp/about")}</ListItemIcon>
           <ListItemText primary={<Typography variant="button">About Me</Typography>}/>
         </ListItem>
         </Link>
@@ -175,7 +175,7 @@ class ResponsiveDrawer extends React.Component {
         
         <ListItem selected={this.state.selected === "My Projects"} button className="SideListItem"
         onClick={() => this.setState({selected: "My Projects"})} key="My Projects">
-          <ListItemIcon className="SideListItem">{this.getIcon(false, "/projects")}</ListItemIcon>
+          <ListItemIcon className="SideListItem">{this.getIcon(false, "/atude-ghp/projects")}</ListItemIcon>
           <ListItemText primary={<Typography variant="button">My Projects</Typography>}/>
 
         </ListItem>
@@ -195,7 +195,7 @@ class ResponsiveDrawer extends React.Component {
     );
 
     return (
-      <Router>
+      <Router basename="/atude-ghp">
         <div className={classes.root}>
         <MuiThemeProvider theme={muiTheme}>
         <CssBaseline />
