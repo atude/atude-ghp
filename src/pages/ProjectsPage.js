@@ -44,7 +44,7 @@ class ProjectsPage extends React.Component {
               viewicon={<Youtube/>}
               viewtext="View on Youtube"
               body={TxtChunks["Beams"]}
-              role="Lead Front End Developer"
+              role="Lead Front End"
             />
           </Grid>
         </Grid>
