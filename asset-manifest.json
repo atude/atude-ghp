@@ -1,17 +1,21 @@
 {
   "files": {
-    "main.css": "/atude-ghp/static/css/main.a066ebf0.chunk.css",
-    "main.js": "/atude-ghp/static/js/main.fb6f3e57.chunk.js",
-    "main.js.map": "/atude-ghp/static/js/main.fb6f3e57.chunk.js.map",
+    "main.css": "/atude-ghp/static/css/main.de707a1b.chunk.css",
+    "main.js": "/atude-ghp/static/js/main.ec84c271.chunk.js",
+    "main.js.map": "/atude-ghp/static/js/main.ec84c271.chunk.js.map",
     "runtime~main.js": "/atude-ghp/static/js/runtime~main.7ed11088.js",
     "runtime~main.js.map": "/atude-ghp/static/js/runtime~main.7ed11088.js.map",
-    "static/js/2.c6e6046e.chunk.js": "/atude-ghp/static/js/2.c6e6046e.chunk.js",
-    "static/js/2.c6e6046e.chunk.js.map": "/atude-ghp/static/js/2.c6e6046e.chunk.js.map",
+    "static/js/2.c2be5172.chunk.js": "/atude-ghp/static/js/2.c2be5172.chunk.js",
+    "static/js/2.c2be5172.chunk.js.map": "/atude-ghp/static/js/2.c2be5172.chunk.js.map",
     "index.html": "/atude-ghp/index.html",
-    "precache-manifest.d49c249119ac08044fba7c55a162e0f4.js": "/atude-ghp/precache-manifest.d49c249119ac08044fba7c55a162e0f4.js",
+    "precache-manifest.48b9008fc7d2fe03b3760d9080355828.js": "/atude-ghp/precache-manifest.48b9008fc7d2fe03b3760d9080355828.js",
     "service-worker.js": "/atude-ghp/service-worker.js",
-    "static/css/main.a066ebf0.chunk.css.map": "/atude-ghp/static/css/main.a066ebf0.chunk.css.map",
+    "static/css/main.de707a1b.chunk.css.map": "/atude-ghp/static/css/main.de707a1b.chunk.css.map",
+    "static/media/banner_beams.png": "/atude-ghp/static/media/banner_beams.af481041.png",
+    "static/media/banner_devote.png": "/atude-ghp/static/media/banner_devote.5565052f.png",
     "static/media/ic_atude.png": "/atude-ghp/static/media/ic_atude.defb2faf.png",
-    "static/media/profile.jpg": "/atude-ghp/static/media/profile.e262f3b1.jpg"
+    "static/media/ic_beams.png": "/atude-ghp/static/media/ic_beams.a39de925.png",
+    "static/media/ic_devote.png": "/atude-ghp/static/media/ic_devote.7eac896c.png",
+    "static/media/profile.jpg": "/atude-ghp/static/media/profile.b622e2aa.jpg"
   }
 }
