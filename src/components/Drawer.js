@@ -120,6 +120,7 @@ class ResponsiveDrawer extends React.Component {
   render() {
     const { classes } = this.props;
     var currentLocation = window.location.pathname;
+    console.log(currentLocation);
 
     const getSideHead = (
       <div className="SidebarHead">
@@ -194,7 +195,7 @@ class ResponsiveDrawer extends React.Component {
     );
 
     return (
-      <Router basename={process.env.PUBLIC_URL}>>
+      <Router>
         <div className={classes.root}>
         <MuiThemeProvider theme={muiTheme}>
         <CssBaseline />
