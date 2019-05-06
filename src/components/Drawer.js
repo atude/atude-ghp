@@ -7,8 +7,9 @@ import icAtude from '../assets/ic_atude.png';
 import PageController from '../components/PageController.js';
 
 const drawerWidth = 340;
-const mainColor = "#D81E5B"
-const secondaryColor = "#011936"
+const mainColor = "#3C91E6"
+const secondaryColor = "#342E37"
+const secondaryLight = "#D3D4D9"
 
 const muiTheme = createMuiTheme({
   palette: {
@@ -103,10 +104,7 @@ class ResponsiveDrawer extends React.Component {
         return <AccountBox style={cStyle} className={cClass}/>;
       case "My Projects": 
         return <Buffer style={cStyle} className={cClass}/>;
-      case "Github":
-        return 
-      case "LinkedIn":
-        return <LinkedinBox style={cStyle} className={cClass}/>
+      default: return;
     }
   }
 
@@ -123,16 +121,18 @@ class ResponsiveDrawer extends React.Component {
         <br/><br/><br/>
 
         <Grid container direction="row" alignItems="stretch" justify="flex-end">
-          <a href="https://github.com/atude" target="_blank" style={{textDecoration: "none"}}>
+          <a href="https://github.com/atude" target="_blank" rel="noopener noreferrer" 
+          style={{textDecoration: "none"}}>
           <Grid item>
-            <IconButton button key="Github">
+            <IconButton key="Github">
               <GithubBox fontSize="large"/>
             </IconButton>
           </Grid>
           </a>
-          <a href="https://www.linkedin.com/in/mozamel-a-b211b4114/" target="_blank" style={{textDecoration: "none"}}>
+          <a href="https://www.linkedin.com/in/mozamel-a-b211b4114/" target="_blank" rel="noopener noreferrer" 
+          style={{textDecoration: "none"}}>
           <Grid item>
-            <IconButton button key="LinkedIn">
+            <IconButton key="LinkedIn">
               <LinkedinBox fontSize="large"/>
             </IconButton>
           </Grid>

@@ -1,9 +1,5 @@
-.HomeContainer{
-
-}
-
 .Sidebar{
-  background-color: #0C090D;
+  background-color: #342E37;
   height: 100%;
 }
 
@@ -24,8 +20,7 @@
 
 .AppbarIcon{
   float: right;
-  width: 200%;
-  padding: 20px;
+  padding: 15px;
 }
 
 .AppbarText{

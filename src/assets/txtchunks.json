@@ -1,0 +1,40 @@
+{
+  "About me":
+  [
+    "I'm a student at the University of New South Wales, currently undergoing a Bachelor's Degree in Software Engineering. ", 
+    "I pursue a passion in front-end web development, UX design, and creating products that can practically solve issues in the real world. "
+  ] ,
+  "Skills": 
+  [
+    "I have engaged in a variety of programming languages for purposes ranging through game creation, web development and app creation. ",
+    "Below is a summary of experience with the most common languages I've used."
+  ],
+  "Skillset": 
+  [
+    "C", "C#", "JS", "HTML", "Python"
+  ],
+  "Skills Experience":
+  {
+    "C": "1 year experience",
+    "C#": "3 years experience",
+    "JS": "3 years experience | React.js, UnityScript",
+    "HTML": "3 years experience | HTML, CSS",
+    "Python": "2 years experience"
+  },
+  "Skills Level":
+  {
+    "C": "2",
+    "C#": "2",
+    "HTML": "3",
+    "JS": "3",
+    "Python": "1"
+  },
+  "Skills Level Frame":
+  {
+    "0": "Beginner",
+    "1": "Novice",
+    "2": "Competent",
+    "3": "Well-versed",
+    "4": "Proficient"
+  }
+}

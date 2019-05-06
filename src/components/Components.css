@@ -1,0 +1,27 @@
+.MainContentCont{
+  padding: 40px;
+  margin-top: 100px;
+}
+
+.ContentCard{
+  padding: 30px;
+}
+
+.ContentCardHeadIcon{
+  margin-right: 15px;
+  float: left;
+}
+
+.SkillsContainer{
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.SkillSlider{
+  padding-bottom: 6px;
+}
+
+.SkillRowCont{
+  padding: 8px;
+}
