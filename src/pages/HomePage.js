@@ -6,7 +6,8 @@ class HomePage extends React.Component {
   render() {
     return (
       <div>
-        
+        Work in progress!!<br/>
+        Check out about me on the left.
       </div>
     );
   }

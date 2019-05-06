@@ -194,7 +194,7 @@ class ResponsiveDrawer extends React.Component {
     );
 
     return (
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>>
         <div className={classes.root}>
         <MuiThemeProvider theme={muiTheme}>
         <CssBaseline />
