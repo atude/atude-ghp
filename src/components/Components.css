@@ -7,6 +7,17 @@
   padding: 30px;
 }
 
+.ProjectCard{
+}
+
+.ProjectCardContent{
+  padding: 20px;
+}
+
+.ProjectCardTextContent{
+  padding-top: 12px;
+}
+
 .ContentCardHeadIcon{
   margin-right: 15px;
   float: left;
@@ -24,4 +35,37 @@
 
 .SkillRowCont{
   padding: 8px;
+}
+
+.ProjectCardIcon{
+  float: left;
+  margin-right: 10px;
+  width: 46px;
+  height: 46px;
+}
+
+.BannerShortcutsCont{
+  padding: 10px;
+  float: right;
+}
+
+.PlatformIcon{
+  padding-left: 7px;
+  padding-top: 5px;
+}
+
+.ViewLink{
+  padding: 3px;
+  float: right;
+  clear: both;
+  opacity: 0.9;
+}
+
+.ProjectRole{
+  padding-top: 3px;
+  float: right;
+}
+
+.PlatformCont{
+  float: left;
 }

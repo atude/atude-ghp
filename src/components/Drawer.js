@@ -22,11 +22,15 @@ const muiTheme = createMuiTheme({
   palette: {
     primary: {
       main: mainColor,
+      text: "#ffffff",
     },
     secondary: {
       main: secondaryColor,
     },
 
+    error: {
+      main: "#ffffff",
+    },
     contrastThreshold: 3,
     tonalOffset: 0.2,
     typography: { useNextVariants: true },
@@ -88,6 +92,11 @@ class ResponsiveDrawer extends React.Component {
   handleDrawerToggle = () => {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
   };
+
+  handleTabClick = (tab) => {
+    if(this.state.mobileOpen) this.handleDrawerToggle();
+    this.setState({selected: tab});
+  }
 
   getTitle = (type) => {
     switch(type){
@@ -165,7 +174,7 @@ class ResponsiveDrawer extends React.Component {
         <Divider/>
         <Link to="/about" style={{textDecoration: "none"}}>
         <ListItem selected={this.state.selected === "About Me"} button className="SideListItem"
-        onClick={() => this.setState({selected: "About Me"})} key="About Me">
+        onClick={() => this.handleTabClick("About Me")} key="About Me">
           <ListItemIcon className="SideListItem">{this.getIcon(false, "/atude-ghp/about")}</ListItemIcon>
           <ListItemText primary={<Typography variant="button">About Me</Typography>}/>
         </ListItem>
@@ -174,7 +183,7 @@ class ResponsiveDrawer extends React.Component {
         <Link to="/projects" style={{textDecoration: "none"}}>
         
         <ListItem selected={this.state.selected === "My Projects"} button className="SideListItem"
-        onClick={() => this.setState({selected: "My Projects"})} key="My Projects">
+        onClick={() => this.handleTabClick("My Projects")} key="My Projects">
           <ListItemIcon className="SideListItem">{this.getIcon(false, "/atude-ghp/projects")}</ListItemIcon>
           <ListItemText primary={<Typography variant="button">My Projects</Typography>}/>
 
