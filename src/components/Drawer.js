@@ -84,6 +84,7 @@ const styles = theme => ({
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
+    
   },
   content: {
     flexGrow: 1,
