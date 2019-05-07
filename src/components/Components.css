@@ -1,6 +1,6 @@
 .MainContentCont{
   padding: 40px;
-  margin-top: 100px;
+  margin-top: 80px;
 }
 
 .ContentCard{
@@ -8,6 +8,7 @@
 }
 
 .ProjectCard{
+  min-height: 620px;
 }
 
 .ProjectCardContent{
@@ -20,6 +21,7 @@
 
 .ContentCardHeadIcon{
   margin-right: 15px;
+  margin-top: -4px;
   float: left;
 }
 
@@ -61,9 +63,10 @@
   opacity: 0.9;
 }
 
-.ProjectRole{
-  padding-top: 3px;
-  float: right;
+.RoleText{
+  float: left;
+  padding-right: 2px;
+  padding-top: 4px;
 }
 
 .PlatformCont{

@@ -111,7 +111,7 @@ class ResponsiveDrawer extends React.Component {
     
     if(isAppbar) {
       cClass = "AppbarIcon";
-      cStyle = {fontSize: "100px"};
+      cStyle = {fontSize: "80px"};
     } else {
       cClass = "ListIcon"
       cStyle = null;
@@ -214,7 +214,7 @@ class ResponsiveDrawer extends React.Component {
               onClick={this.handleDrawerToggle} className={classes.menuButton}>
               <Menu/>
             </IconButton>
-            <Typography className="AppbarText" style={{fontSize: "28px"}} variant="h2" color="inherit" inline>
+            <Typography className="AppbarText" style={{fontSize: "24px"}} variant="h2" color="inherit" inline>
               {this.getTitle(currentLocation)}
             </Typography>
               {this.getIcon(true, currentLocation)}

@@ -45,32 +45,31 @@ class ProjectCard extends React.Component {
               <br/>
             </div>
 
-            <div className="PlatformCont">
-              <Grid container direction="row" justify="flex-start" alignItems="center">
-                <Grid item>
-                  <Typography style={{fontSize: "15px", color: lightGray}} variant="button">PLATFORMS | </Typography>
-                </Grid>            
-                
-                {Object.keys(platforms).map(item => (
-                  <Grid key={item} item className="PlatformIcon">{platforms[item]}</Grid>
-                ))}
+            <Grid container direction="row" justify="space-between" alignItems="center">
+              <Grid item className="PlatformCont">
+                <Grid container direction="row" justify="flex-start" alignItems="center">
+                  <Grid item>
+                    <Typography style={{fontSize: "15px", color: lightGray}} variant="button">PLATFORMS | </Typography>
+                  </Grid>            
+                  
+                  {Object.keys(platforms).map(item => (
+                    <Grid key={item} item className="PlatformIcon">{platforms[item]}</Grid>
+                  ))}
+                </Grid>
               </Grid>
-            </div>
+              <Grid item>
+                {role === "Solo" 
+                  ? <Account style={{float: "right", color: lightGray}}/>
+                  : <AccountGroup style={{float: "right", color: lightGray}}/>
+                }
 
-            <div className="ProjectRole">
-              <Typography style={{fontSize: "14px", color: lightGray, float: "left", paddingTop: "4px", paddingRight: "7px"}} 
-                variant="button">
-                {role}
-              </Typography>
+                <Typography style={{fontSize: "14px", color: lightGray, float: "right"}} 
+                  variant="button" className="RoleText">
+                  {role}
+                </Typography>
+              </Grid>
+            </Grid>
 
-              {role === "Solo" 
-                ? <Account style={{float: "left", color: lightGray}}/>
-                : <AccountGroup style={{float: "left", color: lightGray}}/>
-              }
-            </div>
-
-            
-          
             <br/><br/>
             {/* Body */}
             <Typography style={{fontSize: "14px"}} variant="body1">

@@ -10,12 +10,12 @@ class ContentCard extends React.Component {
       <Paper className="ContentCard">
         {/* Heading */}
         {headingIcon}
-        <Typography style={{fontSize: "34px"}} variant="h2" color="primary">
+        <Typography style={{fontSize: "26px"}} variant="h2" color="primary">
           {heading}
         </Typography>
         <br/>
         {/* Body */}
-        <Typography style={{fontSize: "15px"}} variant="body1">
+        <Typography style={{fontSize: "13px"}} variant="body1">
           {body}
         </Typography>
 

@@ -17,7 +17,7 @@ class ProjectsPage extends React.Component {
     return (
       <div>
         <Grid container direction="row" spacing={40} alignItems="baseline" justify="center">
-          <Grid item xs={12} sm={6}>
+          <Grid item lg={6} sm={12}>
             <ProjectCard
               projectIcon={<img src={icDevote} alt="ic_devote" className="ProjectCardIcon"/>}
               projectBanner={bnDevote}
@@ -32,7 +32,7 @@ class ProjectsPage extends React.Component {
               role="Solo"
             />
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item lg={6} sm={12}>
             <ProjectCard
               projectIcon={<img src={icBeams} alt="ic_beams" className="ProjectCardIcon"/>}
               projectBanner={bnBeams}
