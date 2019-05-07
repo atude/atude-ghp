@@ -19,7 +19,7 @@ class AboutPage extends React.Component {
             style={{width: 200, height: 200, margin: 20}}/> 
         </Grid>
 
-        <Grid item lg={8} md={6} sm={10} xs={10}>
+        <Grid item lg={8} md={6} sm={12} xs={12}>
           <ContentCard 
             headingIcon={<HumanGreeting color="primary" fontSize="large" className="ContentCardHeadIcon"/>}
             heading="Hi! I'm Moz!" 
@@ -27,7 +27,7 @@ class AboutPage extends React.Component {
           />
         </Grid>
   
-        <Grid item lg={10} sm={10} xs={10}>
+        <Grid item lg={10} sm={12} xs={12}>
           <ContentCard 
             headingIcon={<CubeOutline color="primary" fontSize="large" className="ContentCardHeadIcon"/>}
             heading="Skills" 

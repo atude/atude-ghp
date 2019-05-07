@@ -70,7 +70,7 @@ class ProjectCard extends React.Component {
               </Grid>
             </Grid>
 
-            <br/><br/>
+            <br/>
             {/* Body */}
             <Typography style={{fontSize: "14px"}} variant="body1">
               {body}
