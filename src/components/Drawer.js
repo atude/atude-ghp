@@ -55,23 +55,31 @@ const styles = theme => ({
     display: 'flex',
   },
   drawer: {
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       width: drawerWidth,
       flexShrink: 0,
+    },
+    [theme.breakpoints.down('md')]: {
+      display: 'none',
     },
   },
   appBar: {
     marginLeft: drawerWidth,
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       width: `calc(100% - ${drawerWidth}px)`,
+    },
+    [theme.breakpoints.down('md')]: {
+      width: `100%`,
     },
   },
   menuButton: {
     marginRight: 20,
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       display: 'none',
     },
-    zIndex: 100000000000000,
+    [theme.breakpoints.down('md')]: {
+      display: 'inherit',
+    },
   },
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
@@ -220,30 +228,30 @@ class ResponsiveDrawer extends React.Component {
               {this.getIcon(true, currentLocation)}
           </Toolbar>
         </AppBar>
-          <nav className={classes.drawer}>
-            {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-            <Hidden smUp implementation="css">
-              <SwipeableDrawer
-                container={this.props.container}
-                variant="temporary"
-                anchor="left"
-                open={this.state.mobileOpen}
-                onClose={this.handleDrawerToggle}
-                onOpen={this.handleDrawerToggle}
-                classes={{
-                  paper: classes.drawerPaper,
-                }}
-              >
-                {drawer}
-              </SwipeableDrawer>
-            </Hidden>
-            <Hidden xsDown implementation="css">
-              <Drawer classes={{ paper: classes.drawerPaper,}}
-                variant="permanent" open>
-                {drawer}
-              </Drawer>
-            </Hidden>
-          </nav>
+        <nav className={classes.drawer}>
+          {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+          <Hidden smUp implementation="css">
+            <SwipeableDrawer
+              container={this.props.container}
+              variant="temporary"
+              anchor="left"
+              open={this.state.mobileOpen}
+              onClose={this.handleDrawerToggle}
+              onOpen={this.handleDrawerToggle}
+              classes={{
+                paper: classes.drawerPaper,
+              }}
+            >
+              {drawer}
+            </SwipeableDrawer>
+          </Hidden>
+          <Hidden xsDown implementation="css">
+            <Drawer classes={{ paper: classes.drawerPaper,}}
+              variant="permanent" open>
+              {drawer}
+            </Drawer>
+          </Hidden>
+        </nav>
           
           <div className="MainContentCont">
             <Switch>

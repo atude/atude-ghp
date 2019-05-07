@@ -11,7 +11,6 @@ class ProjectCard extends React.Component {
     const { projectIcon, projectBanner, heading, subheading, platforms, 
       gitlink, viewlink, viewtext, viewicon, body, role } = this.props;
     return (
-      <div>
       <Card className="ProjectCard">
         <div className="BannerShortcutsCont">
           
@@ -78,7 +77,6 @@ class ProjectCard extends React.Component {
           </CardContent>
         </div>
       </Card>
-      </div>
     );
   }
 }

@@ -16,8 +16,8 @@ class ProjectsPage extends React.Component {
     const platformIconColor = {color: "#757575"};
     return (
       <div>
-        <Grid container direction="row" spacing={40} alignItems="baseline" justify="center">
-          <Grid item lg={6} sm={12}>
+        <Grid container direction="row" spacing={40} alignItems="stretch" justify="center">
+          <Grid item lg={6} md={6} sm={12} xs={12}>
             <ProjectCard
               projectIcon={<img src={icDevote} alt="ic_devote" className="ProjectCardIcon"/>}
               projectBanner={bnDevote}
@@ -32,7 +32,7 @@ class ProjectsPage extends React.Component {
               role="Solo"
             />
           </Grid>
-          <Grid item lg={6} sm={12}>
+          <Grid item lg={6} md={6} sm={12} xs={12}>
             <ProjectCard
               projectIcon={<img src={icBeams} alt="ic_beams" className="ProjectCardIcon"/>}
               projectBanner={bnBeams}
