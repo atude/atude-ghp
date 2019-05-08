@@ -22,27 +22,35 @@ class SkillsContent extends React.Component {
   }
 
   getSkillRow = (skillsList) => {
-
+    const item = TxtChunks["Skillset"];
     return(
       <div>
-        {skillsList.map(item => (
-          
-          <Grid key={item} className="SkillRowCont" item xs>
+        {Object.keys(item).map(key => (
+          <Grid key={key} className="SkillRowCont" item xs>
+
           <Grid container direction="row" justify="space-evenly" alignItems="center" spacing={24}>
             <Grid item>
-              {this.getIconSkills(item)}
+              {this.getIconSkills(key)}
             </Grid>
             <Grid item xs>
               <Typography style={{paddingBottom: "3px"}} variant="button">
-                {TxtChunks["Skills Experience"][item]}
+                {item[key].experience}
               </Typography>
+              
+              {item[key].desc !== "" &&
+                <Typography style={{color: "#757575"}} variant="caption">
+                  {item[key].desc}
+                </Typography>
+              }
             </Grid>
             <Grid item xs>
               <Typography id="label" variant="caption">
-                {TxtChunks["Skills Level Frame"][TxtChunks["Skills Level"][item]]}
+                {TxtChunks["Skills Level Frame"][item[key].level]}
               </Typography>
-              <Slider disabled style={{width: "200"}} 
-              value={TxtChunks["Skills Level"][item]}
+              <Slider disabled
+              color="primary"
+              style={{width: "200", cursor: "default"}} 
+              value={item[key].level}
               min={0} max={4}
               aria-labelledby="label"
               className="SkillSlider"
@@ -59,10 +67,9 @@ class SkillsContent extends React.Component {
   render() {
     return (
       <div className="SkillsContainer">
-      <Grid container direction="column">
-        {this.getSkillRow(TxtChunks["Skillset"])}
-      </Grid>
-
+        <Grid container alignItems="stretch" direction="column">
+          {this.getSkillRow(Object.keys(TxtChunks["Skillset"]))}
+        </Grid>
       </div>
     );
   }

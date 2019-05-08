@@ -34,7 +34,6 @@ class AboutPage extends React.Component {
             body={TxtChunks["Skills"]}
             content={<SkillsContent/>}
           />
-
         </Grid>
         </Grid>
       </div>

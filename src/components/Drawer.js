@@ -111,7 +111,7 @@ class ResponsiveDrawer extends React.Component {
     switch(type){
       case "/atude-ghp/about": return "About Me";
       case "/atude-ghp/projects": return "My Projects";
-      default: return;
+      default: return "";
     }
   }
 
@@ -131,7 +131,7 @@ class ResponsiveDrawer extends React.Component {
         return <AccountBox style={cStyle} className={cClass}/>;
       case "/atude-ghp/projects": 
         return <Buffer style={cStyle} className={cClass}/>;
-      default: return;
+      default: return <div/>;
     }
   }
 
@@ -142,11 +142,13 @@ class ResponsiveDrawer extends React.Component {
 
     const getSideHead = (
       <div className="SidebarHead">
-        <img src={icAtude} alt="icAtude" className="SidebarIconHead"/>
-        <Typography style={{fontSize: "24px", lineHeight: "32px", textAlign: "right"}} 
-          variant="overline" color="textPrimary">
-            Mozamel<br/><b>Anwary</b>
-        </Typography>
+        <Link to="/" style={{textDecoration: "none"}} onClick={() => this.handleTabClick("")}>
+          <img src={icAtude} alt="icAtude" className="SidebarIconHead"/>
+          <Typography style={{fontSize: "24px", lineHeight: "32px", textAlign: "right"}} 
+            variant="overline" color="textPrimary">
+              Mozamel<br/><b>Anwary</b>
+          </Typography>
+        </Link>
         <br/><br/><br/>
 
         <Grid container direction="row" alignItems="stretch" justify="space-around">
@@ -182,22 +184,19 @@ class ResponsiveDrawer extends React.Component {
       <List>
         <Divider/>
         <Link to="/about" style={{textDecoration: "none"}}>
-        <ListItem selected={this.state.selected === "About Me"} button className="SideListItem"
-        onClick={() => this.handleTabClick("About Me")} key="About Me">
-          <ListItemIcon className="SideListItem">{this.getIcon(false, "/atude-ghp/about")}</ListItemIcon>
-          <ListItemText primary={<Typography variant="button">About Me</Typography>}/>
-        </ListItem>
+          <ListItem selected={this.state.selected === "About Me"} button className="SideListItem"
+          onClick={() => this.handleTabClick("About Me")} key="About Me">
+            <ListItemIcon className="SideListItem">{this.getIcon(false, "/atude-ghp/about")}</ListItemIcon>
+            <ListItemText primary={<Typography variant="button">About Me</Typography>}/>
+          </ListItem>
         </Link>
 
         <Link to="/projects" style={{textDecoration: "none"}}>
-        
-        <ListItem selected={this.state.selected === "My Projects"} button className="SideListItem"
-        onClick={() => this.handleTabClick("My Projects")} key="My Projects">
-          <ListItemIcon className="SideListItem">{this.getIcon(false, "/atude-ghp/projects")}</ListItemIcon>
-          <ListItemText primary={<Typography variant="button">My Projects</Typography>}/>
-
-        </ListItem>
-        
+          <ListItem selected={this.state.selected === "My Projects"} button className="SideListItem"
+          onClick={() => this.handleTabClick("My Projects")} key="My Projects">
+            <ListItemIcon className="SideListItem">{this.getIcon(false, "/atude-ghp/projects")}</ListItemIcon>
+            <ListItemText primary={<Typography variant="button">My Projects</Typography>}/>
+          </ListItem>
         </Link>
     
       </List>  
@@ -223,9 +222,9 @@ class ResponsiveDrawer extends React.Component {
               onClick={this.handleDrawerToggle} className={classes.menuButton}>
               <Menu/>
             </IconButton>
-            <Typography className="AppbarText" style={{fontSize: "24px"}} variant="h2" color="inherit" inline>
-              {this.getTitle(currentLocation)}
-            </Typography>
+              <Typography className="AppbarText" style={{fontSize: "24px"}} variant="h2" color="inherit" inline>
+                {this.getTitle(currentLocation)}
+              </Typography>
               {this.getIcon(true, currentLocation)}
           </Toolbar>
         </AppBar>
