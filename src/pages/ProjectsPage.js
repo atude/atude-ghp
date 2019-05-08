@@ -20,31 +20,31 @@ class ProjectsPage extends React.Component {
     var iconList = [];
     types.map(item => {
       switch (item) {
-        case "Android": iconList.push(<Tooltip title={item}>
+        case "Android": iconList.push(<Tooltip disableFocusListener title={item}>
           <Android fontSize="small" style={miniIconColor}/>
           </Tooltip>); break;
-        case "PC": iconList.push(<Tooltip title={item}>
+        case "PC": iconList.push(<Tooltip disableFocusListener title={item}>
           <Monitor fontSize="small" style={miniIconColor}/>
           </Tooltip>); break;
-        case "C": iconList.push(<Tooltip title={item}>
+        case "C": iconList.push(<Tooltip disableFocusListener title={item}>
           <LanguageC fontSize="small" style={miniIconColor}/>
           </Tooltip>); break;
-        case "C#": iconList.push(<Tooltip title={item}>
+        case "C#": iconList.push(<Tooltip disableFocusListener title={item}>
           <LanguageCsharp fontSize="small" style={miniIconColor}/>
           </Tooltip>); break;
-        case "JavaScript": iconList.push(<Tooltip title={item}>
+        case "JavaScript": iconList.push(<Tooltip disableFocusListener title={item}>
           <LanguageJavascript fontSize="small" style={miniIconColor}/>
           </Tooltip>); break;
-        case "React.js": iconList.push(<Tooltip title={item}>
+        case "React.js": iconList.push(<Tooltip disableFocusListener title={item}>
           <ReactIcon fontSize="small" style={miniIconColor}/>
           </Tooltip>); break;
-        case "HTML": iconList.push(<Tooltip title={item}>
+        case "HTML": iconList.push(<Tooltip disableFocusListener title={item}>
           <LanguageHtml5 fontSize="small" style={miniIconColor}/>
           </Tooltip>); break;
-        case "CSS": iconList.push(<Tooltip title={item}>
+        case "CSS": iconList.push(<Tooltip disableFocusListener title={item}>
           <LanguageCss3 fontSize="small" style={miniIconColor}/>
           </Tooltip>); break;
-        case "Unity Engine": iconList.push(<Tooltip title={item}>
+        case "Unity Engine": iconList.push(<Tooltip disableFocusListener title={item}>
           <Unity fontSize="small" style={miniIconColor}/>
           </Tooltip>); break;
       
@@ -81,10 +81,10 @@ class ProjectsPage extends React.Component {
           <Grid key={item.heading} item lg={6} md={6} sm={12} xs={12}>
             <ProjectCard
               projectIcon={
-                <Typography color="primary">
+                <Typography component="span" color="primary">
                 <ReactSVG className="ProjectIconColor" svgClassName="ProjectCardIcon" src={this.getProjMedia(true, item.heading)}/>
                 </Typography>
-            }
+              }
               projectBanner={this.getProjMedia(false, item.heading)}
               heading={item.heading} 
               subheading={item.subheading}  

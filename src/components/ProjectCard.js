@@ -32,7 +32,7 @@ class ProjectCard extends React.Component {
           <CardContent>
             <div className="ProjectCardTextContent">
              {/* Heading */}
-             {projectIcon}
+            {projectIcon}
               <Typography component="a" href={viewlink} target="_blank" rel="noopener noreferrer"
               style={{fontSize: "28px", textDecoration: "none"}} variant="h1" color="primary">
                 {heading}

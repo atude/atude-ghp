@@ -15,31 +15,31 @@
     {
       "experience": "1 year experience",
       "desc": "",
-      "level": "3"
+      "level": 3
     },
     "C#":
     {
       "experience": "3 years experience",
       "desc": "",
-      "level": "3"
+      "level": 3
     },
     "JS":
     {
       "experience": "3 years experience",
       "desc": "React.js, UnityScript",
-      "level": "3"
+      "level": 3
     },
     "HTML":
     {
       "experience": "3 years experience",
       "desc": "HTML, CSS",
-      "level": "4"
+      "level": 4
     },
     "Python":
     {
       "experience": "1 year experience",
       "desc": "",
-      "level": "1"
+      "level": 1
     }
   },
   "Skills Level Frame":

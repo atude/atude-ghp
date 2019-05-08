@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
-import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Menu, AccountBox, Buffer, GithubBox, LinkedinBox, EmailBox } from 'mdi-material-ui';
@@ -33,8 +32,8 @@ const muiTheme = createMuiTheme({
     },
     contrastThreshold: 3,
     tonalOffset: 0.2,
-    typography: { useNextVariants: true },
   },
+  typography: { useNextVariants: true },
 });
 
 const muiSidebarTheme = createMuiTheme({
@@ -137,6 +136,7 @@ class ResponsiveDrawer extends React.Component {
 
   render() {
     const { classes } = this.props;
+    const home = "/atude-ghp/";
     var currentLocation = window.location.pathname;
     console.log(currentLocation);
 
@@ -216,11 +216,11 @@ class ResponsiveDrawer extends React.Component {
         <div className={classes.root}>
         <MuiThemeProvider theme={muiTheme}>
         <CssBaseline />
-        <AppBar position="fixed" className={classes.appBar}>
+        <AppBar style={currentLocation === home ? {backgroundColor: "transparent", boxShadow: "none"} : {}} position="fixed" className={classes.appBar}>
           <Toolbar>
             <IconButton color="inherit" aria-label="Open drawer"
               onClick={this.handleDrawerToggle} className={classes.menuButton}>
-              <Menu/>
+              <Menu color={currentLocation === home ? "primary" : "inherit"}/>
             </IconButton>
               <Typography className="AppbarText" style={{fontSize: "24px"}} variant="h2" color="inherit" inline>
                 {this.getTitle(currentLocation)}
