@@ -1,52 +1,106 @@
 import React from 'react';
 import '../components/Components.css';
 import TxtChunks from '../assets/txtchunks'
-
-import { Grid } from '@material-ui/core';
+import { Grid, Tooltip, Typography } from '@material-ui/core';
 import ProjectCard from '../components/ProjectCard';
-import icDevote from '../assets/ic_devote.png';
-import icBeams from '../assets/ic_beams.png';
+import { render } from 'react-dom'
+import ReactSVG from 'react-svg'
+
+import icDevote from '../assets/ic_devote.svg';
+import icBeams from '../assets/ic_beams.svg';
 import bnDevote from '../assets/banner_devote.png'
 import bnBeams from '../assets/banner_beams.png';
-import { Android, Monitor, Cellphone, GooglePlay, Youtube } from 'mdi-material-ui';
+import { Android, Monitor, Cellphone, GooglePlay, Youtube, LanguageCsharp,  LanguageC, LanguageJavascript, React as ReactIcon, LanguageHtml5, LanguageCss3, Unity } from 'mdi-material-ui';
+
+const miniIconColor = {color: "#757575"};
 
 class ProjectsPage extends React.Component {
 
+  getMiniIcons = (types) => {
+    var iconList = [];
+    types.map(item => {
+      switch (item) {
+        case "Android": iconList.push(<Tooltip title={item}>
+          <Android fontSize="small" style={miniIconColor}/>
+          </Tooltip>); break;
+        case "PC": iconList.push(<Tooltip title={item}>
+          <Monitor fontSize="small" style={miniIconColor}/>
+          </Tooltip>); break;
+        case "C": iconList.push(<Tooltip title={item}>
+          <LanguageC fontSize="small" style={miniIconColor}/>
+          </Tooltip>); break;
+        case "C#": iconList.push(<Tooltip title={item}>
+          <LanguageCsharp fontSize="small" style={miniIconColor}/>
+          </Tooltip>); break;
+        case "JavaScript": iconList.push(<Tooltip title={item}>
+          <LanguageJavascript fontSize="small" style={miniIconColor}/>
+          </Tooltip>); break;
+        case "React.js": iconList.push(<Tooltip title={item}>
+          <ReactIcon fontSize="small" style={miniIconColor}/>
+          </Tooltip>); break;
+        case "HTML": iconList.push(<Tooltip title={item}>
+          <LanguageHtml5 fontSize="small" style={miniIconColor}/>
+          </Tooltip>); break;
+        case "CSS": iconList.push(<Tooltip title={item}>
+          <LanguageCss3 fontSize="small" style={miniIconColor}/>
+          </Tooltip>); break;
+        case "Unity Engine": iconList.push(<Tooltip title={item}>
+          <Unity fontSize="small" style={miniIconColor}/>
+          </Tooltip>); break;
+      
+        default: break;
+      }
+    })
+
+    return iconList;
+  }
+
+  getViewIcon = (type) => {
+    switch(type) {
+      case "Google Play": return <GooglePlay/>;
+      case "Youtube": return <Youtube/>;
+      default: return;
+    }
+  }
+
+  getProjMedia = (isIcon, type) => {
+    switch(type) {
+      case "Devote": return (isIcon ? icDevote : bnDevote);
+      case "Beams": return (isIcon ? icBeams : bnBeams);
+      default: return;
+    }
+  }
+
   render() {
-    const platformIconColor = {color: "#757575"};
+    const projects = TxtChunks["Projects"];
+    console.log(projects);
     return (
       <div>
-        <Grid container direction="row" spacing={40} alignItems="stretch" justify="center">
-          <Grid item lg={6} md={6} sm={12} xs={12}>
+        <Grid container direction="row" spacing={24} alignItems="stretch" justify="center">
+        {Object.values(projects).map(item => (
+          <Grid key={item.heading} item lg={6} md={6} sm={12} xs={12}>
             <ProjectCard
-              projectIcon={<img src={icDevote} alt="ic_devote" className="ProjectCardIcon"/>}
-              projectBanner={bnDevote}
-              heading="Devote" 
-              subheading="Study Management App" 
-              platforms={[<Android fontSize="small" style={platformIconColor}/>]}
-              gitlink="https://github.com/atude/devote"
-              viewlink="https://play.google.com/store/apps/details?id=com.cyberscopes.devote"
-              viewicon={<GooglePlay/>}
-              viewtext="Available on the Play Store"
-              body={TxtChunks["Devote"]}
-              role="Solo"
+              projectIcon={
+                <Typography color="primary">
+                <ReactSVG className="ProjectIconColor" svgClassName="ProjectCardIcon" src={this.getProjMedia(true, item.heading)}/>
+                </Typography>
+            }
+              projectBanner={this.getProjMedia(false, item.heading)}
+              heading={item.heading} 
+              subheading={item.subheading}  
+              tools={this.getMiniIcons(item.tools)}
+              built={this.getMiniIcons(item.built)}
+              date={item.date}
+              platforms={this.getMiniIcons(item.platforms)}
+              gitlink={item.gitlink}  
+              viewlink={item.viewlink} 
+              viewicon={this.getViewIcon(item.viewicon)}
+              viewtext={item.viewtext} 
+              role={item.role} 
+              body={item.body} 
             />
           </Grid>
-          <Grid item lg={6} md={6} sm={12} xs={12}>
-            <ProjectCard
-              projectIcon={<img src={icBeams} alt="ic_beams" className="ProjectCardIcon"/>}
-              projectBanner={bnBeams}
-              heading="Beams" 
-              subheading="Suburb Analysis Webapp" 
-              platforms={[<Monitor fontSize="small" style={platformIconColor}/>]}
-              gitlink="https://github.com/atude/beams"
-              viewlink="https://youtu.be/vWZBiD6iriM"
-              viewicon={<Youtube/>}
-              viewtext="View on Youtube"
-              body={TxtChunks["Beams"]}
-              role="Lead Front End"
-            />
-          </Grid>
+        ))}
         </Grid>
       </div>
     );

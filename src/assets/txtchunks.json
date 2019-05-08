@@ -7,7 +7,7 @@
   "Skills": 
   [
     "I have engaged in a variety of programming languages for purposes ranging through game creation, web development and app creation. ",
-    "Below is a summary of experience with the most common languages I've used."
+    "Below is a summary of my experience with the most common languages I've used."
   ],
   "Skillset": 
   [
@@ -23,9 +23,9 @@
   },
   "Skills Level":
   {
-    "C": 2,
-    "C#": 2,
-    "HTML": 3,
+    "C": 3,
+    "C#": 3,
+    "HTML": 4,
     "JS": 3,
     "Python": 1
   },
@@ -37,8 +37,39 @@
     "3": "Well-versed",
     "4": "Proficient"
   },
-  "Devote":
-  "Devote is an all-in-one hub made and refined for high school students to organise your study tasks, track your assessment progress, view your level of productivity and ultimately balance your social and study lifestyle. ",
-  "Beams":
-  "Beams is a suburb analysis webapp that merges housing market data and suburb information from a variety of sources to create a user friendly and intuitive hub. This can be used to influence decisions on buying properties by finding suburbs which best matches your criteria."
-}
+  "Projects":
+  {
+    "Beams": 
+    {
+      "heading": "Beams",
+      "subheading": "Suburb Analysis Webapp",
+      "tools": ["React.js"],
+      "built": ["JavaScript", "HTML", "CSS"],
+      "platforms": ["PC"],
+      "date": "2019",
+      "gitlink": "https://github.com/atude/beams",
+      "viewlink": "https://youtu.be/vWZBiD6iriM",
+      "viewicon": "Youtube",
+      "viewtext": "View on Youtube",
+      "role": "Lead Front End",
+      "body": "Beams is a suburb analysis webapp that merges housing market data and suburb information from a variety of sources to create a user friendly and intuitive hub. This can be used to influence decisions on buying properties by finding suburbs which best matches your criteria."
+
+    },
+    "Devote": 
+    {
+      "heading": "Devote",
+      "iconpath": "../assets/ic_devote.png",
+      "subheading": "Study Management App",
+      "tools": ["Unity Engine"],
+      "built": ["C#"],
+      "platforms": ["Android"],
+      "date": "2017 - 2018",
+      "gitlink": "https://github.com/atude/devote",
+      "viewlink": "https://play.google.com/store/apps/details?id=com.cyberscopes.devote",
+      "viewicon": "Google Play",
+      "viewtext": "Available on the Play Store",
+      "role": "Solo",
+      "body": "Devote is an all-in-one hub made and refined for high school students to organise your study tasks, track your assessment progress, view your level of productivity and ultimately balance your social and study lifestyle. "
+    }
+  }
+ }

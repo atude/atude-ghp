@@ -1,5 +1,5 @@
 .MainContentCont{
-  padding: 40px;
+  padding: 20px;
   margin-top: 80px;
 }
 
@@ -46,6 +46,10 @@
   height: 46px;
 }
 
+.ProjectIconColor path{
+  fill: currentColor;
+}
+
 .BannerShortcutsCont{
   padding: 10px;
   float: right;
@@ -63,12 +67,42 @@
   opacity: 0.9;
 }
 
-.RoleText{
+.ProjectRightText{
   float: left;
-  padding-right: 2px;
+  padding-right: 4px;
   padding-top: 4px;
 }
 
-.PlatformCont{
+.ProjectHeadLeft{
   float: left;
+}
+
+.ToolsText{
+  padding-right: 43.5px;
+}
+
+.ProjectBodyText{
+  height: 90px;
+  overflow-y: auto; 
+  padding: 4px;
+}
+
+/* width */
+#CustomScroll::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* Track */
+#CustomScroll::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+/* Handle */
+#CustomScroll::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+#CustomScroll::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }

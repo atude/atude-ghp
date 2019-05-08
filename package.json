@@ -5,11 +5,13 @@
   "dependencies": {
     "@material-ui/core": "^3.9.3",
     "@material-ui/lab": "^3.0.0-alpha.30",
+    "@tanem/svg-injector": "^8.0.0",
     "mdi-material-ui": "^5.11.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.0",
+    "react-svg": "^9.0.4",
     "typeface-roboto": "0.0.54"
   },
   "scripts": {
