@@ -64,6 +64,15 @@
   margin-top: 80px;
 }
 
+.HomePageParent{
+  position: absolute;
+  height: 100%;
+  width: 100vw;
+  overflow: hidden;
+  bottom: 0;
+  right: 0;
+}
+
 .HomePageCont{
   position: absolute;
   padding: 30px;

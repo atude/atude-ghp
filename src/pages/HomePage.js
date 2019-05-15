@@ -12,7 +12,7 @@ class HomePage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="HomePageParent">
         <img src={HomeCorner} className="HomeCorner" alt="home_corner"/>
         <img src={HomeC1} className="HomeC1" alt="home_c1"/>
         <img src={HomeC2} className="HomeC2" alt="home_c2"/>
