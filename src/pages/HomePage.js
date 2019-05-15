@@ -2,24 +2,36 @@ import React from 'react';
 import '../components/Components.css';
 import { Typography, Grid } from '@material-ui/core';
 
+import HomeCorner from '../assets/homebg_corner.png';
+import HomeC1 from '../assets/homebg_c1.png';
+import HomeC2 from '../assets/homebg_c2.png';
+import HomeC3 from '../assets/homebg_c3.png';
+import HomeC4 from '../assets/homebg_c4.png';
+
 class HomePage extends React.Component {
 
   render() {
     return (
-      <Grid container spacing={12} className="HomePageCont" direction="column" justify="center" alignItems="flex-start">
-        <Grid item className="HomeName">
-          <Typography style={{color: "#000000", fontSize: "60px", lineHeight: "80px", textAlign: "left"}} 
-            variant="overline">
+      <div>
+        <img src={HomeCorner} className="HomeCorner" alt="home_corner"/>
+        <img src={HomeC1} className="HomeC1" alt="home_c1"/>
+        <img src={HomeC2} className="HomeC2" alt="home_c2"/>
+        <img src={HomeC3} className="HomeC3" alt="home_c3"/>
+        <img src={HomeC4} className="HomeC4" alt="home_c4"/>
+
+        <div className="HomePageCont">
+          <Typography variant="overline"
+          style={{color: "#ffffff", mixBlendMode: "overlay", fontSize: "60px", 
+            lineHeight: "80px", textAlign: "left"}}>
               Mozamel<br/><b>Anwary</b>
           </Typography>
-        </Grid>
-        <Grid item>
-          <Typography variant="button" color="primary" style={{fontSize: "18px"}}>
+        
+          <Typography variant="button" style={{color: "#ffffff", mixBlendMode: "overlay", fontSize: "18px"}}>
             Software Engineer | Design
           </Typography>
-        </Grid>
-      
-      </Grid>
+        </div>
+        
+      </div>
     );
   }
 }

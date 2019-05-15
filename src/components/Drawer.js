@@ -20,7 +20,7 @@ const colorSet = {
   "purple": "#a100f6", 
   "red": "#ff1c68", 
   "blue": "#198fe3", 
-  "green": "14d790",
+  "green": "#14d790",
 }
 
 //Abandon most UI from using mui colors,
