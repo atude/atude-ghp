@@ -5,12 +5,12 @@ import { Paper, Typography } from '@material-ui/core';
 class ContentCard extends React.Component {
 
   render() {
-    const { headingIcon, heading, body, content } = this.props;
+    const { headingIcon, heading, body, content, mainColor } = this.props;
     return (
       <Paper className="ContentCard">
         {/* Heading */}
         {headingIcon}
-        <Typography style={{fontSize: "26px"}} variant="h2" color="primary">
+        <Typography style={{color: mainColor, fontSize: "26px"}} variant="h2">
           {heading}
         </Typography>
         <br/>

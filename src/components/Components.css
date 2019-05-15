@@ -7,12 +7,13 @@
   margin-top: -100px;
   margin-left: -20px;
   margin-bottom: -20px;
+  padding: 30px;
   width: 100vw;
   height: 100vh;
 }
 
 .HomeName{
-  padding: 20px;
+
 }
 
 .ContentCard{
@@ -72,6 +73,11 @@
   padding-top: 5px;
 }
 
+.RoleIcon{
+  float: right;
+  margin-top: 3px;
+}
+
 .ViewLink{
   padding: 3px;
   float: right;
@@ -90,7 +96,7 @@
 }
 
 .ToolsText{
-  padding-right: 43.5px;
+  padding-right: 49.5px;
 }
 
 .ProjectBodyText{

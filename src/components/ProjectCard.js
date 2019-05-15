@@ -9,7 +9,7 @@ class ProjectCard extends React.Component {
 
   render() {
     const { projectIcon, projectBanner, heading, subheading, tools, built, platforms, date,
-      gitlink, viewlink, viewtext, viewicon, body, role } = this.props;
+      gitlink, viewlink, viewtext, viewicon, body, role, mainColor } = this.props;
     return (
       <Card className="ProjectCard">
         <div className="BannerShortcutsCont">
@@ -34,11 +34,12 @@ class ProjectCard extends React.Component {
              {/* Heading */}
             {projectIcon}
               <Typography component="a" href={viewlink} target="_blank" rel="noopener noreferrer"
-              style={{fontSize: "28px", textDecoration: "none"}} variant="h1" color="primary">
+              style={{color: mainColor, fontSize: "28px", textDecoration: "none"}} variant="h1">
                 {heading}
               </Typography>
 
-              <Typography style={{fontSize: "14px"}} variant="caption">
+              <Typography className="CaptionText" style={{fontSize: "14px", color: lightGray}} 
+                variant="body1">
                 {subheading}
               </Typography>
               <br/>
@@ -58,7 +59,7 @@ class ProjectCard extends React.Component {
               </Grid>
 
               <Grid item>
-                <Calendar style={{float: "right", color: lightGray}}/>
+                <Calendar className="RoleIcon"  style={{color: lightGray}}/>
                 <Typography style={{fontSize: "14px", color: lightGray}} 
                   variant="button" className="ProjectRightText">
                   {date}
@@ -79,8 +80,8 @@ class ProjectCard extends React.Component {
               </Grid>
               <Grid item>
                 {role === "Solo" 
-                  ? <Account style={{float: "right", color: lightGray}}/>
-                  : <AccountGroup style={{float: "right", color: lightGray}}/>
+                  ? <Account className="RoleIcon" style={{color: lightGray}}/>
+                  : <AccountGroup className="RoleIcon" style={{color: lightGray}}/>
                 }
 
                 <Typography style={{fontSize: "14px", color: lightGray}} 
@@ -94,7 +95,7 @@ class ProjectCard extends React.Component {
             <Grid container direction="row" justify="flex-start" alignItems="center">
               <Grid item>
                 <Typography inline className="ToolsText" style={{fontSize: "15px", color: lightGray}} variant="button">
-                  TOOLS&nbsp; 
+                  TOOLS
                 </Typography>
                 <Typography inline style={{fontSize: "15px", color: lightGray}} variant="button">
                   | 

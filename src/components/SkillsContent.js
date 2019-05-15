@@ -38,6 +38,7 @@ class SkillsContent extends React.Component {
 
   render() {
     const item = TxtChunks["Skillset"];
+    const mainColor = this.props.mainColor;
     return (
       <div className="SkillsContainer">
         <Grid container direction="column">
@@ -62,7 +63,7 @@ class SkillsContent extends React.Component {
                   {TxtChunks["Skills Level Frame"][item[key].level]}
                 </Typography>
                 <Slider disabled
-                color="primary"
+                thumb={null}
                 style={{width: "200", cursor: "default"}} 
                 value={item[key].level}
                 min={0} max={4}

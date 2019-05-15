@@ -1,11 +1,12 @@
 import React from 'react';
-import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Route, Link, NavLink, HashRouter, Switch } from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Menu, AccountBox, Buffer, GithubBox, LinkedinBox, EmailBox } from 'mdi-material-ui';
 import { createMuiTheme, Typography, IconButton, SwipeableDrawer, List, ListItem, ListItemText, ListItemIcon, Hidden, CssBaseline, MuiThemeProvider, Drawer, Divider, Grid, AppBar, Toolbar, } from '@material-ui/core';
 
-import icAtude from '../assets/ic_atude.png';
+import icAtude from '../assets/ic_atude_dark.png';
 
 import '../App.css'
 import HomePage from '../pages/HomePage.js';
@@ -13,9 +14,19 @@ import AboutPage from '../pages/AboutPage.js';
 import ProjectsPage from '../pages/ProjectsPage.js';
 
 const drawerWidth = 340;
-const mainColor = "#3C91E6"
 const secondaryColor = "#342E37"
-const secondaryLight = "#D3D4D9"
+
+const colorSet = {
+  "purple": "#a100f6", 
+  "red": "#ff1c68", 
+  "blue": "#198fe3", 
+  "green": "14d790",
+}
+
+//Abandon most UI from using mui colors,
+//Use custom set variable colors
+var mainColor = colorSet.purple;
+const drawerBG = "#ffffff";
 
 const muiTheme = createMuiTheme({
   palette: {
@@ -38,7 +49,7 @@ const muiTheme = createMuiTheme({
 
 const muiSidebarTheme = createMuiTheme({
   palette: {
-    type: "dark",
+    type: "light",
     primary: {
       main: mainColor,
     },
@@ -95,21 +106,23 @@ class ResponsiveDrawer extends React.Component {
   state = {
     selected: "",
     mobileOpen: false,
+    location: "/",
   };
 
   handleDrawerToggle = () => {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
   };
 
-  handleTabClick = (tab) => {
+  handleTabClick = (tab, loc, setColor) => {
     if(this.state.mobileOpen) this.handleDrawerToggle();
-    this.setState({selected: tab});
+    this.setState({selected: tab, location: loc});
+    mainColor = setColor;
   }
 
   getTitle = (type) => {
     switch(type){
-      case "/atude-ghp/about": return "About Me";
-      case "/atude-ghp/projects": return "My Projects";
+      case "/about": return "About Me";
+      case "/projects": return "My Projects";
       default: return "";
     }
   }
@@ -119,16 +132,16 @@ class ResponsiveDrawer extends React.Component {
     
     if(isAppbar) {
       cClass = "AppbarIcon";
-      cStyle = {fontSize: "80px"};
+      cStyle = {fontSize: "80px", color: mainColor};
     } else {
       cClass = "ListIcon"
       cStyle = null;
     }
 
     switch(type){
-      case "/atude-ghp/about": 
+      case "/about": 
         return <AccountBox style={cStyle} className={cClass}/>;
-      case "/atude-ghp/projects": 
+      case "/projects": 
         return <Buffer style={cStyle} className={cClass}/>;
       default: return <div/>;
     }
@@ -136,13 +149,14 @@ class ResponsiveDrawer extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const home = "/atude-ghp/";
-    var currentLocation = window.location.pathname;
-    console.log(currentLocation);
+    const home = "/";
+    var currentLocation = this.state.location;
+    console.log(this.state.location);
+    console.log(this.props);
 
     const getSideHead = (
       <div className="SidebarHead">
-        <Link to="/" style={{textDecoration: "none"}} onClick={() => this.handleTabClick("")}>
+        <Link to="/" style={{textDecoration: "none"}} onClick={() => this.handleTabClick("", "/", colorSet.purple)}>
           <img src={icAtude} alt="icAtude" className="SidebarIconHead"/>
           <Typography style={{fontSize: "24px", lineHeight: "32px", textAlign: "right"}} 
             variant="overline" color="textPrimary">
@@ -183,27 +197,35 @@ class ResponsiveDrawer extends React.Component {
     const getSideList = (
       <List>
         <Divider/>
-        <Link to="/about" style={{textDecoration: "none"}}>
+        <NavLink to="/about" style={{textDecoration: "none"}}>
           <ListItem selected={this.state.selected === "About Me"} button className="SideListItem"
-          onClick={() => this.handleTabClick("About Me")} key="About Me">
-            <ListItemIcon className="SideListItem">{this.getIcon(false, "/atude-ghp/about")}</ListItemIcon>
-            <ListItemText primary={<Typography variant="button">About Me</Typography>}/>
+          onClick={() => 
+            this.handleTabClick("About Me", "/about", colorSet.blue)} 
+          key="About Me">
+            <ListItemIcon style={{color: currentLocation === "/about" && mainColor}}
+              className="SideListItem">{this.getIcon(false, "/about")}</ListItemIcon>
+            <ListItemText primary={<Typography style={{color: currentLocation === "/about" && mainColor}} 
+              variant="button">About Me</Typography>}/>
           </ListItem>
-        </Link>
+        </NavLink>
 
-        <Link to="/projects" style={{textDecoration: "none"}}>
+        <NavLink to="/projects" style={{textDecoration: "none"}}>
           <ListItem selected={this.state.selected === "My Projects"} button className="SideListItem"
-          onClick={() => this.handleTabClick("My Projects")} key="My Projects">
-            <ListItemIcon className="SideListItem">{this.getIcon(false, "/atude-ghp/projects")}</ListItemIcon>
-            <ListItemText primary={<Typography variant="button">My Projects</Typography>}/>
+          onClick={() => 
+            this.handleTabClick("My Projects", "/projects", colorSet.red)} 
+          key="My Projects">
+            <ListItemIcon style={{color: currentLocation === "/projects" && mainColor}} 
+              className="SideListItem">{this.getIcon(false, "/projects")}</ListItemIcon>
+            <ListItemText primary={<Typography style={{color: currentLocation === "/projects" && mainColor}} 
+              variant="button">My Projects</Typography>}/>
           </ListItem>
-        </Link>
+        </NavLink>
     
       </List>  
     );     
 
     const drawer = (
-      <div style={{backgroundColor: secondaryColor}} className="Sidebar">
+      <div style={{backgroundColor: drawerBG}} className="Sidebar">
       <MuiThemeProvider theme={muiSidebarTheme}>
         {getSideHead}
         {getSideList}
@@ -212,17 +234,18 @@ class ResponsiveDrawer extends React.Component {
     );
 
     return (
-      <Router basename="/atude-ghp">
+      <HashRouter basename="/">
         <div className={classes.root}>
         <MuiThemeProvider theme={muiTheme}>
         <CssBaseline />
-        <AppBar style={currentLocation === home ? {backgroundColor: "transparent", boxShadow: "none"} : {}} position="fixed" className={classes.appBar}>
+        <AppBar position="fixed" className={classes.appBar}
+        style={{boxShadow: "none", backgroundColor: "#fafafa"}}>
           <Toolbar>
             <IconButton color="inherit" aria-label="Open drawer"
               onClick={this.handleDrawerToggle} className={classes.menuButton}>
-              <Menu color={currentLocation === home ? "primary" : "inherit"}/>
+              <Menu style={{color: mainColor}}/>
             </IconButton>
-              <Typography className="AppbarText" style={{fontSize: "24px"}} variant="h2" color="inherit" inline>
+              <Typography className="AppbarText" style={{fontSize: "24px", color: mainColor}} variant="h2" inline>
                 {this.getTitle(currentLocation)}
               </Typography>
               {this.getIcon(true, currentLocation)}
@@ -255,15 +278,15 @@ class ResponsiveDrawer extends React.Component {
           
           <div className="MainContentCont">
             <Switch>
-              <Route exact path="/" render={() => <HomePage/>}/>
-              <Route path="/about" render={() => <AboutPage/>}/>
-              <Route path="/projects" render={() => <ProjectsPage/>}/>
+              <Route exact path="/" render={() => <HomePage mainColor={mainColor}/>}/>
+              <Route path="/about" render={() => <AboutPage mainColor={mainColor}/>}/>
+              <Route path="/projects" render={() => <ProjectsPage mainColor={mainColor}/>}/>
             </Switch>
           </div>
 
           </MuiThemeProvider>
         </div>
-      </Router>
+      </HashRouter>
     );
   }
 }
@@ -274,4 +297,6 @@ ResponsiveDrawer.propTypes = {
   theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(ResponsiveDrawer);
+export default 
+      (withStyles(styles, { withTheme: true })(ResponsiveDrawer)
+  );

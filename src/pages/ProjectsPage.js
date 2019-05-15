@@ -73,15 +73,16 @@ class ProjectsPage extends React.Component {
 
   render() {
     const projects = TxtChunks["Projects"];
-    console.log(projects);
+    const mainColor = this.props.mainColor;
+
     return (
       <div>
         <Grid container direction="row" spacing={24} alignItems="stretch" justify="center">
         {Object.values(projects).map(item => (
           <Grid key={item.heading} item lg={6} md={6} sm={12} xs={12}>
-            <ProjectCard
+            <ProjectCard mainColor={mainColor}
               projectIcon={
-                <Typography component="span" color="primary">
+                <Typography component="span" style={{color: mainColor}}>
                 <ReactSVG className="ProjectIconColor" svgClassName="ProjectCardIcon" src={this.getProjMedia(true, item.heading)}/>
                 </Typography>
               }

@@ -1,15 +1,15 @@
 import React from 'react';
 import '../components/Components.css';
 import ContentCard from '../components/ContentCard.js';
-import { Grid, Avatar } from '@material-ui/core';
+import { Grid, Avatar, createMuiTheme } from '@material-ui/core';
 import { HumanGreeting, CubeOutline } from 'mdi-material-ui';
 import TxtChunks from '../assets/txtchunks'
 import imgProfile from '../assets/profile.jpg'
 import SkillsContent from '../components/SkillsContent';
 
 class AboutPage extends React.Component {
-
-  render() {
+  render() {    
+    const mainColor = this.props.mainColor;
     return (
       <div>
         <Grid container direction="row" spacing={40} alignItems="center" justify="center">
@@ -20,16 +20,16 @@ class AboutPage extends React.Component {
         </Grid>
 
         <Grid item lg={8} md={8} sm={8} xs={12}>
-          <ContentCard 
-            headingIcon={<HumanGreeting color="primary" fontSize="large" className="ContentCardHeadIcon"/>}
+          <ContentCard mainColor={mainColor}
+            headingIcon={<HumanGreeting style={{color: mainColor}} fontSize="large" className="ContentCardHeadIcon"/>}
             heading="Hi! I'm Moz!" 
             body={TxtChunks["About me"]}
           />
         </Grid>
   
         <Grid item lg={10} md={10} sm={10} xs={12}>
-          <ContentCard 
-            headingIcon={<CubeOutline color="primary" fontSize="large" className="ContentCardHeadIcon"/>}
+          <ContentCard mainColor={mainColor}
+            headingIcon={<CubeOutline style={{color: mainColor}} fontSize="large" className="ContentCardHeadIcon"/>}
             heading="Skills" 
             body={TxtChunks["Skills"]}
             content={<SkillsContent/>}

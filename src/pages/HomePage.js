@@ -6,14 +6,19 @@ class HomePage extends React.Component {
 
   render() {
     return (
-      <Grid container className="HomePageCont" direction="row" justify="space-between" alignItems="center">
-        <Grid item xs={12} className="HomeName">
+      <Grid container spacing={12} className="HomePageCont" direction="column" justify="center" alignItems="flex-start">
+        <Grid item className="HomeName">
           <Typography style={{color: "#000000", fontSize: "60px", lineHeight: "80px", textAlign: "left"}} 
             variant="overline">
               Mozamel<br/><b>Anwary</b>
           </Typography>
-          Work in progress! See tabs for more info about me.
         </Grid>
+        <Grid item>
+          <Typography variant="button" color="primary" style={{fontSize: "18px"}}>
+            Software Engineer | Design
+          </Typography>
+        </Grid>
+      
       </Grid>
     );
   }
