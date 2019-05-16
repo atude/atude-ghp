@@ -18,14 +18,14 @@ class HomePage extends React.Component {
     const timePlus = 200;
     return (
       <div className="HomePageParent">
-        <img src={HomeCorner4} className="HomeCorner T4" alt="home_corner4"/>
-        <img src={HomeCorner3} className="HomeCorner T3" alt="home_corner3"/>
-        <img src={HomeCorner2} className="HomeCorner T2" alt="home_corner2"/>
-        <img src={HomeCorner1} className="HomeCorner T1" alt="home_corner1"/>
-        <img src={HomeC1} className="HomeCircle C1" alt="home_c1"/>
-        <img src={HomeC2} className="HomeCircle C2" alt="home_c2"/>
-        <img src={HomeC3} className="HomeCircle C3" alt="home_c3"/>
-        <img src={HomeC4} className="HomeCircle C4" alt="home_c4"/>
+        <Fade in timeout={baseTime}><img src={HomeCorner4} className="HomeCorner T4" alt="home_corner4"/></Fade>
+        <Fade in timeout={baseTime+(timePlus*2)}><img src={HomeCorner3} className="HomeCorner T3" alt="home_corner3"/></Fade>
+        <Fade in timeout={baseTime+(timePlus*8)}><img src={HomeCorner2} className="HomeCorner T2" alt="home_corner2"/></Fade>
+        <Fade in timeout={baseTime+(timePlus*16)}><img src={HomeCorner1} className="HomeCorner T1" alt="home_corner1"/></Fade>
+        <Fade in timeout={baseTime}><img src={HomeC1} className="HomeCircle C1" alt="home_c1"/></Fade>
+        <Fade in timeout={baseTime+(timePlus*2)}><img src={HomeC2} className="HomeCircle C2" alt="home_c2"/></Fade>
+        <Fade in timeout={baseTime+(timePlus*8)}><img src={HomeC3} className="HomeCircle C3" alt="home_c3"/></Fade>
+        <Fade in timeout={baseTime+(timePlus*16)}><img src={HomeC4} className="HomeCircle C4" alt="home_c4"/></Fade>
 
         <div className="HomePageCont">
           <Typography variant="overline"
