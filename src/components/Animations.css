@@ -1,0 +1,67 @@
+.HomeCorner{
+  position: absolute;
+  z-index: -100;
+  height: 100vw;
+  min-width: 100%;
+  min-height: 100%;
+  bottom: -20px;
+  right: 0;
+}
+
+.HomeCorner.T1{
+  animation: trianglefloat 10s ease-in-out infinite alternate;
+}
+
+.HomeCorner.T2{
+  animation: trianglefloat 12s ease-in-out infinite alternate-reverse;
+}
+
+.HomeCorner.T3{
+  animation: trianglefloat 8s ease-in-out infinite alternate;
+}
+
+.HomeCorner.T4{
+  animation: trianglefloat 14s ease-in-out infinite alternate-reverse;
+}
+
+.HomeCircle{
+  position: absolute;
+  z-index: -100;
+  height: 60vh;
+}
+
+.HomeCircle.C1{
+  top: 10vh;
+  left: 25vw;
+  animation: circlefloat 10s ease-in-out infinite alternate;
+}
+
+.HomeCircle.C2{
+  top: 20vh;
+  left: 15vw;
+  animation: circlefloat 17s ease-in-out infinite alternate-reverse;
+}
+
+.HomeCircle.C3{
+  top: 35vh;
+  left: 22vw;
+  animation: circlefloat 15s ease-in-out infinite alternate;
+}
+
+.HomeCircle.C4{
+  top: 35vh;
+  left: 15vw;
+  animation: circlefloat 12s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes circlefloat {
+  25%   {transform: translatey(10px);}
+  50%  {transform: translatex(-10px);}
+  75%  {transform: translatey(-10px);}
+  100%  {transform: translatex(10px);}
+}
+
+@keyframes trianglefloat {
+  25%   {transform: translatey(20px);}
+  100%  {transform: translatey(-20px);}
+}
