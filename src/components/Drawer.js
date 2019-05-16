@@ -239,7 +239,9 @@ class ResponsiveDrawer extends React.Component {
         <MuiThemeProvider theme={muiTheme}>
         <CssBaseline />
         <AppBar position="fixed" className={classes.appBar}
-        style={{boxShadow: "none", backgroundColor: "#fafafa"}}>
+        style={{boxShadow: "none", 
+          backgroundColor: this.state.location !== "/" ? "rgba(250, 250, 250, 1)" : "transparent", 
+          borderRadius: "0px 0px 30px 30px"}}>
           <Toolbar>
             <IconButton color="inherit" aria-label="Open drawer"
               onClick={this.handleDrawerToggle} className={classes.menuButton}>

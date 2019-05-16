@@ -21,12 +21,12 @@ class HomePage extends React.Component {
 
         <div className="HomePageCont">
           <Typography variant="overline"
-          style={{color: "#ffffff", mixBlendMode: "overlay", fontSize: "60px", 
-            lineHeight: "80px", textAlign: "left"}}>
+          style={{color: "#ffffff", mixBlendMode: "overlay", fontSize: "6vh", 
+            lineHeight: "7vh", textAlign: "left"}}>
               Mozamel<br/><b>Anwary</b>
           </Typography>
         
-          <Typography variant="button" style={{color: "#ffffff", mixBlendMode: "overlay", fontSize: "18px"}}>
+          <Typography variant="button" style={{color: "#ffffff", mixBlendMode: "overlay", fontSize: "2vh"}}>
             Software Engineer | Design
           </Typography>
         </div>
