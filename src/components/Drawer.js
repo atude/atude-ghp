@@ -4,9 +4,11 @@ import {withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Menu, AccountBox, Buffer, GithubBox, LinkedinBox, EmailBox } from 'mdi-material-ui';
-import { createMuiTheme, Typography, IconButton, SwipeableDrawer, List, ListItem, ListItemText, ListItemIcon, Hidden, CssBaseline, MuiThemeProvider, Drawer, Divider, Grid, AppBar, Toolbar, } from '@material-ui/core';
+import { createMuiTheme, Typography, IconButton, SwipeableDrawer, List, ListItem, ListItemText, ListItemIcon, Hidden, CssBaseline, MuiThemeProvider, Drawer, Divider, Grid, AppBar, Toolbar, Fade, } from '@material-ui/core';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import icAtude from '../assets/ic_atude_dark.png';
+import colorSet from '../assets/colorset.json';
 
 import '../App.css'
 import HomePage from '../pages/HomePage.js';
@@ -15,13 +17,6 @@ import ProjectsPage from '../pages/ProjectsPage.js';
 
 const drawerWidth = 340;
 const secondaryColor = "#342E37"
-
-const colorSet = {
-  "purple": "#a100f6", 
-  "red": "#ff1c68", 
-  "blue": "#198fe3", 
-  "green": "#14d790",
-}
 
 //Abandon most UI from using mui colors,
 //Use custom set variable colors
@@ -104,41 +99,46 @@ const styles = theme => ({
 
 class ResponsiveDrawer extends React.Component {
   state = {
-    selected: "",
     mobileOpen: false,
-    location: "/",
   };
 
   handleDrawerToggle = () => {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
   };
 
-  handleTabClick = (tab, loc, setColor) => {
+  handleTabClick = (tab) => {
     if(this.state.mobileOpen) this.handleDrawerToggle();
-    this.setState({selected: tab, location: loc});
-    mainColor = setColor;
+    this.setState({selected: tab});
   }
 
-  getTitle = (type) => {
-    switch(type){
+  getTitle = (path) => {
+    switch(path){
       case "/about": return "About Me";
       case "/projects": return "My Projects";
       default: return "";
     }
   }
 
-  getIcon = (isAppbar, type) => {
+  getColor = (path) => {
+    switch(path){
+      case "/about": return colorSet.blue;
+      case "/projects": return colorSet.red;
+      default: return colorSet.purple;
+    }
+  }
+
+  getIcon = (isAppbar, path) => {
     var cStyle, cClass;
     
     if(isAppbar) {
       cClass = "AppbarIcon";
-      cStyle = {fontSize: "80px", color: mainColor};
+      cStyle = {fontSize: "80px", color: this.getColor(path)};
     } else {
       cClass = "ListIcon"
       cStyle = null;
     }
 
-    switch(type){
+    switch(path){
       case "/about": 
         return <AccountBox style={cStyle} className={cClass}/>;
       case "/projects": 
@@ -147,16 +147,10 @@ class ResponsiveDrawer extends React.Component {
     }
   }
 
-  render() {
-    const { classes } = this.props;
-    const home = "/";
-    var currentLocation = this.state.location;
-    console.log(this.state.location);
-    console.log(this.props);
-
-    const getSideHead = (
+  getSideHead = () => {
+    return (
       <div className="SidebarHead">
-        <Link to="/" style={{textDecoration: "none"}} onClick={() => this.handleTabClick("", "/", colorSet.purple)}>
+        <Link to="/" style={{textDecoration: "none"}} onClick={() => this.handleTabClick("", "/")}>
           <img src={icAtude} alt="icAtude" className="SidebarIconHead"/>
           <Typography style={{fontSize: "24px", lineHeight: "32px", textAlign: "right"}} 
             variant="overline" color="textPrimary">
@@ -193,101 +187,118 @@ class ResponsiveDrawer extends React.Component {
         </Grid>
       </div>      
     );
-    
-    const getSideList = (
+  };
+  
+  getSideList = (path) => {
+    const getColor = this.getColor(path);
+    return (
       <List>
         <Divider/>
         <NavLink to="/about" style={{textDecoration: "none"}}>
           <ListItem selected={this.state.selected === "About Me"} button className="SideListItem"
           onClick={() => 
-            this.handleTabClick("About Me", "/about", colorSet.blue)} 
+            this.handleTabClick("About Me", "/about")} 
           key="About Me">
-            <ListItemIcon style={{color: currentLocation === "/about" && mainColor}}
+            <ListItemIcon style={{color: path === "/about" && getColor}}
               className="SideListItem">{this.getIcon(false, "/about")}</ListItemIcon>
-            <ListItemText primary={<Typography style={{color: currentLocation === "/about" && mainColor}} 
+            <ListItemText primary={<Typography style={{color: path === "/about" && getColor}} 
               variant="button">About Me</Typography>}/>
           </ListItem>
         </NavLink>
 
         <NavLink to="/projects" style={{textDecoration: "none"}}>
-          <ListItem selected={this.state.selected === "My Projects"} button className="SideListItem"
+          <ListItem selected={this.state.selected === "Projects"} button className="SideListItem"
           onClick={() => 
-            this.handleTabClick("My Projects", "/projects", colorSet.red)} 
-          key="My Projects">
-            <ListItemIcon style={{color: currentLocation === "/projects" && mainColor}} 
+            this.handleTabClick("Projects", "/projects")} 
+          key="Projects">
+            <ListItemIcon style={{color: path === "/projects" && getColor}} 
               className="SideListItem">{this.getIcon(false, "/projects")}</ListItemIcon>
-            <ListItemText primary={<Typography style={{color: currentLocation === "/projects" && mainColor}} 
-              variant="button">My Projects</Typography>}/>
+            <ListItemText primary={<Typography style={{color: path === "/projects" && getColor}} 
+              variant="button">Projects</Typography>}/>
           </ListItem>
         </NavLink>
     
       </List>  
-    );     
+    );
+  };     
 
-    const drawer = (
+  drawer = (path) => {
+    return (
       <div style={{backgroundColor: drawerBG}} className="Sidebar">
       <MuiThemeProvider theme={muiSidebarTheme}>
-        {getSideHead}
-        {getSideList}
+        {this.getSideHead(path)}
+        {this.getSideList(path)}
       </MuiThemeProvider>
       </div>
     );
+  };
+
+  render() {
+    const { classes } = this.props;
 
     return (
       <HashRouter basename="/">
-        <div className={classes.root}>
-        <MuiThemeProvider theme={muiTheme}>
-        <CssBaseline />
-        <AppBar position="fixed" className={classes.appBar}
-        style={{boxShadow: "none", 
-          backgroundColor: this.state.location !== "/" ? "rgba(250, 250, 250, 1)" : "transparent", 
-          borderRadius: "0px 0px 30px 30px"}}>
-          <Toolbar>
-            <IconButton color="inherit" aria-label="Open drawer"
-              onClick={this.handleDrawerToggle} className={classes.menuButton}>
-              <Menu style={{color: mainColor}}/>
-            </IconButton>
-              <Typography className="AppbarText" style={{fontSize: "24px", color: mainColor}} variant="h2" inline>
-                {this.getTitle(currentLocation)}
-              </Typography>
-              {this.getIcon(true, currentLocation)}
-          </Toolbar>
-        </AppBar>
-        <nav className={classes.drawer}>
-          {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-          <Hidden smUp implementation="css">
-            <SwipeableDrawer
-              container={this.props.container}
-              variant="temporary"
-              anchor="left"
-              open={this.state.mobileOpen}
-              onClose={this.handleDrawerToggle}
-              onOpen={this.handleDrawerToggle}
-              classes={{
-                paper: classes.drawerPaper,
-              }}
-            >
-              {drawer}
-            </SwipeableDrawer>
-          </Hidden>
-          <Hidden xsDown implementation="css">
-            <Drawer classes={{ paper: classes.drawerPaper,}}
-              variant="permanent" open>
-              {drawer}
-            </Drawer>
-          </Hidden>
-        </nav>
-          
-          <div className="MainContentCont">
-            <Switch>
-              <Route exact path="/" render={() => <HomePage mainColor={mainColor}/>}/>
-              <Route path="/about" render={() => <AboutPage mainColor={mainColor}/>}/>
-              <Route path="/projects" render={() => <ProjectsPage mainColor={mainColor}/>}/>
-            </Switch>
-          </div>
+        {/* Use location for render changes*/}
+        <Route render={({location}) => (
 
+          <div className={classes.root}>
+          <MuiThemeProvider theme={muiTheme}>
+          <CssBaseline />
+          <AppBar position="fixed" className={classes.appBar}
+          style={{boxShadow: "none", 
+            backgroundColor: location.pathname !== "/" ? "rgba(250, 250, 250, 1)" : "transparent", 
+            borderRadius: "0px 0px 30px 30px"}}>
+            <Toolbar>
+              <IconButton color="inherit" aria-label="Open drawer"
+                onClick={this.handleDrawerToggle} className={classes.menuButton}>
+                <Menu style={{color: this.getColor(location.pathname)}}/>
+              </IconButton>
+                <Typography className="AppbarText" style={{fontSize: "24px", color: this.getColor(location.pathname)}} variant="h2" inline>
+                  {this.getTitle(location.pathname)}
+                </Typography>
+                {this.getIcon(true, location.pathname)}
+            </Toolbar>
+          </AppBar>
+          <nav className={classes.drawer}>
+            {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+            <Hidden smUp implementation="css">
+              <SwipeableDrawer
+                container={this.props.container}
+                variant="temporary"
+                anchor="left"
+                open={this.state.mobileOpen}
+                onClose={this.handleDrawerToggle}
+                onOpen={this.handleDrawerToggle}
+                classes={{
+                  paper: classes.drawerPaper,
+                }}
+              >
+                {this.drawer(location.pathname)}
+              </SwipeableDrawer>
+            </Hidden>
+            <Hidden xsDown implementation="css">
+              <Drawer classes={{ paper: classes.drawerPaper,}}
+                variant="permanent" open>
+                {this.drawer(location.pathname)}
+              </Drawer>
+            </Hidden>
+          </nav>
+            
+            <div className="MainContentCont">
+              <TransitionGroup>
+                <Fade in timeout={500}>
+                  <Switch location={location}>
+                    <Route exact path="/" render={() => <HomePage mainColor={this.getColor(location.pathname)}/>}/>
+                    <Route path="/about" render={() => <AboutPage mainColor={this.getColor(location.pathname)}/>}/>
+                    <Route path="/projects" render={() => <ProjectsPage mainColor={this.getColor(location.pathname)}/>}/>
+                  </Switch>
+                </Fade>
+              </TransitionGroup>
+            
+            </div>
           </MuiThemeProvider>
         </div>
+        )}/>
       </HashRouter>
     );
   }
