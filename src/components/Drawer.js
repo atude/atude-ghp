@@ -235,6 +235,7 @@ class ResponsiveDrawer extends React.Component {
 
   render() {
     const { classes } = this.props;
+    var isLocationChange = true;
 
     return (
       <HashRouter basename="/">
@@ -283,19 +284,17 @@ class ResponsiveDrawer extends React.Component {
               </Drawer>
             </Hidden>
           </nav>
-            
+
             <div className="MainContentCont">
               <TransitionGroup>
-                <Fade in timeout={500}>
                   <Switch location={location}>
                     <Route exact path="/" render={() => <HomePage mainColor={this.getColor(location.pathname)}/>}/>
                     <Route path="/about" render={() => <AboutPage mainColor={this.getColor(location.pathname)}/>}/>
                     <Route path="/projects" render={() => <ProjectsPage mainColor={this.getColor(location.pathname)}/>}/>
                   </Switch>
-                </Fade>
               </TransitionGroup>
-            
             </div>
+
           </MuiThemeProvider>
         </div>
         )}/>
