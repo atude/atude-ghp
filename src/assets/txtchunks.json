@@ -1,14 +1,10 @@
 {
   "About me":
-  [
-    "I'm a student at the University of New South Wales, currently undergoing a Bachelor's Degree in Software Engineering. ", 
-    "I pursue a passion in front-end web development, UX design, and creating products that can practically solve issues in the real world. "
-  ] ,
-  "Skills": 
-  [
-    "I have engaged in a variety of programming languages for purposes ranging through game creation, web development and app creation. ",
-    "Below is a summary of my experience with the most common languages I've used."
-  ],
+  {
+    "A bit about me": "I'm a student at the University of New South Wales, currently undergoing a Bachelor's Degree in Software Engineering. I pursue a passion in creating and designing products with captivating UXs and real-world use to help bring creative solutions to problems. ",
+    "Experience with software": "I have engaged in a variety of programming languages for a range of different uses, from game creation and app development to web design. With this skillset, I've become familiar with tools such as Unity and React, and have utilised programming styles including OOP and functional programming. "
+
+  },
   "Skillset": 
   {
     "C":
@@ -38,9 +34,28 @@
     "Python":
     {
       "experience": "1 year experience",
-      "desc": "",
+      "desc": "Flask",
       "level": 1
     }
+  },
+  "Toolset": 
+  {
+    "Web Development & Design": 
+    [
+      "React", "Material UI", "XD"
+    ],
+    "App Development":
+    [
+      "Unity"
+    ],
+    "Design & Graphics":
+    [
+      "GIMP", "Photoshop"
+    ],
+    "Other":
+    [
+      "GitHub", "Visual Studio", "MuseScore"
+    ]
   },
   "Skills Level Frame":
   {

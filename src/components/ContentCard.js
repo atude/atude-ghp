@@ -15,9 +15,17 @@ class ContentCard extends React.Component {
         </Typography>
         <br/>
         {/* Body */}
-        <Typography style={{fontSize: "13px"}} variant="body1">
-          {body}
-        </Typography>
+          {Object.keys(body).map((key, i) => (
+            <div>
+              <Typography style={{color: mainColor, fontSize: "14px", paddingBottom: "3px"}} variant="button">
+                {key !== "" && key}
+              </Typography>
+              <Typography style={{fontSize: "14px"}} variant="body1">
+                {body[key]}
+              </Typography>
+              {Object.keys(body).length-1 !== i && <br/>}
+            </div>
+          ))}
 
         {content !== undefined && content}
       </Paper>

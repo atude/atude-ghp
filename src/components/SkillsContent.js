@@ -38,7 +38,7 @@ class SkillsContent extends React.Component {
 
   render() {
     const item = TxtChunks["Skillset"];
-    const mainColor = this.props.mainColor;
+    
     return (
       <div className="SkillsContainer">
         <Grid container direction="column">

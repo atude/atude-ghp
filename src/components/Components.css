@@ -63,9 +63,15 @@
 }
 
 .SkillsContainer{
-  padding-top: 20px;
+  padding-top: 10px;
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.ToolsContainer{
+  padding-top: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .SkillSlider{
@@ -120,7 +126,7 @@
 }
 
 .ToolsText{
-  padding-right: 49.5px;
+  padding-right: 43.95px;
 }
 
 .ProjectBodyText{

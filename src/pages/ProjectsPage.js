@@ -16,7 +16,7 @@ const miniIconColor = {color: "#757575"};
 
 class ProjectsPage extends React.Component {
   state = {
-    transitionDone: 0,
+    transitionDone: false,
   }
 
   getMiniIcons = (types) => {
@@ -89,7 +89,8 @@ class ProjectsPage extends React.Component {
     return (
       <Fade in timeout={600}>
       <div>
-        <Grid container direction="row" spacing={24} alignItems="stretch" justify="center" style={{overflowY: transitionDone ? "inherit" : "hidden"}}>
+        <Grid container direction="row" spacing={24} alignItems="stretch" justify="center" 
+        style={{overflowY: transitionDone ? "inherit" : "hidden"}}>
         {Object.values(projects).map((item, i) => (
           <Grid key={item.heading} item lg={6} md={6} sm={12} xs={12}>
             <Slide direction="up" in mountOnEnter timeout={tBase+(i*tAdd)} 

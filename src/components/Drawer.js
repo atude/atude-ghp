@@ -150,6 +150,8 @@ class ResponsiveDrawer extends React.Component {
   getSideHead = () => {
     return (
       <div className="SidebarHead">
+      <Grid container direction="column" alignItems="stretch" justify="center">
+        <Grid item>
         <Link to="/" style={{textDecoration: "none"}} onClick={() => this.handleTabClick("", "/")}>
           <img src={icAtude} alt="icAtude" className="SidebarIconHead"/>
           <Typography style={{fontSize: "24px", lineHeight: "32px", textAlign: "right"}} 
@@ -157,8 +159,9 @@ class ResponsiveDrawer extends React.Component {
               Mozamel<br/><b>Anwary</b>
           </Typography>
         </Link>
-        <br/><br/><br/>
-
+        </Grid>
+          
+        <Grid item>
         <Grid container direction="row" alignItems="stretch" justify="space-around">
           <a href="https://github.com/atude" target="_blank" rel="noopener noreferrer" 
           style={{textDecoration: "none"}}>
@@ -185,6 +188,8 @@ class ResponsiveDrawer extends React.Component {
           </Grid>
           </a>
         </Grid>
+        </Grid>
+      </Grid>
       </div>      
     );
   };

@@ -10,6 +10,9 @@ class ProjectCard extends React.Component {
   render() {
     const { projectIcon, projectBanner, heading, subheading, tools, built, platforms, date,
       gitlink, viewlink, viewtext, viewicon, body, role, mainColor } = this.props;
+
+    const categoryStyle = {fontSize: "14px", color: lightGray, letterSpacing: "0px"};
+
     return (
       <Card className="ProjectCard">
         <div className="BannerShortcutsCont">
@@ -38,7 +41,7 @@ class ProjectCard extends React.Component {
                 {heading}
               </Typography>
 
-              <Typography className="CaptionText" style={{fontSize: "14px", color: lightGray}} 
+              <Typography className="CaptionText" style={categoryStyle} 
                 variant="body1">
                 {subheading}
               </Typography>
@@ -49,7 +52,7 @@ class ProjectCard extends React.Component {
               <Grid item className="ProjectHeadLeft">
                 <Grid container direction="row" justify="flex-start" alignItems="center">
                   <Grid item>
-                    <Typography style={{fontSize: "15px", color: lightGray}} variant="button">PLATFORMS&nbsp; | </Typography>
+                    <Typography style={categoryStyle} variant="button">PLATFORMS&nbsp; | </Typography>
                   </Grid>            
                   
                   {Object.keys(platforms).map(item => (
@@ -60,7 +63,7 @@ class ProjectCard extends React.Component {
 
               <Grid item>
                 <Calendar className="RoleIcon"  style={{color: lightGray}}/>
-                <Typography style={{fontSize: "14px", color: lightGray}} 
+                <Typography style={categoryStyle} 
                   variant="button" className="ProjectRightText">
                   {date}
                 </Typography>
@@ -71,7 +74,7 @@ class ProjectCard extends React.Component {
               <Grid item className="ProjectHeadLeft">
                 <Grid container direction="row" justify="flex-start" alignItems="center">
                   <Grid item>
-                    <Typography style={{fontSize: "15px", color: lightGray}} variant="button">LANGUAGES&nbsp; | </Typography>
+                    <Typography style={categoryStyle} variant="button">LANGUAGES&nbsp; | </Typography>
                   </Grid>
                   {Object.keys(built).map(item => (
                         <Grid key={item} item className="PlatformIcon">{built[item]}</Grid>
@@ -84,7 +87,7 @@ class ProjectCard extends React.Component {
                   : <AccountGroup className="RoleIcon" style={{color: lightGray}}/>
                 }
 
-                <Typography style={{fontSize: "14px", color: lightGray}} 
+                <Typography style={categoryStyle} 
                   variant="button" className="ProjectRightText">
                   {role}
                 </Typography>
@@ -94,10 +97,10 @@ class ProjectCard extends React.Component {
 
             <Grid container direction="row" justify="flex-start" alignItems="center">
               <Grid item>
-                <Typography inline className="ToolsText" style={{fontSize: "15px", color: lightGray}} variant="button">
+                <Typography inline className="ToolsText" style={categoryStyle} variant="button">
                   TOOLS
                 </Typography>
-                <Typography inline style={{fontSize: "15px", color: lightGray}} variant="button">
+                <Typography inline style={categoryStyle} variant="button">
                   | 
                 </Typography>
               </Grid>
