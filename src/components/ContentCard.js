@@ -16,7 +16,7 @@ class ContentCard extends React.Component {
         <br/>
         {/* Body */}
           {Object.keys(body).map((key, i) => (
-            <div>
+            <div key={key}>
               <Typography style={{color: mainColor, fontSize: "14px", paddingBottom: "3px"}} variant="button">
                 {key !== "" && key}
               </Typography>

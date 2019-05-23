@@ -41,13 +41,13 @@ class SkillsContent extends React.Component {
     
     return (
       <div className="SkillsContainer">
-        <Grid container direction="column">
+        <Grid container direction="column" spacing={24}>
           {Object.keys(item).map(key => (
-            <Grid key={key} className="SkillRowCont" container direction="row" justify="space-evenly" alignItems="center" spacing={24}>
-              <Grid item>
+            <Grid item key={key}container direction="row" justify="space-evenly" alignItems="center" spacing={16}>
+              <Grid item xs={2} sm={2} md={1} lg={1} xl={1}>
                 {this.getIconSkills(key)}
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={10} sm={5} md={5} lg={5} xl={5}>
                 <Typography style={{paddingBottom: "3px"}} variant="button">
                   {item[key].experience}
                 </Typography>
@@ -58,7 +58,7 @@ class SkillsContent extends React.Component {
                   </Typography>
                 }
               </Grid>
-              <Grid item xs={4}>
+              <Grid item xs={12} sm={5} md={5} lg={5} xl={5}>
                 <Typography id="label" style={{fontSize: "12px", color: "#757575"}} variant="body1">
                   {TxtChunks["Skills Level Frame"][item[key].level]}
                 </Typography>

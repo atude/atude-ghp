@@ -7,9 +7,22 @@ import ReactSVG from 'react-svg'
 
 import icDevote from '../assets/ic_devote.svg';
 import icBeams from '../assets/ic_beams.svg';
+
 import bnDevote from '../assets/banner_devote.png'
+import bnDevote1 from '../assets/banner_devote1.png'
+import bnDevote2 from '../assets/banner_devote2.png'
+import bnDevote3 from '../assets/banner_devote3.png'
+import bnDevote4 from '../assets/banner_devote4.png'
+import bnDevote5 from '../assets/banner_devote5.png'
+
 import bnBeams from '../assets/banner_beams.png';
-import { Android, Monitor, Cellphone, GooglePlay, Youtube, LanguageCsharp,  LanguageC, LanguageJavascript, 
+import bnBeams1 from '../assets/banner_beams1.png';
+import bnBeams2 from '../assets/banner_beams2.png';
+import bnBeams3 from '../assets/banner_beams3.png';
+import bnBeams4 from '../assets/banner_beams4.png';
+
+
+import { Android, DesktopMacDashboard, Cellphone, GooglePlay, Youtube, LanguageCsharp,  LanguageC, LanguageJavascript, 
   React as ReactIcon, LanguageHtml5, LanguageCss3, Unity } from 'mdi-material-ui';
 
 const miniIconColor = {color: "#757575"};
@@ -27,7 +40,7 @@ class ProjectsPage extends React.Component {
           <Android fontSize="small" style={miniIconColor}/>
           </Tooltip>); break;
         case "PC": iconList.push(<Tooltip disableFocusListener title={item}>
-          <Monitor fontSize="small" style={miniIconColor}/>
+          <DesktopMacDashboard fontSize="small" style={miniIconColor}/>
           </Tooltip>); break;
         case "C": iconList.push(<Tooltip disableFocusListener title={item}>
           <LanguageC fontSize="small" style={miniIconColor}/>
@@ -66,10 +79,20 @@ class ProjectsPage extends React.Component {
     }
   }
 
-  getProjMedia = (isIcon, type) => {
+  getProjMedia = (type) => {
     switch(type) {
-      case "Devote": return (isIcon ? icDevote : bnDevote);
-      case "Beams": return (isIcon ? icBeams : bnBeams);
+      case "Devote": return icDevote;
+      case "Beams": return icBeams;
+      default: return;
+    }
+  }
+
+  getProjBanners = (type) => {
+    switch(type) {
+      case "Devote": return [bnDevote, bnDevote1, bnDevote2, 
+        bnDevote3, bnDevote4, bnDevote5];
+      case "Beams": return [bnBeams, bnBeams1, bnBeams2,
+        bnBeams3, bnBeams4];
       default: return;
     }
   }
@@ -85,9 +108,7 @@ class ProjectsPage extends React.Component {
     const tAdd = 300;
     var transitionDone = this.state.transitionDone;
 
-    console.log(transitionDone);
     return (
-      <Fade in timeout={600}>
       <div>
         <Grid container direction="row" spacing={24} alignItems="stretch" justify="center" 
         style={{overflowY: transitionDone ? "inherit" : "hidden"}}>
@@ -97,11 +118,13 @@ class ProjectsPage extends React.Component {
             onEntered={i === Object.values(projects).length ? this.setTransition : void(0)}>
               <ProjectCard mainColor={mainColor} style={{padding: "2px"}}
                 projectIcon={
-                  <Typography component="span" style={{color: mainColor}}>
-                  <ReactSVG className="ProjectIconColor" svgClassName="ProjectCardIcon" src={this.getProjMedia(true, item.heading)}/>
+                  <Typography component="span" style={{color: item.accColor}}>
+                  <ReactSVG className="ProjectIconColor" svgClassName="ProjectCardIcon" src={this.getProjMedia(item.heading)}/>
                   </Typography>
                 }
-                projectBanner={this.getProjMedia(false, item.heading)}
+                bgColor={item.bgColor}
+                accColor={item.accColor}
+                projectBanner={this.getProjBanners(item.heading)}
                 heading={item.heading} 
                 subheading={item.subheading}  
                 tools={this.getMiniIcons(item.tools)}
@@ -110,6 +133,7 @@ class ProjectsPage extends React.Component {
                 platforms={this.getMiniIcons(item.platforms)}
                 gitlink={item.gitlink}  
                 viewlink={item.viewlink} 
+                privacylink={item.privacylink}
                 viewicon={this.getViewIcon(item.viewicon)}
                 viewtext={item.viewtext} 
                 role={item.role} 
@@ -120,7 +144,6 @@ class ProjectsPage extends React.Component {
         ))}
         </Grid>
       </div>
-      </Fade>
     );
   }
 }

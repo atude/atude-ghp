@@ -1,24 +1,3 @@
-
-/* width */
-#CustomScroll::-webkit-scrollbar {
-  width: 2px;
-}
-
-/* Track */
-#CustomScroll::-webkit-scrollbar-track {
-  background: #f1f1f1; 
-}
-
-/* Handle */
-#CustomScroll::-webkit-scrollbar-thumb {
-  background: #888; 
-}
-
-/* Handle on hover */
-#CustomScroll::-webkit-scrollbar-thumb:hover {
-  background: #555; 
-}
-
 .MainContentCont{
   padding: 20px;
   margin-top: 80px;
@@ -45,7 +24,7 @@
 }
 
 .ProjectCard{
-
+  height: 100%;
 }
 
 .ProjectCardContent{
@@ -70,16 +49,12 @@
 
 .ToolsContainer{
   padding-top: 10px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .SkillSlider{
   padding-bottom: 6px;
-}
-
-.SkillRowCont{
-  padding: 8px;
 }
 
 .ProjectCardIcon{
@@ -95,7 +70,9 @@
 
 .BannerShortcutsCont{
   padding: 10px;
-  float: right;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .PlatformIcon{
@@ -129,8 +106,48 @@
   padding-right: 43.95px;
 }
 
-.ProjectBodyText{
-  height: 90px;
-  overflow-y: auto; 
-  padding: 2px;
+.BuiltCont{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 100000;
+}
+
+.PrivacyText{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 15px;
+}
+
+.BannerLeft{
+  position: absolute;
+  float: left;
+  height: 100%;
+}
+
+.BannerRight{
+  position: absolute;
+  float: right;
+  height: 100%;
+}
+
+.BannerDots{
+  position: absolute;
+  top: 290px;
+}
+
+.BannerImg{
+  object-fit: cover;
+  position: absolute;
+  width: 100%;
+  height: 320px;
+  transition: opacity 0.5s ease;
+}
+
+.DownloadFAB{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  padding: 24px;
 }

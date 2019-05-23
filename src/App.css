@@ -48,7 +48,18 @@
 
 .SideListItem{
   padding: 10px;
-  overflow: 
 }
+
+.CopyrightText{
+  padding: 10px;
+  z-index: 0;
+  position: static;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+
+
 
 

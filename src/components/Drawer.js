@@ -114,7 +114,7 @@ class ResponsiveDrawer extends React.Component {
   getTitle = (path) => {
     switch(path){
       case "/about": return "About Me";
-      case "/projects": return "My Projects";
+      case "/projects": return "Projects";
       default: return "";
     }
   }
@@ -233,6 +233,9 @@ class ResponsiveDrawer extends React.Component {
       <MuiThemeProvider theme={muiSidebarTheme}>
         {this.getSideHead(path)}
         {this.getSideList(path)}
+        <Typography className="CopyrightText" variant="button" style={{fontSize: "10px", color: "#cccccc"}}>
+          Atude © 2019
+        </Typography>
       </MuiThemeProvider>
       </div>
     );
@@ -240,7 +243,6 @@ class ResponsiveDrawer extends React.Component {
 
   render() {
     const { classes } = this.props;
-    var isLocationChange = true;
 
     return (
       <HashRouter basename="/">

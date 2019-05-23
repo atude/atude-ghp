@@ -1,4 +1,5 @@
 {
+  "Resume": "https://drive.google.com/file/d/1Becbv315gNjHXjvaDAqxBZYY88KiKPd_/view?usp=sharing",
   "About me":
   {
     "A bit about me": "I'm a student at the University of New South Wales, currently undergoing a Bachelor's Degree in Software Engineering. I pursue a passion in creating and designing products with captivating UXs and real-world use to help bring creative solutions to problems. ",
@@ -23,13 +24,13 @@
     {
       "experience": "3 years experience",
       "desc": "React.js, UnityScript",
-      "level": 4
+      "level": 3
     },
     "HTML":
     {
       "experience": "3 years experience",
       "desc": "HTML, CSS",
-      "level": 3
+      "level": 4
     },
     "Python":
     {
@@ -54,7 +55,7 @@
     ],
     "Other":
     [
-      "GitHub", "Visual Studio", "MuseScore"
+      "GitHub", "Visual Studio", "Office"
     ]
   },
   "Skills Level Frame":
@@ -69,6 +70,8 @@
   {
     "Beams": 
     {
+      "bgColor": "#212121",
+      "accColor": "#f74d00",
       "heading": "Beams",
       "subheading": "Suburb Analysis Webapp",
       "tools": ["React.js"],
@@ -77,6 +80,7 @@
       "date": "2019",
       "gitlink": "https://github.com/atude/beams",
       "viewlink": "https://youtu.be/vWZBiD6iriM",
+      "privacylink": "",
       "viewicon": "Youtube",
       "viewtext": "View on Youtube",
       "role": "Lead Front End",
@@ -85,6 +89,8 @@
     },
     "Devote": 
     {
+      "bgColor": "#3d95e8",
+      "accColor": "#3d95e8",
       "heading": "Devote",
       "iconpath": "../assets/ic_devote.png",
       "subheading": "Study Management App",
@@ -94,6 +100,7 @@
       "date": "2017 - 2018",
       "gitlink": "https://github.com/atude/devote",
       "viewlink": "https://play.google.com/store/apps/details?id=com.cyberscopes.devote",
+      "privacylink": "https://atude.github.io/privacy.html",
       "viewicon": "Google Play",
       "viewtext": "Available on the Play Store",
       "role": "Solo",
