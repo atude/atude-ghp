@@ -3,7 +3,7 @@ import { Route, Link, NavLink, HashRouter, Switch } from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Menu, AccountBox, Buffer, GithubBox, LinkedinBox, EmailBox } from 'mdi-material-ui';
+import { Menu, AccountBox, Buffer, GithubBox, LinkedinBox, EmailBox, MessageBulleted } from 'mdi-material-ui';
 import { createMuiTheme, Typography, IconButton, SwipeableDrawer, List, ListItem, ListItemText, ListItemIcon, Hidden, CssBaseline, MuiThemeProvider, Drawer, Divider, Grid, AppBar, Toolbar, Fade, } from '@material-ui/core';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
@@ -11,12 +11,15 @@ import icAtude from '../assets/ic_atude_dark.png';
 import colorSet from '../assets/colorset.json';
 
 import '../App.css'
+import Database from '../assets/Database'
 import HomePage from '../pages/HomePage.js';
 import AboutPage from '../pages/AboutPage.js';
 import ProjectsPage from '../pages/ProjectsPage.js';
+import ContactPage from '../pages/ContactPage';
 
 const drawerWidth = 340;
-const secondaryColor = "#342E37"
+const secondaryColor = "#342E37";
+const lightGray = "#757575";
 
 //Abandon most UI from using mui colors,
 //Use custom set variable colors
@@ -115,6 +118,7 @@ class ResponsiveDrawer extends React.Component {
     switch(path){
       case "/about": return "About Me";
       case "/projects": return "Projects";
+      case "/contact": return "Contact";
       default: return "";
     }
   }
@@ -123,6 +127,7 @@ class ResponsiveDrawer extends React.Component {
     switch(path){
       case "/about": return colorSet.blue;
       case "/projects": return colorSet.red;
+      case "/contact": return colorSet.purple;
       default: return colorSet.purple;
     }
   }
@@ -143,6 +148,8 @@ class ResponsiveDrawer extends React.Component {
         return <AccountBox style={cStyle} className={cClass}/>;
       case "/projects": 
         return <Buffer style={cStyle} className={cClass}/>;
+      case "/contact": 
+        return <MessageBulleted style={cStyle} className={cClass}/>;
       default: return <div/>;
     }
   }
@@ -163,7 +170,7 @@ class ResponsiveDrawer extends React.Component {
           
         <Grid item>
         <Grid container direction="row" alignItems="stretch" justify="space-around">
-          <a href="https://github.com/atude" target="_blank" rel="noopener noreferrer" 
+          <a href={Database.Contact.Links.GitHub} target="_blank" rel="noopener noreferrer" 
           style={{textDecoration: "none"}}>
           <Grid item>
             <IconButton key="Github">
@@ -171,7 +178,7 @@ class ResponsiveDrawer extends React.Component {
             </IconButton>
           </Grid>
           </a>
-          <a href="https://www.linkedin.com/in/mozamel-a-b211b4114/" target="_blank" rel="noopener noreferrer" 
+          <a href={Database.Contact.Links.LinkedIn} target="_blank" rel="noopener noreferrer" 
           style={{textDecoration: "none"}}>
           <Grid item>
             <IconButton key="LinkedIn">
@@ -179,7 +186,7 @@ class ResponsiveDrawer extends React.Component {
             </IconButton>
           </Grid>
           </a>
-          <a href="mailto:mozamel.anwary1@gmail.com" rel="noopener noreferrer" 
+          <a href={Database.Contact.Links.Email} rel="noopener noreferrer" 
           style={{textDecoration: "none"}}>
           <Grid item>
             <IconButton key="Email">
@@ -193,46 +200,40 @@ class ResponsiveDrawer extends React.Component {
       </div>      
     );
   };
+
+  getSideListObject = (currPath, path, thisColor, header) => {
+    return (
+      <NavLink to={path} style={{textDecoration: "none"}}>
+        <ListItem selected={this.state.selected === header} button className="SideListItem"
+        onClick={() => 
+          this.handleTabClick(header, path)} 
+        key={header}>
+          <ListItemIcon style={{color: currPath === path && thisColor}}
+            className="SideListItem">{this.getIcon(false, path)}</ListItemIcon>
+          <ListItemText primary={<Typography style={{color: currPath === path && thisColor}} 
+            variant="button">{header}</Typography>}/>
+        </ListItem>
+      </NavLink>
+    );
+  }
   
-  getSideList = (path) => {
-    const getColor = this.getColor(path);
+  getSideList = (currPath) => {
     return (
       <List>
         <Divider/>
-        <NavLink to="/about" style={{textDecoration: "none"}}>
-          <ListItem selected={this.state.selected === "About Me"} button className="SideListItem"
-          onClick={() => 
-            this.handleTabClick("About Me", "/about")} 
-          key="About Me">
-            <ListItemIcon style={{color: path === "/about" && getColor}}
-              className="SideListItem">{this.getIcon(false, "/about")}</ListItemIcon>
-            <ListItemText primary={<Typography style={{color: path === "/about" && getColor}} 
-              variant="button">About Me</Typography>}/>
-          </ListItem>
-        </NavLink>
-
-        <NavLink to="/projects" style={{textDecoration: "none"}}>
-          <ListItem selected={this.state.selected === "Projects"} button className="SideListItem"
-          onClick={() => 
-            this.handleTabClick("Projects", "/projects")} 
-          key="Projects">
-            <ListItemIcon style={{color: path === "/projects" && getColor}} 
-              className="SideListItem">{this.getIcon(false, "/projects")}</ListItemIcon>
-            <ListItemText primary={<Typography style={{color: path === "/projects" && getColor}} 
-              variant="button">Projects</Typography>}/>
-          </ListItem>
-        </NavLink>
-    
+        {this.getSideListObject(currPath, "/about", this.getColor(currPath), "About Me")}
+        {this.getSideListObject(currPath, "/projects", this.getColor(currPath), "Projects")}
+        {this.getSideListObject(currPath, "/contact", this.getColor(currPath), "Contact")}    
       </List>  
     );
   };     
 
-  drawer = (path) => {
+  drawer = (currPath) => {
     return (
       <div style={{backgroundColor: drawerBG}} className="Sidebar">
       <MuiThemeProvider theme={muiSidebarTheme}>
-        {this.getSideHead(path)}
-        {this.getSideList(path)}
+        {this.getSideHead(currPath)}
+        {this.getSideList(currPath)}
         <Typography className="CopyrightText" variant="button" style={{fontSize: "10px", color: "#cccccc"}}>
           Atude © 2019
         </Typography>
@@ -294,11 +295,12 @@ class ResponsiveDrawer extends React.Component {
 
             <div className="MainContentCont">
               <TransitionGroup>
-                  <Switch location={location}>
-                    <Route exact path="/" render={() => <HomePage mainColor={this.getColor(location.pathname)}/>}/>
-                    <Route path="/about" render={() => <AboutPage mainColor={this.getColor(location.pathname)}/>}/>
-                    <Route path="/projects" render={() => <ProjectsPage mainColor={this.getColor(location.pathname)}/>}/>
-                  </Switch>
+                <Switch location={location}>
+                  <Route exact path="/" render={() => <HomePage mainColor={this.getColor(location.pathname)}/>}/>
+                  <Route path="/about" render={() => <AboutPage mainColor={this.getColor(location.pathname)}/>}/>
+                  <Route path="/projects" render={() => <ProjectsPage mainColor={this.getColor(location.pathname)}/>}/>
+                  <Route path="/contact" render={() => <ContactPage mainColor={this.getColor(location.pathname)}/>}/>
+                </Switch>
               </TransitionGroup>
             </div>
 

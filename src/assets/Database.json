@@ -23,19 +23,19 @@
     "JS":
     {
       "experience": "3 years experience",
-      "desc": "React.js, UnityScript",
+      "desc": "JSX, UnityScript",
       "level": 3
     },
     "HTML":
     {
       "experience": "3 years experience",
-      "desc": "HTML, CSS",
+      "desc": "HTML, CSS, REST APIs",
       "level": 4
     },
     "Python":
     {
       "experience": "1 year experience",
-      "desc": "Flask",
+      "desc": "Jinja",
       "level": 1
     }
   },
@@ -43,7 +43,7 @@
   {
     "Web Development & Design": 
     [
-      "React", "Material UI", "XD"
+      "React", "Flask", "Babel", "NPM", "Material UI"
     ],
     "App Development":
     [
@@ -51,7 +51,7 @@
     ],
     "Design & Graphics":
     [
-      "GIMP", "Photoshop"
+      "GIMP", "Photoshop", "XD"
     ],
     "Other":
     [
@@ -106,5 +106,23 @@
       "role": "Solo",
       "body": "Devote is an all-in-one hub made and refined for high school students to organise your study tasks, track your assessment progress, view your level of productivity and ultimately balance your social and study lifestyle. "
     }
+  },
+  "Contact": 
+  {
+    "Links":
+    {
+      "GitHub": ["https://github.com/atude", "My portfolio of open source software projects"],
+      "LinkedIn": ["https://www.linkedin.com/in/mozamel-a-b211b4114/", "My professional profile and network"],
+      "Play Store": ["https://play.google.com/store/apps/developer?id=Atude", "My apps published for Android devices"]
+    },
+    "Contact":
+    {
+      "Discord": "atude#9929",
+      "Email": "mozamel.anwary1@gmail.com"
+    }
+  },
+  "Contact Form": 
+  {
+    "": "Have any questions about me or my work? Want to have a chat? Leave a message and I'll get back to you as soon as possible."
   }
  }

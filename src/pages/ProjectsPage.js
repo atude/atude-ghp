@@ -1,6 +1,6 @@
 import React from 'react';
 import '../components/Components.css';
-import TxtChunks from '../assets/txtchunks'
+import Database from '../assets/Database'
 import { Grid, Tooltip, Typography, Fade, Slide } from '@material-ui/core';
 import ProjectCard from '../components/ProjectCard';
 import ReactSVG from 'react-svg'
@@ -102,7 +102,7 @@ class ProjectsPage extends React.Component {
   }
 
   render() {
-    const projects = TxtChunks["Projects"];
+    const projects = Database["Projects"];
     const mainColor = this.props.mainColor;
     const tBase = 700;
     const tAdd = 300;
@@ -119,7 +119,7 @@ class ProjectsPage extends React.Component {
               <ProjectCard mainColor={mainColor} style={{padding: "2px"}}
                 projectIcon={
                   <Typography component="span" style={{color: item.accColor}}>
-                  <ReactSVG className="ProjectIconColor" svgClassName="ProjectCardIcon" src={this.getProjMedia(item.heading)}/>
+                  <ReactSVG className="IconColor" svgClassName="ProjectCardIcon" src={this.getProjMedia(item.heading)}/>
                   </Typography>
                 }
                 bgColor={item.bgColor}

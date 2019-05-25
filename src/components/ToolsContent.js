@@ -1,25 +1,28 @@
 import React from 'react';
 import './Components.css';
-import { Grid, Typography, Tooltip, Chip } from '@material-ui/core';
+import { Grid, Typography, Chip } from '@material-ui/core';
 import { VisualStudio, React as ReactIcon, Unity, GithubCircle, Adobe, MaterialUi, 
-  Web, CellphoneAndroid, FormatColorFill, DeveloperBoard, Office } from 'mdi-material-ui';
-import TxtChunks from '../assets/txtchunks'
-import colorSet from '../assets/colorsetdark.json';
+  CellphoneAndroid, FormatColorFill, DeveloperBoard, Office, Babel, Brush, NpmVariantOutline, Iframe } from 'mdi-material-ui';
+import Database from '../assets/Database';
+import colorSet from '../assets/colorsetdark';
 
 class ToolsContent extends React.Component {
 
   getIconTools = (type, setColor) => {
-    const cStyle = {color: setColor, fontSize: "24px", marginLeft: "5px"};
-    const mainStyle = {color: setColor, fontSize: "24px", marginLeft: "5px", marginRight: "5px"};
+    const cStyle = {color: setColor, fontSize: "21px", marginLeft: "7px"};
+    const mainStyle = {color: setColor, fontSize: "28px", marginLeft: "5px", marginRight: "5px"};
 
     switch(type){
-      case "Web Development & Design": return <Web style={mainStyle}/>; 
+      case "Web Development & Design": return <Iframe style={mainStyle}/>; 
       case "App Development": return <CellphoneAndroid style={mainStyle}/>; 
       case "Design & Graphics": return <FormatColorFill style={mainStyle}/>; 
       case "Other": return <DeveloperBoard style={mainStyle}/>; 
 
       case "React": return <ReactIcon style={cStyle}/>; 
       case "Material UI": return <MaterialUi style={cStyle}/>; 
+      case "Babel": return <Babel style={cStyle}/>; 
+      case "NPM": return <NpmVariantOutline style={cStyle}/>; 
+      case "GIMP": return <Brush style={cStyle}/>
       case "Unity": return <Unity style={cStyle}/>;
       case "Visual Studio": return <VisualStudio style={cStyle}/>;
       case "GitHub": return <GithubCircle style={cStyle}/>;
@@ -31,7 +34,7 @@ class ToolsContent extends React.Component {
   }
 
   render() {
-    const tools = TxtChunks["Toolset"];
+    const tools = Database["Toolset"];
     
     return (
       <Grid container direction="column" spacing={24} className="ToolsContainer">
@@ -40,12 +43,12 @@ class ToolsContent extends React.Component {
             <Grid item xs={2} sm={2} md={1} lg={1} xl={1}>
               {this.getIconTools(toolskey, Object.values(colorSet)[i])}
             </Grid>
-            <Grid item xs={9} sm={9} md={5} lg={5} xl={5}>
+            <Grid item xs={9} sm={9} md={5} lg={4} xl={4}>
               <Typography gutterBottom variant="button" style={{color: Object.values(colorSet)[i], display: "flex", verticalAlign: "middle"}}>
                 {toolskey}
               </Typography>
             </Grid>
-            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+            <Grid item xs={12} sm={12} md={6} lg={7} xl={7}>
             <Grid container spacing={8} direction="row" alignItems="center" justify="flex-end">
               {tools[toolskey].map(key => (
                 <Grid item key={key}>

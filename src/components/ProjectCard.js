@@ -30,8 +30,6 @@ class ProjectCard extends React.Component {
       gitlink, viewlink, privacylink, viewtext, viewicon, body, role, mainColor } = this.props;
 
     const categoryStyle = {fontSize: "14px", color: lightGray, letterSpacing: "0px"};
-
-
     
     return (
       <Card className="ProjectCard">

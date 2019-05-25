@@ -3,7 +3,7 @@ import './Components.css';
 import { Grid, Typography, Tooltip, } from '@material-ui/core';
 import Slider from '@material-ui/lab/Slider';
 import { LanguageC, LanguageCsharp, LanguageHtml5, LanguageJavascript, LanguagePython } from 'mdi-material-ui';
-import TxtChunks from '../assets/txtchunks'
+import Database from '../assets/Database'
 
 class SkillsContent extends React.Component {
 
@@ -37,7 +37,7 @@ class SkillsContent extends React.Component {
   }
 
   render() {
-    const item = TxtChunks["Skillset"];
+    const item = Database["Skillset"];
     
     return (
       <div className="SkillsContainer">
@@ -60,7 +60,7 @@ class SkillsContent extends React.Component {
               </Grid>
               <Grid item xs={12} sm={5} md={5} lg={5} xl={5}>
                 <Typography id="label" style={{fontSize: "12px", color: "#757575"}} variant="body1">
-                  {TxtChunks["Skills Level Frame"][item[key].level]}
+                  {Database["Skills Level Frame"][item[key].level]}
                 </Typography>
                 <Slider disabled
                 thumb={null}
