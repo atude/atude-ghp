@@ -25,7 +25,25 @@ import bnBeams4 from '../assets/banner_beams4.png';
 import { Android, DesktopMacDashboard, Cellphone, GooglePlay, Youtube, LanguageCsharp,  LanguageC, LanguageJavascript, 
   React as ReactIcon, LanguageHtml5, LanguageCss3, Unity } from 'mdi-material-ui';
 
-const miniIconColor = {color: "#757575"};
+const viewIcons = {
+  "Google Play": <GooglePlay/>,
+  "Youtube": <Youtube/>,
+}
+
+const projMedia = {
+  "Devote": 
+  {
+    "icon": icDevote,
+    "banners": [bnDevote, bnDevote1, bnDevote2, 
+      bnDevote3, bnDevote4, bnDevote5],
+  },
+  "Beams":
+  {
+    "icon": icBeams,
+    "banners": [bnBeams, bnBeams1, bnBeams2,
+      bnBeams3, bnBeams4],
+  }
+}
 
 class ProjectsPage extends React.Component {
   state = {
@@ -34,6 +52,8 @@ class ProjectsPage extends React.Component {
 
   getMiniIcons = (types) => {
     var iconList = [];
+    const miniIconColor = { color: this.props.currentScheme.lightGray };
+
     types.map(item => {
       switch (item) {
         case "Android": iconList.push(<Tooltip disableFocusListener title={item}>
@@ -72,29 +92,15 @@ class ProjectsPage extends React.Component {
   }
 
   getViewIcon = (type) => {
-    switch(type) {
-      case "Google Play": return <GooglePlay/>;
-      case "Youtube": return <Youtube/>;
-      default: return;
-    }
+    return viewIcons[type];
   }
 
   getProjMedia = (type) => {
-    switch(type) {
-      case "Devote": return icDevote;
-      case "Beams": return icBeams;
-      default: return;
-    }
+    return projMedia[type].icon;
   }
 
   getProjBanners = (type) => {
-    switch(type) {
-      case "Devote": return [bnDevote, bnDevote1, bnDevote2, 
-        bnDevote3, bnDevote4, bnDevote5];
-      case "Beams": return [bnBeams, bnBeams1, bnBeams2,
-        bnBeams3, bnBeams4];
-      default: return;
-    }
+    return projMedia[type].banners;
   }
 
   setTransition = () => {
@@ -103,7 +109,7 @@ class ProjectsPage extends React.Component {
 
   render() {
     const projects = Database["Projects"];
-    const mainColor = this.props.mainColor;
+    const { mainColor, currentScheme } = this.props;
     const tBase = 700;
     const tAdd = 300;
     var transitionDone = this.state.transitionDone;
@@ -116,7 +122,7 @@ class ProjectsPage extends React.Component {
           <Grid key={item.heading} item lg={6} md={6} sm={12} xs={12}>
             <Slide direction="up" in mountOnEnter timeout={tBase+(i*tAdd)} 
             onEntered={i === Object.values(projects).length ? this.setTransition : void(0)}>
-              <ProjectCard mainColor={mainColor} style={{padding: "2px"}}
+              <ProjectCard mainColor={mainColor} style={{padding: "2px"}} currentScheme={currentScheme}
                 projectIcon={
                   <Typography component="span" style={{color: item.accColor}}>
                   <ReactSVG className="IconColor" svgClassName="ProjectCardIcon" src={this.getProjMedia(item.heading)}/>

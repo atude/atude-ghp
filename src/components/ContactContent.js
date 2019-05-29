@@ -3,19 +3,19 @@ import '../components/Components.css';
 import { Grid, Typography } from '@material-ui/core';
 import { GithubCircle, Linkedin, EmailMarkAsUnread, Discord, GooglePlay } from 'mdi-material-ui';
 
+const cStyle = {fontSize: "34px"};
+const icons = {
+  "GitHub": <GithubCircle style={cStyle}/>,
+  "Play Store": <GooglePlay style={{fontSize: cStyle.fontSize, color: "#03A9F4"}}/>,
+  "LinkedIn": <Linkedin style={{fontSize: cStyle.fontSize, color: "#0077B5"}}/>,
+  "Email": <EmailMarkAsUnread style={{fontSize: cStyle.fontSize, color: "#D44638"}}/>,
+  "Discord": <Discord style={{fontSize: cStyle.fontSize, color: "#7289da"}}/>,
+}
+
 class ContactContent extends React.Component {
 
   getIconObj = (type) => {
-    const cStyle = {fontSize: "34px"};
-    
-    switch(type){
-      case "GitHub": return <GithubCircle style={cStyle}/>;
-      case "Play Store": return <GooglePlay style={{fontSize: cStyle.fontSize, color: "#03A9F4"}}/>;
-      case "LinkedIn": return <Linkedin style={{fontSize: cStyle.fontSize, color: "#0077B5"}}/>;
-      case "Email": return <EmailMarkAsUnread style={{fontSize: cStyle.fontSize, color: "#D44638"}}/>;
-      case "Discord": return <Discord style={{fontSize: cStyle.fontSize, color: "#7289da"}}/>;
-      default: return;
-    }
+    return icons[type];
   }
 
   getIcon = (name) => {
@@ -33,7 +33,7 @@ class ContactContent extends React.Component {
         component="a" href={link} ref="noopener noreferrer" target="_blank">
           {name}
         </Typography>
-        <Typography style={{fontSize: "12px", color: "#757575", wordWrap: "break-word"}} variant="body1">
+        <Typography style={{fontSize: "12px", color: this.props.currentScheme.lightGray, wordWrap: "break-word"}} variant="body1">
           {desc}
         </Typography>
       </Grid>

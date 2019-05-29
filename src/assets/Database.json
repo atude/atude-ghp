@@ -43,7 +43,7 @@
   {
     "Web Development & Design": 
     [
-      "React", "Flask", "Babel", "NPM", "Material UI"
+      "React", "Material UI", "Babel", "NPM", "Flask" 
     ],
     "App Development":
     [
@@ -51,11 +51,11 @@
     ],
     "Design & Graphics":
     [
-      "GIMP", "Photoshop", "XD"
+      "GIMP", "Adobe Photoshop", "Adobe XD"
     ],
     "Other":
     [
-      "GitHub", "Visual Studio", "Office"
+      "GitHub", "MS VS", "MS VS Code", "MS Office"
     ]
   },
   "Skills Level Frame":

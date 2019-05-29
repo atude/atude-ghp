@@ -30,6 +30,8 @@ class HomePage extends React.Component {
     const baseTime = 1500;
     const timePlus = 200;
     const isLoaded = this.state.isLoaded;
+    const { currentScheme } = this.props;
+
     return (
       <div className="HomePageParent">
         <Fade in={isLoaded} timeout={baseTime}><img onLoad={this.checkLoaded} src={HomeCorner4} className="HomeCorner T4" alt="home_corner4"/></Fade>
@@ -42,29 +44,28 @@ class HomePage extends React.Component {
         <Fade in={isLoaded} timeout={baseTime+(timePlus*16)}><img onLoad={this.checkLoaded} src={HomeC4} className="HomeCircle C4" alt="home_c4"/></Fade>
 
         <div className="HomePageCont">
-          <Typography variant="overline"
-          style={{color: "rgba(255,255,255,1)", 
+          <Typography variant="overline" style={{ 
             fontSize: "6vh", 
-            mixBlendMode: "overlay", 
             lineHeight: "7vh", textAlign: "left", willChange: "opacity", 
             color: this.state.isLoaded ? "#ffffff" : "#000000",
+            opacity: "0.8",
             transition: "all 1s ease"}}>
               Mozamel<br/><b>Anwary</b>
           </Typography>
         
           <Typography variant="button" style={{
             color: this.state.isLoaded ? "#ffffff" : "#000000",
+            opacity: "0.8",
             transition: "all 1s ease", 
-            mixBlendMode: "overlay", 
             fontSize: "2vh"}}>
               Software Engineer | Design
           </Typography>
         </div>
         
-        <Tooltip disableFocusListener title="Powered by React + MaterialUI" placement="left">
+        <Tooltip disableFocusListener title="Powered by React | MaterialUI" placement="left">
           <div className="BuiltCont">
-            <ReactIcon/><br/>
-            <MaterialUi/>
+            <ReactIcon style={{color: currentScheme.bgInv}}/><br/>
+            <MaterialUi style={{color: currentScheme.bgInv}}/>
           </div>
         </Tooltip>
       </div>

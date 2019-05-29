@@ -3,11 +3,11 @@ import '../components/Components.css';
 import ContentCard from '../components/ContentCard.js';
 import { Grid, Avatar, Fade, Slide, Fab, Tooltip } from '@material-ui/core';
 import { HumanGreeting, CubeOutline, CodeBraces, FileDownload } from 'mdi-material-ui';
-import Database from '../assets/Database'
-import imgProfile from '../assets/profile.jpg'
+import Database from '../assets/Database';
 import SkillsContent from '../components/SkillsContent';
 import ToolsContent from '../components/ToolsContent';
 
+import imgProfile from '../assets/profile.jpg';
 
 class AboutPage extends React.Component {
   state = {
@@ -20,7 +20,7 @@ class AboutPage extends React.Component {
   }
 
   render() {    
-    const mainColor = this.props.mainColor;
+    const { mainColor, currentScheme } = this.props;
     const tBase = 700;
     const tAdd = 300;
 
@@ -39,7 +39,7 @@ class AboutPage extends React.Component {
 
           <Grid item lg={8} md={8} sm={10} xs={12}>
             <Slide in timeout={tBase}>
-            <ContentCard mainColor={mainColor}
+            <ContentCard mainColor={mainColor} currentScheme={currentScheme}
               headingIcon={<HumanGreeting style={{color: mainColor}} fontSize="large" className="ContentCardHeadIcon"/>}
               heading="Hi! I'm Moz!" 
               body={Database["About me"]}
@@ -49,35 +49,33 @@ class AboutPage extends React.Component {
     
           <Grid item lg={10} md={10} sm={10} xs={12}>
             <Slide in timeout={tBase+tAdd*1} direction="up" onEntered={this.setTransition}>
-            <ContentCard mainColor={mainColor}
+            <ContentCard mainColor={mainColor} currentScheme={currentScheme}
               headingIcon={<CodeBraces style={{color: mainColor}} fontSize="large" className="ContentCardHeadIcon"/>}
               heading="Programming Experience" 
               body={""}
-              content={<SkillsContent/>}
+              content={<SkillsContent currentScheme={currentScheme}/>}
             />
             </Slide>
           </Grid>
 
           <Grid item lg={10} md={10} sm={10} xs={12}>
             <Slide in timeout={tBase+tAdd*2} direction="up" onEntered={this.setTransition}>
-            <ContentCard mainColor={mainColor}
+            <ContentCard mainColor={mainColor} currentScheme={currentScheme}
               headingIcon={<CubeOutline style={{color: mainColor}} fontSize="large" className="ContentCardHeadIcon"/>}
               heading="Software Tools" 
               body={""}
-              content={<ToolsContent/>}
+              content={<ToolsContent currentScheme={currentScheme}/>}
             />
             </Slide>
           </Grid>
           </Grid>
-          {console.log(Database["Resume"])}
-
         
           <div className="DownloadFAB">
             <Tooltip title="View/Download Resume" placement="left">
               <Fab size="medium" component="a" href={Database["Resume"]} 
               download="_resume_mozamel_anwary" aria-label="DownloadResume"
               style={{color: "white", backgroundColor: mainColor, opacity: "0.8"}}>
-                <FileDownload />
+                <FileDownload/>
               </Fab>
             </Tooltip>
           </div>

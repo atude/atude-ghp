@@ -9,7 +9,7 @@ import Database from '../assets/Database'
  
 class ContactPage extends React.Component {
   render() {    
-    const mainColor = this.props.mainColor;
+    const { mainColor, currentScheme } = this.props;
     const tBase = 700;
     const tAdd = 300;
 
@@ -19,21 +19,21 @@ class ContactPage extends React.Component {
         direction="row" alignItems="stretch" justify="center">
           <Grid item xs={12}>
             <Slide in direction="right" timeout={tBase}>
-              <ContentCard mainColor={mainColor}
+              <ContentCard mainColor={mainColor} currentScheme={currentScheme}
                 headingIcon={<OpenInNew style={{color: mainColor}} fontSize="large" className="ContentCardHeadIcon"/>}
                 heading="Links" 
                 body=""
-                content={<ContactContent isLinks={true} source={Database.Contact.Links}/>}
+                content={<ContactContent isLinks={true} source={Database.Contact.Links} currentScheme={currentScheme}/>}
               />
             </Slide>
           </Grid>
           <Grid item xs={12}>
             <Slide in direction="right" timeout={tBase+tAdd}>
-              <ContentCard mainColor={mainColor}
+              <ContentCard mainColor={mainColor} currentScheme={currentScheme}
                 headingIcon={<Forum style={{color: mainColor}} fontSize="large" className="ContentCardHeadIcon"/>}
                 heading="Contact" 
                 body=""
-                content={<ContactContent isLinks={false} source={Database.Contact.Contact}/>}
+                content={<ContactContent isLinks={false} source={Database.Contact.Contact} currentScheme={currentScheme}/>}
               />
             </Slide>
          </Grid>
@@ -41,11 +41,11 @@ class ContactPage extends React.Component {
 
         <Grid item xs={12} sm={6} md={6} lg={6} xl={6}>
           <Slide in direction="left" timeout={tBase+(tAdd*2)}>
-            <ContentCard mainColor={mainColor}
+            <ContentCard mainColor={mainColor} currentScheme={currentScheme}
               headingIcon={<TooltipAccount style={{color: mainColor}} fontSize="large" className="ContentCardHeadIcon"/>}
               heading="Get in Touch" 
               body={Database["Contact Form"]}
-              content={<ContactForm/>}
+              content={<ContactForm currentScheme={currentScheme}/>}
             />
           </Slide>
         </Grid>

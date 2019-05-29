@@ -3,12 +3,15 @@ import { Route, Link, NavLink, HashRouter, Switch } from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Menu, AccountBox, Buffer, GithubBox, LinkedinBox, EmailBox, MessageBulleted } from 'mdi-material-ui';
-import { createMuiTheme, Typography, IconButton, SwipeableDrawer, List, ListItem, ListItemText, ListItemIcon, Hidden, CssBaseline, MuiThemeProvider, Drawer, Divider, Grid, AppBar, Toolbar, Fade, } from '@material-ui/core';
+import { Menu, AccountBox, Buffer, GithubBox, LinkedinBox, EmailBox, MessageBulleted, ThemeLightDark } from 'mdi-material-ui';
+import { createMuiTheme, Typography, IconButton, SwipeableDrawer, List, ListItem, ListItemText, ListItemIcon, Hidden, CssBaseline, MuiThemeProvider, Drawer, Divider, Grid, AppBar, Toolbar, Switch as SwitchButton } from '@material-ui/core';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
+import icAtudeDark from '../assets/ic_atude.png';
 import icAtude from '../assets/ic_atude_dark.png';
-import colorSet from '../assets/colorset.json';
+
+import colorSetLight from '../assets/colorset.json';
+import colorSetDark from '../assets/colorset.json';
 
 import '../App.css'
 import Database from '../assets/Database'
@@ -17,46 +20,139 @@ import AboutPage from '../pages/AboutPage.js';
 import ProjectsPage from '../pages/ProjectsPage.js';
 import ContactPage from '../pages/ContactPage';
 
+//My consts
+/* Colors */
 const drawerWidth = 340;
+var mainColor = colorSetLight.purple;
 const secondaryColor = "#342E37";
-const lightGray = "#757575";
 
-//Abandon most UI from using mui colors,
-//Use custom set variable colors
-var mainColor = colorSet.purple;
-const drawerBG = "#ffffff";
+const lightScheme = {
+  "bg": "#ffffff",
+  "bgInv": "#000000",
+  "bgSecond": "#fafafa",
+  "lightGray": "#757575",
+  "muiTheme": createMuiTheme({
+    palette: {
+      type: "light",
+      primary: {
+        main: mainColor,
+        text: "#ffffff",
+      },
+      secondary: {
+        main: secondaryColor,
+      },
+      error: {
+        main: "#ffffff",
+      },
+  
+      contrastThreshold: 3,
+      tonalOffset: 0.2,
+    },
+  
+    typography: { useNextVariants: true },
+  }),
+  "muiSidebarTheme" : createMuiTheme({
+    palette: {
+      type: "light",
+      primary: {
+        main: mainColor,
+        text: "#ffffff",
+      },
+      secondary: {
+        main: secondaryColor,
+      },
+      error: {
+        main: "#ffffff",
+      },
+  
+      contrastThreshold: 3,
+      tonalOffset: 0.2,
+    },
+  
+    typography: { useNextVariants: true },
+  }),
+  "colorSet": colorSetLight,
+}
 
-const muiTheme = createMuiTheme({
-  palette: {
-    primary: {
-      main: mainColor,
-      text: "#ffffff",
+const darkScheme = {
+  "bg": "#000000",
+  "bgInv": "#ffffff",
+  "bgSecond": "#303030",
+  "lightGray": "#e5e5e5",
+  "muiTheme": createMuiTheme({
+    palette: {
+      type: "dark",
+      primary: {
+        main: mainColor,
+        text: "#ffffff",
+      },
+      secondary: {
+        main: secondaryColor,
+      },
+      error: {
+        main: "#ffffff",
+      },
+  
+      contrastThreshold: 3,
+      tonalOffset: 0.2,
     },
-    secondary: {
-      main: secondaryColor,
+  
+    typography: { useNextVariants: true },
+  }),
+  "muiSidebarTheme" : createMuiTheme({
+    palette: {
+      type: "dark",
+      primary: {
+        main: mainColor,
+        text: "#ffffff",
+      },
+      secondary: {
+        main: secondaryColor,
+      },
+      error: {
+        main: "#ffffff",
+      },
+  
+      contrastThreshold: 3,
+      tonalOffset: 0.2,
     },
+  
+    typography: { useNextVariants: true },
+  }),
+  "colorSet": colorSetDark,
+}
 
-    error: {
-      main: "#ffffff",
-    },
-    contrastThreshold: 3,
-    tonalOffset: 0.2,
+var colorSet = colorSetLight;
+
+/* Object References */
+const paths = {
+  "/":
+  {
+    "title": "",
+    "color": colorSet.purple,
   },
-  typography: { useNextVariants: true },
-});
-
-const muiSidebarTheme = createMuiTheme({
-  palette: {
-    type: "light",
-    primary: {
-      main: mainColor,
-    },
-    secondary: {
-      main: secondaryColor,
-    },
+  "/about": 
+  {
+    "title": "About Me",
+    "color": colorSet.blue,
+    "icAppbar": <AccountBox style={{fontSize: "80px", color: colorSet.blue}} className="AppbarIcon"/>,
+    "icList": <AccountBox className="ListIcon"/>,
   },
-  typography: { useNextVariants: true },
-});
+  "/projects": 
+  {
+    "title": "Projects",
+    "color": colorSet.red,
+    "icAppbar": <Buffer style={{fontSize: "80px", color: colorSet.red}} className="AppbarIcon"/>,
+    "icList": <Buffer className="ListIcon"/>,
+  },
+  "/contact": 
+  {
+    "title": "Contact",
+    "color": colorSet.purple,
+    "icAppbar": <MessageBulleted style={{fontSize: "80px", color: colorSet.purple}} className="AppbarIcon"/>,
+    "icList": <MessageBulleted className="ListIcon"/>,
+  },
+}
 
 const styles = theme => ({
   root: {
@@ -103,7 +199,21 @@ const styles = theme => ({
 class ResponsiveDrawer extends React.Component {
   state = {
     mobileOpen: false,
+    currentScheme: lightScheme,
+    isDark: false,
   };
+
+  componentDidMount() {
+    this.switchDark(false);
+  }
+
+  switchDark = (isDark) => {
+    isDark ? colorSet = colorSetDark : colorSet = colorSetLight;
+    this.setState({
+      currentScheme: isDark ? darkScheme : lightScheme,
+      isDark: isDark,
+    })
+  }
 
   handleDrawerToggle = () => {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
@@ -115,43 +225,16 @@ class ResponsiveDrawer extends React.Component {
   }
 
   getTitle = (path) => {
-    switch(path){
-      case "/about": return "About Me";
-      case "/projects": return "Projects";
-      case "/contact": return "Contact";
-      default: return "";
-    }
+    return paths[path].title;
   }
 
   getColor = (path) => {
-    switch(path){
-      case "/about": return colorSet.blue;
-      case "/projects": return colorSet.red;
-      case "/contact": return colorSet.purple;
-      default: return colorSet.purple;
-    }
+    return paths[path].color;
   }
 
   getIcon = (isAppbar, path) => {
-    var cStyle, cClass;
-    
-    if(isAppbar) {
-      cClass = "AppbarIcon";
-      cStyle = {fontSize: "80px", color: this.getColor(path)};
-    } else {
-      cClass = "ListIcon"
-      cStyle = null;
-    }
-
-    switch(path){
-      case "/about": 
-        return <AccountBox style={cStyle} className={cClass}/>;
-      case "/projects": 
-        return <Buffer style={cStyle} className={cClass}/>;
-      case "/contact": 
-        return <MessageBulleted style={cStyle} className={cClass}/>;
-      default: return <div/>;
-    }
+    if(isAppbar) return paths[path].icAppbar;
+    return paths[path].icList;
   }
 
   getSideHead = () => {
@@ -160,7 +243,7 @@ class ResponsiveDrawer extends React.Component {
       <Grid container direction="column" alignItems="stretch" justify="center">
         <Grid item>
         <Link to="/" style={{textDecoration: "none"}} onClick={() => this.handleTabClick("", "/")}>
-          <img src={icAtude} alt="icAtude" className="SidebarIconHead"/>
+          <img src={this.state.isDark ? icAtudeDark : icAtude} alt="icAtude" className="SidebarIconHead"/>
           <Typography style={{fontSize: "24px", lineHeight: "32px", textAlign: "right"}} 
             variant="overline" color="textPrimary">
               Mozamel<br/><b>Anwary</b>
@@ -230,13 +313,22 @@ class ResponsiveDrawer extends React.Component {
 
   drawer = (currPath) => {
     return (
-      <div style={{backgroundColor: drawerBG}} className="Sidebar">
-      <MuiThemeProvider theme={muiSidebarTheme}>
+      <div style={{backgroundColor: this.state.currentScheme.bg}} className="Sidebar">
+      <MuiThemeProvider theme={this.state.currentScheme.muiSidebarTheme}>
         {this.getSideHead(currPath)}
         {this.getSideList(currPath)}
+        <Grid container direction="row" alignItems="center" justify="center">
+          <Grid item><Typography variant="button" style={{fontSize: "12px", color: "#cccccc"}}>
+            DARK THEME
+          </Typography></Grid>
+          <Grid item><SwitchButton color="secondary" checked={this.state.isDark} 
+          onChange={() => this.switchDark(!this.state.isDark)}/></Grid>
+          <Grid item><ThemeLightDark style={{color: "#cccccc", marginTop: "4px"}}/></Grid>
+        </Grid>
         <Typography className="CopyrightText" variant="button" style={{fontSize: "10px", color: "#cccccc"}}>
           Atude © 2019
         </Typography>
+        
       </MuiThemeProvider>
       </div>
     );
@@ -244,6 +336,7 @@ class ResponsiveDrawer extends React.Component {
 
   render() {
     const { classes } = this.props;
+    const { currentScheme } = this.state;
 
     return (
       <HashRouter basename="/">
@@ -251,11 +344,11 @@ class ResponsiveDrawer extends React.Component {
         <Route render={({location}) => (
 
           <div className={classes.root}>
-          <MuiThemeProvider theme={muiTheme}>
+          <MuiThemeProvider theme={this.state.currentScheme.muiTheme}>
           <CssBaseline />
           <AppBar position="fixed" className={classes.appBar}
           style={{boxShadow: "none", 
-            backgroundColor: location.pathname !== "/" ? "rgba(250, 250, 250, 1)" : "transparent", 
+            backgroundColor: location.pathname !== "/" ? this.state.currentScheme.bgSecond : "transparent", 
             borderRadius: "0px 0px 30px 30px"}}>
             <Toolbar>
               <IconButton color="inherit" aria-label="Open drawer"
@@ -296,10 +389,10 @@ class ResponsiveDrawer extends React.Component {
             <div className="MainContentCont">
               <TransitionGroup>
                 <Switch location={location}>
-                  <Route exact path="/" render={() => <HomePage mainColor={this.getColor(location.pathname)}/>}/>
-                  <Route path="/about" render={() => <AboutPage mainColor={this.getColor(location.pathname)}/>}/>
-                  <Route path="/projects" render={() => <ProjectsPage mainColor={this.getColor(location.pathname)}/>}/>
-                  <Route path="/contact" render={() => <ContactPage mainColor={this.getColor(location.pathname)}/>}/>
+                  <Route exact path="/" render={() => <HomePage currentScheme={currentScheme} mainColor={this.getColor(location.pathname)}/>}/>
+                  <Route path="/about" render={() => <AboutPage currentScheme={currentScheme} mainColor={this.getColor(location.pathname)}/>}/>
+                  <Route path="/projects" render={() => <ProjectsPage currentScheme={currentScheme} mainColor={this.getColor(location.pathname)}/>}/>
+                  <Route path="/contact" render={() => <ContactPage currentScheme={currentScheme} mainColor={this.getColor(location.pathname)}/>}/>
                 </Switch>
               </TransitionGroup>
             </div>

@@ -3,8 +3,6 @@ import './Components.css';
 import { Typography, Card, CardMedia, CardContent, Grid, Chip, Avatar, Link, Button, List, } from '@material-ui/core';
 import { GithubCircle, Account, AccountGroup, Calendar, ShieldLock, ChevronLeftCircle, ChevronRightCircle } from 'mdi-material-ui';
 
-const lightGray = "#757575";
-
 class ProjectCard extends React.Component {
   state = {
     bannerIndex: 0,
@@ -27,10 +25,11 @@ class ProjectCard extends React.Component {
 
   render() {
     const { projectIcon, projectBanner, heading, subheading, tools, built, platforms, date, bgColor, accColor,
-      gitlink, viewlink, privacylink, viewtext, viewicon, body, role, mainColor } = this.props;
+      gitlink, viewlink, privacylink, viewtext, viewicon, body, role, mainColor, currentScheme } = this.props;
 
+    const lightGray = currentScheme.lightGray;
     const categoryStyle = {fontSize: "14px", color: lightGray, letterSpacing: "0px"};
-    
+
     return (
       <Card className="ProjectCard">
         
