@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "223199256dd34919a6bc36f06bce771f",
+    "revision": "08216ecf74161cd0ba0d50a528325f19",
     "url": "/atude-ghp/index.html"
   },
   {
-    "revision": "afc4af33e7509c934962",
+    "revision": "5cc338ae466b0397bd40",
     "url": "/atude-ghp/static/css/2.612075aa.chunk.css"
   },
   {
-    "revision": "7d6d8d76cacf787384db",
-    "url": "/atude-ghp/static/css/main.d4298d9d.chunk.css"
+    "revision": "d7b2c101f3934ce2ed38",
+    "url": "/atude-ghp/static/css/main.c3f52a7a.chunk.css"
   },
   {
-    "revision": "afc4af33e7509c934962",
-    "url": "/atude-ghp/static/js/2.608c89e7.chunk.js"
+    "revision": "5cc338ae466b0397bd40",
+    "url": "/atude-ghp/static/js/2.1c1ea596.chunk.js"
   },
   {
-    "revision": "7d6d8d76cacf787384db",
-    "url": "/atude-ghp/static/js/main.fa83fd9d.chunk.js"
+    "revision": "d7b2c101f3934ce2ed38",
+    "url": "/atude-ghp/static/js/main.b80098bf.chunk.js"
   },
   {
     "revision": "e4d55441f48422a7f79b",
@@ -66,38 +66,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "48c307b5e82a575654acc1585d11e867",
     "url": "/atude-ghp/static/media/banner_devote5.48c307b5.png"
-  },
-  {
-    "revision": "301ba41c1f8197c8d8a4c1d3da2c9987",
-    "url": "/atude-ghp/static/media/homebg_c1.301ba41c.png"
-  },
-  {
-    "revision": "87c2d75dcf8adf0b747e92abb5c9ffd2",
-    "url": "/atude-ghp/static/media/homebg_c2.87c2d75d.png"
-  },
-  {
-    "revision": "517fa6c074ea9ec98465de9254533251",
-    "url": "/atude-ghp/static/media/homebg_c3.517fa6c0.png"
-  },
-  {
-    "revision": "e15fb1dd2116aae33cada83757a147ed",
-    "url": "/atude-ghp/static/media/homebg_c4.e15fb1dd.png"
-  },
-  {
-    "revision": "32f501a68d177db62f32237777df764f",
-    "url": "/atude-ghp/static/media/homebg_corner1.32f501a6.png"
-  },
-  {
-    "revision": "18545e4175c8a3cad5c52f5f4b940dc7",
-    "url": "/atude-ghp/static/media/homebg_corner2.18545e41.png"
-  },
-  {
-    "revision": "05034d265af714d7c57a4a89dacf630f",
-    "url": "/atude-ghp/static/media/homebg_corner3.05034d26.png"
-  },
-  {
-    "revision": "908e408ee295aa7c9ec8ffab436cbb50",
-    "url": "/atude-ghp/static/media/homebg_corner4.908e408e.png"
   },
   {
     "revision": "defb2faf9fcd94a6fed997afe24f0fdc",
