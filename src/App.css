@@ -26,6 +26,7 @@
   padding-right: 30px;
   height: 30%;
   min-height: 300px;
+  transition: all 10s;
 }
 
 .SidebarIconHead{

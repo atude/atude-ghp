@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Menu, AccountBox, Buffer, GithubBox, LinkedinBox, EmailBox, MessageBulleted, ThemeLightDark } from 'mdi-material-ui';
 import { createMuiTheme, Typography, IconButton, SwipeableDrawer, List, ListItem, ListItemText, ListItemIcon, Hidden, CssBaseline, MuiThemeProvider, Drawer, Divider, Grid, AppBar, Toolbar, Switch as SwitchButton } from '@material-ui/core';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import { TransitionGroup, } from 'react-transition-group';
 
 import icAtudeDark from '../assets/ic_atude.png';
 import icAtude from '../assets/ic_atude_dark.png';
 
-import colorSetLight from '../assets/colorset.json';
+import colorSetLight from '../assets/colorsetdark.json';
 import colorSetDark from '../assets/colorset.json';
 
 import '../App.css'
@@ -122,38 +122,6 @@ const darkScheme = {
   "colorSet": colorSetDark,
 }
 
-var colorSet = colorSetLight;
-
-/* Object References */
-const paths = {
-  "/":
-  {
-    "title": "",
-    "color": colorSet.purple,
-  },
-  "/about": 
-  {
-    "title": "About Me",
-    "color": colorSet.blue,
-    "icAppbar": <AccountBox style={{fontSize: "80px", color: colorSet.blue}} className="AppbarIcon"/>,
-    "icList": <AccountBox className="ListIcon"/>,
-  },
-  "/projects": 
-  {
-    "title": "Projects",
-    "color": colorSet.red,
-    "icAppbar": <Buffer style={{fontSize: "80px", color: colorSet.red}} className="AppbarIcon"/>,
-    "icList": <Buffer className="ListIcon"/>,
-  },
-  "/contact": 
-  {
-    "title": "Contact",
-    "color": colorSet.purple,
-    "icAppbar": <MessageBulleted style={{fontSize: "80px", color: colorSet.purple}} className="AppbarIcon"/>,
-    "icList": <MessageBulleted className="ListIcon"/>,
-  },
-}
-
 const styles = theme => ({
   root: {
     display: 'flex',
@@ -208,7 +176,6 @@ class ResponsiveDrawer extends React.Component {
   }
 
   switchDark = (isDark) => {
-    isDark ? colorSet = colorSetDark : colorSet = colorSetLight;
     this.setState({
       currentScheme: isDark ? darkScheme : lightScheme,
       isDark: isDark,
@@ -224,17 +191,51 @@ class ResponsiveDrawer extends React.Component {
     this.setState({selected: tab});
   }
 
+  getPaths = (path) => {
+    /* Object References */
+    let paths = {
+      "/":
+      {
+        "title": "",
+        "color": this.state.currentScheme.colorSet.purple,
+      },
+      "/about": 
+      {
+        "title": "About Me",
+        "color": this.state.currentScheme.colorSet.blue,
+        "icAppbar": <AccountBox style={{fontSize: "80px", color: this.state.currentScheme.colorSet.blue}} className="AppbarIcon"/>,
+        "icList": <AccountBox className="ListIcon"/>,
+      },
+      "/projects": 
+      {
+        "title": "Projects",
+        "color": this.state.currentScheme.colorSet.red,
+        "icAppbar": <Buffer style={{fontSize: "80px", color: this.state.currentScheme.colorSet.red}} className="AppbarIcon"/>,
+        "icList": <Buffer className="ListIcon"/>,
+      },
+      "/contact": 
+      {
+        "title": "Contact",
+        "color": this.state.currentScheme.colorSet.purple,
+        "icAppbar": <MessageBulleted style={{fontSize: "80px", color: this.state.currentScheme.colorSet.purple}} className="AppbarIcon"/>,
+        "icList": <MessageBulleted className="ListIcon"/>,
+      },
+    }
+
+    return paths;
+  }
+
   getTitle = (path) => {
-    return paths[path].title;
+    return this.getPaths(path)[path].title;
   }
 
   getColor = (path) => {
-    return paths[path].color;
+    return this.getPaths(path)[path].color;
   }
 
   getIcon = (isAppbar, path) => {
-    if(isAppbar) return paths[path].icAppbar;
-    return paths[path].icList;
+    if(isAppbar) return this.getPaths(path)[path].icAppbar;
+    return this.getPaths(path)[path].icList;
   }
 
   getSideHead = () => {
@@ -243,7 +244,8 @@ class ResponsiveDrawer extends React.Component {
       <Grid container direction="column" alignItems="stretch" justify="center">
         <Grid item>
         <Link to="/" style={{textDecoration: "none"}} onClick={() => this.handleTabClick("", "/")}>
-          <img src={this.state.isDark ? icAtudeDark : icAtude} alt="icAtude" className="SidebarIconHead"/>
+          <img src={icAtude} alt="icAtude" className="SidebarIconHead" 
+          style={{filter: this.state.isDark ? "invert(100%)" : ""}}/>
           <Typography style={{fontSize: "24px", lineHeight: "32px", textAlign: "right"}} 
             variant="overline" color="textPrimary">
               Mozamel<br/><b>Anwary</b>
@@ -319,7 +321,7 @@ class ResponsiveDrawer extends React.Component {
         {this.getSideList(currPath)}
         <Grid container direction="row" alignItems="center" justify="center">
           <Grid item><Typography variant="button" style={{fontSize: "12px", color: "#cccccc"}}>
-            DARK THEME
+            DARK MODE
           </Typography></Grid>
           <Grid item><SwitchButton color="secondary" checked={this.state.isDark} 
           onChange={() => this.switchDark(!this.state.isDark)}/></Grid>
@@ -389,7 +391,7 @@ class ResponsiveDrawer extends React.Component {
             <div className="MainContentCont">
               <TransitionGroup>
                 <Switch location={location}>
-                  <Route exact path="/" render={() => <HomePage currentScheme={currentScheme} mainColor={this.getColor(location.pathname)}/>}/>
+                  <Route exact path="/" render={() => <HomePage isDark={this.state.isDark} currentScheme={currentScheme} mainColor={this.getColor(location.pathname)}/>}/>
                   <Route path="/about" render={() => <AboutPage currentScheme={currentScheme} mainColor={this.getColor(location.pathname)}/>}/>
                   <Route path="/projects" render={() => <ProjectsPage currentScheme={currentScheme} mainColor={this.getColor(location.pathname)}/>}/>
                   <Route path="/contact" render={() => <ContactPage currentScheme={currentScheme} mainColor={this.getColor(location.pathname)}/>}/>
