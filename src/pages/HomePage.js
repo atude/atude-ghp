@@ -1,13 +1,14 @@
 import React from 'react';
 import '../components/Components.css';
-import { Typography, Tooltip, Slide, Grow, } from '@material-ui/core';
-import { React as ReactIcon, MaterialUi, } from 'mdi-material-ui';
+import { Typography, Tooltip, Slide, Grow, Fab, } from '@material-ui/core';
+import { React as ReactIcon, MaterialUi, FileDownload, } from 'mdi-material-ui';
+import Database from '../assets/Database';
 
 
 class HomePage extends React.Component {
   render() {
     const baseTime = 2000;
-    const { currentScheme, isDark } = this.props;
+    const { currentScheme, isDark, mainColor } = this.props;
     const circleFilters = "hue-rotate(45deg)";
     
     var longshadowStr = "";
@@ -66,6 +67,16 @@ class HomePage extends React.Component {
             <MaterialUi style={{color: currentScheme.bgInv}}/>
           </div>
         </Tooltip>
+
+        <div className="DownloadFAB">
+          <Tooltip title="View/Download Resume" placement="left">
+            <Fab size="medium" component="a" href={Database["Resume"]} 
+            download="_resume_mozamel_anwary" aria-label="DownloadResume"
+            style={{color: "white", backgroundColor: mainColor, opacity: "0.8"}}>
+              <FileDownload/>
+            </Fab>
+          </Tooltip>
+        </div>
       </div>
     );
   }
