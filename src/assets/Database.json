@@ -23,7 +23,7 @@
     "JS":
     {
       "experience": "3 years experience",
-      "desc": "JSX, UnityScript",
+      "desc": "ES, JSX, Node, UnityScript",
       "level": 3
     },
     "HTML":
@@ -47,7 +47,7 @@
     ],
     "App Development":
     [
-      "Unity"
+      "React Native", "Expo", "Unity"
     ],
     "Design & Graphics":
     [
@@ -112,7 +112,7 @@
     "Links":
     {
       "GitHub": ["https://github.com/atude", "My portfolio of open source software projects"],
-      "LinkedIn": ["https://www.linkedin.com/in/mozamel-a-b211b4114/", "My professional profile and network"],
+      "LinkedIn": ["https://www.linkedin.com/in/mozamelanwary/", "My professional profile and network"],
       "Play Store": ["https://play.google.com/store/apps/developer?id=Atude", "My apps published for Android devices"]
     },
     "Contact":
