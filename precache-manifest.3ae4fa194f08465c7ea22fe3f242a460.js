@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9eb97fedf85244bf1f12673c4027896b",
+    "revision": "f5bab0bdeae5eb33b7541a85a9bd3413",
     "url": "/atude-ghp/index.html"
   },
   {
-    "revision": "1c6132b6783896b037d9",
+    "revision": "4354dfc370699dfc3c97",
     "url": "/atude-ghp/static/css/2.612075aa.chunk.css"
   },
   {
-    "revision": "f1746ef3e48ebf37fa1a",
+    "revision": "2330420f39c59281d185",
     "url": "/atude-ghp/static/css/main.f5d164ed.chunk.css"
   },
   {
-    "revision": "1c6132b6783896b037d9",
-    "url": "/atude-ghp/static/js/2.dd1a24a3.chunk.js"
+    "revision": "4354dfc370699dfc3c97",
+    "url": "/atude-ghp/static/js/2.4f0539fa.chunk.js"
   },
   {
-    "revision": "f1746ef3e48ebf37fa1a",
-    "url": "/atude-ghp/static/js/main.e5df562a.chunk.js"
+    "revision": "2330420f39c59281d185",
+    "url": "/atude-ghp/static/js/main.0138f10d.chunk.js"
   },
   {
     "revision": "e4d55441f48422a7f79b",
@@ -68,6 +68,26 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/atude-ghp/static/media/banner_devote5.48c307b5.png"
   },
   {
+    "revision": "8e4cbedb0007508955761083155f15c9",
+    "url": "/atude-ghp/static/media/banner_mywam.8e4cbedb.png"
+  },
+  {
+    "revision": "38e2e9936c8bdc51c7759af29aecb270",
+    "url": "/atude-ghp/static/media/banner_mywam1.38e2e993.png"
+  },
+  {
+    "revision": "805560de8bc37fba41ee4a2201e586cd",
+    "url": "/atude-ghp/static/media/banner_mywam2.805560de.png"
+  },
+  {
+    "revision": "936c62f838a070e263a1b0621a8116ff",
+    "url": "/atude-ghp/static/media/banner_mywam3.936c62f8.png"
+  },
+  {
+    "revision": "68d7cdff991bea62de3ccbdec38e7155",
+    "url": "/atude-ghp/static/media/banner_mywam4.68d7cdff.png"
+  },
+  {
     "revision": "defb2faf9fcd94a6fed997afe24f0fdc",
     "url": "/atude-ghp/static/media/ic_atude.defb2faf.png"
   },
@@ -82,6 +102,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "aa17f0229190b16bcaf4e9a8c1241c92",
     "url": "/atude-ghp/static/media/ic_devote.aa17f022.svg"
+  },
+  {
+    "revision": "5276c648110839a9b4acdfc20b582ea2",
+    "url": "/atude-ghp/static/media/ic_mywam.5276c648.svg"
   },
   {
     "revision": "b622e2aa7de5a0ed27969bd7eed71a7c",
