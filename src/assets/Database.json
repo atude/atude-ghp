@@ -87,6 +87,24 @@
       "body": "Beams is a suburb analysis webapp that merges housing market data and suburb information from a variety of sources to create a user friendly and intuitive hub. This can be used to influence decisions on buying properties by finding suburbs which best matches your criteria."
 
     },
+    "myWAM": 
+    {
+      "bgColor": "#42289f",
+      "accColor": "#6a3fff",
+      "heading": "myWAM",
+      "subheading": "WAM Calculator and Mark Log",
+      "tools": ["React Native", "Expo"],
+      "built": ["JavaScript"],
+      "platforms": ["Android"],
+      "date": "2019",
+      "gitlink": "https://github.com/atude/wam-calc",
+      "viewlink": "https://play.google.com/store/apps/details?id=com.atude.mywam",
+      "privacylink": "https://atude.github.io/privacy_mywam.html",
+      "viewicon": "Google Play",
+      "viewtext": "Available on the Play Store",
+      "role": "Solo",
+      "body": "myWAM is a simple tool for university students to track their WAM and keep on top of their assessment progress. The WAM Calculator gives insight on your current term WAM as well as your degree WAM with summaries of performance, while a course log also allows you to keep track of you marks throughout your degree."
+    },
     "Devote": 
     {
       "bgColor": "#3d95e8",

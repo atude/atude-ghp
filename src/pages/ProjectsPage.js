@@ -1,12 +1,13 @@
 import React from 'react';
 import '../components/Components.css';
 import Database from '../assets/Database'
-import { Grid, Tooltip, Typography, Fade, Slide } from '@material-ui/core';
+import { Grid, Tooltip, Typography, Fade, Slide, SvgIcon } from '@material-ui/core';
 import ProjectCard from '../components/ProjectCard';
 import ReactSVG from 'react-svg'
 
 import icDevote from '../assets/ic_devote.svg';
 import icBeams from '../assets/ic_beams.svg';
+import icMywam from '../assets/ic_mywam.svg';
 
 import bnDevote from '../assets/banner_devote.png'
 import bnDevote1 from '../assets/banner_devote1.png'
@@ -20,6 +21,12 @@ import bnBeams1 from '../assets/banner_beams1.png';
 import bnBeams2 from '../assets/banner_beams2.png';
 import bnBeams3 from '../assets/banner_beams3.png';
 import bnBeams4 from '../assets/banner_beams4.png';
+
+import bnMywam from '../assets/banner_mywam.png';
+import bnMywam1 from '../assets/banner_mywam1.png';
+import bnMywam2 from '../assets/banner_mywam2.png';
+import bnMywam3 from '../assets/banner_mywam3.png';
+import bnMywam4 from '../assets/banner_mywam4.png';
 
 
 import { Android, DesktopMacDashboard, Cellphone, GooglePlay, Youtube, LanguageCsharp,  LanguageC, LanguageJavascript, 
@@ -42,6 +49,12 @@ const projMedia = {
     "icon": icBeams,
     "banners": [bnBeams, bnBeams1, bnBeams2,
       bnBeams3, bnBeams4],
+  },
+  "myWAM":
+  {
+    "icon": icMywam,
+    "banners": [bnMywam, bnMywam1, bnMywam2, bnMywam3,
+      bnMywam4],
   }
 }
 
@@ -73,6 +86,14 @@ class ProjectsPage extends React.Component {
           </Tooltip>); break;
         case "React.js": iconList.push(<Tooltip disableFocusListener title={item}>
           <ReactIcon fontSize="small" style={miniIconColor}/>
+          </Tooltip>); break;
+        case "React Native": iconList.push(<Tooltip disableFocusListener title={item}>
+          <ReactIcon fontSize="small" style={miniIconColor}/>
+          </Tooltip>); break;
+        case "Expo": iconList.push(<Tooltip disableFocusListener title={item}>
+          <SvgIcon fontSize="small" viewBox="0 0 256 256" style={miniIconColor}>
+            <path d="M46 178.5c.3 3.62 1.56 7.24 4.89 12.1 3.94 5.77 10.72 8.94 15.66 3.85 3.34-3.43 39.42-66.5 56.81-90.4a5.18 5.18 0 0 1 8.5 0c17.39 23.9 53.47 86.97 56.8 90.4 4.94 5.09 11.73 1.92 15.67-3.85 3.88-5.68 4.95-9.66 4.95-13.92 0-2.9-56.19-107.49-61.85-116.19-5.45-8.37-7.1-10.2-16.31-10.49h-7.02c-9.21.3-10.87 2.12-16.31 10.49-5.55 8.52-59.55 108.98-61.79 115.87v2.14z"/>
+          </SvgIcon>
           </Tooltip>); break;
         case "HTML": iconList.push(<Tooltip disableFocusListener title={item}>
           <LanguageHtml5 fontSize="small" style={miniIconColor}/>
