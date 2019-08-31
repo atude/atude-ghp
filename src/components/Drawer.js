@@ -255,7 +255,7 @@ class ResponsiveDrawer extends React.Component {
           
         <Grid item>
         <Grid container direction="row" alignItems="stretch" justify="space-around">
-          <a href={Database.Contact.Links.GitHub} target="_blank" rel="noopener noreferrer" 
+          <a href={Database.Contact.Links.GitHub[0]} target="_blank" rel="noopener noreferrer" 
           style={{textDecoration: "none"}}>
           <Grid item>
             <IconButton key="Github">
