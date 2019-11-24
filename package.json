@@ -5,17 +5,17 @@
   "dependencies": {
     "@material-ui/core": "^3.9.3",
     "@material-ui/lab": "^3.0.0-alpha.30",
-    "@tanem/svg-injector": "^8.0.0",
+    "@tanem/svg-injector": "^8.0.34",
     "googleapis": "^39.2.0",
-    "mdi-material-ui": "^5.11.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.0",
+    "mdi-material-ui": "^5.19.0",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.0.0",
     "react-svg": "^9.0.4",
-    "react-transition-group": "^4.0.1",
+    "react-transition-group": "^4.3.0",
     "typeface-roboto": "0.0.54",
-    "typescript": "^3.4.5"
+    "typescript": "^3.6.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -41,7 +41,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^2.0.1"
+    "gh-pages": "^2.1.1"
   },
   "homepage": "http://atude.github.io/atude-ghp"
 }

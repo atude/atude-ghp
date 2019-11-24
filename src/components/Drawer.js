@@ -271,7 +271,7 @@ class ResponsiveDrawer extends React.Component {
             </IconButton>
           </Grid>
           </a>
-          <a href={`mailto:${Database.Contact.Links.Email}`} rel="noopener noreferrer" 
+          <a href={`mailto:${Database.Contact.Contact.Email}`} rel="noopener noreferrer" 
           style={{textDecoration: "none"}}>
           <Grid item>
             <IconButton key="Email">

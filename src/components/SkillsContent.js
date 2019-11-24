@@ -1,8 +1,19 @@
 import React from 'react';
 import './Components.css';
-import { Grid, Typography, Tooltip, } from '@material-ui/core';
+import { Grid, Typography, Tooltip, SvgIcon } from '@material-ui/core';
 import Slider from '@material-ui/lab/Slider';
-import { LanguageC, LanguageCsharp, LanguageHtml5, LanguageCss3, LanguageJavascript, LanguagePython } from 'mdi-material-ui';
+import { 
+  LanguageC, 
+  LanguageCsharp, 
+  LanguageHtml5, LanguageCss3, 
+  LanguageJavascript, 
+  LanguageTypescript, 
+  LanguagePython, 
+  Bash,
+  LanguageJava,
+  Database as SQLIcon,
+  Coffee,
+} from 'mdi-material-ui';
 import Database from '../assets/Database'
 
 class SkillsContent extends React.Component {
@@ -22,7 +33,10 @@ class SkillsContent extends React.Component {
       </Tooltip>);
       case "JS": return (
       <Tooltip disableFocusListener title="JavaScript" placement="left">
-        <LanguageJavascript style={cStyle} className={cClass}/>
+        <Grid container direction="row" alignItems="center">
+          <LanguageJavascript style={cStyle} className={cClass}/>
+          <LanguageTypescript style={cStyle} className={cClass}/>
+        </Grid>
       </Tooltip>);
       case "HTML": return (
       <Tooltip disableFocusListener title="Web Development" placement="left">
@@ -35,6 +49,18 @@ class SkillsContent extends React.Component {
       <Tooltip disableFocusListener title="Python" placement="left">
         <LanguagePython style={cStyle} className={cClass}/>
       </Tooltip>);
+      case "Java": return (
+      <Tooltip disableFocusListener title="Java" placement="left">
+        <Coffee style={cStyle} className={cClass}/>
+      </Tooltip>);
+      case "Shell": return (
+      <Tooltip disableFocusListener title="Shell" placement="left">
+        <Bash style={cStyle} className={cClass}/>
+      </Tooltip>);
+      case "SQL": return (
+      <Tooltip disableFocusListener title="SQL" placement="left">
+        <SQLIcon style={cStyle} className={cClass}/>
+      </Tooltip>);
       default: return;
     }
   }
@@ -46,13 +72,13 @@ class SkillsContent extends React.Component {
     
     return (
       <div className="SkillsContainer">
-        <Grid container direction="column" spacing={24}>
+        <Grid container direction="row" spacing={24}>
           {Object.keys(item).map(key => (
-            <Grid item key={key} container direction="row" justify="center" alignItems="center" spacing={16}>
-              <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
+            <Grid item xs={6} key={key} container direction="row" justify="space-evenly" alignItems="center">
+              <Grid item xs={12} sm={4} md={2} lg={2} xl={2}>
                 {this.getIconSkills(key)}
               </Grid>
-              <Grid item xs={10} sm={5} md={5} lg={5} xl={5}>
+              {/* <Grid item xs={10} sm={5} md={5} lg={5} xl={5}>
                 <Typography style={{paddingBottom: "3px"}} variant="button">
                   {item[key].experience}
                 </Typography>
@@ -62,8 +88,8 @@ class SkillsContent extends React.Component {
                     {item[key].desc}
                   </Typography>
                 }
-              </Grid>
-              <Grid item xs={12} sm={5} md={5} lg={5} xl={5}>
+              </Grid> */}
+              <Grid item xs={12} sm={8} md={8} lg={8} xl={8}>
                 <Typography id="label" style={{fontSize: "12px", color: lightGray}} variant="body1">
                   {Database["Skills Level Frame"][item[key].level]}
                 </Typography>

@@ -28,9 +28,20 @@ import bnMywam2 from '../assets/banner_mywam2.png';
 import bnMywam3 from '../assets/banner_mywam3.png';
 import bnMywam4 from '../assets/banner_mywam4.png';
 
-
-import { Android, DesktopMacDashboard, Cellphone, GooglePlay, Youtube, LanguageCsharp,  LanguageC, LanguageJavascript, 
-  React as ReactIcon, LanguageHtml5, LanguageCss3, Unity } from 'mdi-material-ui';
+import { 
+  Android, 
+  MonitorDashboard, 
+  Cellphone, 
+  GooglePlay, 
+  Youtube, 
+  LanguageCsharp,  
+  LanguageC, 
+  LanguageJavascript, 
+  React as ReactIcon, 
+  LanguageHtml5, 
+  LanguageCss3, 
+  Unity 
+} from 'mdi-material-ui';
 
 const viewIcons = {
   "Google Play": <GooglePlay/>,
@@ -73,7 +84,7 @@ class ProjectsPage extends React.Component {
           <Android fontSize="small" style={miniIconColor}/>
           </Tooltip>); break;
         case "PC": iconList.push(<Tooltip disableFocusListener title={item}>
-          <DesktopMacDashboard fontSize="small" style={miniIconColor}/>
+          <MonitorDashboard fontSize="small" style={miniIconColor}/>
           </Tooltip>); break;
         case "C": iconList.push(<Tooltip disableFocusListener title={item}>
           <LanguageC fontSize="small" style={miniIconColor}/>

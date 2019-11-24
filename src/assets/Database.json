@@ -8,54 +8,72 @@
   },
   "Skillset": 
   {
-    "C":
-    {
-      "experience": "1 year experience",
-      "desc": "",
-      "level": 3
-    },
-    "C#":
-    {
-      "experience": "3 years experience",
-      "desc": "",
-      "level": 3
-    },
     "JS":
     {
-      "experience": "3 years experience",
-      "desc": "ES, JSX, Node, UnityScript",
-      "level": 3
+      "desc": "ES, TS, Node.js",
+      "level": 4
     },
     "HTML":
     {
-      "experience": "3 years experience",
-      "desc": "HTML, CSS, REST APIs",
-      "level": 4
+      "desc": "HTML, CSS",
+      "level": 3
+    },
+    "C":
+    {
+      "desc": "",
+      "level": 2
+    },
+    "C#":
+    {
+      "desc": "",
+      "level": 2
+    },
+    "Java":
+    {
+      "desc": "",
+      "level": 2
     },
     "Python":
     {
-      "experience": "1 year experience",
       "desc": "Jinja",
-      "level": 1
+      "level": 3
+    },
+    "Shell":
+    {
+      "desc": "Bash",
+      "level": 3
+    },
+    "SQL":
+    {
+      "desc": "SQL, PostgreSQL",
+      "level": 2
     }
   },
   "Toolset": 
   {
-    "Web Development & Design": 
+    "Web Development": 
     [
-      "React", "Material UI", "Babel", "NPM", "Flask" 
+      "React" 
     ],
     "App Development":
     [
       "React Native", "Expo", "Unity"
     ],
-    "Design & Graphics":
+    "Backend Management": 
     [
-      "GIMP", "Adobe Photoshop", "Adobe XD"
+      "REST APIs"
     ],
-    "Other":
+    "Design Frameworks": 
     [
-      "GitHub", "MS VS", "MS VS Code", "MS Office"
+      "Material UI", "React Native Paper"
+    ],
+    "Design Tools":
+    [
+      "GIMP", "Photoshop", "XD"
+    ],
+    "Devops": 
+    [
+      "GitHub", "GitLab", "GitLab CI"
     ]
   },
   "Skills Level Frame":

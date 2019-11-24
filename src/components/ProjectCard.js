@@ -15,11 +15,7 @@ class ProjectCard extends React.Component {
       if(0 === this.state.bannerIndex && i <= 0) i = len - 1;
       this.setState({
         bannerIndex: this.state.bannerIndex + i,
-        // isTransitioning: true
       });
-  
-      //Force wait at least half transition time so animation is not cut before moving
-      //setTimeout(() => (this.setState({isTransitioning: false})), 250);
     }
   }
 
