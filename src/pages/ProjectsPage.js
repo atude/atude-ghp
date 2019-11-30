@@ -30,8 +30,7 @@ import bnMywam4 from '../assets/banner_mywam4.png';
 
 import { 
   Android, 
-  MonitorDashboard, 
-  Cellphone, 
+  GoogleChrome,
   GooglePlay, 
   Youtube, 
   LanguageCsharp,  
@@ -40,7 +39,9 @@ import {
   React as ReactIcon, 
   LanguageHtml5, 
   LanguageCss3, 
-  Unity 
+  Unity, 
+  Edge,
+  Firefox
 } from 'mdi-material-ui';
 
 const viewIcons = {
@@ -83,8 +84,14 @@ class ProjectsPage extends React.Component {
         case "Android": iconList.push(<Tooltip disableFocusListener title={item}>
           <Android fontSize="small" style={miniIconColor}/>
           </Tooltip>); break;
-        case "PC": iconList.push(<Tooltip disableFocusListener title={item}>
-          <MonitorDashboard fontSize="small" style={miniIconColor}/>
+        case "Chrome": iconList.push(<Tooltip disableFocusListener title={item}>
+          <GoogleChrome fontSize="small" style={miniIconColor}/>
+          </Tooltip>); break;
+        case "Edge": iconList.push(<Tooltip disableFocusListener title={item}>
+          <Edge fontSize="small" style={miniIconColor}/>
+          </Tooltip>); break;
+        case "Firefox": iconList.push(<Tooltip disableFocusListener title={item}>
+          <Firefox fontSize="small" style={miniIconColor}/>
           </Tooltip>); break;
         case "C": iconList.push(<Tooltip disableFocusListener title={item}>
           <LanguageC fontSize="small" style={miniIconColor}/>
@@ -95,7 +102,7 @@ class ProjectsPage extends React.Component {
         case "JavaScript": iconList.push(<Tooltip disableFocusListener title={item}>
           <LanguageJavascript fontSize="small" style={miniIconColor}/>
           </Tooltip>); break;
-        case "React.js": iconList.push(<Tooltip disableFocusListener title={item}>
+        case "React": iconList.push(<Tooltip disableFocusListener title={item}>
           <ReactIcon fontSize="small" style={miniIconColor}/>
           </Tooltip>); break;
         case "React Native": iconList.push(<Tooltip disableFocusListener title={item}>

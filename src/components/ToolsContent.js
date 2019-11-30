@@ -14,6 +14,8 @@ import {
   DeveloperBoard,
   Gitlab,
   Api,
+  Firebase,
+  Graphql,
 } from 'mdi-material-ui';
 import Database from '../assets/Database';
 
@@ -25,7 +27,7 @@ class ToolsContent extends React.Component {
     const iconSwitch = {
       "Web Development": <Iframe style={mainStyle}/>,
       "App Development": <CellphoneAndroid style={mainStyle}/>,
-      "Backend Management": <Server style={mainStyle}/>,
+      "API Management": <Server style={mainStyle}/>,
       "Design Frameworks": <DeveloperBoard style={mainStyle}/>, 
       "Design Tools": <FormatColorFill style={mainStyle}/>, 
       "Devops": <Infinity style={mainStyle}/>,
@@ -37,7 +39,9 @@ class ToolsContent extends React.Component {
       "GitHub": <GithubCircle style={cStyle}/>,
       "GitLab": <Gitlab style={cStyle}/>,
       "GitLab CI": <Gitlab style={cStyle}/>,
-      "REST APIs": <Api style={cStyle}/>,
+      "REST": <Api style={cStyle}/>,
+      "GraphQL": <Graphql style={cStyle}/>,
+      "Firebase": <Firebase style={cStyle}/>,
 
       //Direct inject icons
       "GIMP": 
@@ -63,7 +67,7 @@ class ToolsContent extends React.Component {
       "React Native Paper":
       <SvgIcon viewBox="0 0 800 800" style={cStyle}>
         <g transform="translate(0.000000,800.000000) scale(0.100000,-0.100000)">
-          <path stroke={setColor} stroke-width="300" 
+          <path stroke={setColor} strokeWidth="300" 
           d="M5380 7073 c-69 -12 -152 -38 -218 -68 -40 -19 -714 -404 -1498 -857
           -1035 -597 -1430 -830 -1439 -848 -7 -14 -148 -524 -314 -1133 -281 -1029
           -302 -1110 -291 -1143 14 -41 60 -74 105 -74 22 0 251 127 825 459 437 252

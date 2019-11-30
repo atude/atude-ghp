@@ -19,6 +19,17 @@ class ProjectCard extends React.Component {
     }
   }
 
+  getRoleIcon = (role) => {
+    const lightGray = this.props.currentScheme.lightGray;
+
+    switch(role) {
+      case "Fullstack":
+        return <Account className="RoleIcon" style={{color: lightGray}}/>;
+      default:
+        return <AccountGroup className="RoleIcon" style={{color: lightGray}}/>;
+    }
+  }
+
   render() {
     const { projectIcon, projectBanner, heading, subheading, tools, built, platforms, date, bgColor, accColor,
       gitlink, viewlink, privacylink, viewtext, viewicon, body, role, mainColor, currentScheme } = this.props;
@@ -119,10 +130,7 @@ class ProjectCard extends React.Component {
                 </Grid>
               </Grid>
               <Grid item>
-                {role === "Solo" 
-                  ? <Account className="RoleIcon" style={{color: lightGray}}/>
-                  : <AccountGroup className="RoleIcon" style={{color: lightGray}}/>
-                }
+                {this.getRoleIcon(role)}
                 <Typography style={categoryStyle}
                   variant="button" className="ProjectRightText">
                   {role}

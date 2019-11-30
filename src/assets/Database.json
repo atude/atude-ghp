@@ -10,42 +10,34 @@
   {
     "JS":
     {
-      "desc": "ES, TS, Node.js",
       "level": 4
     },
     "HTML":
     {
-      "desc": "HTML, CSS",
       "level": 3
     },
     "C":
     {
-      "desc": "",
       "level": 2
     },
     "C#":
     {
-      "desc": "",
       "level": 2
     },
     "Java":
     {
-      "desc": "",
       "level": 2
     },
     "Python":
     {
-      "desc": "Jinja",
       "level": 3
     },
-    "Shell":
+    "Bash":
     {
-      "desc": "Bash",
       "level": 3
     },
     "SQL":
     {
-      "desc": "SQL, PostgreSQL",
       "level": 2
     }
   },
@@ -59,9 +51,9 @@
     [
       "React Native", "Expo", "Unity"
     ],
-    "Backend Management": 
+    "API Management": 
     [
-      "REST APIs"
+      "REST", "GraphQL", "Firebase"
     ],
     "Design Frameworks": 
     [
@@ -92,9 +84,9 @@
       "accColor": "#f74d00",
       "heading": "Beams",
       "subheading": "Suburb Analysis Webapp",
-      "tools": ["React.js"],
+      "tools": ["React"],
       "built": ["JavaScript", "HTML", "CSS"],
-      "platforms": ["PC"],
+      "platforms": ["Chrome", "Edge", "Firefox"],
       "date": "2019",
       "gitlink": "https://github.com/atude/beams",
       "viewlink": "https://youtu.be/vWZBiD6iriM",
@@ -120,7 +112,7 @@
       "privacylink": "https://atude.github.io/privacy_mywam.html",
       "viewicon": "Google Play",
       "viewtext": "Available on the Play Store",
-      "role": "Solo",
+      "role": "Fullstack",
       "body": "myWAM is a simple tool for university students to track their WAM and keep on top of their assessment progress. The WAM Calculator gives insight on your current term WAM as well as your degree WAM with summaries of performance, while a course log also allows you to keep track of you marks throughout your degree."
     },
     "Devote": 
@@ -139,7 +131,7 @@
       "privacylink": "https://atude.github.io/privacy.html",
       "viewicon": "Google Play",
       "viewtext": "Available on the Play Store",
-      "role": "Solo",
+      "role": "Fullstack",
       "body": "Devote is an all-in-one hub made and refined for high school students to organise your study tasks, track your assessment progress, view your level of productivity and ultimately balance your social and study lifestyle. "
     }
   },

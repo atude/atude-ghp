@@ -1,65 +1,175 @@
 import React from 'react';
 import './Components.css';
-import { Grid, Typography, Tooltip, SvgIcon } from '@material-ui/core';
+import { Grid, Typography, Tooltip, SvgIcon, IconButton, withStyles } from '@material-ui/core';
 import Slider from '@material-ui/lab/Slider';
 import { 
   LanguageC, 
   LanguageCsharp, 
-  LanguageHtml5, LanguageCss3, 
+  LanguageHtml5, 
+  LanguageCss3, 
   LanguageJavascript, 
   LanguageTypescript, 
   LanguagePython, 
-  Bash,
-  LanguageJava,
-  Database as SQLIcon,
-  Coffee,
+  Bash as LanguageBash,
+  Database as LanguageSQL,
+  Coffee as LanguageJava,
 } from 'mdi-material-ui';
 import Database from '../assets/Database'
 
 class SkillsContent extends React.Component {
+  state = {
+    onC: false,
+    onCsharp: false,
+    onJavascript: false,
+    onTypescript: false,
+    onHtml5: false,
+    onCss3: false,
+    onPython: false,
+    onJava: false,
+    onSQL: false,
+    onBash: false,
+  }
 
   getIconSkills = (type) => {
-    const cStyle = { fontSize: "30px", color: this.props.currentScheme.bgInv };
+    const cStyle = { 
+      fontSize: "40px",
+      padding: "2px"
+    };
+
     const cClass = "SkillsListIcon";
 
-    switch(type){
+    switch(type) {
       case "C": return(
       <Tooltip disableFocusListener title="C" placement="left">
-        <LanguageC style={cStyle} className={cClass}/>
+        <LanguageC 
+          onMouseEnter={() => {this.setState({onC: true})}}
+          onMouseLeave={() => {this.setState({onC: false})}} 
+          style={{
+            color: this.state.onC ? "#3848AA" : this.props.currentScheme.bgInv,
+            padding: this.state.onC ? 0 : cStyle.padding,
+            fontSize: cStyle.fontSize,
+          }} 
+          className={cClass}
+        />
       </Tooltip>);
       case "C#": return (
       <Tooltip disableFocusListener title="C#" placement="left">
-        <LanguageCsharp style={cStyle} className={cClass}/>
+        <LanguageCsharp
+          onMouseEnter={() => {this.setState({onCsharp: true})}}
+          onMouseLeave={() => {this.setState({onCsharp: false})}} 
+          style={{
+            color: this.state.onCsharp ? "#A077DB" : this.props.currentScheme.bgInv,
+            padding: this.state.onCsharp ? 0 : cStyle.padding,
+            fontSize: cStyle.fontSize
+          }} 
+          className={cClass}
+        />
       </Tooltip>);
       case "JS": return (
-      <Tooltip disableFocusListener title="JavaScript" placement="left">
-        <Grid container direction="row" alignItems="center">
-          <LanguageJavascript style={cStyle} className={cClass}/>
-          <LanguageTypescript style={cStyle} className={cClass}/>
-        </Grid>
-      </Tooltip>);
+      <Grid container direction="row" alignItems="center">
+        <Tooltip disableFocusListener title="JavaScript" placement="left">
+          <LanguageJavascript
+            onMouseEnter={() => {this.setState({onJavascript: true})}}
+            onMouseLeave={() => {this.setState({onJavascript: false})}} 
+            style={{
+              color: this.state.onJavascript ? "#FFCA28" : this.props.currentScheme.bgInv,
+              padding: this.state.onJavascript ? 0 : cStyle.padding,
+              fontSize: cStyle.fontSize
+            }} 
+            className={cClass}
+          />
+        </Tooltip>
+        <Tooltip disableFocusListener title="TypeScript" placement="left">
+          <LanguageTypescript
+            onMouseEnter={() => {this.setState({onTypescript: true})}}
+            onMouseLeave={() => {this.setState({onTypescript: false})}} 
+            style={{
+              color: this.state.onTypescript ? "#0288D1" : this.props.currentScheme.bgInv,
+              padding: this.state.onTypescript ? 0 : cStyle.padding,
+              fontSize: cStyle.fontSize
+            }} 
+            className={cClass}
+          />
+        </Tooltip>
+      </Grid>);
       case "HTML": return (
-      <Tooltip disableFocusListener title="Web Development" placement="left">
-        <Grid container direction="row" alignItems="center">
-          <Grid item><LanguageHtml5 style={cStyle} className={cClass}/></Grid>
-          <Grid item><LanguageCss3 style={cStyle} className={cClass}/></Grid>
-        </Grid>
-      </Tooltip>);
+      <Grid container direction="row" alignItems="center">
+        <Tooltip disableFocusListener title="HTML" placement="left">
+          <LanguageHtml5
+            onMouseEnter={() => {this.setState({onHtml5: true})}}
+            onMouseLeave={() => {this.setState({onHtml5: false})}} 
+            style={{
+              color: this.state.onHtml5 ? "#EB642D" : this.props.currentScheme.bgInv,
+              padding: this.state.onHtml5 ? 0 : cStyle.padding,
+              fontSize: cStyle.fontSize,
+            }} 
+            className={cClass}
+          />
+        </Tooltip>
+        <Tooltip disableFocusListener title="CSS" placement="left">
+          <LanguageCss3
+            onMouseEnter={() => {this.setState({onCss3: true})}}
+            onMouseLeave={() => {this.setState({onCss3: false})}} 
+            style={{
+              color: this.state.onCss3 ? "#2Fa5D7" : this.props.currentScheme.bgInv,
+              padding: this.state.onCss3 ? 0 : cStyle.padding,
+              fontSize: cStyle.fontSize,
+            }} 
+            className={cClass}
+          />
+        </Tooltip>
+      </Grid>);
       case "Python": return (
       <Tooltip disableFocusListener title="Python" placement="left">
-        <LanguagePython style={cStyle} className={cClass}/>
+        <LanguagePython
+          onMouseEnter={() => {this.setState({onPython: true})}}
+          onMouseLeave={() => {this.setState({onPython: false})}} 
+          style={{
+            color: this.state.onPython ? "#0062B9" : this.props.currentScheme.bgInv,
+            padding: this.state.onPython ? 0 : cStyle.padding,
+            fontSize: cStyle.fontSize,
+          }} 
+          className={cClass}
+        />
       </Tooltip>);
       case "Java": return (
       <Tooltip disableFocusListener title="Java" placement="left">
-        <Coffee style={cStyle} className={cClass}/>
+        <LanguageJava
+          onMouseEnter={() => {this.setState({onJava: true})}}
+          onMouseLeave={() => {this.setState({onJava: false})}} 
+          style={{
+            color: this.state.onJava ? "#F44336" : this.props.currentScheme.bgInv,
+            padding: this.state.onJava ? 0 : cStyle.padding,
+            fontSize: cStyle.fontSize,
+          }} 
+          className={cClass}
+        />
       </Tooltip>);
-      case "Shell": return (
-      <Tooltip disableFocusListener title="Shell" placement="left">
-        <Bash style={cStyle} className={cClass}/>
+      case "Bash": return (
+      <Tooltip disableFocusListener title="Bash" placement="left">
+        <LanguageBash
+          onMouseEnter={() => {this.setState({onBash: true})}}
+          onMouseLeave={() => {this.setState({onBash: false})}} 
+          style={{
+            color: this.state.onBash ? "#47B253" : this.props.currentScheme.bgInv,
+            padding: this.state.onBash ? 0 : cStyle.padding,
+            fontSize: cStyle.fontSize,
+          }} 
+          className={cClass}
+        />      
       </Tooltip>);
       case "SQL": return (
       <Tooltip disableFocusListener title="SQL" placement="left">
-        <SQLIcon style={cStyle} className={cClass}/>
+        <LanguageSQL
+          onMouseEnter={() => {this.setState({onSQL: true})}}
+          onMouseLeave={() => {this.setState({onSQL: false})}} 
+          style={{
+            color: this.state.onSQL ? "#047885" : this.props.currentScheme.bgInv,
+            padding: this.state.onSQL ? 0 : cStyle.padding,
+            fontSize: cStyle.fontSize,
+          }} 
+          className={cClass}
+        />      
       </Tooltip>);
       default: return;
     }
@@ -75,7 +185,7 @@ class SkillsContent extends React.Component {
         <Grid container direction="row" spacing={24}>
           {Object.keys(item).map(key => (
             <Grid item xs={6} key={key} container direction="row" justify="space-evenly" alignItems="center">
-              <Grid item xs={12} sm={4} md={2} lg={2} xl={2}>
+              <Grid item xs={12} sm={3} md={3} lg={3} xl={3}>
                 {this.getIconSkills(key)}
               </Grid>
               {/* <Grid item xs={10} sm={5} md={5} lg={5} xl={5}>

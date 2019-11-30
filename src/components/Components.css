@@ -113,6 +113,10 @@
   text-align: center;
 }
 
+.SkillsListIcon:hover{
+  text-align: center;
+}
+
 .ProjectCardIcon{
   float: left;
   margin-right: 10px;
