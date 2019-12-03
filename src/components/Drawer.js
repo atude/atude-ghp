@@ -7,7 +7,6 @@ import { Menu, AccountBox, Buffer, GithubBox, LinkedinBox, EmailBox, MessageBull
 import { createMuiTheme, Typography, IconButton, SwipeableDrawer, List, ListItem, ListItemText, ListItemIcon, Hidden, CssBaseline, MuiThemeProvider, Drawer, Divider, Grid, AppBar, Toolbar, Switch as SwitchButton } from '@material-ui/core';
 import { TransitionGroup, } from 'react-transition-group';
 
-import icAtudeDark from '../assets/ic_atude.png';
 import icAtude from '../assets/ic_atude_dark.png';
 
 import colorSetLight from '../assets/colorsetdark.json';
@@ -169,6 +168,9 @@ class ResponsiveDrawer extends React.Component {
     mobileOpen: false,
     currentScheme: lightScheme,
     isDark: false,
+    isOnEmail: false,
+    isOnLinkedIn: false,
+    isOnGithub: false,
   };
 
   componentDidMount() {
@@ -234,11 +236,18 @@ class ResponsiveDrawer extends React.Component {
   }
 
   getIcon = (isAppbar, path) => {
-    if(isAppbar) return this.getPaths(path)[path].icAppbar;
+    if(isAppbar) 
+      return this.getPaths(path)[path].icAppbar;
+
     return this.getPaths(path)[path].icList;
   }
 
   getSideHead = () => {
+    const iconSize = "40px";
+    const colorGithub = "#000000";
+    const colorLinkedIn = "#0077B5";
+    const colorEmail = "#D44638";
+
     return (
       <div className="SidebarHead">
       <Grid container direction="column" alignItems="stretch" justify="center">
@@ -258,24 +267,51 @@ class ResponsiveDrawer extends React.Component {
           <a href={Database.Contact.Links.GitHub[0]} target="_blank" rel="noopener noreferrer" 
           style={{textDecoration: "none"}}>
           <Grid item>
-            <IconButton key="Github">
-              <GithubBox fontSize="large"/>
+            <IconButton key="Github"
+              onMouseEnter={() => {this.setState({isOnGithub: true})}}
+              onMouseLeave={() => {this.setState({isOnGithub: false})}} 
+            >
+              <GithubBox 
+                className="DrawerIconButton"
+                style={{
+                  fontSize: iconSize,
+                  color: this.state.isOnGithub && colorGithub
+                }}
+              />
             </IconButton>
           </Grid>
           </a>
-          <a href={Database.Contact.Links.LinkedIn} target="_blank" rel="noopener noreferrer" 
+          <a href={Database.Contact.Links.LinkedIn[0]} target="_blank" rel="noopener noreferrer" 
           style={{textDecoration: "none"}}>
           <Grid item>
-            <IconButton key="LinkedIn">
-              <LinkedinBox fontSize="large"/>
+            <IconButton key="LinkedIn"
+              onMouseEnter={() => {this.setState({isOnLinkedIn: true})}}
+              onMouseLeave={() => {this.setState({isOnLinkedIn: false})}}
+            >
+              <LinkedinBox                 
+                className="DrawerIconButton"
+                style={{
+                  fontSize: iconSize,
+                  color: this.state.isOnLinkedIn && colorLinkedIn
+                }}
+              />
             </IconButton>
           </Grid>
           </a>
           <a href={`mailto:${Database.Contact.Contact.Email}`} rel="noopener noreferrer" 
           style={{textDecoration: "none"}}>
           <Grid item>
-            <IconButton key="Email">
-              <EmailBox fontSize="large"/>
+            <IconButton key="Email"
+              onMouseEnter={() => {this.setState({isOnEmail: true})}}
+              onMouseLeave={() => {this.setState({isOnEmail: false})}} 
+            >
+              <EmailBox 
+                className="DrawerIconButton"
+                style={{
+                  fontSize: iconSize,
+                  color: this.state.isOnEmail && colorEmail
+                }}
+              />
             </IconButton>
           </Grid>
           </a>
@@ -320,9 +356,6 @@ class ResponsiveDrawer extends React.Component {
         {this.getSideHead(currPath)}
         {this.getSideList(currPath)}
         <Grid container direction="row" alignItems="center" justify="center">
-          <Grid item><Typography variant="button" style={{fontSize: "12px", color: "#cccccc"}}>
-            DARK MODE
-          </Typography></Grid>
           <Grid item><SwitchButton color="secondary" checked={this.state.isDark} 
           onChange={() => this.switchDark(!this.state.isDark)}/></Grid>
           <Grid item><ThemeLightDark style={{color: "#cccccc", marginTop: "4px"}}/></Grid>

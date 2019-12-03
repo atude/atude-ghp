@@ -16,6 +16,7 @@ import {
   Api,
   Firebase,
   Graphql,
+  Docker,
 } from 'mdi-material-ui';
 import Database from '../assets/Database';
 
@@ -38,7 +39,7 @@ class ToolsContent extends React.Component {
       "Unity": <Unity style={cStyle}/>,
       "GitHub": <GithubCircle style={cStyle}/>,
       "GitLab": <Gitlab style={cStyle}/>,
-      "GitLab CI": <Gitlab style={cStyle}/>,
+      "Docker": <Docker style={cStyle}/>,
       "REST": <Api style={cStyle}/>,
       "GraphQL": <Graphql style={cStyle}/>,
       "Firebase": <Firebase style={cStyle}/>,

@@ -36,7 +36,7 @@ class SkillsContent extends React.Component {
       padding: "2px"
     };
 
-    const cClass = "SkillsListIcon";
+    const cClass = "SkillsListIcon Hoverable";
 
     switch(type) {
       case "C": return(

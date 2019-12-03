@@ -113,8 +113,8 @@
   text-align: center;
 }
 
-.SkillsListIcon:hover{
-  text-align: center;
+.Hoverable:hover{
+  transition: 0.25s;
 }
 
 .ProjectCardIcon{
