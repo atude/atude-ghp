@@ -13,7 +13,7 @@ import {
   Iframe,
   DeveloperBoard,
   Gitlab,
-  Api,
+  SwapVertical,
   Firebase,
   Graphql,
   Docker,
@@ -24,25 +24,26 @@ class ToolsContent extends React.Component {
 
   getIconTools = (type, setColor) => {
     if(!setColor) setColor = "#fff";
-    
+
     const cStyle = {color: setColor, fontSize: "21px", marginLeft: "7px"};
     const mainStyle = {color: setColor, fontSize: "28px", marginLeft: "5px", marginRight: "5px"};
     const iconSwitch = {
       "Web Development": <Iframe style={mainStyle}/>,
       "App Development": <CellphoneAndroid style={mainStyle}/>,
-      "API Management": <Server style={mainStyle}/>,
+      "Data Management": <Server style={mainStyle}/>,
       "Design Frameworks": <DeveloperBoard style={mainStyle}/>, 
       "Design Tools": <FormatColorFill style={mainStyle}/>, 
       "Devops": <Infinity style={mainStyle}/>,
 
       "React": <ReactIcon style={cStyle}/>,
       "React Native": <ReactIcon style={cStyle}/>,
+      "React Native Elements": <ReactIcon style={cStyle}/>,
       "Material UI": <MaterialUi style={cStyle}/>, 
       "Unity": <Unity style={cStyle}/>,
       "GitHub": <GithubCircle style={cStyle}/>,
       "GitLab": <Gitlab style={cStyle}/>,
       "Docker": <Docker style={cStyle}/>,
-      "REST": <Api style={cStyle}/>,
+      "REST": <SwapVertical style={cStyle}/>,
       "GraphQL": <Graphql style={cStyle}/>,
       "Firebase": <Firebase style={cStyle}/>,
 
@@ -69,26 +70,7 @@ class ToolsContent extends React.Component {
 
       "React Native Paper":
       <SvgIcon viewBox="0 0 800 800" style={cStyle}>
-        <g transform="translate(0.000000,800.000000) scale(0.100000,-0.100000)">
-          <path stroke={setColor} strokeWidth="300" 
-          d="M5380 7073 c-69 -12 -152 -38 -218 -68 -40 -19 -714 -404 -1498 -857
-          -1035 -597 -1430 -830 -1439 -848 -7 -14 -148 -524 -314 -1133 -281 -1029
-          -302 -1110 -291 -1143 14 -41 60 -74 105 -74 22 0 251 127 825 459 437 252
-          796 458 797 457 0 0 -122 -449 -273 -996 -200 -726 -273 -1003 -268 -1025 4
-          -23 142 -167 567 -593 614 -614 599 -602 673 -566 21 11 42 26 47 34 5 9 131
-          471 281 1029 l271 1013 398 237 c219 130 424 258 457 284 111 89 212 230 282
-          397 41 95 630 2248 649 2371 7 43 9 118 6 179 -22 409 -317 751 -719 834 -72
-          15 -273 20 -338 9z m330 -234 c308 -82 524 -374 508 -689 -5 -85 -30 -184
-          -227 -910 -122 -448 -224 -823 -227 -833 -4 -14 -17 0 -49 55 -111 190 -300
-          334 -531 404 -81 25 -103 28 -249 28 -145 0 -168 -3 -248 -27 -48 -15 -118
-          -43 -155 -61 -37 -19 -643 -368 -1347 -774 -704 -407 -1281 -739 -1282 -738
-          -1 0 114 423 254 938 l256 938 1414 816 c936 540 1439 825 1486 841 129 45
-          255 49 397 12z m-627 -2175 c204 -46 376 -179 463 -359 54 -112 68 -182 68
-          -330 0 -121 -2 -136 -31 -211 -53 -141 -135 -250 -248 -328 -125 -88 -2229
-          -1327 -2233 -1316 -3 8 515 1901 522 1907 10 10 1016 587 1045 599 123 53 283
-          67 414 38z m-925 -2868 l-213 -796 -422 422 c-239 239 -419 426 -414 431 12
-          12 1255 745 1259 742 1 -1 -93 -361 -210 -799z"/>      
-        </g>
+        <g transform="translate(0.000000,800.000000) scale(0.10000,-0.100000)"><path stroke={setColor} strokeWidth="300" d="M5380 7073 c-69 -12 -152 -38 -218 -68 -40 -19 -714 -404 -1498 -857 -1035 -597 -1430 -830 -1439 -848 -7 -14 -148 -524 -314 -1133 -281 -1029 -302 -1110 -291 -1143 14 -41 60 -74 105 -74 22 0 251 127 825 459 437 252 796 458 797 457 0 0 -122 -449 -273 -996 -200 -726 -273 -1003 -268 -1025 4 -23 142 -167 567 -593 614 -614 599 -602 673 -566 21 11 42 26 47 34 5 9 131 471 281 1029 l271 1013 398 237 c219 130 424 258 457 284 111 89 212 230 282 397 41 95 630 2248 649 2371 7 43 9 118 6 179 -22 409 -317 751 -719 834 -72 15 -273 20 -338 9z m330 -234 c308 -82 524 -374 508 -689 -5 -85 -30 -184 -227 -910 -122 -448 -224 -823 -227 -833 -4 -14 -17 0 -49 55 -111 190 -300 334 -531 404 -81 25 -103 28 -249 28 -145 0 -168 -3 -248 -27 -48 -15 -118 -43 -155 -61 -37 -19 -643 -368 -1347 -774 -704 -407 -1281 -739 -1282 -738 -1 0 114 423 254 938 l256 938 1414 816 c936 540 1439 825 1486 841 129 45 255 49 397 12z m-627 -2175 c204 -46 376 -179 463 -359 54 -112 68 -182 68 -330 0 -121 -2 -136 -31 -211 -53 -141 -135 -250 -248 -328 -125 -88 -2229 -1327 -2233 -1316 -3 8 515 1901 522 1907 10 10 1016 587 1045 599 123 53 283 67 414 38z m-925 -2868 l-213 -796 -422 422 c-239 239 -419 426 -414 431 12 12 1255 745 1259 742 1 -1 -93 -361 -210 -799z"/></g>
       </SvgIcon>
     }
 

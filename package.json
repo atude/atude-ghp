@@ -15,7 +15,7 @@
     "react-svg": "^9.0.4",
     "react-transition-group": "^4.3.0",
     "typeface-roboto": "0.0.54",
-    "typescript": "^3.7.2"
+    "typescript": "^3.7.3"
   },
   "scripts": {
     "start": "react-scripts start",

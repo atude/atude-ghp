@@ -2,8 +2,8 @@
   "Resume": "https://drive.google.com/file/d/1Becbv315gNjHXjvaDAqxBZYY88KiKPd_/view?usp=sharing",
   "About me":
   {
-    "A bit about me": "I'm a student at the University of New South Wales, currently undergoing a Bachelor's Degree in Software Engineering. I pursue a passion in creating and designing products with captivating UXs and real-world use to help bring creative solutions to problems. ",
-    "Experience with software": "I have engaged in a variety of programming languages for a range of different uses, from game creation and app development to web design. With this skillset, I've become familiar with tools such as Unity and React, and have utilised programming styles including OOP and functional programming. "
+    "A bit about me": "I'm a student at the University of New South Wales, currently undergoing a Bachelor's Degree in Software Engineering. I pursue a passion in creating and designing products with captivating UXs and real-world use to help bring creative solutions to modern challenges. ",
+    "Experience with software": "My experience with development ranges from game creation and app development to web design and scripting. I've become familiar with industry-standard tools such as React and Expo, and have utilised both object-oriented and functional programming styles. "
 
   },
   "Skillset": 
@@ -51,13 +51,13 @@
     [
       "React Native", "Expo", "Unity"
     ],
-    "API Management": 
+    "Data Management": 
     [
-      "REST", "GraphQL", "Firebase"
+      "Firebase", "GraphQL", "REST"
     ],
     "Design Frameworks": 
     [
-      "Material UI", "React Native Paper"
+      "Material UI", "React Native Paper", "React Native Elements"
     ],
     "Design Tools":
     [
@@ -84,7 +84,7 @@
       "accColor": "#f74d00",
       "heading": "Beams",
       "subheading": "Suburb Analysis Webapp",
-      "tools": ["React"],
+      "tools": ["React", "Material UI"],
       "built": ["JavaScript", "HTML", "CSS"],
       "platforms": ["Chrome", "Edge", "Firefox"],
       "date": "2019",
@@ -93,7 +93,8 @@
       "privacylink": "",
       "viewicon": "Youtube",
       "viewtext": "View on Youtube",
-      "role": "Lead Front End",
+      "role": "Lead Frontend",
+      "team": "Beams",
       "body": "Beams is a suburb analysis webapp that merges housing market data and suburb information from a variety of sources to create a user friendly and intuitive hub. This can be used to influence decisions on buying properties by finding suburbs which best matches your criteria."
 
     },
@@ -103,7 +104,7 @@
       "accColor": "#6a3fff",
       "heading": "myWAM",
       "subheading": "WAM Calculator and Mark Log",
-      "tools": ["React Native", "Expo"],
+      "tools": ["Expo", "React Native", "React Native Paper"],
       "built": ["JavaScript"],
       "platforms": ["Android"],
       "date": "2019",
@@ -113,6 +114,7 @@
       "viewicon": "Google Play",
       "viewtext": "Available on the Play Store",
       "role": "Fullstack",
+      "team": "Solo",
       "body": "myWAM is a simple tool for university students to track their WAM and keep on top of their assessment progress. The WAM Calculator gives insight on your current term WAM as well as your degree WAM with summaries of performance, while a course log also allows you to keep track of you marks throughout your degree."
     },
     "Devote": 
@@ -122,7 +124,7 @@
       "heading": "Devote",
       "iconpath": "../assets/ic_devote.png",
       "subheading": "Study Management App",
-      "tools": ["Unity Engine"],
+      "tools": ["Unity"],
       "built": ["C#"],
       "platforms": ["Android"],
       "date": "2017 - 2018",
@@ -132,6 +134,7 @@
       "viewicon": "Google Play",
       "viewtext": "Available on the Play Store",
       "role": "Fullstack",
+      "team": "Solo",
       "body": "Devote is an all-in-one hub made and refined for high school students to organise your study tasks, track your assessment progress, view your level of productivity and ultimately balance your social and study lifestyle. "
     }
   },

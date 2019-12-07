@@ -39,7 +39,7 @@ class SkillsContent extends React.Component {
     const cClass = "SkillsListIcon Hoverable";
 
     switch(type) {
-      case "C": return(
+      case "C": return (
       <Tooltip disableFocusListener title="C" placement="left">
         <LanguageC 
           onMouseEnter={() => {this.setState({onC: true})}}

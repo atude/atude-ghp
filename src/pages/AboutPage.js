@@ -41,7 +41,7 @@ class AboutPage extends React.Component {
             <Slide in timeout={tBase}>
             <ContentCard mainColor={mainColor} currentScheme={currentScheme}
               headingIcon={<HumanGreeting style={{color: mainColor}} fontSize="large" className="ContentCardHeadIcon"/>}
-              heading="Hi! I'm Moz!" 
+              heading="Hi, I'm Moz!" 
               body={Database["About me"]}
             />
             </Slide>

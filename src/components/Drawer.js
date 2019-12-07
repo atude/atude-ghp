@@ -174,7 +174,8 @@ class ResponsiveDrawer extends React.Component {
   };
 
   componentDidMount() {
-    this.switchDark(false);
+    const isDark = localStorage.getItem("isDark");
+    this.switchDark(isDark == "Dark" ? true : false);
   }
 
   switchDark = (isDark) => {
@@ -182,6 +183,8 @@ class ResponsiveDrawer extends React.Component {
       currentScheme: isDark ? darkScheme : lightScheme,
       isDark: isDark,
     })
+
+    localStorage.setItem("isDark", isDark ? "Dark" : "Light");
   }
 
   handleDrawerToggle = () => {
@@ -189,6 +192,8 @@ class ResponsiveDrawer extends React.Component {
   };
 
   handleTabClick = (tab) => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+
     if(this.state.mobileOpen) this.handleDrawerToggle();
     this.setState({selected: tab});
   }
@@ -244,7 +249,7 @@ class ResponsiveDrawer extends React.Component {
 
   getSideHead = () => {
     const iconSize = "40px";
-    const colorGithub = "#000000";
+    const colorGithub = "#5e227f";
     const colorLinkedIn = "#0077B5";
     const colorEmail = "#D44638";
 
@@ -298,8 +303,7 @@ class ResponsiveDrawer extends React.Component {
             </IconButton>
           </Grid>
           </a>
-          <a href={`mailto:${Database.Contact.Contact.Email}`} rel="noopener noreferrer" 
-          style={{textDecoration: "none"}}>
+          <a href={`mailto:${Database.Contact.Contact.Email}`} style={{textDecoration: "none"}}>
           <Grid item>
             <IconButton key="Email"
               onMouseEnter={() => {this.setState({isOnEmail: true})}}

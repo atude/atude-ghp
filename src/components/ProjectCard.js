@@ -1,7 +1,8 @@
 import React from 'react';
 import './Components.css';
-import { Typography, Card, CardMedia, CardContent, Grid, Chip, Avatar, Link, Button, List, } from '@material-ui/core';
-import { GithubCircle, Account, AccountGroup, Calendar, ShieldLock, ChevronLeftCircle, ChevronRightCircle } from 'mdi-material-ui';
+import { Typography, Card, CardContent, Grid, Chip, Avatar, Link, Button, } from '@material-ui/core';
+import { GithubCircle, AccountCircle, AccountSupervisorCircle, Calendar, ShieldLock, 
+  ChevronLeftCircle, ChevronRightCircle, DeveloperBoard, CodeNotEqualVariant, CodeBracesBox } from 'mdi-material-ui';
 
 class ProjectCard extends React.Component {
   state = {
@@ -22,16 +23,22 @@ class ProjectCard extends React.Component {
   getRoleIcon = (role) => {
     const lightGray = this.props.currentScheme.lightGray;
 
-    switch(role) {
+    switch(role.split(" ").splice(-1)[0]) {
       case "Fullstack":
-        return <Account className="RoleIcon" style={{color: lightGray}}/>;
+        return <DeveloperBoard className="RoleIcon" style={{color: lightGray}}/>;
+      case "Solo":
+        return <AccountCircle className="RoleIcon" style={{color: lightGray}}/>;
+      case "Frontend":
+        return <CodeNotEqualVariant className="RoleIcon" style={{color: lightGray}}/>;
+      case "Backend":
+        return <CodeNotEqualVariant className="RoleIcon" style={{color: lightGray}}/>;
       default:
-        return <AccountGroup className="RoleIcon" style={{color: lightGray}}/>;
+        return <AccountSupervisorCircle className="RoleIcon" style={{color: lightGray}}/>;
     }
   }
 
   render() {
-    const { projectIcon, projectBanner, heading, subheading, tools, built, platforms, date, bgColor, accColor,
+    const { projectIcon, projectBanner, heading, subheading, tools, team, built, platforms, date, bgColor, accColor,
       gitlink, viewlink, privacylink, viewtext, viewicon, body, role, mainColor, currentScheme } = this.props;
 
     const lightGray = currentScheme.lightGray;
@@ -87,7 +94,6 @@ class ProjectCard extends React.Component {
               style={{color: accColor, fontSize: "28px", textDecoration: "none"}} variant="h1">
                 {heading}
               </Typography>
-
               <Typography className="CaptionText" style={categoryStyle} 
                 variant="body1">
                 {subheading}
@@ -95,13 +101,13 @@ class ProjectCard extends React.Component {
               <br/>
             </div>
 
-            <Grid container direction="row" justify="space-between" alignItems="center">
+             {/* Platforms */}
+             <Grid container direction="row" justify="space-between" alignItems="center">
               <Grid item className="ProjectHeadLeft">
                 <Grid container direction="row" justify="flex-start" alignItems="center">
                   <Grid item>
                     <Typography style={categoryStyle} variant="button">PLATFORMS&nbsp; | </Typography>
                   </Grid>            
-                  
                   {Object.keys(platforms).map(item => (
                     <Grid key={item} item className="PlatformIcon">{platforms[item]}</Grid>
                   ))}
@@ -118,17 +124,19 @@ class ProjectCard extends React.Component {
               </Grid>
             </Grid>
 
+            {/* Languages */}
             <Grid container direction="row" justify="space-between" alignItems="center">
               <Grid item className="ProjectHeadLeft">
                 <Grid container direction="row" justify="flex-start" alignItems="center">
                   <Grid item>
-                    <Typography style={categoryStyle} variant="button">LANGUAGES&nbsp; | </Typography>
+                    <Typography style={categoryStyle} variant="button">LANGUAGES&nbsp; |</Typography>
                   </Grid>
                   {Object.keys(built).map(item => (
                     <Grid key={item} item className="PlatformIcon">{built[item]}</Grid>
                   ))}
                 </Grid>
               </Grid>
+            {/* Role */}
               <Grid item>
                 {this.getRoleIcon(role)}
                 <Typography style={categoryStyle}
@@ -138,19 +146,27 @@ class ProjectCard extends React.Component {
               </Grid>
             </Grid>
             
-
-            <Grid container direction="row" justify="flex-start" alignItems="center">
+            {/* Tools */}
+            <Grid container direction="row" justify="space-between" alignItems="center">
               <Grid item>
-                <Typography inline className="ToolsText" style={categoryStyle} variant="button">
-                  TOOLS
-                </Typography>
-                <Typography inline style={categoryStyle} variant="button">
-                  | 
+                <Grid container direction="row" justify="flex-start" alignItems="center">
+                  <Typography className="ToolsText" style={categoryStyle} variant="button">
+                    TOOLS
+                  </Typography>
+                  <Typography style={categoryStyle} variant="button">|</Typography>
+                {Object.keys(tools).map(item => (
+                  <Grid key={item} item className="PlatformIcon">{tools[item]}</Grid>
+                ))}
+                </Grid>
+              </Grid>
+            {/* Team */}
+              <Grid item>
+                {this.getRoleIcon(team)}
+                <Typography style={categoryStyle}
+                  variant="button" className="ProjectRightText">
+                  {team}
                 </Typography>
               </Grid>
-              {Object.keys(tools).map(item => (
-                <Grid key={item} item className="PlatformIcon">{tools[item]}</Grid>
-              ))}
             </Grid>
 
             <br/>
