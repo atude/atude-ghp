@@ -23,6 +23,8 @@ import Database from '../assets/Database';
 class ToolsContent extends React.Component {
 
   getIconTools = (type, setColor) => {
+    if(!setColor) setColor = "#fff";
+    
     const cStyle = {color: setColor, fontSize: "21px", marginLeft: "7px"};
     const mainStyle = {color: setColor, fontSize: "28px", marginLeft: "5px", marginRight: "5px"};
     const iconSwitch = {
@@ -113,11 +115,11 @@ class ToolsContent extends React.Component {
             <Grid container spacing={8} direction="row" alignItems="center" justify="flex-end">
               {tools[toolskey].map(key => (
                 <Grid item key={key}>
-                  <Chip variant="outlined" icon={this.getIconTools(key, Object.values(colorSet)[i])} 
-                  label={key} color="primary"
+                  <Chip variant="default" icon={this.getIconTools(key)} 
+                  label={key} 
                   style={{
-                    borderColor: Object.values(colorSet)[i], 
-                    color: Object.values(colorSet)[i],
+                    color: "#fff",
+                    backgroundColor: Object.values(colorSet)[i],
                   }}/>
                 </Grid>
               ))}
