@@ -1,6 +1,6 @@
 import React from 'react';
 import './Components.css';
-import { Typography, Card, CardContent, Grid, Chip, Avatar, Link, Button, } from '@material-ui/core';
+import { Typography, Card, CardContent, Grid, Chip, Avatar, Link, Button, Tooltip, } from '@material-ui/core';
 import { GithubCircle, AccountCircle, AccountSupervisorCircle, Calendar, ShieldLock, 
   ChevronLeftCircle, ChevronRightCircle, DeveloperBoard, CodeNotEqualVariant, CodeBracesBox } from 'mdi-material-ui';
 
@@ -138,7 +138,9 @@ class ProjectCard extends React.Component {
               </Grid>
             {/* Role */}
               <Grid item>
-                {this.getRoleIcon(role)}
+                <Tooltip title="Role">
+                  {this.getRoleIcon(role)}
+                </Tooltip>
                 <Typography style={categoryStyle}
                   variant="button" className="ProjectRightText">
                   {role}
@@ -161,7 +163,9 @@ class ProjectCard extends React.Component {
               </Grid>
             {/* Team */}
               <Grid item>
-                {this.getRoleIcon(team)}
+                <Tooltip title="Team">
+                  {this.getRoleIcon(team)}
+                </Tooltip>
                 <Typography style={categoryStyle}
                   variant="button" className="ProjectRightText">
                   {team}
