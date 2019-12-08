@@ -7,7 +7,8 @@ import { Menu, AccountBox, Buffer, GithubBox, LinkedinBox, EmailBox, MessageBull
 import { createMuiTheme, Typography, IconButton, SwipeableDrawer, List, ListItem, ListItemText, ListItemIcon, Hidden, CssBaseline, MuiThemeProvider, Drawer, Divider, Grid, AppBar, Toolbar, Switch as SwitchButton } from '@material-ui/core';
 import { TransitionGroup, } from 'react-transition-group';
 
-import icAtude from '../assets/ic_atude_dark.png';
+import icAtude from '../assets/ic_atude.png';
+import icAtudeCircle from '../assets/ic_atude_circle.png';
 
 import colorSetLight from '../assets/colorsetdark.json';
 import colorSetDark from '../assets/colorset.json';
@@ -171,6 +172,7 @@ class ResponsiveDrawer extends React.Component {
     isOnEmail: false,
     isOnLinkedIn: false,
     isOnGithub: false,
+    isOnLogo: false,
   };
 
   componentDidMount() {
@@ -258,9 +260,34 @@ class ResponsiveDrawer extends React.Component {
       <Grid container direction="column" alignItems="stretch" justify="center">
         <Grid item>
         <Link to="/" style={{textDecoration: "none"}} onClick={() => this.handleTabClick("", "/")}>
-          <img src={icAtude} alt="icAtude" className="SidebarIconHead" 
-          style={{filter: this.state.isDark ? "invert(100%)" : ""}}/>
-          <Typography style={{fontSize: "24px", lineHeight: "32px", textAlign: "right"}} 
+          <img 
+            src={icAtudeCircle} alt="icAtudeCircle"  
+            className="SidebarLogoCircle"
+            style={{
+              filter: !this.state.isDark ? "invert(100%)" : "",
+              padding: this.state.isOnLogo ? 0 : "20px",
+              opacity: this.state.isOnLogo ? 1 : 0,
+            }}
+          />
+          <img 
+            src={icAtude} alt="icAtude" className="SidebarLogoCircle" 
+            style={{
+              filter: !this.state.isDark ? "invert(100%)" : "",
+              padding: this.state.isOnLogo ? "50px" : 0,
+              opacity: this.state.isOnLogo ? 1 : 0,
+            }}
+          />
+          <img 
+            onMouseEnter={() => this.setState({isOnLogo: true})}
+            onMouseLeave={() => this.setState({isOnLogo: false})}
+            src={icAtude} alt="icAtude" className="SidebarIconHead" 
+            style={{
+              filter: !this.state.isDark ? "invert(100%)" : "",
+              padding: this.state.isOnLogo ? "14px" : 0,
+            }}
+          />
+
+          <Typography className="SidebarNameText" style={{fontSize: "24px", lineHeight: "32px", textAlign: "right"}} 
             variant="overline" color="textPrimary">
               Mozamel<br/><b>Anwary</b>
           </Typography>
@@ -365,7 +392,7 @@ class ResponsiveDrawer extends React.Component {
           <Grid item><ThemeLightDark style={{color: "#cccccc", marginTop: "4px"}}/></Grid>
         </Grid>
         <Typography className="CopyrightText" variant="button" style={{fontSize: "10px", color: "#cccccc"}}>
-          Atude © 2019
+          Atude © 2020
         </Typography>
         
       </MuiThemeProvider>

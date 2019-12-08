@@ -29,12 +29,35 @@
   transition: all 10s;
 }
 
+.SidebarNameText{
+  transition: all 1s;
+}
+
 .SidebarIconHead{
   width: 90px;
   height: 90px;
   float: left;
   margin-left: 20px;
   margin-top: -16px;
+  transition: all 1s;
+}
+
+.SidebarLogoCircle{
+  width: 90px;
+  height: 90px;
+  position: absolute;
+  margin-left: -90px;
+  margin-top: -16px;
+  transition: all 1s;
+}
+
+.SidebarLogoDiamond{
+  width: 140px;
+  height: 140px;
+  position: absolute;
+  margin-left: -115px;
+  margin-top: -40px;
+  transition: all 1s;
 }
 
 .AppbarIcon{
