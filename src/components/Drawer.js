@@ -264,7 +264,7 @@ class ResponsiveDrawer extends React.Component {
             src={icAtudeCircle} alt="icAtudeCircle"  
             className="SidebarLogoCircle"
             style={{
-              filter: !this.state.isDark ? "invert(100%)" : "",
+              filter: !this.state.isDark ? "invert(100%)" : "invert(0)",
               padding: this.state.isOnLogo ? 0 : "20px",
               opacity: this.state.isOnLogo ? 1 : 0,
             }}
@@ -272,7 +272,7 @@ class ResponsiveDrawer extends React.Component {
           <img 
             src={icAtude} alt="icAtude" className="SidebarLogoCircle" 
             style={{
-              filter: !this.state.isDark ? "invert(100%)" : "",
+              filter: !this.state.isDark ? "invert(100%)" : "invert(0)",
               padding: this.state.isOnLogo ? "50px" : 0,
               opacity: this.state.isOnLogo ? 1 : 0,
             }}
@@ -282,7 +282,7 @@ class ResponsiveDrawer extends React.Component {
             onMouseLeave={() => this.setState({isOnLogo: false})}
             src={icAtude} alt="icAtude" className="SidebarIconHead" 
             style={{
-              filter: !this.state.isDark ? "invert(100%)" : "",
+              filter: !this.state.isDark ? "invert(100%)" : "invert(0)",
               padding: this.state.isOnLogo ? "14px" : 0,
             }}
           />
