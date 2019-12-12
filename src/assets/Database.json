@@ -101,10 +101,10 @@
     "myWAM": 
     {
       "bgColor": "#42289f",
-      "accColor": "#6a3fff",
+      "accColor": "#6a5dd9",
       "heading": "myWAM",
       "subheading": "WAM Calculator and Mark Log",
-      "tools": ["Expo", "React Native", "React Native Paper"],
+      "tools": ["Expo", "React Native", "Firebase", "React Native Paper"],
       "built": ["JavaScript"],
       "platforms": ["Android"],
       "date": "2019",

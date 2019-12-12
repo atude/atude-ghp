@@ -42,7 +42,8 @@ import {
   Unity, 
   Edge,
   Firefox,
-  MaterialUi
+  MaterialUi,
+  Firebase
 } from 'mdi-material-ui';
 
 const viewIcons = {
@@ -131,7 +132,9 @@ class ProjectsPage extends React.Component {
         case "Unity": iconList.push(<Tooltip disableFocusListener title={item}>
           <Unity fontSize="small" style={miniIconColor}/>
           </Tooltip>); break;
-      
+        case "Firebase": iconList.push(<Tooltip disableFocusListener title={item}>
+          <Firebase fontSize="small" style={miniIconColor}/>
+          </Tooltip>); break;
         default: break;
       }
     })
