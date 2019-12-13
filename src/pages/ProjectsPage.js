@@ -1,7 +1,7 @@
 import React from 'react';
 import '../components/Components.css';
 import Database from '../assets/Database'
-import { Grid, Tooltip, Typography, Fade, Slide, SvgIcon } from '@material-ui/core';
+import { Grid, Tooltip, Typography, Slide, SvgIcon } from '@material-ui/core';
 import ProjectCard from '../components/ProjectCard';
 import ReactSVG from 'react-svg'
 
@@ -81,7 +81,7 @@ class ProjectsPage extends React.Component {
     var iconList = [];
     const miniIconColor = { color: this.props.currentScheme.lightGray };
 
-    types.map(item => {
+    types.forEach(item => {
       switch (item) {
         case "Android": iconList.push(<Tooltip disableFocusListener title={item}>
           <Android fontSize="small" style={miniIconColor}/>

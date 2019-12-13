@@ -1,6 +1,6 @@
 import React from 'react';
 import './Components.css';
-import { Grid, Typography, Tooltip, SvgIcon, IconButton, withStyles } from '@material-ui/core';
+import { Grid, Typography, Tooltip, } from '@material-ui/core';
 import Slider from '@material-ui/lab/Slider';
 import { 
   LanguageC, 

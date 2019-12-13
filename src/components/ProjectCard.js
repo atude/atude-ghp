@@ -106,7 +106,7 @@ class ProjectCard extends React.Component {
               <Grid item className="ProjectHeadLeft">
                 <Grid container direction="row" justify="flex-start" alignItems="center">
                   <Grid item>
-                    <Typography style={categoryStyle} variant="button">PLATFORMS&nbsp; | </Typography>
+                    <Typography style={categoryStyle} variant="button">PLATFORMS&nbsp;  </Typography>
                   </Grid>            
                   {Object.keys(platforms).map(item => (
                     <Grid key={item} item className="PlatformIcon">{platforms[item]}</Grid>
@@ -129,7 +129,7 @@ class ProjectCard extends React.Component {
               <Grid item className="ProjectHeadLeft">
                 <Grid container direction="row" justify="flex-start" alignItems="center">
                   <Grid item>
-                    <Typography style={categoryStyle} variant="button">LANGUAGES&nbsp; |</Typography>
+                    <Typography style={categoryStyle} variant="button">LANGUAGES&nbsp; </Typography>
                   </Grid>
                   {Object.keys(built).map(item => (
                     <Grid key={item} item className="PlatformIcon">{built[item]}</Grid>
@@ -152,10 +152,10 @@ class ProjectCard extends React.Component {
             <Grid container direction="row" justify="space-between" alignItems="center">
               <Grid item>
                 <Grid container direction="row" justify="flex-start" alignItems="center">
-                  <Typography className="ToolsText" style={categoryStyle} variant="button">
-                    TOOLS
+                  <Typography style={categoryStyle} variant="button">
+                    DEV STACK&nbsp;&nbsp;&nbsp; 
                   </Typography>
-                  <Typography style={categoryStyle} variant="button">|</Typography>
+                  
                 {Object.keys(tools).map(item => (
                   <Grid key={item} item className="PlatformIcon">{tools[item]}</Grid>
                 ))}

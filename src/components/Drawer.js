@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Link, NavLink, HashRouter, Switch } from 'react-router-dom';
-import {withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Menu, AccountBox, Buffer, GithubBox, LinkedinBox, EmailBox, MessageBulleted, ThemeLightDark } from 'mdi-material-ui';
@@ -177,7 +176,7 @@ class ResponsiveDrawer extends React.Component {
 
   componentDidMount() {
     const isDark = localStorage.getItem("isDark");
-    this.switchDark(isDark == "Dark" ? true : false);
+    this.switchDark(isDark === "Dark" ? true : false);
   }
 
   switchDark = (isDark) => {
