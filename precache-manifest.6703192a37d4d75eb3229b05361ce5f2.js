@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3cfb3cce5663dd0c82b98fc59c9433a8",
+    "revision": "c221f91e1c66f944eb4f75bcf344b003",
     "url": "/atude-ghp/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/atude-ghp/static/css/2.612075aa.chunk.css"
   },
   {
-    "revision": "a113af744844436eba3b",
+    "revision": "41200acd1bccb22c08d9",
     "url": "/atude-ghp/static/css/main.cc5f9057.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/atude-ghp/static/js/2.99052080.chunk.js"
   },
   {
-    "revision": "a113af744844436eba3b",
-    "url": "/atude-ghp/static/js/main.50c77021.chunk.js"
+    "revision": "41200acd1bccb22c08d9",
+    "url": "/atude-ghp/static/js/main.3d022d43.chunk.js"
   },
   {
     "revision": "e4d55441f48422a7f79b",
@@ -68,8 +68,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/atude-ghp/static/media/banner_devote5.48c307b5.png"
   },
   {
-    "revision": "71cfb67375985e376b9f8e99e1618335",
-    "url": "/atude-ghp/static/media/banner_mywam.71cfb673.png"
+    "revision": "1b4e82ea89955cdf89683e6553c31feb",
+    "url": "/atude-ghp/static/media/banner_mywam.1b4e82ea.png"
   },
   {
     "revision": "83eddb74d65da4c937d5a940b1639d0b",
