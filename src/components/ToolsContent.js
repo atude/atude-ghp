@@ -30,7 +30,7 @@ class ToolsContent extends React.Component {
     const iconSwitch = {
       "Web Development": <Iframe style={mainStyle}/>,
       "App Development": <CellphoneAndroid style={mainStyle}/>,
-      "Data Management": <Server style={mainStyle}/>,
+      "API and Backend": <Server style={mainStyle}/>,
       "Design Frameworks": <DeveloperBoard style={mainStyle}/>, 
       "Design Tools": <FormatColorFill style={mainStyle}/>, 
       "Devops": <Infinity style={mainStyle}/>,
