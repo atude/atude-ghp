@@ -27,6 +27,7 @@ import bnMywam1 from '../assets/banner_mywam1.png';
 import bnMywam2 from '../assets/banner_mywam2.png';
 import bnMywam3 from '../assets/banner_mywam3.png';
 import bnMywam4 from '../assets/banner_mywam4.png';
+import bnMywam5 from '../assets/banner_mywam5.png';
 
 import { 
   Android, 
@@ -68,7 +69,7 @@ const projMedia = {
   {
     "icon": icMywam,
     "banners": [bnMywam, bnMywam1, bnMywam2, bnMywam3,
-      bnMywam4],
+      bnMywam4, bnMywam5],
   }
 }
 
