@@ -7,7 +7,7 @@ import ReactSVG from 'react-svg'
 
 import icDevote from '../assets/ic_devote.svg';
 import icBeams from '../assets/ic_beams.svg';
-import icMywam from '../assets/ic_mywam.svg';
+import icUnicore from '../assets/ic_unicore.svg';
 
 import bnDevote from '../assets/banner_devote.png'
 import bnDevote1 from '../assets/banner_devote1.png'
@@ -22,12 +22,12 @@ import bnBeams2 from '../assets/banner_beams2.png';
 import bnBeams3 from '../assets/banner_beams3.png';
 import bnBeams4 from '../assets/banner_beams4.png';
 
-import bnMywam from '../assets/banner_mywam.png';
-import bnMywam1 from '../assets/banner_mywam1.png';
-import bnMywam2 from '../assets/banner_mywam2.png';
-import bnMywam3 from '../assets/banner_mywam3.png';
-import bnMywam4 from '../assets/banner_mywam4.png';
-import bnMywam5 from '../assets/banner_mywam5.png';
+import bnUnicore from '../assets/banner_unicore.png';
+import bnUnicore1 from '../assets/banner_unicore1.png';
+import bnUnicore2 from '../assets/banner_unicore2.png';
+import bnUnicore3 from '../assets/banner_unicore3.png';
+import bnUnicore4 from '../assets/banner_unicore4.png';
+import bnUnicore5 from '../assets/banner_unicore5.png';
 
 import { 
   Android, 
@@ -65,11 +65,11 @@ const projMedia = {
     "banners": [bnBeams, bnBeams1, bnBeams2,
       bnBeams3, bnBeams4],
   },
-  "myWAM":
+  "Unicore":
   {
-    "icon": icMywam,
-    "banners": [bnMywam, bnMywam1, bnMywam2, bnMywam3,
-      bnMywam4, bnMywam5],
+    "icon": icUnicore,
+    "banners": [bnUnicore, bnUnicore1, bnUnicore2, bnUnicore3,
+      bnUnicore4, bnUnicore5],
   }
 }
 
