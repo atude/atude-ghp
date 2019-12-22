@@ -98,10 +98,13 @@ class ProjectCard extends React.Component {
               style={{color: accColor, fontSize: "28px", textDecoration: "none"}} variant="h1">
                 {heading}
               </Typography>
-              <Typography className="CaptionText" style={categoryStyle} 
-                variant="body1">
-                {subheading}
-              </Typography>
+              <div style={{marginTop: "2px"}}>
+                <Typography className="ProjectCardSubheader"
+                  style={{fontSize: "14px", color: lightGray, letterSpacing: "0px"}}
+                  variant="body1">
+                    {subheading}
+                </Typography>
+              </div>
               <br/>
             </div>
 
@@ -192,15 +195,14 @@ class ProjectCard extends React.Component {
                 </Typography>
                 {achievements.map(achievement => (
                   <Chip 
-                    variant="outlined"
                     style={{
                       height: "30px", 
                       marginTop: "4px", 
                       padding: "4px",
-                      borderColor: accColor,
+                      backgroundColor: accColor,
                     }} 
                     label={
-                      <Typography style={{fontSize: "12px", color: bgColor}} variant="button">
+                      <Typography style={{fontSize: "12px", color: "#fff"}} variant="button">
                         {achievement}
                       </Typography>
                     }

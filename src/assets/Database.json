@@ -95,14 +95,14 @@
       "viewtext": "View on Youtube",
       "role": "Lead Frontend",
       "team": "Team Beams",
-      "achievements": ["Best UX: Macquarie SENG Workshop 2019"],
+      "achievements": ["Best UX: Macquarie Group Workshop 2019"],
       "body": "Beams is a suburb analysis webapp that merges housing market data and suburb information from a variety of sources to create a user friendly and intuitive hub. This can be used to influence decisions on buying properties by finding suburbs which best matches your criteria."
 
     },
     "Unicore": 
     {
       "bgColor": "#42289f",
-      "accColor": "#6a5dd9",
+      "accColor": "#7f74e3",
       "heading": "Unicore",
       "subheading": "University WAM and Course Tracking App",
       "tools": ["Expo", "React Native", "Firebase", "React Native Paper"],
