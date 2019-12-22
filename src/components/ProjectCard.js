@@ -38,8 +38,12 @@ class ProjectCard extends React.Component {
   }
 
   render() {
-    const { projectIcon, projectBanner, heading, subheading, tools, team, built, platforms, date, bgColor, accColor,
-      gitlink, viewlink, privacylink, viewtext, viewicon, body, role, mainColor, currentScheme } = this.props;
+    const { 
+      projectIcon, projectBanner, heading, subheading, tools, team, 
+      built, platforms, date, achievements, bgColor, accColor,
+      gitlink, viewlink, privacylink, viewtext, viewicon, body, role, 
+      mainColor, currentScheme, 
+    } = this.props;
 
     const lightGray = currentScheme.lightGray;
     const categoryStyle = {fontSize: "14px", color: lightGray, letterSpacing: "0px"};
@@ -85,10 +89,10 @@ class ProjectCard extends React.Component {
         </div>
 
         <div className="ProjectCardContent">
-
           <CardContent>
+
+            {/* Headings */}
             <div className="ProjectCardTextContent">
-             {/* Heading */}
             {projectIcon}
               <Typography component="a" href={viewlink} target="_blank" rel="noopener noreferrer"
               style={{color: accColor, fontSize: "28px", textDecoration: "none"}} variant="h1">
@@ -102,8 +106,10 @@ class ProjectCard extends React.Component {
             </div>
 
              {/* Platforms */}
-             <Grid container direction="row" justify="space-between" alignItems="center">
-              <Grid item className="ProjectHeadLeft">
+             <Grid container direction="row" justify="space-between" alignItems="center"
+              style={{marginBottom: 5,}}
+             >
+              <Grid xs={12} sm={6} item className="ProjectHeadLeft">
                 <Grid container direction="row" justify="flex-start" alignItems="center">
                   <Grid item>
                     <Typography style={categoryStyle} variant="button">PLATFORMS&nbsp;  </Typography>
@@ -114,7 +120,7 @@ class ProjectCard extends React.Component {
                 </Grid>
               </Grid>
 
-              {/* Calendar item */}
+            {/* Calendar item */}
               <Grid item>
                 <Calendar className="RoleIcon" style={{color: lightGray}}/>
                 <Typography style={categoryStyle}
@@ -125,8 +131,10 @@ class ProjectCard extends React.Component {
             </Grid>
 
             {/* Languages */}
-            <Grid container direction="row" justify="space-between" alignItems="center">
-              <Grid item className="ProjectHeadLeft">
+            <Grid container direction="row" justify="space-between" alignItems="center"
+              style={{marginBottom: 5,}}
+            >
+              <Grid xs={12} sm={6} item className="ProjectHeadLeft">
                 <Grid container direction="row" justify="flex-start" alignItems="center">
                   <Grid item>
                     <Typography style={categoryStyle} variant="button">LANGUAGES&nbsp; </Typography>
@@ -136,6 +144,7 @@ class ProjectCard extends React.Component {
                   ))}
                 </Grid>
               </Grid>
+
             {/* Role */}
               <Grid item>
                 <Tooltip title="Role">
@@ -150,7 +159,7 @@ class ProjectCard extends React.Component {
             
             {/* Tools */}
             <Grid container direction="row" justify="space-between" alignItems="center">
-              <Grid item>
+              <Grid xs={12} sm={6} item>
                 <Grid container direction="row" justify="flex-start" alignItems="center">
                   <Typography style={categoryStyle} variant="button">
                     DEV STACK&nbsp;&nbsp;&nbsp; 
@@ -161,6 +170,7 @@ class ProjectCard extends React.Component {
                 ))}
                 </Grid>
               </Grid>
+
             {/* Team */}
               <Grid item>
                 <Tooltip title="Team">
@@ -174,9 +184,36 @@ class ProjectCard extends React.Component {
             </Grid>
 
             <br/>
+            {/* Achievements */}
+            {achievements.length > 0 && 
+              <>
+                <Typography style={{color: mainColor, paddingBottom: "4px"}} variant="button">
+                  Achievements
+                </Typography>
+                {achievements.map(achievement => (
+                  <Chip 
+                    variant="outlined"
+                    style={{
+                      height: "30px", 
+                      marginTop: "4px", 
+                      padding: "4px",
+                      borderColor: accColor,
+                    }} 
+                    label={
+                      <Typography style={{fontSize: "12px", color: bgColor}} variant="button">
+                        {achievement}
+                      </Typography>
+                    }
+                  />
+                ))}
+              </>
+             }
+            {achievements.length > 0 && <><br/><br/></>}
+            {/* About */}
             <Typography style={{color: mainColor, paddingBottom: "4px"}} variant="button">
               ABOUT
             </Typography>
+
             {/* Body */}
             <Typography style={{fontSize: "14px"}} variant="body1">
               {body}

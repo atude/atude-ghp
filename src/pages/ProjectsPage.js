@@ -197,6 +197,7 @@ class ProjectsPage extends React.Component {
                 role={item.role}
                 team={item.team}
                 body={item.body} 
+                achievements={item.achievements}
               />
             </Slide>
           </Grid>
