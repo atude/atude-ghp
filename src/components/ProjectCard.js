@@ -272,7 +272,7 @@ class ProjectCard extends React.Component {
                         paddingBottom: "3px",
                         fontSize: "12px", 
                         color: "#fff",
-                        textAlign: "center"
+                        textAlign: "center",
                       }}
                     >
                       {achievement}
