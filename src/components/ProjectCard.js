@@ -195,6 +195,7 @@ class ProjectCard extends React.Component {
                 </Typography>
                 {achievements.map(achievement => (
                   <Chip 
+                    key={achievement}
                     style={{
                       height: "30px", 
                       marginTop: "4px", 
