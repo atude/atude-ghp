@@ -1,17 +1,35 @@
 import React from 'react';
 import './Components.css';
-import { Typography, Card, CardContent, Grid, Chip, Avatar, Link, Button, Tooltip, } from '@material-ui/core';
+import { Typography, Card, CardContent, Grid, Chip, Avatar, Link, Button, Tooltip, Divider, } from '@material-ui/core';
 import {
   GithubCircle, AccountCircle, AccountSupervisorCircle, Calendar, ShieldLock, 
   ChevronLeftCircle, ChevronRightCircle, DeveloperBoard, CodeNotEqualVariant,
   CodeBracesBox,
 } from 'mdi-material-ui';
 
-
 class ProjectCard extends React.Component {
-  state = {
-    bannerIndex: 0,
-    isTransitioning: false,
+  constructor(props) {
+    super(props);
+    this.state = {
+      bannerIndex: 0,
+      isTransitioning: false,
+      width: 0,
+    };
+
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+  }
+  
+  componentDidMount() {
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
+  }
+  
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+  
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth });
   }
 
   bannerControl = (i, len) => {
@@ -153,7 +171,6 @@ class ProjectCard extends React.Component {
   }
 
   getDetailsSectionRight = (text, tooltipText, categoryStyle, rightPadding, icon) => {
-    console.log(window.innerWidth);
     return (
       <Grid item>
         <Grid container direction="row" alignItems="center"
@@ -196,7 +213,9 @@ class ProjectCard extends React.Component {
             ))
           )}
         </Grid>
-        <Grid item xs={12} sm={6} container direction="column" justify="flex-start" alignItems={detailsRightJustify}>
+        {this.state.width < 600 && <Divider style={{ width: "100%", marginTop: "15px", marginBottom: "15px" }} />}
+        <Grid item xs={12} sm={6} container direction="column" justify="flex-start"
+          alignItems={this.state.width < 600 ? "flex-start" : "flex-end"}>
           {this.getDetailsSectionRight(date, "Date", categoryStyle, 1, this.getDetailsStaticIcon("Calendar"))}
           {this.getDetailsSectionRight(role, "Role", categoryStyle, 1, this.getDetailsStaticIcon(role))}
           {this.getDetailsSectionRight(team, "Team", categoryStyle, 1, this.getDetailsStaticIcon(team))}
@@ -235,20 +254,30 @@ class ProjectCard extends React.Component {
                   Achievements
                 </Typography>
                 {achievements.map(achievement => (
-                  <Chip 
+                  <div 
                     key={achievement}
                     style={{
-                      height: "30px", 
                       marginTop: "4px", 
                       padding: "4px",
                       backgroundColor: accColor,
-                    }} 
-                    label={
-                      <Typography style={{fontSize: "12px", color: "#fff"}} variant="button">
-                        {achievement}
-                      </Typography>
-                    }
-                  />
+                      borderRadius: 30,
+                      display: "inline-block"
+                    }}>
+                    <Typography
+                      variant="button"
+                      style={{
+                        paddingLeft: "12px",
+                        paddingRight: "12px",
+                        paddingTop: "3px",
+                        paddingBottom: "3px",
+                        fontSize: "12px", 
+                        color: "#fff",
+                        textAlign: "center"
+                      }}
+                    >
+                      {achievement}
+                    </Typography>
+                  </div>
                 ))}
               </>
              }
