@@ -139,14 +139,14 @@
   right: 0;
 }
 
-.PlatformIcon{
+.DetailsIconLeft{
   padding-left: 7px;
   padding-top: 5px;
 }
 
-.RoleIcon{
-  float: right;
-  margin-top: 3px;
+.DetailsIconRight{
+  padding-left: 4px;
+  padding-top: 4px;
 }
 
 .ViewLink{
@@ -154,16 +154,6 @@
   float: right;
   clear: both;
   opacity: 0.9;
-}
-
-.ProjectRightText{
-  float: left;
-  padding-right: 4px;
-  padding-top: 4px;
-}
-
-.ProjectHeadLeft{
-  float: left;
 }
 
 .ToolsText{

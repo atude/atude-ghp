@@ -1,8 +1,12 @@
 import React from 'react';
 import './Components.css';
 import { Typography, Card, CardContent, Grid, Chip, Avatar, Link, Button, Tooltip, } from '@material-ui/core';
-import { GithubCircle, AccountCircle, AccountSupervisorCircle, Calendar, ShieldLock, 
-  ChevronLeftCircle, ChevronRightCircle, DeveloperBoard, CodeNotEqualVariant, CodeBracesBox } from 'mdi-material-ui';
+import {
+  GithubCircle, AccountCircle, AccountSupervisorCircle, Calendar, ShieldLock, 
+  ChevronLeftCircle, ChevronRightCircle, DeveloperBoard, CodeNotEqualVariant,
+  CodeBracesBox,
+} from 'mdi-material-ui';
+
 
 class ProjectCard extends React.Component {
   state = {
@@ -20,21 +24,186 @@ class ProjectCard extends React.Component {
     }
   }
 
-  getRoleIcon = (role) => {
+  getDetailsStaticIcon = (role) => {
     const lightGray = this.props.currentScheme.lightGray;
 
     switch(role.split(" ").splice(-1)[0]) {
       case "Fullstack":
-        return <DeveloperBoard className="RoleIcon" style={{color: lightGray}}/>;
+        return <DeveloperBoard className="DetailsIconRight" style={{color: lightGray}}/>;
       case "Solo":
-        return <AccountCircle className="RoleIcon" style={{color: lightGray}}/>;
+        return <AccountCircle className="DetailsIconRight" style={{color: lightGray}}/>;
       case "Frontend":
-        return <CodeNotEqualVariant className="RoleIcon" style={{color: lightGray}}/>;
+        return <CodeNotEqualVariant className="DetailsIconRight" style={{color: lightGray}}/>;
       case "Backend":
-        return <CodeNotEqualVariant className="RoleIcon" style={{color: lightGray}}/>;
+        return <CodeNotEqualVariant className="DetailsIconRight" style={{ color: lightGray }} />;
+      case "Calendar":
+        return <Calendar className="DetailsIconRight" style={{ color: lightGray }} />;
       default:
-        return <AccountSupervisorCircle className="RoleIcon" style={{color: lightGray}}/>;
+        return <AccountSupervisorCircle className="DetailsIconRight" style={{color: lightGray}}/>;
     }
+  }
+
+  getBanner = (bgColor, projectBanner, viewtext, viewicon, gitlink, viewlink) => {
+    return (
+      <div style={{ height: "320px", backgroundColor: bgColor }}>
+        {projectBanner.map((banner, i) => (
+          <img
+            key={`${banner}_${i}_banner`}
+            alt={`${banner}_${i}_banner`}
+            style={{ opacity: this.state.bannerIndex === i ? 1 : 0 }}
+            className="BannerImg"
+            src={banner}
+          />
+        ))}
+                  
+        <Button className="BannerLeft" onClick={() => this.bannerControl(-1, projectBanner.length)}>
+          <ChevronLeftCircle style={{ color: "white", filter: "drop-shadow(0 0 4px rgba(0,0,0,0.2))" }} />
+        </Button>
+        <Button className="BannerRight" onClick={() => this.bannerControl(1, projectBanner.length)}>
+          <ChevronRightCircle style={{ color: "white", filter: "drop-shadow(0 0 4px rgba(0,0,0,0.2))" }} />
+        </Button>
+
+        <div className="BannerShortcutsCont">
+          <div className="ViewLink">
+            <Chip
+              style={{ height: "30px" }}
+              label={
+                <Typography style={{ fontSize: "11px" }} variant="button">
+                  {viewtext}
+                </Typography>
+              }
+              avatar={<Avatar>{viewicon}</Avatar>}
+              component="a"
+              clickable
+              href={viewlink}
+              target="_blank"
+              rel="noopener noreferrer"
+            />
+          </div>
+          <div className="ViewLink">
+            <Chip
+              style={{ height: "30px" }}
+              label={
+                <Typography style={{ fontSize: "11px" }} variant="button">
+                  Find on Github
+                  </Typography>
+              }
+              avatar={<Avatar><GithubCircle /></Avatar>}
+              component="a"
+              clickable
+              href={gitlink}
+              target="_blank"
+              rel="noopener noreferrer"
+            />
+          </div>
+        </div>
+
+        {/* Banner carousel dots */}
+        <Grid className="BannerDots" container spacing={16} direction="row" alignItems="center" justify="center">
+          {projectBanner.map((banner, i) => (
+            <Grid item key={`${banner}_${i}_dot`}
+              style={{
+                opacity: this.state.bannerIndex === i ? 1 : 0.5,
+                transition: "all 0.5s ease",
+                filter: "drop-shadow(0 0 4px rgba(0,0,0,0.3))"
+              }}>
+              <svg height="10" width="10">
+                <circle fill="white" cx="3" cy="3" r="3" />
+              </svg>
+            </Grid>
+          ))}
+        </Grid>
+      </div>
+    );
+  };
+
+  getHeadings = (projectIcon, viewlink, accColor, heading, lightGray, subheading) => {
+    return (
+      <div className="ProjectCardTextContent">
+        {projectIcon}
+        <Typography component="a" href={viewlink} target="_blank" rel="noopener noreferrer"
+        style={{color: accColor, fontSize: "28px", textDecoration: "none"}} variant="h1">
+          {heading}
+        </Typography>
+        <div style={{marginTop: "2px"}}>
+          <Typography className="ProjectCardSubheader"
+            style={{fontSize: "14px", color: lightGray, letterSpacing: "0px"}}
+            variant="body1">
+              {subheading}
+          </Typography>
+        </div>
+        <br/>
+      </div>
+    );
+  }
+
+  getDetailsSectionLeft = (categoryText, categoryStyle, rightPadding, items) => {
+    return (
+      <Grid item>
+        <Grid container direction="row" justify="flex-start" alignItems="center">
+          <Grid item>
+            <Typography style={{...categoryStyle, paddingRight: rightPadding}} variant="button">
+              {categoryText}
+            </Typography>
+          </Grid> 
+          {items}
+        </Grid>
+      </Grid>
+    );
+  }
+
+  getDetailsSectionRight = (text, tooltipText, categoryStyle, rightPadding, icon) => {
+    console.log(window.innerWidth);
+    return (
+      <Grid item>
+        <Grid container direction="row" alignItems="center"
+        >
+          <Grid item>
+            <Typography style={{...categoryStyle, paddingRight: rightPadding}}
+              variant="button" className="ProjectRightText">
+              {text}
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Tooltip title={tooltipText}>
+              {icon}
+            </Tooltip>
+          </Grid>
+        </Grid> 
+      </Grid>
+    );
+  }
+
+  getDetailsContainer = (categoryStyle, platforms, date, built, tools, role, team, detailsRightJustify) => {
+    return (
+      <Grid container
+        direction="row"
+      >
+        <Grid item xs={12} sm={6} container direction="column">
+          {this.getDetailsSectionLeft("PLATFORMS", categoryStyle, 10,
+            Object.keys(platforms).map(item => (
+              <Grid key={item} item className="DetailsIconLeft">{platforms[item]}</Grid>
+            ))
+          )}
+          {this.getDetailsSectionLeft("LANGUAGES", categoryStyle, 10,
+            Object.keys(built).map(item => (
+              <Grid key={item} item className="DetailsIconLeft">{built[item]}</Grid>
+            ))
+          )}
+          {this.getDetailsSectionLeft("TECH STACK", categoryStyle, 8,
+            Object.keys(tools).map(item => (
+              <Grid key={item} item className="DetailsIconLeft">{tools[item]}</Grid>
+            ))
+          )}
+        </Grid>
+        <Grid item xs={12} sm={6} container direction="column" justify="flex-start" alignItems={detailsRightJustify}>
+          {this.getDetailsSectionRight(date, "Date", categoryStyle, 1, this.getDetailsStaticIcon("Calendar"))}
+          {this.getDetailsSectionRight(role, "Role", categoryStyle, 1, this.getDetailsStaticIcon(role))}
+          {this.getDetailsSectionRight(team, "Team", categoryStyle, 1, this.getDetailsStaticIcon(team))}
+        </Grid>
+        
+      </Grid>
+    );
   }
 
   render() {
@@ -46,147 +215,19 @@ class ProjectCard extends React.Component {
     } = this.props;
 
     const lightGray = currentScheme.lightGray;
-    const categoryStyle = {fontSize: "14px", color: lightGray, letterSpacing: "0px"};
+    const categoryStyle = { fontSize: "14px", color: lightGray, letterSpacing: "0px" };
+    const detailsRightJustify = window.innerWidth < 600 ? "flex-start" : "flex-end";
 
     return (
       <Card className="ProjectCard">
-        
-        <div style={{height: "320px", backgroundColor: bgColor}}>
-          {projectBanner.map((banner, i) => (
-            <img key={`${banner}_${i}_banner`} alt={`${banner}_${i}_banner`} style={{opacity: this.state.bannerIndex === i ? 1 : 0}} 
-            className="BannerImg" src={banner}/>
-          ))}
-                    
-          <Button className="BannerLeft" onClick={() => this.bannerControl(-1, projectBanner.length)}>
-            <ChevronLeftCircle style={{color: "white", filter: "drop-shadow(0 0 4px rgba(0,0,0,0.2))"}}/>
-          </Button>
-          <Button className="BannerRight"  onClick={() => this.bannerControl(1, projectBanner.length)}>
-            <ChevronRightCircle style={{color: "white", filter: "drop-shadow(0 0 4px rgba(0,0,0,0.2))"}}/>
-          </Button>
-
-          <div className="BannerShortcutsCont">
-            <div className="ViewLink">
-              <Chip style={{height: "30px"}} label={<Typography style={{fontSize: "11px"}} variant="button">{viewtext}</Typography>}
-                avatar={<Avatar>{viewicon}</Avatar>} component="a" clickable href={viewlink} target="_blank" rel="noopener noreferrer"/>
-            </div>
-            <div className="ViewLink">
-              <Chip style={{height: "30px"}}  label={<Typography style={{fontSize: "11px"}} variant="button">Find on Github</Typography>}
-                avatar={<Avatar><GithubCircle/></Avatar>} component="a" clickable href={gitlink} target="_blank" rel="noopener noreferrer"/>
-            </div>
-          </div>
-
-          {/* Banner carousel dots */}
-          <Grid className="BannerDots" container spacing={16} direction="row" alignItems="center" justify="center">
-            {projectBanner.map((banner, i) => (
-              <Grid key={`${banner}_${i}_dot`} item style={{opacity: this.state.bannerIndex === i ? 1 : 0.5, 
-              transition: "all 0.5s ease", filter: "drop-shadow(0 0 4px rgba(0,0,0,0.3))"}}>
-                <svg height="10" width="10">
-                  <circle fill="white" cx="3" cy="3" r="3"/>
-                </svg>
-              </Grid>
-            ))}
-          </Grid>
-        </div>
-
+        {this.getBanner(bgColor, projectBanner, viewtext, viewicon, gitlink, viewlink)}
         <div className="ProjectCardContent">
           <CardContent>
-
-            {/* Headings */}
-            <div className="ProjectCardTextContent">
-            {projectIcon}
-              <Typography component="a" href={viewlink} target="_blank" rel="noopener noreferrer"
-              style={{color: accColor, fontSize: "28px", textDecoration: "none"}} variant="h1">
-                {heading}
-              </Typography>
-              <div style={{marginTop: "2px"}}>
-                <Typography className="ProjectCardSubheader"
-                  style={{fontSize: "14px", color: lightGray, letterSpacing: "0px"}}
-                  variant="body1">
-                    {subheading}
-                </Typography>
-              </div>
-              <br/>
-            </div>
-
-             {/* Platforms */}
-             <Grid container direction="row" justify="space-between" alignItems="center"
-              style={{marginBottom: 5,}}
-             >
-              <Grid xs={12} sm={6} item className="ProjectHeadLeft">
-                <Grid container direction="row" justify="flex-start" alignItems="center">
-                  <Grid item>
-                    <Typography style={categoryStyle} variant="button">PLATFORMS&nbsp;  </Typography>
-                  </Grid>            
-                  {Object.keys(platforms).map(item => (
-                    <Grid key={item} item className="PlatformIcon">{platforms[item]}</Grid>
-                  ))}
-                </Grid>
-              </Grid>
-
-            {/* Calendar item */}
-              <Grid item>
-                <Calendar className="RoleIcon" style={{color: lightGray}}/>
-                <Typography style={categoryStyle}
-                  variant="button" className="ProjectRightText">
-                  {date}
-                </Typography>
-              </Grid>
-            </Grid>
-
-            {/* Languages */}
-            <Grid container direction="row" justify="space-between" alignItems="center"
-              style={{marginBottom: 5,}}
-            >
-              <Grid xs={12} sm={6} item className="ProjectHeadLeft">
-                <Grid container direction="row" justify="flex-start" alignItems="center">
-                  <Grid item>
-                    <Typography style={categoryStyle} variant="button">LANGUAGES&nbsp; </Typography>
-                  </Grid>
-                  {Object.keys(built).map(item => (
-                    <Grid key={item} item className="PlatformIcon">{built[item]}</Grid>
-                  ))}
-                </Grid>
-              </Grid>
-
-            {/* Role */}
-              <Grid item>
-                <Tooltip title="Role">
-                  {this.getRoleIcon(role)}
-                </Tooltip>
-                <Typography style={categoryStyle}
-                  variant="button" className="ProjectRightText">
-                  {role}
-                </Typography>
-              </Grid>
-            </Grid>
-            
-            {/* Tools */}
-            <Grid container direction="row" justify="space-between" alignItems="center">
-              <Grid xs={12} sm={6} item>
-                <Grid container direction="row" justify="flex-start" alignItems="center">
-                  <Typography style={categoryStyle} variant="button">
-                    DEV STACK&nbsp;&nbsp;&nbsp; 
-                  </Typography>
-                  
-                {Object.keys(tools).map(item => (
-                  <Grid key={item} item className="PlatformIcon">{tools[item]}</Grid>
-                ))}
-                </Grid>
-              </Grid>
-
-            {/* Team */}
-              <Grid item>
-                <Tooltip title="Team">
-                  {this.getRoleIcon(team)}
-                </Tooltip>
-                <Typography style={categoryStyle}
-                  variant="button" className="ProjectRightText">
-                  {team}
-                </Typography>
-              </Grid>
-            </Grid>
+            {this.getHeadings(projectIcon, viewlink, accColor, heading, lightGray, subheading)}
+            {this.getDetailsContainer(categoryStyle, platforms, date, built, tools, role, team, detailsRightJustify)}
 
             <br/>
+            
             {/* Achievements */}
             {achievements.length > 0 && 
               <>
@@ -211,7 +252,8 @@ class ProjectCard extends React.Component {
                 ))}
               </>
              }
-            {achievements.length > 0 && <><br/><br/></>}
+            {achievements.length > 0 && <><br /><br /></>}
+            
             {/* About */}
             <Typography style={{color: mainColor, paddingBottom: "4px"}} variant="button">
               ABOUT
