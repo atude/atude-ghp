@@ -23,7 +23,7 @@ class ContactPage extends React.Component {
                 headingIcon={<OpenInNew style={{color: mainColor}} fontSize="large" className="ContentCardHeadIcon"/>}
                 heading="Links" 
                 body=""
-                content={<ContactContent isLinks={true} source={Database.Contact.Links} currentScheme={currentScheme}/>}
+                content={<ContactContent mainColor={mainColor} isLinks={true} source={Database.Contact.Links} currentScheme={currentScheme}/>}
               />
             </Slide>
           </Grid>
@@ -33,7 +33,7 @@ class ContactPage extends React.Component {
                 headingIcon={<Forum style={{color: mainColor}} fontSize="large" className="ContentCardHeadIcon"/>}
                 heading="Contact" 
                 body=""
-                content={<ContactContent isLinks={false} source={Database.Contact.Contact} currentScheme={currentScheme}/>}
+                content={<ContactContent mainColor={mainColor} isLinks={false} source={Database.Contact.Contact} currentScheme={currentScheme}/>}
               />
             </Slide>
          </Grid>

@@ -32,11 +32,12 @@ class SkillsContent extends React.Component {
 
   getIconSkills = (type) => {
     const cStyle = { 
-      fontSize: "40px",
-      padding: "2px"
+      fontSize: "42px",
+      padding: "3px"
     };
 
     const cClass = "SkillsListIcon Hoverable";
+    const defIconColor = this.props.currentScheme.lightGray;
 
     switch(type) {
       case "C": return (
@@ -45,7 +46,7 @@ class SkillsContent extends React.Component {
           onMouseEnter={() => {this.setState({onC: true})}}
           onMouseLeave={() => {this.setState({onC: false})}} 
           style={{
-            color: this.state.onC ? "#3848AA" : this.props.currentScheme.bgInv,
+            color: this.state.onC ? "#3848AA" : defIconColor,
             padding: this.state.onC ? 0 : cStyle.padding,
             fontSize: cStyle.fontSize,
           }} 
@@ -58,7 +59,7 @@ class SkillsContent extends React.Component {
           onMouseEnter={() => {this.setState({onCsharp: true})}}
           onMouseLeave={() => {this.setState({onCsharp: false})}} 
           style={{
-            color: this.state.onCsharp ? "#A077DB" : this.props.currentScheme.bgInv,
+            color: this.state.onCsharp ? "#A077DB" : defIconColor,
             padding: this.state.onCsharp ? 0 : cStyle.padding,
             fontSize: cStyle.fontSize
           }} 
@@ -72,7 +73,7 @@ class SkillsContent extends React.Component {
             onMouseEnter={() => {this.setState({onJavascript: true})}}
             onMouseLeave={() => {this.setState({onJavascript: false})}} 
             style={{
-              color: this.state.onJavascript ? "#FFCA28" : this.props.currentScheme.bgInv,
+              color: this.state.onJavascript ? "#FFCA28" : defIconColor,
               padding: this.state.onJavascript ? 0 : cStyle.padding,
               fontSize: cStyle.fontSize
             }} 
@@ -84,7 +85,7 @@ class SkillsContent extends React.Component {
             onMouseEnter={() => {this.setState({onTypescript: true})}}
             onMouseLeave={() => {this.setState({onTypescript: false})}} 
             style={{
-              color: this.state.onTypescript ? "#0288D1" : this.props.currentScheme.bgInv,
+              color: this.state.onTypescript ? "#0288D1" : defIconColor,
               padding: this.state.onTypescript ? 0 : cStyle.padding,
               fontSize: cStyle.fontSize
             }} 
@@ -99,7 +100,7 @@ class SkillsContent extends React.Component {
             onMouseEnter={() => {this.setState({onHtml5: true})}}
             onMouseLeave={() => {this.setState({onHtml5: false})}} 
             style={{
-              color: this.state.onHtml5 ? "#EB642D" : this.props.currentScheme.bgInv,
+              color: this.state.onHtml5 ? "#EB642D" : defIconColor,
               padding: this.state.onHtml5 ? 0 : cStyle.padding,
               fontSize: cStyle.fontSize,
             }} 
@@ -111,7 +112,7 @@ class SkillsContent extends React.Component {
             onMouseEnter={() => {this.setState({onCss3: true})}}
             onMouseLeave={() => {this.setState({onCss3: false})}} 
             style={{
-              color: this.state.onCss3 ? "#2Fa5D7" : this.props.currentScheme.bgInv,
+              color: this.state.onCss3 ? "#2Fa5D7" : defIconColor,
               padding: this.state.onCss3 ? 0 : cStyle.padding,
               fontSize: cStyle.fontSize,
             }} 
@@ -125,7 +126,7 @@ class SkillsContent extends React.Component {
           onMouseEnter={() => {this.setState({onPython: true})}}
           onMouseLeave={() => {this.setState({onPython: false})}} 
           style={{
-            color: this.state.onPython ? "#0062B9" : this.props.currentScheme.bgInv,
+            color: this.state.onPython ? "#0062B9" : defIconColor,
             padding: this.state.onPython ? 0 : cStyle.padding,
             fontSize: cStyle.fontSize,
           }} 
@@ -138,7 +139,7 @@ class SkillsContent extends React.Component {
           onMouseEnter={() => {this.setState({onJava: true})}}
           onMouseLeave={() => {this.setState({onJava: false})}} 
           style={{
-            color: this.state.onJava ? "#F44336" : this.props.currentScheme.bgInv,
+            color: this.state.onJava ? "#F44336" : defIconColor,
             padding: this.state.onJava ? 0 : cStyle.padding,
             fontSize: cStyle.fontSize,
           }} 
@@ -151,7 +152,7 @@ class SkillsContent extends React.Component {
           onMouseEnter={() => {this.setState({onBash: true})}}
           onMouseLeave={() => {this.setState({onBash: false})}} 
           style={{
-            color: this.state.onBash ? "#47B253" : this.props.currentScheme.bgInv,
+            color: this.state.onBash ? "#47B253" : defIconColor,
             padding: this.state.onBash ? 0 : cStyle.padding,
             fontSize: cStyle.fontSize,
           }} 
@@ -164,7 +165,7 @@ class SkillsContent extends React.Component {
           onMouseEnter={() => {this.setState({onSQL: true})}}
           onMouseLeave={() => {this.setState({onSQL: false})}} 
           style={{
-            color: this.state.onSQL ? "#047885" : this.props.currentScheme.bgInv,
+            color: this.state.onSQL ? "#047885" : defIconColor,
             padding: this.state.onSQL ? 0 : cStyle.padding,
             fontSize: cStyle.fontSize,
           }} 

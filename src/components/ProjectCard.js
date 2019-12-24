@@ -264,7 +264,7 @@ class ProjectCard extends React.Component {
                 ref="noopener noreferrer"
                 style={{margin: "-12px -14px -10px -5px"}}
               >
-                <OpenInNew style={{ fontSize: "16px"}}/>
+                <OpenInNew style={{ fontSize: "16px", color: "#fff"}}/>
               </IconButton>
             }
             </Typography>
