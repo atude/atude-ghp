@@ -1,10 +1,10 @@
 import React from 'react';
 import './Components.css';
-import { Typography, Card, CardContent, Grid, Chip, Avatar, Link, Button, Tooltip, Divider, } from '@material-ui/core';
+import { Typography, Card, CardContent, Grid, Chip, Avatar, Link, Button, Tooltip, Divider, IconButton, } from '@material-ui/core';
 import {
   GithubCircle, AccountCircle, AccountSupervisorCircle, Calendar, ShieldLock, 
   ChevronLeftCircle, ChevronRightCircle, DeveloperBoard, CodeNotEqualVariant,
-  CodeBracesBox,
+  CodeBracesBox, OpenInNew
 } from 'mdi-material-ui';
 
 class ProjectCard extends React.Component {
@@ -223,7 +223,58 @@ class ProjectCard extends React.Component {
         
       </Grid>
     );
-  }
+  };
+
+  getAchievements = (achievements, mainColor, accColor) => {
+    return (
+      <>
+        <Typography style={{color: mainColor, paddingBottom: "4px"}} variant="button">
+          Achievements
+        </Typography>
+        {achievements.map(achievement => (
+          <div 
+            key={achievement}
+            style={{
+              marginTop: "8px",
+              marginRight: "6px",
+              padding: "4px",
+              backgroundColor: accColor,
+              borderRadius: 30,
+              display: "inline-block"
+            }}
+          >
+            <Typography
+              variant="button"
+              className="AchievementText"
+              style={{
+                paddingLeft: "12px",
+                paddingRight: "12px",
+                paddingTop: "3px",
+                paddingBottom: "3px",
+                fontSize: "12px", 
+                color: "#fff",
+                textAlign: "center",
+              }}
+            >
+              {achievement.split(",")[0]}
+              {achievement.split(",").length > 1 &&  
+              <IconButton 
+                href={achievement.split(",")[1]}
+                target="_blank"
+                ref="noopener noreferrer"
+                style={{margin: "-12px -14px -10px -5px"}}
+              >
+                <OpenInNew style={{ fontSize: "16px"}}/>
+              </IconButton>
+            }
+            </Typography>
+
+          </div>
+        ))}
+        <br/><br/>
+      </>
+    );
+  };
 
   render() {
     const { 
@@ -244,44 +295,9 @@ class ProjectCard extends React.Component {
           <CardContent>
             {this.getHeadings(projectIcon, viewlink, accColor, heading, lightGray, subheading)}
             {this.getDetailsContainer(categoryStyle, platforms, date, built, tools, role, team, detailsRightJustify)}
-
             <br/>
             
-            {/* Achievements */}
-            {achievements.length > 0 && 
-              <>
-                <Typography style={{color: mainColor, paddingBottom: "4px"}} variant="button">
-                  Achievements
-                </Typography>
-                {achievements.map(achievement => (
-                  <div 
-                    key={achievement}
-                    style={{
-                      marginTop: "4px", 
-                      padding: "4px",
-                      backgroundColor: accColor,
-                      borderRadius: 30,
-                      display: "inline-block"
-                    }}>
-                    <Typography
-                      variant="button"
-                      style={{
-                        paddingLeft: "12px",
-                        paddingRight: "12px",
-                        paddingTop: "3px",
-                        paddingBottom: "3px",
-                        fontSize: "12px", 
-                        color: "#fff",
-                        textAlign: "center",
-                      }}
-                    >
-                      {achievement}
-                    </Typography>
-                  </div>
-                ))}
-              </>
-             }
-            {achievements.length > 0 && <><br /><br /></>}
+            {achievements.length > 0 && this.getAchievements(achievements, mainColor, accColor)}
             
             {/* About */}
             <Typography style={{color: mainColor, paddingBottom: "4px"}} variant="button">
