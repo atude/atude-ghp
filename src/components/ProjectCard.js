@@ -7,6 +7,8 @@ import {
   CodeBracesBox, OpenInNew
 } from 'mdi-material-ui';
 
+const smBreakpoint = 600;
+
 class ProjectCard extends React.Component {
   constructor(props) {
     super(props);
@@ -191,7 +193,7 @@ class ProjectCard extends React.Component {
     );
   }
 
-  getDetailsContainer = (categoryStyle, platforms, date, built, tools, role, team, detailsRightJustify) => {
+  getDetailsContainer = (categoryStyle, platforms, date, built, tools, role, team) => {
     return (
       <Grid container
         direction="row"
@@ -213,9 +215,9 @@ class ProjectCard extends React.Component {
             ))
           )}
         </Grid>
-        {this.state.width < 600 && <Divider style={{ width: "100%", marginTop: "15px", marginBottom: "15px" }} />}
+        {this.state.width < smBreakpoint && <Divider style={{ width: "100%", marginTop: "15px", marginBottom: "15px" }} />}
         <Grid item xs={12} sm={6} container direction="column" justify="flex-start"
-          alignItems={this.state.width < 600 ? "flex-start" : "flex-end"}>
+          alignItems={this.state.width < smBreakpoint ? "flex-start" : "flex-end"}>
           {this.getDetailsSectionRight(date, "Date", categoryStyle, 1, this.getDetailsStaticIcon("Calendar"))}
           {this.getDetailsSectionRight(role, "Role", categoryStyle, 1, this.getDetailsStaticIcon(role))}
           {this.getDetailsSectionRight(team, "Team", categoryStyle, 1, this.getDetailsStaticIcon(team))}
@@ -286,7 +288,6 @@ class ProjectCard extends React.Component {
 
     const lightGray = currentScheme.lightGray;
     const categoryStyle = { fontSize: "14px", color: lightGray, letterSpacing: "0px" };
-    const detailsRightJustify = window.innerWidth < 600 ? "flex-start" : "flex-end";
 
     return (
       <Card className="ProjectCard">
@@ -294,7 +295,7 @@ class ProjectCard extends React.Component {
         <div className="ProjectCardContent">
           <CardContent>
             {this.getHeadings(projectIcon, viewlink, accColor, heading, lightGray, subheading)}
-            {this.getDetailsContainer(categoryStyle, platforms, date, built, tools, role, team, detailsRightJustify)}
+            {this.getDetailsContainer(categoryStyle, platforms, date, built, tools, role, team)}
             <br/>
             
             {achievements.length > 0 && this.getAchievements(achievements, mainColor, accColor)}

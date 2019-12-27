@@ -1,12 +1,11 @@
 import React from 'react';
 import './Components.css';
-import { Grid, Typography, Chip, SvgIcon } from '@material-ui/core';
+import { Grid, Typography, Chip, SvgIcon, Divider } from '@material-ui/core';
 import {
   React as ReactIcon,
   Unity, 
   GithubCircle, 
   MaterialUi, 
-  CellphoneAndroid, 
   FormatColorFill, 
   Infinity, 
   Server,
@@ -20,7 +19,30 @@ import {
 } from 'mdi-material-ui';
 import Database from '../assets/Database';
 
+const mdBreakpoint = 960;
+
 class ToolsContent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      width: 0,
+    };
+
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+  }
+  
+  componentDidMount() {
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
+  }
+  
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+  
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth });
+  }
 
   getIconTools = (type, setColor) => {
     if(!setColor) setColor = "#fff";
@@ -28,9 +50,8 @@ class ToolsContent extends React.Component {
     const cStyle = {color: setColor, fontSize: "21px", marginLeft: "7px"};
     const mainStyle = {color: setColor, fontSize: "28px", marginLeft: "5px", marginRight: "5px"};
     const iconSwitch = {
-      "Web Development": <Iframe style={mainStyle}/>,
-      "App Development": <CellphoneAndroid style={mainStyle}/>,
-      "API and Backend": <Server style={mainStyle}/>,
+      "Web & App Development": <Iframe style={mainStyle}/>,
+      "Data Management & Services": <Server style={mainStyle}/>,
       "Design Frameworks": <DeveloperBoard style={mainStyle}/>, 
       "Design Tools": <FormatColorFill style={mainStyle}/>, 
       "Devops": <Infinity style={mainStyle}/>,
@@ -80,11 +101,14 @@ class ToolsContent extends React.Component {
   render() {
     const tools = Database["Toolset"];
     const colorSet = this.props.currentScheme.colorSet;
+    const width = this.state.width;
     
     return (
       <Grid container direction="column" spacing={24} className="ToolsContainer">
         {Object.keys(tools).map((toolskey, i) => (
-          <Grid item key={`${i}_tools`} container spacing={8} direction="row" alignItems="center" justify="flex-start">
+          <Grid item key={`${i}_tools`} container spacing={width < mdBreakpoint ? 24 : 8} 
+            direction="row" alignItems="center" justify="flex-start"
+          >
             <Grid item xs={2} sm={2} md={1} lg={1} xl={1}>
               {this.getIconTools(toolskey, Object.values(colorSet)[i])}
             </Grid>
@@ -94,19 +118,24 @@ class ToolsContent extends React.Component {
               </Typography>
             </Grid>
             <Grid item xs={12} sm={12} md={6} lg={7} xl={7}>
-            <Grid container spacing={8} direction="row" alignItems="center" justify="flex-end">
-              {tools[toolskey].map(key => (
-                <Grid item key={key}>
-                  <Chip variant="default" icon={this.getIconTools(key)} 
-                  label={key} 
-                  style={{
-                    color: "#fff",
-                    backgroundColor: Object.values(colorSet)[i],
-                  }}/>
-                </Grid>
+              <Grid container spacing={8} direction="row" alignItems="center"
+                justify={width < mdBreakpoint ? "flex-start" : "flex-end"}
+              >
+                {tools[toolskey].map(key => (
+                  <Grid item key={key}>
+                    <Chip variant="default" icon={this.getIconTools(key)} 
+                    label={key} 
+                    style={{
+                      color: "#fff",
+                      backgroundColor: Object.values(colorSet)[i],
+                    }}/>
+                  </Grid>
               ))}
+            </Grid>
           </Grid>
-          </Grid>
+            {width < mdBreakpoint && i != Object.keys(tools).length - 1 &&
+              <Divider style={{ width: "100%", marginTop: "25px", marginBottom: "15px" }} />
+            }
         </Grid>
         ))}
       </Grid>

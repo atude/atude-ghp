@@ -200,17 +200,17 @@ class SkillsContent extends React.Component {
                   </Typography>
                 }
               </Grid> */}
-              <Grid item xs={12} sm={8} md={8} lg={8} xl={8}>
+              <Grid item xs={12} sm={8} md={8} lg={8} xl={8} style={{marginTop: "5px"}}>
                 <Typography id="label" style={{fontSize: "12px", color: lightGray}} variant="body1">
                   {Database["Skills Level Frame"][item[key].level]}
                 </Typography>
                 <Slider disabled
-                thumb={null}
-                style={{width: "200", cursor: "default"}} 
-                value={item[key].level}
-                min={0} max={4}
-                aria-labelledby="label"
-                className="SkillSlider"
+                  thumb={null}
+                  style={{width: "200", cursor: "default"}} 
+                  value={item[key].level}
+                  min={0} max={4}
+                  aria-labelledby="label"
+                  className="SkillSlider"
                 >
                 </Slider>
               </Grid>

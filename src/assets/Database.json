@@ -43,15 +43,11 @@
   },
   "Toolset": 
   {
-    "Web Development": 
+    "Web & App Development": 
     [
-      "React" 
+      "React", "React Native", "Expo", "Unity"
     ],
-    "App Development":
-    [
-      "React Native", "Expo", "Unity"
-    ],
-    "API and Backend": 
+    "Data Management & Services": 
     [
       "Firebase", "GraphQL", "REST"
     ],
