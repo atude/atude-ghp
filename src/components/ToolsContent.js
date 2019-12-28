@@ -133,7 +133,7 @@ class ToolsContent extends React.Component {
               ))}
             </Grid>
           </Grid>
-            {width < mdBreakpoint && i != Object.keys(tools).length - 1 &&
+            {width < mdBreakpoint && i !== Object.keys(tools).length - 1 &&
               <Divider style={{ width: "100%", marginTop: "25px", marginBottom: "15px" }} />
             }
         </Grid>
