@@ -43,13 +43,17 @@
   },
   "Toolset": 
   {
-    "Web & App Development": 
+    "Development Frameworks": 
     [
       "React", "React Native", "Expo", "Unity"
     ],
-    "Data Management & Services": 
+    "Development Libraries": 
     [
-      "Firebase", "GraphQL", "REST"
+      "GraphQL"
+    ],
+    "Backend Management": 
+    [
+      "Firebase"
     ],
     "Design Frameworks": 
     [
