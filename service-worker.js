@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/atude-ghp/precache-manifest.0e35d7f0c637aeb197d7f36a1ef2fe0a.js"
+  "/atude-ghp/precache-manifest.0732f47889488d028c6e742acbfabae3.js"
 );
 
 self.addEventListener('message', (event) => {
