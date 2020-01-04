@@ -46,7 +46,7 @@ class ToolsContent extends React.Component {
   }
 
   getIconTools = (type, setColor) => {
-    if(!setColor) setColor = "#fff";
+    if (!setColor) setColor = this.props.currentScheme.bg;
 
     const cStyle = {color: setColor, fontSize: "21px", marginLeft: "7px"};
     const mainStyle = {color: setColor, fontSize: "28px", marginLeft: "5px", marginRight: "5px"};
@@ -136,11 +136,11 @@ class ToolsContent extends React.Component {
                 {tools[toolskey].map(key => (
                   <Grid item key={key}>
                     <Chip variant="default" icon={this.getIconTools(key)} 
-                    label={key} 
-                    style={{
-                      color: "#fff",
-                      backgroundColor: Object.values(colorSet)[i],
-                    }}/>
+                      label={key} 
+                      style={{
+                        color: this.props.currentScheme.bg,
+                        backgroundColor: Object.values(colorSet)[i],
+                      }}/>
                   </Grid>
               ))}
             </Grid>
