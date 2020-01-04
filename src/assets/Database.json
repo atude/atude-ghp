@@ -84,7 +84,7 @@
       "accColor": "#f74d00",
       "heading": "Beams",
       "subheading": "Suburb Analysis Webapp",
-      "tools": ["React", "Material UI"],
+      "tools": ["React", "Express", "Material UI"],
       "built": ["JavaScript", "HTML", "CSS"],
       "platforms": ["Chrome", "Edge", "Firefox"],
       "date": "2019",
