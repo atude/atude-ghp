@@ -49,7 +49,7 @@
     ],
     "Development Libraries": 
     [
-      "GraphQL"
+      "GraphQL", "Immer"
     ],
     "Backend Management": 
     [
