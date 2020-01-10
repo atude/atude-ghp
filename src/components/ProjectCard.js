@@ -1,6 +1,6 @@
 import React from 'react';
 import './Components.css';
-import { Typography, Card, CardContent, Grid, Chip, Avatar, Link, Button, Tooltip, Divider, IconButton, Icon, } from '@material-ui/core';
+import { Typography, Card, CardContent, Grid, Chip, Avatar, Link, Button, Tooltip, Divider, IconButton, } from '@material-ui/core';
 import {
   GithubCircle, AccountCircle, AccountSupervisorCircle, Calendar, ShieldLock, 
   ChevronLeftCircle, ChevronRightCircle, DeveloperBoard, CodeNotEqualVariant, OpenInNew,
@@ -137,18 +137,18 @@ class ProjectCard extends React.Component {
     );
   };
 
-  getStatus = (status) => {
+  getStatus = (status, lightGray) => {
     let statusColor = "#000";
     let statusIcon = null;
 
     switch (status) {
       case "Completed | Discontinued":
         statusColor = "rgba(0, 200, 83, 0.5)";
-        statusIcon = <CheckBold style={{ color: "#fff" }}/>
+        statusIcon = <CheckBold style={{ color: lightGray }}/>
         break;
       default:
         statusColor = "rgba(71, 203, 255, 0.5)";
-        statusIcon = <CheckNetworkOutline style={{ color: "#fff" }}/>
+        statusIcon = <CheckNetworkOutline style={{ color: lightGray }}/>
         break;
     };
 
@@ -156,7 +156,7 @@ class ProjectCard extends React.Component {
       <div className="StatusContainer" style={{ backgroundColor: statusColor }}>
         <Grid container direction="row" alignItems="center" justify="space-between">
           <Grid item>
-            <Typography style={{fontSize: "12px"}} variant="button">
+            <Typography style={{fontSize: "12px", color: lightGray}} variant="button">
               {status}
             </Typography>
           </Grid>
@@ -206,8 +206,7 @@ class ProjectCard extends React.Component {
   getDetailsSectionRight = (text, tooltipText, categoryStyle, rightPadding, icon) => {
     return (
       <Grid item>
-        <Grid container direction="row" alignItems="center"
-        >
+        <Grid container direction="row" alignItems="center">
           <Grid item>
             <Typography style={{...categoryStyle, paddingRight: rightPadding}}
               variant="button" className="ProjectRightText">
@@ -323,7 +322,7 @@ class ProjectCard extends React.Component {
     return (
       <Card className="ProjectCard">
         {this.getBanner(bgColor, projectBanners, viewtext, viewicon, gitlink, viewlink)}
-        {this.getStatus(status)}
+        {this.getStatus(status, lightGray)}
         <div className="ProjectCardContent">
           <CardContent>
             {this.getHeadings(projectIcon, viewlink, accColor, heading, lightGray, subheading)}
