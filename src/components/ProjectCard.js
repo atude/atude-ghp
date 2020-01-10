@@ -1,10 +1,10 @@
 import React from 'react';
 import './Components.css';
-import { Typography, Card, CardContent, Grid, Chip, Avatar, Link, Button, Tooltip, Divider, IconButton, } from '@material-ui/core';
+import { Typography, Card, CardContent, Grid, Chip, Avatar, Link, Button, Tooltip, Divider, IconButton, Icon, } from '@material-ui/core';
 import {
   GithubCircle, AccountCircle, AccountSupervisorCircle, Calendar, ShieldLock, 
-  ChevronLeftCircle, ChevronRightCircle, DeveloperBoard, CodeNotEqualVariant,
-  CodeBracesBox, OpenInNew
+  ChevronLeftCircle, ChevronRightCircle, DeveloperBoard, CodeNotEqualVariant, OpenInNew,
+  CheckBold, CheckNetworkOutline,
 } from 'mdi-material-ui';
 
 const smBreakpoint = 600;
@@ -136,6 +136,37 @@ class ProjectCard extends React.Component {
       </div>
     );
   };
+
+  getStatus = (status) => {
+    let statusColor = "#000";
+    let statusIcon = null;
+
+    switch (status) {
+      case "Completed | Discontinued":
+        statusColor = "rgba(0, 200, 83, 0.5)";
+        statusIcon = <CheckBold style={{ color: "#fff" }}/>
+        break;
+      default:
+        statusColor = "rgba(71, 203, 255, 0.5)";
+        statusIcon = <CheckNetworkOutline style={{ color: "#fff" }}/>
+        break;
+    };
+
+    return (
+      <div className="StatusContainer" style={{ backgroundColor: statusColor }}>
+        <Grid container direction="row" alignItems="center" justify="space-between">
+          <Grid item>
+            <Typography style={{fontSize: "12px"}} variant="button">
+              {status}
+            </Typography>
+          </Grid>
+          <Grid item>
+            {statusIcon}
+          </Grid>
+        </Grid>
+      </div>
+    );
+  }
 
   getHeadings = (projectIcon, viewlink, accColor, heading, lightGray, subheading) => {
     return (
@@ -283,7 +314,7 @@ class ProjectCard extends React.Component {
       projectIcon, projectBanners, heading, subheading, tools, team, 
       built, platforms, date, achievements, bgColor, accColor,
       gitlink, viewlink, privacylink, viewtext, viewicon, body, role, 
-      mainColor, currentScheme, 
+      mainColor, currentScheme, status
     } = this.props;
 
     const lightGray = currentScheme.lightGray;
@@ -292,6 +323,7 @@ class ProjectCard extends React.Component {
     return (
       <Card className="ProjectCard">
         {this.getBanner(bgColor, projectBanners, viewtext, viewicon, gitlink, viewlink)}
+        {this.getStatus(status)}
         <div className="ProjectCardContent">
           <CardContent>
             {this.getHeadings(projectIcon, viewlink, accColor, heading, lightGray, subheading)}

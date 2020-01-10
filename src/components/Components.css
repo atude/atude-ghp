@@ -80,7 +80,7 @@
 }
 
 .ProjectCardContent{
-  padding: 20px;
+  padding: 5px 20px 20px 20px;
 }
 
 .ProjectCardTextContent{
@@ -229,4 +229,9 @@
 .ContactIcon:hover{
   transform: scale(1.2);
   transition: all 0.25s ;
+}
+
+.StatusContainer{
+  padding: 10px 16px 10px 16px;
+  opacity: 0.85;
 }
