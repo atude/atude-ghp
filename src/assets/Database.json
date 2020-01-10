@@ -45,7 +45,7 @@
   {
     "Development Frameworks": 
     [
-      "React", "React Native", "Expo", "Unity"
+      "React", "Expo", "Unity"
     ],
     "Development Libraries": 
     [
@@ -107,15 +107,15 @@
       "accColor": "#7f74e3",
       "heading": "Unicore",
       "subheading": "University WAM and Course Tracking App",
-      "tools": ["Expo", "React Native", "Firebase", "React Native Paper"],
+      "tools": ["Expo", "Firebase", "React Native Paper"],
       "built": ["JavaScript"],
       "platforms": ["Android"],
-      "date": "2019",
+      "date": "2019 - 2020",
       "gitlink": "https://github.com/atude/wam-calc",
       "viewlink": "https://play.google.com/store/apps/details?id=com.atude.mywam",
       "privacylink": "https://atude.github.io/privacy_unicore.html",
       "viewicon": "Google Play",
-      "viewtext": "Available on the Play Store",
+      "viewtext": "Download on Play Store",
       "role": "Fullstack",
       "team": "Solo",
       "achievements": [
@@ -139,7 +139,7 @@
       "viewlink": "https://play.google.com/store/apps/details?id=com.cyberscopes.devote",
       "privacylink": "https://atude.github.io/privacy.html",
       "viewicon": "Google Play",
-      "viewtext": "Available on the Play Store",
+      "viewtext": "Download on Play Store",
       "role": "Fullstack",
       "team": "Solo",
       "achievements": [
