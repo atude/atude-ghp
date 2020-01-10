@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "02acb66caafc1ca35767ccebc1f0cd47",
+    "revision": "dacc546e6728c8394ab7e80bfd4c6faa",
     "url": "/atude-ghp/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/atude-ghp/static/css/2.612075aa.chunk.css"
   },
   {
-    "revision": "d99d9dae623f9b0a7e3c",
+    "revision": "8529904f606b5340d07b",
     "url": "/atude-ghp/static/css/main.797942bc.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/atude-ghp/static/js/2.d9a1ddcf.chunk.js"
   },
   {
-    "revision": "d99d9dae623f9b0a7e3c",
-    "url": "/atude-ghp/static/js/main.3ec5deb5.chunk.js"
+    "revision": "8529904f606b5340d07b",
+    "url": "/atude-ghp/static/js/main.26316033.chunk.js"
   },
   {
     "revision": "e4d55441f48422a7f79b",
