@@ -63,10 +63,10 @@ class ProjectCard extends React.Component {
     }
   }
 
-  getBanner = (bgColor, projectBanner, viewtext, viewicon, gitlink, viewlink) => {
+  getBanner = (bgColor, projectBanners, viewtext, viewicon, gitlink, viewlink) => {
     return (
       <div style={{ height: "320px", backgroundColor: bgColor }}>
-        {projectBanner.map((banner, i) => (
+        {projectBanners.map((banner, i) => (
           <img
             key={`${banner}_${i}_banner`}
             alt={`${banner}_${i}_banner`}
@@ -76,10 +76,10 @@ class ProjectCard extends React.Component {
           />
         ))}
                   
-        <Button className="BannerLeft" onClick={() => this.bannerControl(-1, projectBanner.length)}>
+        <Button className="BannerLeft" onClick={() => this.bannerControl(-1, projectBanners.length)}>
           <ChevronLeftCircle style={{ color: "white", filter: "drop-shadow(0 0 4px rgba(0,0,0,0.2))" }} />
         </Button>
-        <Button className="BannerRight" onClick={() => this.bannerControl(1, projectBanner.length)}>
+        <Button className="BannerRight" onClick={() => this.bannerControl(1, projectBanners.length)}>
           <ChevronRightCircle style={{ color: "white", filter: "drop-shadow(0 0 4px rgba(0,0,0,0.2))" }} />
         </Button>
 
@@ -120,7 +120,7 @@ class ProjectCard extends React.Component {
 
         {/* Banner carousel dots */}
         <Grid className="BannerDots" container spacing={16} direction="row" alignItems="center" justify="center">
-          {projectBanner.map((banner, i) => (
+          {projectBanners.map((banner, i) => (
             <Grid item key={`${banner}_${i}_dot`}
               style={{
                 opacity: this.state.bannerIndex === i ? 1 : 0.5,
@@ -280,7 +280,7 @@ class ProjectCard extends React.Component {
 
   render() {
     const { 
-      projectIcon, projectBanner, heading, subheading, tools, team, 
+      projectIcon, projectBanners, heading, subheading, tools, team, 
       built, platforms, date, achievements, bgColor, accColor,
       gitlink, viewlink, privacylink, viewtext, viewicon, body, role, 
       mainColor, currentScheme, 
@@ -291,7 +291,7 @@ class ProjectCard extends React.Component {
 
     return (
       <Card className="ProjectCard">
-        {this.getBanner(bgColor, projectBanner, viewtext, viewicon, gitlink, viewlink)}
+        {this.getBanner(bgColor, projectBanners, viewtext, viewicon, gitlink, viewlink)}
         <div className="ProjectCardContent">
           <CardContent>
             {this.getHeadings(projectIcon, viewlink, accColor, heading, lightGray, subheading)}
