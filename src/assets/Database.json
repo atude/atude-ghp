@@ -45,15 +45,15 @@
   {
     "Development Frameworks": 
     [
-      "React", "Expo", "Unity"
+      "React", "React Native", "Expo", "Unity"
     ],
     "Development Libraries": 
     [
-      "GraphQL", "Immer"
+      "GraphQL", "Apollo", "Immer"
     ],
     "Backend Management": 
     [
-      "Firebase", "Express"
+      "Firebase", "Apollo Server", "Express"
     ],
     "Design Frameworks": 
     [
