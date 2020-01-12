@@ -168,9 +168,6 @@ class ResponsiveDrawer extends React.Component {
     mobileOpen: false,
     currentScheme: lightScheme,
     isDark: false,
-    isOnEmail: false,
-    isOnLinkedIn: false,
-    isOnGithub: false,
     isOnLogo: false,
   };
 
@@ -199,7 +196,7 @@ class ResponsiveDrawer extends React.Component {
     this.setState({selected: tab});
   }
 
-  getPaths = (path) => {
+  getPaths = () => {
     /* Object References */
     let paths = {
       "/":
@@ -234,25 +231,22 @@ class ResponsiveDrawer extends React.Component {
   }
 
   getTitle = (path) => {
-    return this.getPaths(path)[path].title;
+    return this.getPaths()[path].title;
   }
 
   getColor = (path) => {
-    return this.getPaths(path)[path].color;
+    return this.getPaths()[path].color;
   }
 
   getIcon = (isAppbar, path) => {
     if(isAppbar) 
-      return this.getPaths(path)[path].icAppbar;
+      return this.getPaths()[path].icAppbar;
 
-    return this.getPaths(path)[path].icList;
+    return this.getPaths()[path].icList;
   }
 
   getSideHead = () => {
     const iconSize = "40px";
-    const colorGithub = "#5e227f";
-    const colorLinkedIn = "#0077B5";
-    const colorEmail = "#D44638";
 
     return (
       <div className="SidebarHead">
@@ -295,56 +289,27 @@ class ResponsiveDrawer extends React.Component {
           
         <Grid item>
         <Grid container direction="row" alignItems="stretch" justify="space-around">
-          <a href={Database.Contact.Links.GitHub[0]} target="_blank" rel="noopener noreferrer" 
-          style={{textDecoration: "none"}}>
           <Grid item>
-            <IconButton key="Github"
-              onMouseEnter={() => {this.setState({isOnGithub: true})}}
-              onMouseLeave={() => {this.setState({isOnGithub: false})}} 
+            <IconButton key="Github" component="a"
+              href={Database.Contact.Links.GitHub[0]} target="_blank" rel="noopener noreferrer"
             >
-              <GithubBox 
-                className="DrawerIconButton"
-                style={{
-                  fontSize: iconSize,
-                  color: this.state.isOnGithub && colorGithub
-                }}
-              />
+              <GithubBox className="DrawerIconButton" style={{ fontSize: iconSize }}/>
             </IconButton>
           </Grid>
-          </a>
-          <a href={Database.Contact.Links.LinkedIn[0]} target="_blank" rel="noopener noreferrer" 
-          style={{textDecoration: "none"}}>
           <Grid item>
-            <IconButton key="LinkedIn"
-              onMouseEnter={() => {this.setState({isOnLinkedIn: true})}}
-              onMouseLeave={() => {this.setState({isOnLinkedIn: false})}}
+            <IconButton key="LinkedIn" component="a"
+              href={Database.Contact.Links.LinkedIn[0]} target="_blank" rel="noopener noreferrer"
             >
-              <LinkedinBox                 
-                className="DrawerIconButton"
-                style={{
-                  fontSize: iconSize,
-                  color: this.state.isOnLinkedIn && colorLinkedIn
-                }}
-              />
+              <LinkedinBox className="DrawerIconButton" style={{ fontSize: iconSize }}/>
             </IconButton>
           </Grid>
-          </a>
-          <a href={`mailto:${Database.Contact.Contact.Email}`} style={{textDecoration: "none"}}>
           <Grid item>
-            <IconButton key="Email"
-              onMouseEnter={() => {this.setState({isOnEmail: true})}}
-              onMouseLeave={() => {this.setState({isOnEmail: false})}} 
+            <IconButton key="Email" component="a"
+              href={`mailto:${Database.Contact.Contact.Email}`}
             >
-              <EmailBox 
-                className="DrawerIconButton"
-                style={{
-                  fontSize: iconSize,
-                  color: this.state.isOnEmail && colorEmail
-                }}
-              />
+              <EmailBox className="DrawerIconButton" style={{ fontSize: iconSize }}/>
             </IconButton>
           </Grid>
-          </a>
         </Grid>
         </Grid>
       </Grid>
@@ -476,6 +441,4 @@ ResponsiveDrawer.propTypes = {
   theme: PropTypes.object.isRequired,
 };
 
-export default 
-      (withStyles(styles, { withTheme: true })(ResponsiveDrawer)
-  );
+export default (withStyles(styles, { withTheme: true })(ResponsiveDrawer));

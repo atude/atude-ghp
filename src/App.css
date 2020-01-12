@@ -89,13 +89,12 @@
 
 .DrawerIconButton:not(:hover) {
   transition: all 0.25s;
-  color: "#ffffff";
+  background-color: "#000000";
 }
 
 .DrawerIconButton:hover {
-  transform: scale(1.1);
+  transform: scale(1.15);
   transition: all 0.25s;
-  color: "#ffffff";
 }
 
 
