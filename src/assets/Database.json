@@ -3,70 +3,33 @@
   "About me":
   {
     "A bit about me": "I'm a student at the University of New South Wales, currently undergoing a Bachelor's Degree in Software Engineering. I pursue a passion in creating and designing products with captivating UXs and real-world use to help bring creative solutions to modern challenges. ",
-    "Experience with software": "My experience with development ranges from game creation and app development to web design and scripting. I've become familiar with industry-standard tools such as React and Expo, and have utilised both object-oriented and functional programming styles. "
-
+    "Experience with software": "My experience with development ranges from game creation and app development to web design and scripting. I've become familiar with industry standard tools such as React and Expo, and have utilised both object-oriented and functional programming styles. "
   },
   "Skillset": 
   {
-    "JS":
-    {
-      "level": 4
-    },
-    "HTML":
-    {
-      "level": 3
-    },
-    "C":
-    {
-      "level": 2
-    },
-    "C#":
-    {
-      "level": 2
-    },
-    "Java":
-    {
-      "level": 2
-    },
-    "Python":
-    {
-      "level": 3
-    },
-    "Bash":
-    {
-      "level": 3
-    },
-    "SQL":
-    {
-      "level": 2
-    }
+    "JS":     { "level": 4 },
+    "HTML":   { "level": 3 }, 
+    "C":      { "level": 2 }, 
+    "C#":     { "level": 2 }, 
+    "Java":   { "level": 2 }, 
+    "Python": { "level": 3 }, 
+    "Bash":   { "level": 3 }, 
+    "SQL":    { "level": 2 }
   },
   "Toolset": 
   {
     "Development Frameworks": 
-    [
-      "React", "React Native", "Expo", "Unity"
-    ],
+    [ "React", "React Native", "Expo", "Unity" ],
     "Development Libraries": 
-    [
-      "GraphQL", "Apollo", "Immer"
-    ],
+    [ "GraphQL", "Apollo", "Immer" ],
     "Backend Management": 
-    [
-      "Firebase", "Apollo Server", "Express"
-    ],
+    [ "Firebase", "Apollo Server", "Express" ],
     "Design Frameworks": 
-    [
-      "Material UI", "React Native Paper", "React Native Elements"
-    ],
+    [ "Material UI", "React Native Paper", "React Native Elements" ],
     "Design Tools":
-    [
-      "GIMP", "Photoshop", "XD"
-    ],
+    [ "GIMP", "Photoshop", "XD"  ],
     "Devops": 
-    [
-      "GitHub", "GitLab"
-    ]
+    [ "GitHub", "GitLab" ]
   },
   "Skills Level Frame":
   {

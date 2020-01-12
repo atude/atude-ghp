@@ -9,7 +9,7 @@ class HomePage extends React.Component {
   render() {
     const baseTime = 2000;
     const { currentScheme, isDark, mainColor } = this.props;
-    const circleFilters = "hue-rotate(45deg)";
+    const circleFilters = "hue-rotate(-45deg) drop-shadow(20px 20px 20px #6d85ff)";
     
     var longshadowStr = "";
     const maxLen = 400;
