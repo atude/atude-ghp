@@ -213,7 +213,7 @@ class ResponsiveDrawer extends React.Component {
       },
       "/projects": 
       {
-        "title": "Apps",
+        "title": "Projects",
         "color": this.state.currentScheme.colorSet.red,
         "icAppbar": <Buffer style={{fontSize: "80px", color: this.state.currentScheme.colorSet.red}} className="AppbarIcon"/>,
         "icList": <Buffer className="ListIcon"/>,
