@@ -9,12 +9,12 @@
   {
     "JS":     { "level": 4 },
     "HTML":   { "level": 3 }, 
-    "C":      { "level": 2 }, 
     "C#":     { "level": 2 }, 
-    "Java":   { "level": 2 }, 
-    "Python": { "level": 3 }, 
+    "Java":   { "level": 3 }, 
+    "C":      { "level": 2 }, 
+    "Python": { "level": 2 }, 
     "Bash":   { "level": 3 }, 
-    "SQL":    { "level": 2 }
+    "SQL":    { "level": 3 }
   },
   "Toolset": 
   {
