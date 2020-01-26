@@ -137,33 +137,27 @@ class ProjectCard extends React.Component {
     );
   };
 
-  getStatus = (status, lightGray) => {
-    let statusColor = "#000";
+  getStatus = (status, mainColor) => {
     let statusIcon = null;
+    const iconStyle = { float: "left", color: mainColor, fontSize: "18px", marginLeft: "3px" };
 
     switch (status) {
       case "Completed | Discontinued":
-        statusColor = "rgba(0, 200, 83, 0.5)";
-        statusIcon = <CheckBold style={{ color: lightGray }}/>
+        statusIcon = <CheckBold style={iconStyle}/>
         break;
       default:
-        statusColor = "rgba(71, 203, 255, 0.5)";
-        statusIcon = <CheckNetworkOutline style={{ color: lightGray }}/>
+        statusIcon = <CheckNetworkOutline style={iconStyle}/>
         break;
     };
 
     return (
-      <div className="StatusContainer" style={{ backgroundColor: statusColor }}>
-        <Grid container direction="row" alignItems="center" justify="space-between">
-          <Grid item>
-            <Typography style={{fontSize: "12px", color: lightGray}} variant="button">
-              {status}
-            </Typography>
-          </Grid>
-          <Grid item>
-            {statusIcon}
-          </Grid>
-        </Grid>
+      <div className="StatusContainer">
+        {statusIcon}
+        <Tooltip title="Project Status" placement="top">
+          <Typography inline style={{ float: "right", fontSize: "11px", color: mainColor, marginLeft: "3px" }} variant="button">
+            {status}
+          </Typography>
+        </Tooltip>
       </div>
     );
   }
@@ -322,7 +316,6 @@ class ProjectCard extends React.Component {
     return (
       <Card className="ProjectCard">
         {this.getBanner(bgColor, projectBanners, viewtext, viewicon, gitlink, viewlink)}
-        {this.getStatus(status, lightGray)}
         <div className="ProjectCardContent">
           <CardContent>
             {this.getHeadings(projectIcon, viewlink, accColor, heading, lightGray, subheading)}
@@ -341,6 +334,7 @@ class ProjectCard extends React.Component {
               {body}
             </Typography>
 
+            <br/>
             {privacylink !== "" &&
               <div className="PrivacyText">
                 <Link href={privacylink} target="_blank" ref="noopener noreferrer" style={{textDecoration: "none"}}>
@@ -351,7 +345,7 @@ class ProjectCard extends React.Component {
                 </Link>
               </div>
             }
-
+            {this.getStatus(status, mainColor)}
           </CardContent>
         </div>
       </Card>

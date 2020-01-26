@@ -70,7 +70,7 @@
       "accColor": "#7f74e3",
       "heading": "Unicore",
       "subheading": "University WAM and Course Tracking App",
-      "tools": ["Expo", "Firebase", "React Native Paper"],
+      "tools": ["Expo", "React Native", "Firebase", "React Native Paper"],
       "built": ["JavaScript"],
       "platforms": ["Android"],
       "date": "2019 - 2020",
