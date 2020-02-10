@@ -9,6 +9,7 @@ import ReactSVG from "react-svg";
 import {
   GooglePlay,
   Youtube,
+  GoogleChrome,
 } from "mdi-material-ui";
 
 export default function ProjectsPage(props) {
@@ -21,7 +22,8 @@ export default function ProjectsPage(props) {
   const tAdd = 300;
   const viewIcons = {
     "Google Play": <GooglePlay />,
-    "Youtube": <Youtube />
+    "Youtube": <Youtube />,
+    "Chrome Web Store": <GoogleChrome />
   };
 
   useEffect(() => {

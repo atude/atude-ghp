@@ -78,7 +78,7 @@
       "viewlink": "https://play.google.com/store/apps/details?id=com.atude.mywam",
       "privacylink": "https://atude.github.io/privacy_unicore.html",
       "viewicon": "Google Play",
-      "viewtext": "Download on Play Store",
+      "viewtext": "Get on Google Play",
       "role": "Fullstack",
       "team": "Solo",
       "achievements": [
@@ -87,12 +87,32 @@
       "body": "Unicore is a multi-purpose tool for university students to track their WAM, analyse their marks and compare course progress. It includes a total and term-specific WAM calculator with both Australian and US ranking methods, organised course log with filters, beautiful performance graphs, optional online accounts with data syncing, and more.",
       "status": "Completed | Maintained"
     },
+    "Kanbie": 
+    {
+      "bgColor": "#35363a",
+      "accColor": "#ed39c9",
+      "heading": "Kanbie",
+      "subheading": "Kanban Board Chrome Extension",
+      "tools": ["React"],
+      "built": ["JavaScript", "HTML", "CSS"],
+      "platforms": ["Chrome"],
+      "date": "2020",
+      "gitlink": "https://github.com/atude/kanbie-extension",
+      "viewlink": "https://chrome.google.com/webstore/detail/kanbie/hancagoabobbbadijbbfepodbdgjbfpf",
+      "privacylink": "",
+      "viewicon": "Chrome Web Store",
+      "viewtext": "Get on Chrome Web Store",
+      "role": "Fullstack",
+      "team": "Solo",
+      "achievements": [],
+      "body": "Kanbie is a simple, dark-themed kanban board, accessed as a chrome extension. Kanbie allows chrome users to manage their task list from any tab - without interrupting their workflow - and with a seamless user experience.",
+      "status": "Completed | Maintained"
+    },
     "Devote": 
     {
       "bgColor": "#3d95e8",
       "accColor": "#3d95e8",
       "heading": "Devote",
-      "iconpath": "../assets/ic_devote.png",
       "subheading": "Study Management App",
       "tools": ["Unity"],
       "built": ["C#"],
@@ -102,7 +122,7 @@
       "viewlink": "https://play.google.com/store/apps/details?id=com.cyberscopes.devote",
       "privacylink": "https://atude.github.io/privacy.html",
       "viewicon": "Google Play",
-      "viewtext": "Download on Play Store",
+      "viewtext": "Get on Google Play",
       "role": "Fullstack",
       "team": "Solo",
       "achievements": [
