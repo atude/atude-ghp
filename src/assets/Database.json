@@ -57,7 +57,7 @@
       "viewicon": "Youtube",
       "viewtext": "View on Youtube",
       "role": "Lead Frontend",
-      "team": "Team Beams",
+      "team": "5 Members",
       "achievements": [
         "Best UX: Macquarie Group Workshop 2019"
       ],
@@ -66,7 +66,7 @@
     },
     "Unicore": 
     {
-      "bgColor": "#42289f",
+      "bgColor": "#453aa1",
       "accColor": "#7f74e3",
       "heading": "Unicore",
       "subheading": "University WAM and Course Tracking App",

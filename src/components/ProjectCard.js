@@ -73,6 +73,7 @@ class ProjectCard extends React.Component {
             style={{ opacity: this.state.bannerIndex === i ? 1 : 0 }}
             className="BannerImg"
             src={banner}
+            loading="lazy"
           />
         ))}
                   
@@ -244,7 +245,7 @@ class ProjectCard extends React.Component {
           alignItems={this.state.width < smBreakpoint ? "flex-start" : "flex-end"}>
           {this.getDetailsSectionRight(date, "Date", categoryStyle, 1, this.getDetailsStaticIcon("Calendar"))}
           {this.getDetailsSectionRight(role, "Role", categoryStyle, 1, this.getDetailsStaticIcon(role))}
-          {this.getDetailsSectionRight(team, "Team", categoryStyle, 1, this.getDetailsStaticIcon(team))}
+          {this.getDetailsSectionRight(team, "Team Size", categoryStyle, 1, this.getDetailsStaticIcon(team))}
         </Grid>
         
       </Grid>
