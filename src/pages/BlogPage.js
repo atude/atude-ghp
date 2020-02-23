@@ -20,101 +20,102 @@ export const BlogPage = (props) => {
   }
 
   return (
-    <Grid 
-      container 
-      spacing={16} 
-      direction="row" 
-      alignItems="flex-start" 
-      justify="center"
-      style={{maxWidth: "1200px", margin: 'auto'}}
-    >
-      <Slide 
-        timeout={tBase} direction="right"
-        in mountOnEnter
+    <div style={{maxWidth: "1200px", margin: "auto"}}>
+      <Grid 
+        container 
+        spacing={16} 
+        direction="row" 
+        alignItems="flex-start" 
+        justify="center"
       >
-        <Grid item xs={12} sm={12} md={3}>
-          <Paper 
-            className="HorizontalContainer"
-            style={{cursor: "default", padding: "15px 20px 15px 20px"}}
-          >
-            <Typography style={{color: mainColor}} variant="button">
-              Research Topics
-            </Typography>
-            <LayersSearch style={{color: mainColor, cursor: "default"}}/>
-          </Paper>
-          {Object.keys(Blog).map((blogCategory, i) => (
-            <ExpansionPanel key={blogCategory + i}>
-              <ExpansionPanelSummary expandIcon={<ChevronDownCircleOutline/>}>
-                <Typography>{blogCategory}</Typography>
-              </ExpansionPanelSummary>
-              <ExpansionPanelDetails>
-                <div>
-                  {Object.keys(Blog[blogCategory]).map((blogRef) => (
-                    <div 
-                      key={blogRef}
-                      className="BlogTopicContainer" 
-                      style={{
-                        marginLeft: selectedPost === blogRef ? "8px" : null
-                      }}
-                      onClick={() => { 
-                        getBlogContent(Blog[blogCategory][blogRef]);
-                        setSelectedPost(blogRef);
-                      }}
-                    >
-                      {selectedPost === blogRef ? 
-                        <Label style={{color: mainColor}}/>
-                        :
-                        <LabelOutline style={{color: mainColor}}/>
-                      }
-                      <Typography style={{marginLeft: "12px"}}>
-                        {blogRef}
-                      </Typography>
-                    </div>
-                  ))}
-                </div>
-              </ExpansionPanelDetails>
-            </ExpansionPanel>
-          ))}
-          
+        <Slide 
+          timeout={tBase} direction="right"
+          in mountOnEnter
+        >
+          <Grid item xs={12} sm={12} md={3}>
+            <Paper 
+              className="HorizontalContainer"
+              style={{cursor: "default", padding: "15px 20px 15px 20px"}}
+            >
+              <Typography style={{color: mainColor}} variant="button">
+                Research Topics
+              </Typography>
+              <LayersSearch style={{color: mainColor, cursor: "default"}}/>
+            </Paper>
+            {Object.keys(Blog).map((blogCategory, i) => (
+              <ExpansionPanel key={blogCategory + i}>
+                <ExpansionPanelSummary expandIcon={<ChevronDownCircleOutline/>}>
+                  <Typography>{blogCategory}</Typography>
+                </ExpansionPanelSummary>
+                <ExpansionPanelDetails>
+                  <div>
+                    {Object.keys(Blog[blogCategory]).map((blogRef) => (
+                      <div 
+                        key={blogRef}
+                        className="BlogTopicContainer" 
+                        style={{
+                          marginLeft: selectedPost === blogRef ? "8px" : null
+                        }}
+                        onClick={() => { 
+                          getBlogContent(Blog[blogCategory][blogRef]);
+                          setSelectedPost(blogRef);
+                        }}
+                      >
+                        {selectedPost === blogRef ? 
+                          <Label style={{color: mainColor}}/>
+                          :
+                          <LabelOutline style={{color: mainColor}}/>
+                        }
+                        <Typography style={{marginLeft: "12px"}}>
+                          {blogRef}
+                        </Typography>
+                      </div>
+                    ))}
+                  </div>
+                </ExpansionPanelDetails>
+              </ExpansionPanel>
+            ))}
+            
+          </Grid>
+        </Slide>
+        <Grid item xs={12} sm={12} md={9}>      
+          {!!blogPost ? 
+            <Paper className="MarkdownContainer">
+              <ReactMarkdown
+                renderers={{
+                  root: (props) => (
+                    <div style={{ color: currentScheme.lightGray }}>
+                      {props.children}
+                    </div> 
+                  ),
+                  code: CodeBlock
+                }}
+                source={blogPost}
+                escapeHtml={false}
+              />
+            </Paper>
+            :
+            <div style={{textAlign: "center", width: "70%", margin: "auto"}}>
+              <br/><br/>
+              <LayersSearch style={{color: currentScheme.lightGray, width: "10rem", height: "10rem"}}/>
+              <br/><br/>
+              <Typography variant="body1" style={{color: currentScheme.lightGray}}>
+                You can find my research topics for software development here. 
+                Choose a topic to find out more.
+              </Typography>
+          </div>
+          }
+          <br/><br/><br/>
         </Grid>
-      </Slide>
-      <Grid item xs={12} sm={12} md={9}>      
-        {!!blogPost ? 
-          <Paper className="MarkdownContainer">
-            <ReactMarkdown
-              renderers={{
-                root: (props) => (
-                  <div style={{ color: currentScheme.lightGray }}>
-                    {props.children}
-                  </div> 
-                ),
-                code: CodeBlock
-              }}
-              source={blogPost}
-              escapeHtml={false}
-            />
-          </Paper>
-          :
-          <div style={{textAlign: "center", width: "50%", margin: "auto"}}>
-            <br/><br/>
-            <LayersSearch style={{color: currentScheme.lightGray, width: "10rem", height: "10rem"}}/>
-            <br/><br/>
-            <Typography variant="button" style={{color: currentScheme.lightGray}}>
-              You can find my research topics for software development here. Click a 
-              topic on the sidebar to find out more.
-            </Typography>
-        </div>
-        }
-        <br/><br/><br/>
-      </Grid>
 
-      <div className="DownloadFAB">
-        <Fab size="medium" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
-        style={{color: "white", backgroundColor: mainColor, opacity: "0.8"}}>
-          <ArrowUpBold/>
-        </Fab>
-      </div>
-    </Grid>
+        <div className="DownloadFAB">
+          <Fab size="medium" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
+          style={{color: "white", backgroundColor: mainColor, opacity: "0.8"}}>
+            <ArrowUpBold/>
+          </Fab>
+        </div>
+      </Grid>
+    </div>
   );
 }
 
