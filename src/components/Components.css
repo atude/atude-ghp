@@ -239,9 +239,31 @@
 }
 
 .MarkdownContainer{
-  padding: 0.8rem 2rem 2rem 2rem;
+  padding: 0.2rem 1.2rem 1.7rem 1.2rem;
 }
 
-.ResearchTopicsHeader{
-  padding: 14px;
+.BlogTopicContainer{
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.HorizontalContainer{
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.BlogTopicContainer:not(:hover){
+  transition: all 0.2s;
+}
+
+.BlogTopicContainer:hover{
+  margin-left: 8px;
+  transition: all 0.2s;
 }
