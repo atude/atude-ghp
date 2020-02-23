@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Link, NavLink, HashRouter, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Menu, AccountBox, Buffer, GithubBox, LinkedinBox, EmailBox, MessageBulleted, ThemeLightDark } from 'mdi-material-ui';
+import { Menu, AccountBox, Buffer, GithubBox, LinkedinBox, EmailBox, MessageBulleted, ThemeLightDark, NewspaperVariantMultiple } from 'mdi-material-ui';
 import { createMuiTheme, Typography, IconButton, SwipeableDrawer, List, ListItem, ListItemText, ListItemIcon, Hidden, CssBaseline, MuiThemeProvider, Drawer, Divider, Grid, AppBar, Toolbar, Switch as SwitchButton } from '@material-ui/core';
 import { TransitionGroup, } from 'react-transition-group';
 
@@ -18,6 +18,7 @@ import HomePage from '../pages/HomePage.js';
 import AboutPage from '../pages/AboutPage.js';
 import ProjectsPage from '../pages/ProjectsPage.js';
 import ContactPage from '../pages/ContactPage';
+import BlogPage from '../pages/BlogPage';
 
 //My consts
 /* Colors */
@@ -29,7 +30,7 @@ const lightScheme = {
   "bg": "#ffffff",
   "bgInv": "#000000",
   "bgSecond": "#fafafa",
-  "lightGray": "#757575",
+  "lightGray": "#555",
   "muiTheme": createMuiTheme({
     palette: {
       type: "light",
@@ -218,6 +219,13 @@ class ResponsiveDrawer extends React.Component {
         "icAppbar": <Buffer style={{fontSize: "80px", color: this.state.currentScheme.colorSet.red}} className="AppbarIcon"/>,
         "icList": <Buffer className="ListIcon"/>,
       },
+      "/blog": 
+      {
+        "title": "Research Blog",
+        "color": this.state.currentScheme.colorSet.orange,
+        "icAppbar": <NewspaperVariantMultiple style={{fontSize: "80px", color: this.state.currentScheme.colorSet.orange}} className="AppbarIcon"/>,
+        "icList": <NewspaperVariantMultiple className="ListIcon"/>,
+      },
       "/contact": 
       {
         "title": "Contact",
@@ -339,6 +347,7 @@ class ResponsiveDrawer extends React.Component {
         <Divider/>
         {this.getSideListObject(currPath, "/about", this.getColor(currPath), "About Me")}
         {this.getSideListObject(currPath, "/projects", this.getColor(currPath), "Projects")}
+        {this.getSideListObject(currPath, "/blog", this.getColor(currPath), "Research Blog")}
         {this.getSideListObject(currPath, "/contact", this.getColor(currPath), "Contact")}    
       </List>  
     );
@@ -422,6 +431,7 @@ class ResponsiveDrawer extends React.Component {
                   <Route exact path="/" render={() => <HomePage isDark={this.state.isDark} currentScheme={currentScheme} mainColor={this.getColor(location.pathname)}/>}/>
                   <Route path="/about" render={() => <AboutPage currentScheme={currentScheme} mainColor={this.getColor(location.pathname)}/>}/>
                   <Route path="/projects" render={() => <ProjectsPage currentScheme={currentScheme} mainColor={this.getColor(location.pathname)}/>}/>
+                  <Route path="/blog" render={() => <BlogPage currentScheme={currentScheme} mainColor={this.getColor(location.pathname)}/>}/>
                   <Route path="/contact" render={() => <ContactPage currentScheme={currentScheme} mainColor={this.getColor(location.pathname)}/>}/>
                 </Switch>
               </TransitionGroup>
