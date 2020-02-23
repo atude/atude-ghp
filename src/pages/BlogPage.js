@@ -12,13 +12,16 @@ export const BlogPage = (props) => {
   const [loading, setLoading] = useState(false);
 
   const tBase = 600;
+  const baseRef = "https://raw.githubusercontent.com/atude/portfolio-blog/master/";
   const { mainColor, currentScheme } = props;
 
   const getBlogContent = async (linkRef) => {
+    if(linkRef === selectedPost) return;
+    
+    setSelectedPost(linkRef);
     setLoading(true);
-    const res = await fetch(
-      `https://raw.githubusercontent.com/atude/portfolio-blog/master/${linkRef}`
-    );
+
+    const res = await fetch(`${baseRef}${linkRef}`);
     const resMd = await res.text();
     setBlogPost(resMd);
     setLoading(false);
@@ -59,14 +62,13 @@ export const BlogPage = (props) => {
                         key={blogRef}
                         className="BlogTopicContainer" 
                         style={{
-                          marginLeft: selectedPost === blogRef ? "8px" : null
+                          marginLeft: selectedPost === Blog[blogCategory][blogRef] ? "8px" : null
                         }}
                         onClick={() => { 
                           getBlogContent(Blog[blogCategory][blogRef]);
-                          setSelectedPost(blogRef);
                         }}
                       >
-                        {selectedPost === blogRef ? 
+                        {selectedPost === Blog[blogCategory][blogRef] ? 
                           <Label style={{color: mainColor}}/>
                           :
                           <LabelOutline style={{color: mainColor}}/>
