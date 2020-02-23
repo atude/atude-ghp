@@ -71,7 +71,7 @@
 }
 
 .ContentCard{
-  padding: 30px;
+  padding: 2em;
   height: 100%;
 }
 
@@ -80,7 +80,7 @@
 }
 
 .ProjectCardContent{
-  padding: 5px 20px 20px 20px;
+  padding: 0.2em 0.625em 1em 0.625em;
 }
 
 .ProjectCardTextContent{
@@ -98,15 +98,15 @@
 }
 
 .SkillsContainer{
-  padding-top: 10px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-top: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .ToolsContainer{
-  padding-top: 10px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-top: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .SkillSlider{

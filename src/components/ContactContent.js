@@ -47,7 +47,7 @@ class ContactContent extends React.Component {
     const { source, isLinks } = this.props;
     
     return(
-      <Grid container direction="column" alignItems="flex-start" justify="center" spacing={24} className="ContactContentCont">
+      <Grid container direction="column" alignItems="flex-start" justify="center" spacing={16} className="ContactContentCont">
         {Object.keys(source).map(key => (
           <Grid container direction="row" key={key} xs={12} sm={12} md={12} lg={12} xl={12} item>
             {this.getIcon(key, isLinks ? source[key][0] : null)}

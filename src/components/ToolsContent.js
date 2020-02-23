@@ -126,9 +126,9 @@ class ToolsContent extends React.Component {
     const width = this.state.width;
     
     return (
-      <Grid container direction="column" spacing={24} className="ToolsContainer">
+      <Grid container direction="column" spacing={16} className="ToolsContainer">
         {Object.keys(tools).map((toolskey, i) => (
-          <Grid item key={`${i}_tools`} container spacing={width < mdBreakpoint ? 24 : 8} 
+          <Grid item key={`${i}_tools`} container spacing={width < mdBreakpoint ? 16 : 8} 
             direction="row" alignItems="center" justify="flex-start"
           >
             <Grid item xs={2} sm={2} md={1} lg={1} xl={1}>

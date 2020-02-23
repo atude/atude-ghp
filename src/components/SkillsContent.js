@@ -183,7 +183,7 @@ class SkillsContent extends React.Component {
     
     return (
       <div className="SkillsContainer">
-        <Grid container direction="row" spacing={24}>
+        <Grid container direction="row" spacing={16}>
           {Object.keys(item).map(key => (
             <Grid item xs={6} key={key} container direction="row" justify="space-evenly" alignItems="center">
               <Grid item xs={12} sm={3} md={3} lg={3} xl={3}>
