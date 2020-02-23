@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cd7dd37a1a4d23ae1e3c07f39b4090cf",
+    "revision": "b8fb71742fe5d2acdf5bbc123f6c1b44",
     "url": "/atude-ghp/index.html"
   },
   {
-    "revision": "b2a47565c64cac56ec54",
+    "revision": "6a4b85eaf9af9c8f2d25",
     "url": "/atude-ghp/static/css/2.612075aa.chunk.css"
   },
   {
-    "revision": "c43565418141092eec75",
+    "revision": "01efb66e57a4da9a0024",
     "url": "/atude-ghp/static/css/main.2c37ca4b.chunk.css"
   },
   {
-    "revision": "b2a47565c64cac56ec54",
-    "url": "/atude-ghp/static/js/2.56edcf5f.chunk.js"
+    "revision": "6a4b85eaf9af9c8f2d25",
+    "url": "/atude-ghp/static/js/2.6317d820.chunk.js"
   },
   {
-    "revision": "c43565418141092eec75",
-    "url": "/atude-ghp/static/js/main.bba216ff.chunk.js"
+    "revision": "01efb66e57a4da9a0024",
+    "url": "/atude-ghp/static/js/main.7b99ce28.chunk.js"
   },
   {
     "revision": "e4d55441f48422a7f79b",
@@ -54,10 +54,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "c6c0282ee06919901319b09472e2aa44",
     "url": "/atude-ghp/static/media/1.c6c0282e.png"
-  },
-  {
-    "revision": "96988e13f52484f085f841b06798e08b",
-    "url": "/atude-ghp/static/media/1_npm.96988e13.md"
   },
   {
     "revision": "828443acfbd59827398e734ad51f6eb6",
