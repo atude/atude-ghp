@@ -1,22 +1,27 @@
 import React, { useState } from 'react';
 import '../components/Components.css';
-import { Grid, Slide, ExpansionPanel, ExpansionPanelSummary, Typography, ExpansionPanelDetails, Paper, Fab } from '@material-ui/core';
+import { Grid, Slide, ExpansionPanel, ExpansionPanelSummary, Typography, ExpansionPanelDetails, Paper, Fab, LinearProgress } from '@material-ui/core';
 import { ChevronDownCircleOutline, ArrowUpBold, Label, LabelOutline, LayersSearch } from 'mdi-material-ui';
 import Blog from '../assets/Blog.json';
 import ReactMarkdown from 'react-markdown';
 import CodeBlock from '../components/CodeBlock';
 
 export const BlogPage = (props) => {
-  const { mainColor, currentScheme } = props;
-  const tBase = 600;
   const [blogPost, setBlogPost] = useState("");
   const [selectedPost, setSelectedPost] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const tBase = 600;
+  const { mainColor, currentScheme } = props;
 
   const getBlogContent = async (linkRef) => {
-    const ref = require(`../assets/blog/${linkRef}`);
-    const res = await fetch(ref);
+    setLoading(true);
+    const res = await fetch(
+      `https://raw.githubusercontent.com/atude/portfolio-blog/master/${linkRef}`
+    );
     const resMd = await res.text();
     setBlogPost(resMd);
+    setLoading(false);
   }
 
   return (
@@ -79,31 +84,35 @@ export const BlogPage = (props) => {
           </Grid>
         </Slide>
         <Grid item xs={12} sm={12} md={9}>      
-          {!!blogPost ? 
-            <Paper className="MarkdownContainer">
-              <ReactMarkdown
-                renderers={{
-                  root: (props) => (
-                    <div style={{ color: currentScheme.lightGray }}>
-                      {props.children}
-                    </div> 
-                  ),
-                  code: CodeBlock
-                }}
-                source={blogPost}
-                escapeHtml={false}
-              />
-            </Paper>
+          {!loading ? 
+            (!!blogPost ? 
+              <Paper className="MarkdownContainer">
+                <ReactMarkdown
+                  renderers={{
+                    root: (props) => (
+                      <div style={{ color: currentScheme.lightGray }}>
+                        {props.children}
+                      </div> 
+                    ),
+                    code: CodeBlock
+                  }}
+                  source={blogPost}
+                  escapeHtml={false}
+                />
+              </Paper>
+              :
+              <div style={{textAlign: "center", width: "70%", margin: "auto"}}>
+                <br/><br/>
+                <LayersSearch style={{color: currentScheme.lightGray, width: "10rem", height: "10rem"}}/>
+                <br/><br/>
+                <Typography variant="body1" style={{color: currentScheme.lightGray}}>
+                  You can find my research topics for software development here. 
+                  Choose a topic to find out more.
+                </Typography>
+              </div>
+              )
             :
-            <div style={{textAlign: "center", width: "70%", margin: "auto"}}>
-              <br/><br/>
-              <LayersSearch style={{color: currentScheme.lightGray, width: "10rem", height: "10rem"}}/>
-              <br/><br/>
-              <Typography variant="body1" style={{color: currentScheme.lightGray}}>
-                You can find my research topics for software development here. 
-                Choose a topic to find out more.
-              </Typography>
-          </div>
+            <LinearProgress style={{backgroundColor: mainColor}}/>
           }
           <br/><br/><br/>
         </Grid>
