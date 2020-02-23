@@ -1,0 +1,12 @@
+{
+  "Security in JS and the Web": 
+  {
+    "1. NPM and package managers": "securityInJs/1_npm.md",
+    "2. Something something yes": "securityInJs/1_npm.md"
+  },
+  "Some topic": 
+  {
+    "1. NPM and package managers": "securityInJs/1_npm.md",
+    "2. Something something yes": "securityInJs/1_npm.md"
+  }
+}

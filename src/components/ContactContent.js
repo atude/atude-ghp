@@ -3,8 +3,6 @@ import '../components/Components.css';
 import { Grid, Typography } from '@material-ui/core';
 import { GithubCircle, Linkedin, EmailMarkAsUnread, Discord, GooglePlay } from 'mdi-material-ui';
 
-
-
 class ContactContent extends React.Component {
 
   getIconObj = (type) => {

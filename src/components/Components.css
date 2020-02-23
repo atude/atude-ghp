@@ -237,3 +237,11 @@
   left: 0;
   padding: 20px 30px 20px 30px;
 }
+
+.MarkdownContainer{
+  padding: 0.8rem 2rem 2rem 2rem;
+}
+
+.ResearchTopicsHeader{
+  padding: 14px;
+}
