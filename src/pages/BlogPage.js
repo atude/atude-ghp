@@ -96,7 +96,13 @@ export const BlogPage = (props) => {
                         {props.children}
                       </div> 
                     ),
-                    code: CodeBlock
+                    code: CodeBlock,
+                    inlineCode: (props) => (
+                      <code className="MarkdownInlineCode">
+                        {props.value}
+                      </code>
+                    ),
+                    link: (props) => <a href={props.href} style={{color: mainColor}}>{props.children}</a>
                   }}
                   source={blogPost}
                   escapeHtml={false}

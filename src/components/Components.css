@@ -267,3 +267,12 @@
   margin-left: 8px;
   transition: all 0.2s;
 }
+
+.MarkdownInlineCode {
+  background-color: #272822;
+  font-size: 0.8em;
+  color: #f8f8f2;
+  border-radius: 0.3em;
+  padding: 3px 4px 3px;
+  white-space: nowrap;
+}
