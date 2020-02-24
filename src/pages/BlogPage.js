@@ -102,8 +102,30 @@ export const BlogPage = (props) => {
                         {props.value}
                       </code>
                     ),
-                    link: (props) => <a href={props.href} style={{color: mainColor}}>{props.children}</a>
+                    link: (props) => (
+                      <a 
+                        href={props.href} 
+                        style={{color: mainColor}}
+                      >
+                        {props.children}
+                      </a>
+                    ),
+                    heading: (props) => {
+                      switch(props.level) {
+                        case 1: return <h1 style={{color: mainColor}}>{props.children}</h1>;
+                        case 2: return <><h2 style={{color: mainColor}}>{props.children}</h2><hr style={{border: 0, height: "1px", backgroundColor: mainColor}}/></>;
+                        case 3: return <h3 style={{color: mainColor}}>{props.children}</h3>;
+                        case 4: return <h4 style={{color: mainColor}}>{props.children}</h4>;
+                        case 5: return <h5>{props.children}</h5>;
+                        case 6: return <h6>{props.children}</h6>;
+                        default: return props.children;
+                      }
+                    },
+                    listItem: (props) => (
+                      <li>{props.children}</li>
+                    )
                   }}
+                  linkTarget={"_blank"}
                   source={blogPost}
                   escapeHtml={false}
                 />
