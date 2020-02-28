@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../components/Components.css';
 import { Grid, Slide, ExpansionPanel, ExpansionPanelSummary, Typography, ExpansionPanelDetails, Paper, Fab, LinearProgress } from '@material-ui/core';
 import { ChevronDownCircleOutline, ArrowUpBold, Label, LabelOutline, LayersSearch } from 'mdi-material-ui';
@@ -6,7 +6,9 @@ import Blog from '../assets/Blog.json';
 import ReactMarkdown from 'react-markdown';
 import CodeBlock from '../components/CodeBlock';
 
-export const BlogPage = (props) => {
+import { withRouter } from 'react-router-dom';
+
+const BlogPage = (props) => {
   const [blogPost, setBlogPost] = useState("");
   const [selectedPost, setSelectedPost] = useState("");
   const [loading, setLoading] = useState(false);
@@ -14,6 +16,16 @@ export const BlogPage = (props) => {
   const tBase = 600;
   const baseRef = "https://raw.githubusercontent.com/atude/portfolio-blog/master/";
   const { mainColor, currentScheme } = props;
+
+  // Routing for posts
+  useEffect(() => {
+    const query = props.location.search;
+    if(query) {
+      // Cut off ? from front of query
+      getBlogContent(query.slice(1));
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const getBlogContent = async (linkRef) => {
     if(linkRef === selectedPost) return;
@@ -25,6 +37,8 @@ export const BlogPage = (props) => {
     const resMd = await res.text();
     setBlogPost(resMd);
     setLoading(false);
+    // Push to browser history
+    props.history.push(`/blog?${linkRef}`);
   }
 
   return (
@@ -92,7 +106,7 @@ export const BlogPage = (props) => {
                 <ReactMarkdown
                   renderers={{
                     root: (props) => (
-                      <div style={{ color: currentScheme.lightGray }}>
+                      <div className="MarkdownMainText" style={{ color: currentScheme.lightGray }}>
                         {props.children}
                       </div> 
                     ),
@@ -123,7 +137,16 @@ export const BlogPage = (props) => {
                     },
                     listItem: (props) => (
                       <li>{props.children}</li>
-                    )
+                    ),
+                    blockquote: (props) => (
+                      <blockquote
+                        className="MarkdownBlockQuote" 
+                        style={{ borderLeft: `4px solid ${mainColor}`, color: currentScheme.lightGray }}
+                      >
+                        {props.children}
+                      </blockquote>
+                    ),
+                    strong: (props) => <strong style={{color: mainColor}}>{props.children}</strong>
                   }}
                   linkTarget={"_blank"}
                   source={blogPost}
@@ -158,4 +181,4 @@ export const BlogPage = (props) => {
   );
 }
 
-export default BlogPage;
+export default withRouter(BlogPage);

@@ -239,7 +239,7 @@
 }
 
 .MarkdownContainer{
-  padding: 0.2rem 1.2rem 1.7rem 1.2rem;
+  padding: 0.225rem 1.325rem 1.825rem 1.425rem;
 }
 
 .BlogTopicContainer{
@@ -268,6 +268,11 @@
   transition: all 0.2s;
 }
 
+.MarkdownMainText {
+  font-size: 0.95rem;
+  line-height: 1.5rem;
+}
+
 .MarkdownInlineCode {
   background-color: #162640;
   font-size: 0.8em;
@@ -275,4 +280,12 @@
   border-radius: 0.3em;
   padding: 3px 4px 3px;
   white-space: nowrap;
+}
+
+.MarkdownBlockQuote {
+  margin-left: 2rem;
+  padding-left: 1rem;
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
