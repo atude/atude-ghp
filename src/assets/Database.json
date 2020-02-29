@@ -3,7 +3,7 @@
   "About me":
   {
     "A bit about me": "I'm a student at the University of New South Wales, currently undergoing a Bachelor's Degree in Software Engineering. I pursue a passion in creating and designing products with captivating UXs and real-world use to help bring creative solutions to modern challenges. ",
-    "Experience with software": "My experience with development ranges from game creation and app development to web design and scripting. I've become familiar with industry standard tools such as React and Expo, and have utilised both object-oriented and functional programming styles. "
+    "Experience with software": "My experience with development ranges from app development and game creation to web design and scripting. I've become familiar with industry standard tools such as React and Expo, and have utilised both object-oriented and functional programming styles. "
   },
   "Skillset": 
   {
@@ -18,12 +18,12 @@
   },
   "Toolset": 
   {
-    "Development Frameworks": 
-    [ "React", "React Native", "Expo", "Unity" ],
+    "Frontend Frameworks": 
+    [ "React", "React Native", "Expo" ],
+    "Backend Tools": 
+    [ "Node", "Firebase", "Express" ],
     "Development Libraries": 
-    [ "GraphQL", "Apollo", "Immer" ],
-    "Backend Management": 
-    [ "Firebase", "Apollo Server", "Express" ],
+    [ "GraphQL", "Apollo", "Redux", "Immer" ],
     "Design Frameworks": 
     [ "Material UI", "React Native Paper", "React Native Elements" ],
     "Design Tools":

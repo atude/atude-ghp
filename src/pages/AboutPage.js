@@ -62,7 +62,7 @@ class AboutPage extends React.Component {
             <Slide in timeout={tBase+tAdd*2} direction="up" onEntered={this.setTransition}>
             <ContentCard mainColor={mainColor} currentScheme={currentScheme}
               headingIcon={<CubeOutline style={{color: mainColor}} fontSize="large" className="ContentCardHeadIcon"/>}
-              heading="Software Tools" 
+              heading="Software Technologies" 
               body={""}
               content={<ToolsContent currentScheme={currentScheme}/>}
             />
