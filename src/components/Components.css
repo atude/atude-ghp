@@ -239,7 +239,7 @@
 }
 
 .MarkdownContainer{
-  padding: 0.225rem 1.325rem 1.825rem 1.425rem;
+  padding: 0.225rem 1.325rem 0.225rem 1.425rem;
 }
 
 .BlogTopicContainer{
@@ -286,6 +286,10 @@
   margin-left: 2rem;
   padding-left: 1rem;
   font-style: italic;
-  font-size: 1rem;
+  font-size: 0.95rem;
   line-height: 1.5rem;
+}
+
+.BlogNextPrevContainer {
+  padding: 0.5rem 0.25rem;
 }

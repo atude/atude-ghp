@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../components/Components.css';
-import { Grid, Slide, ExpansionPanel, ExpansionPanelSummary, Typography, ExpansionPanelDetails, Paper, Fab, LinearProgress } from '@material-ui/core';
-import { ChevronDownCircleOutline, ArrowUpBold, Label, LabelOutline, LayersSearch } from 'mdi-material-ui';
+import { Grid, Slide, ExpansionPanel, ExpansionPanelSummary, Typography, ExpansionPanelDetails, Paper, Fab, LinearProgress, Button } from '@material-ui/core';
+import { ChevronDownCircleOutline, ArrowUpBold, Label, LabelOutline, LayersSearch, ChevronLeft, ChevronRight } from 'mdi-material-ui';
 import Blog from '../assets/Blog.json';
 import ReactMarkdown from 'react-markdown';
 import CodeBlock from '../components/CodeBlock';
@@ -11,14 +11,19 @@ import { withRouter } from 'react-router-dom';
 const BlogPage = (props) => {
   const [blogPost, setBlogPost] = useState("");
   const [selectedPost, setSelectedPost] = useState("");
+  const [flattenedPosts, setFlattenedPosts] = useState("");
   const [loading, setLoading] = useState(false);
 
   const tBase = 600;
   const baseRef = "https://raw.githubusercontent.com/atude/portfolio-blog/master/";
   const { mainColor, currentScheme } = props;
 
-  // Routing for posts
+  // Routing for posts and setting blog reference
   useEffect(() => {
+    // Set reference for all posts in flattened array
+    setFlattenedPosts([].concat(...Object.values(Blog).map(postArray => Object.values(postArray))));
+
+    // Get from query
     const query = props.location.search;
     if(query) {
       // Cut off ? from front of query
@@ -29,9 +34,9 @@ const BlogPage = (props) => {
 
   const getBlogContent = async (linkRef) => {
     if(linkRef === selectedPost) return;
-    
-    setSelectedPost(linkRef);
     setLoading(true);
+
+    setSelectedPost(linkRef);
 
     const res = await fetch(`${baseRef}${linkRef}`);
     const resMd = await res.text();
@@ -39,6 +44,10 @@ const BlogPage = (props) => {
     setLoading(false);
     // Push to browser history
     props.history.push(`/blog?${linkRef}`);
+  }
+
+  const getAdjacentPostRef = (direction) => {
+    return flattenedPosts[flattenedPosts.indexOf(selectedPost) + direction];
   }
 
   return (
@@ -96,76 +105,98 @@ const BlogPage = (props) => {
                 </ExpansionPanelDetails>
               </ExpansionPanel>
             ))}
-            
           </Grid>
         </Slide>
         <Grid item xs={12} sm={12} md={9}>      
           {!loading ? 
             (!!blogPost ? 
-              <Paper className="MarkdownContainer">
-                <ReactMarkdown
-                  renderers={{
-                    root: (props) => (
-                      <div className="MarkdownMainText" style={{ color: currentScheme.lightGray }}>
-                        {props.children}
-                      </div> 
-                    ),
-                    code: CodeBlock,
-                    inlineCode: (props) => (
-                      <code className="MarkdownInlineCode">
-                        {props.value}
-                      </code>
-                    ),
-                    link: (props) => (
-                      <a 
-                        href={props.href} 
-                        style={{color: mainColor}}
-                      >
-                        {props.children}
-                      </a>
-                    ),
-                    heading: (props) => {
-                      switch(props.level) {
-                        case 1: return <h1 style={{color: mainColor}}>{props.children}</h1>;
-                        case 2: return <><h2 style={{color: mainColor}}>{props.children}</h2><hr style={{border: 0, height: "1px", backgroundColor: mainColor}}/></>;
-                        case 3: return <h3 style={{color: mainColor}}>{props.children}</h3>;
-                        case 4: return <h4 style={{color: mainColor}}>{props.children}</h4>;
-                        case 5: return <h5>{props.children}</h5>;
-                        case 6: return <h6>{props.children}</h6>;
-                        default: return props.children;
-                      }
-                    },
-                    listItem: (props) => (
-                      <li>{props.children}</li>
-                    ),
-                    blockquote: (props) => (
-                      <blockquote
-                        className="MarkdownBlockQuote" 
-                        style={{ borderLeft: `4px solid ${mainColor}`, color: currentScheme.lightGray }}
-                      >
-                        {props.children}
-                      </blockquote>
-                    ),
-                    strong: (props) => <strong style={{color: mainColor}}>{props.children}</strong>
-                  }}
-                  linkTarget={"_blank"}
-                  source={blogPost}
-                  escapeHtml={false}
-                />
-              </Paper>
+              <>
+                <Paper className="MarkdownContainer">
+                  <ReactMarkdown
+                    renderers={{
+                      root: (props) => (
+                        <div className="MarkdownMainText" style={{ color: currentScheme.lightGray }}>
+                          {props.children}
+                        </div> 
+                      ),
+                      code: CodeBlock,
+                      inlineCode: (props) => (
+                        <code className="MarkdownInlineCode">
+                          {props.value}
+                        </code>
+                      ),
+                      link: (props) => (
+                        <a 
+                          href={props.href} 
+                          style={{color: mainColor}}
+                        >
+                          {props.children}
+                        </a>
+                      ),
+                      heading: (props) => {
+                        switch(props.level) {
+                          case 1: return <h1 style={{color: mainColor}}>{props.children}</h1>;
+                          case 2: return <><h2 style={{color: mainColor}}>{props.children}</h2><hr style={{border: 0, height: "1px", backgroundColor: mainColor}}/></>;
+                          case 3: return <h3 style={{color: mainColor}}>{props.children}</h3>;
+                          case 4: return <h4 style={{color: mainColor}}>{props.children}</h4>;
+                          case 5: return <h5>{props.children}</h5>;
+                          case 6: return <h6>{props.children}</h6>;
+                          default: return props.children;
+                        }
+                      },
+                      listItem: (props) => (
+                        <li>{props.children}</li>
+                      ),
+                      blockquote: (props) => (
+                        <blockquote
+                          className="MarkdownBlockQuote" 
+                          style={{ borderLeft: `4px solid ${mainColor}`, color: currentScheme.lightGray }}
+                        >
+                          {props.children}
+                        </blockquote>
+                      ),
+                      strong: (props) => <strong style={{color: mainColor}}>{props.children}</strong>
+                    }}
+                    linkTarget={"_blank"}
+                    source={blogPost}
+                    escapeHtml={false}
+                  />
+                </Paper>
+                <div className="BlogNextPrevContainer">
+                  {!!getAdjacentPostRef(-1) && 
+                    <Button 
+                      onClick={() => getBlogContent(getAdjacentPostRef(-1))}
+                      style={{color: mainColor}}
+                    >
+                      <ChevronLeft/>
+                      Previous Post
+                    </Button>
+                  }
+                  &nbsp;&nbsp;&nbsp;
+                  {!!getAdjacentPostRef(1) && 
+                    <Button 
+                      onClick={() => getBlogContent(getAdjacentPostRef(1))}
+                      style={{color: mainColor}}
+                    >
+                      Next Post
+                      <ChevronRight/>
+                    </Button>
+                  }
+                </div>
+              </>
               :
               <div style={{textAlign: "center", width: "70%", margin: "auto"}}>
                 <br/><br/>
                 <LayersSearch style={{color: currentScheme.lightGray, width: "10rem", height: "10rem"}}/>
                 <br/><br/>
                 <Typography variant="body1" style={{color: currentScheme.lightGray}}>
-                  You can find my research topics for software development here. 
+                  You can find my research topics here. 
                   Choose a topic to find out more.
                 </Typography>
               </div>
               )
             :
-            <LinearProgress style={{backgroundColor: mainColor}}/>
+            <LinearProgress color="secondary"/>
           }
           <br/><br/><br/>
         </Grid>
