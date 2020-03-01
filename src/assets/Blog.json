@@ -1,6 +1,7 @@
 {
-  "Security in JS and the Web": 
+  "Security in JS and Web Development": 
   {
-    "npm and the postinstall script": "SecurityInJS/1_npm.md"
+    "npm and the postinstall script": "SecurityInJS/1_npm.md",
+    "Dangerously setting HTML in React": "SecurityInJS/2_dangerouslySetInnerHtml.md"
   }
 }

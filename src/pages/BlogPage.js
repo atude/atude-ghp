@@ -178,7 +178,7 @@ const BlogPage = (props) => {
                       style={{color: mainColor}}
                     >
                       <ChevronLeft/>
-                      Previous Post
+                      Previous Post: {getAdjacentPostRef(-1).split("_")[1].slice(0, -3).split(/(?=[A-Z])/).join(" ")}
                     </Button>
                   }
                   &nbsp;&nbsp;&nbsp;
@@ -187,7 +187,7 @@ const BlogPage = (props) => {
                       onClick={() => getBlogContent(getAdjacentPostRef(1))}
                       style={{color: mainColor}}
                     >
-                      Next Post
+                      Next Post: {getAdjacentPostRef(1).split("_")[1].slice(0, -3).split(/(?=[A-Z])/).join(" ")}
                       <ChevronRight/>
                     </Button>
                   }
