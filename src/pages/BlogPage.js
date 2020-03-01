@@ -13,6 +13,8 @@ const BlogPage = (props) => {
   const [selectedPost, setSelectedPost] = useState("");
   const [flattenedPosts, setFlattenedPosts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [loadingIndex, setLoadingIndex] = useState(false);
+
 
   const tBase = 600;
   const baseRef = "https://raw.githubusercontent.com/atude/portfolio-blog/master/";
@@ -21,6 +23,7 @@ const BlogPage = (props) => {
   // Load blog reference 
   useEffect(() => {
     const fetchBlogRef = async () => {
+      setLoadingIndex(true);
       const res = await fetch(`${baseRef}blog.json`);
       const resJson = await res.json();
       setBlogRef(resJson);
@@ -34,6 +37,8 @@ const BlogPage = (props) => {
         // Cut off ? from front of query
         getBlogContent(query.slice(1));
       }
+
+      setLoadingIndex(false);
     }
 
     fetchBlogRef();
@@ -69,7 +74,7 @@ const BlogPage = (props) => {
       >
         <Slide 
           timeout={tBase} direction="right"
-          in mountOnEnter
+          in={!loadingIndex}
         >
           <Grid item xs={12} sm={12} md={3}>
             <Paper 
