@@ -2,34 +2,42 @@ import React, { useState, useEffect } from 'react';
 import '../components/Components.css';
 import { Grid, Slide, ExpansionPanel, ExpansionPanelSummary, Typography, ExpansionPanelDetails, Paper, Fab, LinearProgress, Button } from '@material-ui/core';
 import { ChevronDownCircleOutline, ArrowUpBold, Label, LabelOutline, LayersSearch, ChevronLeft, ChevronRight } from 'mdi-material-ui';
-import Blog from '../assets/Blog.json';
 import ReactMarkdown from 'react-markdown';
 import CodeBlock from '../components/CodeBlock';
 
 import { withRouter } from 'react-router-dom';
 
 const BlogPage = (props) => {
+  const [blogRef, setBlogRef] = useState({});
   const [blogPost, setBlogPost] = useState("");
   const [selectedPost, setSelectedPost] = useState("");
-  const [flattenedPosts, setFlattenedPosts] = useState("");
+  const [flattenedPosts, setFlattenedPosts] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const tBase = 600;
   const baseRef = "https://raw.githubusercontent.com/atude/portfolio-blog/master/";
   const { mainColor, currentScheme } = props;
 
-  // Routing for posts and setting blog reference
+  // Load blog reference 
   useEffect(() => {
-    // Set reference for all posts in flattened array
-    setFlattenedPosts([].concat(...Object.values(Blog).map(postArray => Object.values(postArray))));
+    const fetchBlogRef = async () => {
+      const res = await fetch(`${baseRef}blog.json`);
+      const resJson = await res.json();
+      setBlogRef(resJson);
+      setFlattenedPosts(
+        [].concat(...Object.values(resJson)
+        .map(postArray => Object.values(postArray)))
+      );
 
-    // Get from query
-    const query = props.location.search;
-    if(query) {
-      // Cut off ? from front of query
-      getBlogContent(query.slice(1));
+      const query = props.location.search;
+      if(query) {
+        // Cut off ? from front of query
+        getBlogContent(query.slice(1));
+      }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    fetchBlogRef();
+   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getBlogContent = async (linkRef) => {
@@ -73,31 +81,31 @@ const BlogPage = (props) => {
               </Typography>
               <LayersSearch style={{color: mainColor, cursor: "default"}}/>
             </Paper>
-            {Object.keys(Blog).map((blogCategory, i) => (
+            {Object.keys(blogRef).map((blogCategory, i) => (
               <ExpansionPanel key={blogCategory + i}>
                 <ExpansionPanelSummary expandIcon={<ChevronDownCircleOutline/>}>
                   <Typography>{blogCategory}</Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
                   <div>
-                    {Object.keys(Blog[blogCategory]).map((blogRef) => (
+                    {Object.keys(blogRef[blogCategory]).map((blogPostRef) => (
                       <div 
-                        key={blogRef}
+                        key={blogPostRef}
                         className="BlogTopicContainer" 
                         style={{
-                          marginLeft: selectedPost === Blog[blogCategory][blogRef] ? "8px" : null
+                          marginLeft: selectedPost === blogRef[blogCategory][blogPostRef] ? "8px" : null
                         }}
                         onClick={() => { 
-                          getBlogContent(Blog[blogCategory][blogRef]);
+                          getBlogContent(blogRef[blogCategory][blogPostRef]);
                         }}
                       >
-                        {selectedPost === Blog[blogCategory][blogRef] ? 
+                        {selectedPost === blogRef[blogCategory][blogPostRef] ? 
                           <Label style={{color: mainColor}}/>
                           :
                           <LabelOutline style={{color: mainColor}}/>
                         }
                         <Typography style={{marginLeft: "12px"}}>
-                          {blogRef}
+                          {blogPostRef}
                         </Typography>
                       </div>
                     ))}
