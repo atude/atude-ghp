@@ -121,7 +121,7 @@ const BlogPage = (props) => {
                       ),
                       code: CodeBlock,
                       inlineCode: (props) => (
-                        <code className="MarkdownInlineCode">
+                        <code className="MarkdownInlineCode" style={{color: mainColor, backgroundColor: currentScheme.bgSecond}}>
                           {props.value}
                         </code>
                       ),
@@ -145,12 +145,21 @@ const BlogPage = (props) => {
                         }
                       },
                       listItem: (props) => (
-                        <li>{props.children}</li>
+                        <li style={{color: mainColor}}>
+                          <span style={{color: currentScheme.lightGray}}>
+                            {props.children}
+                          </span>
+                        </li>
                       ),
                       blockquote: (props) => (
                         <blockquote
                           className="MarkdownBlockQuote" 
-                          style={{ borderLeft: `4px solid ${mainColor}`, color: currentScheme.lightGray }}
+                          style={{ 
+                            borderLeft: `2px solid ${mainColor}`, 
+                            color: currentScheme.lightGray,
+                            //Last 2 digits are transparency suffix
+                            backgroundColor: mainColor + "15",
+                          }}
                         >
                           {props.children}
                         </blockquote>

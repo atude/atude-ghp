@@ -222,15 +222,15 @@ class ResponsiveDrawer extends React.Component {
       "/blog": 
       {
         "title": "Research Blog",
-        "color": this.state.currentScheme.colorSet.orange,
-        "icAppbar": <NewspaperVariantMultiple style={{fontSize: "80px", color: this.state.currentScheme.colorSet.orange}} className="AppbarIcon"/>,
+        "color": this.state.currentScheme.colorSet.purple,
+        "icAppbar": <NewspaperVariantMultiple style={{fontSize: "80px", color: this.state.currentScheme.colorSet.purple}} className="AppbarIcon"/>,
         "icList": <NewspaperVariantMultiple className="ListIcon"/>,
       },
       "/contact": 
       {
         "title": "Contact",
-        "color": this.state.currentScheme.colorSet.purple,
-        "icAppbar": <MessageBulleted style={{fontSize: "80px", color: this.state.currentScheme.colorSet.purple}} className="AppbarIcon"/>,
+        "color": this.state.currentScheme.colorSet.orange,
+        "icAppbar": <MessageBulleted style={{fontSize: "80px", color: this.state.currentScheme.colorSet.orange}} className="AppbarIcon"/>,
         "icList": <MessageBulleted className="ListIcon"/>,
       },
     }
