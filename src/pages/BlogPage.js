@@ -82,7 +82,7 @@ const BlogPage = (props) => {
               style={{cursor: "default", padding: "15px 20px 15px 20px"}}
             >
               <Typography style={{color: mainColor}} variant="button">
-                Research Topics
+                Topics
               </Typography>
               <LayersSearch style={{color: mainColor, cursor: "default"}}/>
             </Paper>
