@@ -26,7 +26,7 @@ class AboutPage extends React.Component {
 
     return (
       <Fade in timeout={600}>
-        <div>
+        <div className="ParentCenterContainer">
           <Grid container direction="row" spacing={24} alignItems="center" justify="center"
           style={{overflow: this.state.transitionDone ? "inherit" : "hidden"}}>
 

@@ -51,7 +51,7 @@ export default function ProjectsPage(props) {
  
   const getCardMain = (project, i, mainColor, currentScheme, projectsLength) => {   
     return (
-      <Grid item key={project.heading} lg={6} md={6} sm={12} xs={12}>
+      <Grid item key={project.heading} lg={6} md={6} sm={12} xs={12} alignItems="center" justify="center">
         <Slide
           direction="up"
           in
@@ -87,7 +87,7 @@ export default function ProjectsPage(props) {
   };
 
   return (
-    <div>
+    <div className="ParentCenterContainer">
       <Grid
         container
         direction="row"
