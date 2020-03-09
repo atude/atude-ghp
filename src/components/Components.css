@@ -298,3 +298,12 @@
 .BlogNextPrevContainer {
   padding: 0.5rem 0.25rem;
 }
+
+.AbsoluteCentered {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}

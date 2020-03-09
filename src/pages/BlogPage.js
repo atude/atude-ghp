@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../components/Components.css';
-import { Grid, Slide, ExpansionPanel, ExpansionPanelSummary, Typography, ExpansionPanelDetails, Paper, Fab, LinearProgress, Button } from '@material-ui/core';
+import { Grid, Slide, ExpansionPanel, ExpansionPanelSummary, Typography, ExpansionPanelDetails, Paper, Fab, LinearProgress, Button, CircularProgress } from '@material-ui/core';
 import { ChevronDownCircleOutline, ArrowUpBold, Label, LabelOutline, LayersSearch, ChevronLeft, ChevronRight } from 'mdi-material-ui';
 import ReactMarkdown from 'react-markdown';
 import CodeBlock from '../components/CodeBlock';
@@ -63,6 +63,10 @@ const BlogPage = (props) => {
     return flattenedPosts[flattenedPosts.indexOf(selectedPost) + direction];
   }
 
+  if (loadingIndex) {
+    return <CircularProgress className="AbsoluteCentered" color="secondary"/>;
+  }
+
   return (
     <div style={{maxWidth: "1200px", margin: "auto"}}>
       <Grid 
@@ -74,7 +78,7 @@ const BlogPage = (props) => {
       >
         <Slide 
           timeout={tBase} direction="right"
-          in={!loadingIndex}
+          in mountOnEnter
         >
           <Grid item xs={12} sm={12} md={3}>
             <Paper 
