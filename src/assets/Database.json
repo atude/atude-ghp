@@ -29,7 +29,7 @@
     "Design Tools":
     [ "GIMP", "Photoshop", "XD"  ],
     "Devops": 
-    [ "GitHub", "GitLab" ]
+    [ "GitHub", "GitLab", "CircleCI" ]
   },
   "Skills Level Frame":
   {
