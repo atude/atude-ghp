@@ -254,10 +254,14 @@ class ProjectCard extends React.Component {
 
   getAchievements = (achievements, mainColor, accColor) => {
     return (
-      <>
-        <Typography style={{color: mainColor, paddingBottom: "4px"}} variant="button">
-          Achievements
-        </Typography>
+      <div style={{
+        paddingBottom: "20px",
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+        flexWrap: "wrap"
+      }}>
         {achievements.map(achievement => (
           <div 
             key={achievement}
@@ -267,12 +271,10 @@ class ProjectCard extends React.Component {
               padding: "4px",
               backgroundColor: accColor,
               borderRadius: 30,
-              display: "inline-block"
             }}
           >
             <Typography
               variant="button"
-              className="AchievementText"
               style={{
                 paddingLeft: "12px",
                 paddingRight: "12px",
@@ -295,11 +297,9 @@ class ProjectCard extends React.Component {
               </IconButton>
             }
             </Typography>
-
           </div>
         ))}
-        <br/><br/>
-      </>
+      </div>
     );
   };
 
@@ -320,10 +320,9 @@ class ProjectCard extends React.Component {
         <div className="ProjectCardContent">
           <CardContent>
             {this.getHeadings(projectIcon, viewlink, accColor, heading, lightGray, subheading)}
+            {achievements.length > 0 && this.getAchievements(achievements, mainColor, accColor)}
             {this.getDetailsContainer(categoryStyle, platforms, date, built, tools, role, team)}
             <br/>
-            
-            {achievements.length > 0 && this.getAchievements(achievements, mainColor, accColor)}
             
             {/* About */}
             <Typography style={{color: mainColor, paddingBottom: "4px"}} variant="button">
