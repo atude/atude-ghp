@@ -11,9 +11,10 @@ class HomePage extends React.Component {
     const { currentScheme, isDark, mainColor } = this.props;
     const circleFilters = "hue-rotate(-45deg) drop-shadow(20px 20px 20px #6d85ff)";
     
-    var longshadowStr = "";
+    let longshadowStr = "";
     const maxLen = 400;
-    for(var i = 0; i < maxLen; i++){
+    let i = 0;
+    for(i = 0; i < maxLen; i++){
       longshadowStr += `rgba(90, 90, 90, 1) ${i}px ${i}px,`;
     }
 
@@ -34,7 +35,7 @@ class HomePage extends React.Component {
                   opacity: "0.8",
                   transition: "all 1s ease", 
                   fontSize: "2vh"}}>
-                    Oh hi, i'm
+                    hi, i'm
               </Typography>
               <Typography variant="overline" style={{ 
                 fontSize: "6vh", 
@@ -53,7 +54,7 @@ class HomePage extends React.Component {
                 opacity: "0.8",
                 transition: "all 1s ease", 
                 fontSize: "2vh"}}>
-                  Software Engineer | Design
+                  Software Engineer | Web Dev | App Dev
               </Typography>
             </div>
           </div>

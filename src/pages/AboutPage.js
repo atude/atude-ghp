@@ -33,8 +33,16 @@ class AboutPage extends React.Component {
           <Grid item>
             <Fade in={this.state.isAvatarLoad} timeout={700}>
               <Avatar src={imgProfile} alt="profile"
-                style={{width: 200, height: 200, margin: 20}} onLoad={() => (this.setState({isAvatarLoad: true}))}/> 
+                style={{
+                  width: 200, height: 200, margin: 20,
+
+                }} 
+                onLoad={() => (this.setState({isAvatarLoad: true}))}
+              /> 
             </Fade>
+            <div className="AvatarBgCircle"/>
+            <div className="AvatarBgCircle2"/>
+            <div className="AvatarBgCircle3"/>
           </Grid>
 
           <Grid item lg={8} md={8} sm={10} xs={12}>
