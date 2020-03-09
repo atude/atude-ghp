@@ -312,7 +312,7 @@ class ProjectCard extends React.Component {
     } = this.props;
 
     const lightGray = currentScheme.lightGray;
-    const categoryStyle = { fontSize: "14px", color: lightGray, letterSpacing: "0px" };
+    const categoryStyle = { fontSize: "14px", color: lightGray, letterSpacing: "0.1px" };
 
     return (
       <Card className="ProjectCard">
