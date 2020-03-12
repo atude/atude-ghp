@@ -23,7 +23,7 @@ import BlogPage from '../pages/BlogPage';
 //My consts
 /* Colors */
 const drawerWidth = 340;
-var mainColor = colorSetLight.purple;
+var mainColor = "#555";
 const secondaryColor = "#342E37";
 
 const lightScheme = {
@@ -328,14 +328,24 @@ class ResponsiveDrawer extends React.Component {
   getSideListObject = (currPath, path, thisColor, header) => {
     return (
       <NavLink to={path} style={{textDecoration: "none"}}>
-        <ListItem selected={this.state.selected === header} button className="SideListItem"
-        onClick={() => 
-          this.handleTabClick(header, path)} 
-        key={header}>
-          <ListItemIcon style={{color: currPath === path && thisColor}}
-            className="SideListItem">{this.getIcon(false, path)}</ListItemIcon>
-          <ListItemText primary={<Typography style={{color: currPath === path && thisColor}} 
-            variant="button">{header}</Typography>}/>
+        <ListItem 
+          selected={this.state.selected === header} button className="SideListItem"
+          onClick={() => this.handleTabClick(header, path)} 
+          key={header}
+        >
+          <ListItemIcon 
+            style={{color: currPath === path && thisColor}}
+            className="SideListItem">{this.getIcon(false, path)}
+          </ListItemIcon>
+          <ListItemText 
+            primary={
+              <Typography 
+                style={{color: currPath === path && thisColor}} 
+                variant="button">
+                  {header}
+              </Typography>
+            }
+          />
         </ListItem>
       </NavLink>
     );

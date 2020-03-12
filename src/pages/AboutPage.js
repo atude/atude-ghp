@@ -27,10 +27,6 @@ const AboutPage = (props) => {
   const tBase = 700;
   const tAdd = 300;
 
-  useEffect(() => {
-
-  }, []);
-
   return (
     <Fade in timeout={600}>
       <div className="ParentCenterContainer">

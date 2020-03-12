@@ -64,7 +64,7 @@ const BlogPage = (props) => {
   }
 
   if (loadingIndex) {
-    return <CircularProgress className="AbsoluteCentered" color="secondary"/>;
+    return <CircularProgress className="AbsoluteCentered" color="primary"/>;
   }
 
   return (
@@ -222,7 +222,7 @@ const BlogPage = (props) => {
               </div>
               )
             :
-            <LinearProgress color="secondary"/>
+            <LinearProgress color="primary"/>
           }
           <br/><br/><br/>
         </Grid>
