@@ -26,9 +26,9 @@
     [ "GraphQL", "REST" ],
     "Devops": 
     [ "GitHub", "GitLab", "CircleCI" ],
-    "UI Frameworks": 
+    "UI": 
     [ "Material UI", "React Native Paper", "React Native Elements" ],
-    "Design Tools":
+    "Design":
     [ "GIMP", "Photoshop", "XD"  ]
   },
   "Skills Level Frame":

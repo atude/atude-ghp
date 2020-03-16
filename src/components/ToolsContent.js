@@ -55,8 +55,8 @@ class ToolsContent extends React.Component {
       "Backend": <Server style={mainStyle}/>,
       "API": <TimelineText style={mainStyle}/>,
       "Devops": <Infinity style={mainStyle}/>,
-      "UI Frameworks": <DeveloperBoard style={mainStyle}/>, 
-      "Design Tools": <FormatColorFill style={mainStyle}/>, 
+      "UI": <DeveloperBoard style={mainStyle}/>, 
+      "Design": <FormatColorFill style={mainStyle}/>, 
 
       "React": <ReactIcon style={cStyle}/>,
       "React Native": <ReactIcon style={cStyle}/>,
@@ -144,12 +144,12 @@ class ToolsContent extends React.Component {
             <Grid item xs={2} sm={2} md={1} lg={1} xl={1}>
               {this.getIconTools(toolskey, Object.values(colorSet)[i])}
             </Grid>
-            <Grid item xs={9} sm={9} md={5} lg={4} xl={4}>
+            <Grid item xs={9} sm={9} md={3} lg={2} xl={2}>
               <Typography gutterBottom variant="button" style={{color: Object.values(colorSet)[i], display: "flex", verticalAlign: "middle"}}>
                 {toolskey}
               </Typography>
             </Grid>
-            <Grid item xs={12} sm={12} md={6} lg={7} xl={7}>
+            <Grid item xs={12} sm={12} md={8} lg={9} xl={9}>
               <Grid container spacing={8} direction="row" alignItems="center"
                 justify={width < mdBreakpoint ? "flex-start" : "flex-end"}
               >
