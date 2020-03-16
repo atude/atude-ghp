@@ -18,18 +18,18 @@
   },
   "Toolset": 
   {
-    "Frontend Frameworks": 
-    [ "React", "React Native", "Expo" ],
-    "Backend Tools": 
-    [ "Node", "Firebase", "Express" ],
-    "Development Libraries": 
-    [ "GraphQL", "Apollo", "Redux", "Immer" ],
-    "Design Frameworks": 
+    "Frontend": 
+    [ "React", "React Native", "Expo", "Redux", "Immer" ],
+    "Backend": 
+    [ "Node", "Firebase", "Apollo", "Express" ],
+    "API":  
+    [ "GraphQL", "REST" ],
+    "Devops": 
+    [ "GitHub", "GitLab", "CircleCI" ],
+    "UI Frameworks": 
     [ "Material UI", "React Native Paper", "React Native Elements" ],
     "Design Tools":
-    [ "GIMP", "Photoshop", "XD"  ],
-    "Devops": 
-    [ "GitHub", "GitLab", "CircleCI" ]
+    [ "GIMP", "Photoshop", "XD"  ]
   },
   "Skills Level Frame":
   {

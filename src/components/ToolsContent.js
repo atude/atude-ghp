@@ -16,7 +16,7 @@ import {
   Firebase,
   Graphql,
   Docker,
-  Package,
+  TimelineText,
 } from 'mdi-material-ui';
 import Database from '../assets/Database';
 
@@ -51,12 +51,12 @@ class ToolsContent extends React.Component {
     const cStyle = {color: setColor, fontSize: "21px", marginLeft: "7px"};
     const mainStyle = {color: setColor, fontSize: "28px", marginLeft: "5px", marginRight: "5px"};
     const iconSwitch = {
-      "Frontend Frameworks": <Iframe style={mainStyle}/>,
-      "Backend Tools": <Server style={mainStyle}/>,
-      "Development Libraries": <Package style={mainStyle}/>,
-      "Design Frameworks": <DeveloperBoard style={mainStyle}/>, 
-      "Design Tools": <FormatColorFill style={mainStyle}/>, 
+      "Frontend": <Iframe style={mainStyle}/>,
+      "Backend": <Server style={mainStyle}/>,
+      "API": <TimelineText style={mainStyle}/>,
       "Devops": <Infinity style={mainStyle}/>,
+      "UI Frameworks": <DeveloperBoard style={mainStyle}/>, 
+      "Design Tools": <FormatColorFill style={mainStyle}/>, 
 
       "React": <ReactIcon style={cStyle}/>,
       "React Native": <ReactIcon style={cStyle}/>,
