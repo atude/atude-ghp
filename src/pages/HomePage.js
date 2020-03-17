@@ -30,31 +30,39 @@ class HomePage extends React.Component {
             <div className="HomePageCircle2"/>
             <div className="HomePageCircle3"/>
             <div className="HomePageTextMain">
-              <Typography variant="button" style={{
+              <Typography 
+                variant="button" 
+                style={{
                   color: "#ffffff",
                   opacity: "0.8",
                   transition: "all 1s ease", 
-                  fontSize: "2vh"}}>
-                    hi, i'm
+                  fontSize: "max(1rem, 2vh)"
+                }}
+              >
+                hi, i'm
               </Typography>
               <Typography variant="overline" style={{ 
-                fontSize: "6vh", 
-                lineHeight: "7vh", textAlign: "left", 
+                fontSize: "max(2rem, 5vh)", 
+                lineHeight: "max(2rem, 6vh)", 
+                textAlign: "left", 
                 color: "#ffffff",
                 opacity: "0.8",
                 transition: "all 1s ease",
                 textShadow: longshadowStr,
                 mixBlendMode: "hard-light",
-                }}>
-                  Mozamel<br/><b>Anwary</b>
+                }}
+              >
+                Mozamel<br/><b>Anwary</b>
               </Typography>
-            
+              <br/>
               <Typography variant="button" style={{
                 color: "#ffffff",
                 opacity: "0.8",
                 transition: "all 1s ease", 
-                fontSize: "2vh"}}>
-                  Software Engineer | Web Dev | App Dev
+                fontSize: "max(1rem, 2vh)",
+                lineHeight: "max(2rem, 3vh)",
+              }}>
+                Software Engineer | Web & App Dev
               </Typography>
             </div>
           </div>
