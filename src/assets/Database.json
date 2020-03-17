@@ -25,7 +25,7 @@
     "API":  
     [ "GraphQL", "REST" ],
     "Devops": 
-    [ "GitHub", "GitLab", "CircleCI" ],
+    [ "CircleCI", "Heroku", "GitHub", "GitLab" ],
     "UI": 
     [ "Material UI", "React Native Paper", "React Native Elements" ],
     "Design":
