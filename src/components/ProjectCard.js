@@ -185,14 +185,16 @@ class ProjectCard extends React.Component {
 
   getDetailsSectionLeft = (categoryText, categoryStyle, rightPadding, items) => {
     return (
-      <Grid item>
+      <Grid item container>
         <Grid container direction="row" justify="flex-start" alignItems="center">
           <Grid item>
             <Typography style={{...categoryStyle, paddingRight: rightPadding}} variant="button">
               {categoryText}
             </Typography>
+          </Grid>
+          <Grid item container direction="row" xs={6}>
+            {items}
           </Grid> 
-          {items}
         </Grid>
       </Grid>
     );
