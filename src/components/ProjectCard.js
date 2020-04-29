@@ -107,7 +107,7 @@ class ProjectCard extends React.Component {
               label={
                 <Typography style={{ fontSize: "11px" }} variant="button">
                   Find on Github
-                  </Typography>
+                </Typography>
               }
               avatar={<Avatar><GithubCircle /></Avatar>}
               component="a"
@@ -262,7 +262,8 @@ class ProjectCard extends React.Component {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
-        flexWrap: "wrap"
+        flexWrap: "wrap",
+        minHeight: this.state.width > smBreakpoint ? "63px" : 0,
       }}>
         {achievements.map(achievement => (
           <div 
@@ -322,7 +323,7 @@ class ProjectCard extends React.Component {
         <div className="ProjectCardContent">
           <CardContent>
             {this.getHeadings(projectIcon, viewlink, accColor, heading, lightGray, subheading)}
-            {achievements.length > 0 && this.getAchievements(achievements, mainColor, accColor)}
+            {this.getAchievements(achievements ? achievements : [], mainColor, accColor)}
             {this.getDetailsContainer(categoryStyle, platforms, date, built, tools, role, team)}
             <br/>
             
