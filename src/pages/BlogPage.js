@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import '../components/Components.css';
-import { Grid, Slide, ExpansionPanel, ExpansionPanelSummary, Typography, ExpansionPanelDetails, Paper, Fab, LinearProgress, Button, CircularProgress } from '@material-ui/core';
+import { Grid, Slide, Typography, Fab, LinearProgress, Button, CircularProgress, Divider } from '@material-ui/core';
 import { ChevronDownCircleOutline, ArrowUpBold, Label, LabelOutline, LayersSearch, ChevronLeft, ChevronRight } from 'mdi-material-ui';
 import ReactMarkdown from 'react-markdown';
 import CodeBlock from '../components/CodeBlock';
 
 import { withRouter } from 'react-router-dom';
+
+const tBase = 600;
 
 const BlogPage = (props) => {
   const [blogRef, setBlogRef] = useState({});
@@ -15,10 +17,8 @@ const BlogPage = (props) => {
   const [loading, setLoading] = useState(false);
   const [loadingIndex, setLoadingIndex] = useState(false);
 
-
-  const tBase = 600;
   const baseRef = "https://raw.githubusercontent.com/atude/portfolio-blog/master/";
-  const { mainColor, currentScheme } = props;
+  const { mainColor, currentScheme, isDark } = props;
 
   // Load blog reference 
   useEffect(() => {
@@ -81,21 +81,30 @@ const BlogPage = (props) => {
           in mountOnEnter
         >
           <Grid item xs={12} sm={12} md={3}>
-            <Paper 
-              className="HorizontalContainer"
+            <div 
+              className={`${isDark ? "StandardCardDark" : "StandardCard"}`}
               style={{cursor: "default", padding: "15px 20px 15px 20px"}}
             >
-              <Typography style={{color: mainColor}} variant="button">
-                Topics
-              </Typography>
-              <LayersSearch style={{color: mainColor, cursor: "default"}}/>
-            </Paper>
-            {Object.keys(blogRef).map((blogCategory, i) => (
-              <ExpansionPanel key={blogCategory + i}>
-                <ExpansionPanelSummary expandIcon={<ChevronDownCircleOutline/>}>
-                  <Typography>{blogCategory}</Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
+              <div className="HorizontalContainer" 
+                style={{
+                  paddingBottom: "10px",
+                }}
+              >
+                <Typography style={{color: mainColor}} variant="button">
+                  Topics
+                </Typography>
+                <LayersSearch style={{color: mainColor, cursor: "default"}}/>
+              </div>
+              {Object.keys(blogRef).map((blogCategory, i) => (
+                <div>
+                  <Typography 
+                    variant="button" 
+                    color="textSecondary"
+                    style={{ marginBottom: "10px" }}
+                  >
+                    {blogCategory}
+                  </Typography>
+                  <Divider style={{marginBottom: "10px"}}/>
                   <div>
                     {Object.keys(blogRef[blogCategory]).map((blogPostRef) => (
                       <div 
@@ -113,22 +122,22 @@ const BlogPage = (props) => {
                           :
                           <LabelOutline style={{color: mainColor}}/>
                         }
-                        <Typography style={{marginLeft: "12px"}}>
+                        <Typography color="textSecondary" style={{marginLeft: "12px", fontSize: "13px"}}>
                           {blogPostRef}
                         </Typography>
                       </div>
                     ))}
                   </div>
-                </ExpansionPanelDetails>
-              </ExpansionPanel>
-            ))}
+                </div>
+              ))}
+              </div>
           </Grid>
         </Slide>
         <Grid item xs={12} sm={12} md={9}>      
           {!loading ? 
             (!!blogPost ? 
               <>
-                <Paper className="MarkdownContainer">
+                <div className={`MarkdownContainer ${isDark ? "StandardCardDark" : "StandardCard"}`}>
                   <ReactMarkdown
                     renderers={{
                       root: (props) => (
@@ -187,7 +196,7 @@ const BlogPage = (props) => {
                     source={blogPost}
                     escapeHtml={false}
                   />
-                </Paper>
+                </div>
                 <div className="BlogNextPrevContainer">
                   {!!getAdjacentPostRef(-1) && 
                     <Button 

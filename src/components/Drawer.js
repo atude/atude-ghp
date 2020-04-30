@@ -23,7 +23,7 @@ import BlogPage from '../pages/BlogPage';
 //My consts
 /* Colors */
 const drawerWidth = 340;
-var mainColor = "#555";
+var mainColor = "#555555";
 const secondaryColor = "#342E37";
 
 const lightScheme = {
@@ -75,7 +75,7 @@ const lightScheme = {
 }
 
 const darkScheme = {
-  "bg": "#000000",
+  "bg": "#101010",
   "bgInv": "#ffffff",
   "bgSecond": "#303030",
   "lightGray": "#e5e5e5",
@@ -340,6 +340,7 @@ class ResponsiveDrawer extends React.Component {
           <ListItemText 
             primary={
               <Typography 
+                color="primary"
                 style={{color: currPath === path && thisColor}} 
                 variant="button">
                   {header}
@@ -370,8 +371,12 @@ class ResponsiveDrawer extends React.Component {
         {this.getSideHead(currPath)}
         {this.getSideList(currPath)}
         <Grid container direction="row" alignItems="center" justify="center">
-          <Grid item><SwitchButton color="secondary" checked={this.state.isDark} 
-          onChange={() => this.switchDark(!this.state.isDark)}/></Grid>
+          <Grid item>
+            <SwitchButton 
+              color="primary" 
+              checked={this.state.isDark} 
+              onChange={() => this.switchDark(!this.state.isDark)}/>
+            </Grid>
           <Grid item><ThemeLightDark style={{color: "#cccccc", marginTop: "4px"}}/></Grid>
         </Grid>
         <Typography className="CopyrightText" variant="button" style={{fontSize: "10px", color: "#cccccc"}}>
@@ -438,11 +443,41 @@ class ResponsiveDrawer extends React.Component {
             <div className="MainContentCont">
               <TransitionGroup>
                 <Switch location={location}>
-                  <Route exact path="/" render={() => <HomePage isDark={this.state.isDark} currentScheme={currentScheme} mainColor={this.getColor(location.pathname)}/>}/>
-                  <Route path="/about" render={() => <AboutPage currentScheme={currentScheme} mainColor={this.getColor(location.pathname)}/>}/>
-                  <Route path="/projects" render={() => <ProjectsPage currentScheme={currentScheme} mainColor={this.getColor(location.pathname)}/>}/>
-                  <Route path="/blog" render={() => <BlogPage currentScheme={currentScheme} mainColor={this.getColor(location.pathname)}/>}/>
-                  <Route path="/contact" render={() => <ContactPage currentScheme={currentScheme} mainColor={this.getColor(location.pathname)}/>}/>
+                  <Route exact path="/" render={() => 
+                    <HomePage 
+                      isDark={this.state.isDark} 
+                      currentScheme={currentScheme} 
+                      mainColor={this.getColor(location.pathname)}
+                    />}
+                  />
+                  <Route path="/about" render={() => 
+                    <AboutPage 
+                      isDark={this.state.isDark} 
+                      currentScheme={currentScheme} 
+                      mainColor={this.getColor(location.pathname)}
+                    />}
+                  />
+                  <Route path="/projects" render={() => 
+                    <ProjectsPage 
+                      isDark={this.state.isDark} 
+                      currentScheme={currentScheme} 
+                      mainColor={this.getColor(location.pathname)}
+                    />}
+                  />
+                  <Route path="/blog" render={() => 
+                    <BlogPage 
+                      isDark={this.state.isDark} 
+                      currentScheme={currentScheme} 
+                      mainColor={this.getColor(location.pathname)}
+                    />}
+                  />
+                  <Route path="/contact" render={() => 
+                    <ContactPage 
+                      isDark={this.state.isDark} 
+                      currentScheme={currentScheme} 
+                      mainColor={this.getColor(location.pathname)}
+                    />}
+                  />
                 </Switch>
               </TransitionGroup>
             </div>

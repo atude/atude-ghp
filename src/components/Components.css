@@ -1,6 +1,7 @@
 .MainContentCont{
   padding: 20px;
   margin-top: 80px;
+  margin-bottom: 20px;
   width: 100%;
 }
 
@@ -73,6 +74,22 @@
 .ContentCard{
   padding: 2em;
   height: 100%;
+}
+
+.StandardCard{
+  box-shadow: 
+    12px 12px 24px 0 rgba(0, 0, 0, 0.2),
+    -12px -12px 24px 0 rgba(255, 255, 255, 0.4);
+  border-radius: 16px;
+  background: #e9e9e9;
+}
+
+.StandardCardDark{
+  background: #2a2929;
+  box-shadow:  
+    12px 12px 24px 0 #242323, 
+    -12px -12px 24px 0 #302f2f;
+  border-radius: 16px;
 }
 
 .ParentCenterContainer{
@@ -201,10 +218,17 @@
   top: 290px;
 }
 
+.BannerContainer{
+  height: 320px;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
 .BannerImg{
   object-fit: cover;
   position: absolute;
   width: 100%;
+  border-radius: 14px;
   height: 320px;
   transition: opacity 0.5s ease;
 }

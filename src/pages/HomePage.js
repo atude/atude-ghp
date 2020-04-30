@@ -25,7 +25,10 @@ class HomePage extends React.Component {
         <Grow in timeout={baseTime/1.5}>
         <div>
         <Slide in timeout={baseTime} direction="up">
-          <div className="HomePageCont" style={{filter: isDark ? circleFilters : ""}}>
+          <div 
+            className="HomePageCont" 
+            style={{filter: isDark ? circleFilters : ""}}
+          >
             <div className="HomePageCircle1"/>
             <div className="HomePageCircle2"/>
             <div className="HomePageCircle3"/>

@@ -13,10 +13,9 @@ import {
 } from "mdi-material-ui";
 
 export default function ProjectsPage(props) {
-  const [transitionDone, setTransitionDone] = useState(false);
   const [banners, setBanners] = useState({});
   const projects = Database["Projects"];
-  const { mainColor, currentScheme } = props;
+  const { mainColor, currentScheme, isDark } = props;
 
   const tBase = 700;
   const tAdd = 300;
@@ -49,7 +48,7 @@ export default function ProjectsPage(props) {
     setBanners(fetchBanners);
   }, [banners, projects]);
  
-  const getCardMain = (project, i, mainColor, currentScheme, projectsLength) => {   
+  const getCardMain = (project, i, mainColor, currentScheme) => {   
     return (
       <Grid item container key={project.heading} lg={6} md={6} sm={12} xs={12} alignItems="center" justify="center">
         <Slide
@@ -57,13 +56,10 @@ export default function ProjectsPage(props) {
           in
           mountOnEnter
           timeout={tBase + i * tAdd}
-          onEntered={
-            i === projectsLength ? () => setTransitionDone(true) : void 0
-          }
         >
           <ProjectCard
             mainColor={mainColor}
-            style={{ padding: "2px" }}
+            isDark={isDark}
             currentScheme={currentScheme}
             projectIcon={
               <Typography component="span" style={{ color: project.accColor }}>
@@ -94,10 +90,9 @@ export default function ProjectsPage(props) {
         spacing={24}
         alignItems="stretch"
         justify="center"
-        style={{ overflowY: transitionDone ? "inherit" : "hidden" }}
       >
         {Object.values(projects).map((project, i) =>
-          getCardMain(project, i, mainColor, currentScheme, Object.values(projects).length)
+          getCardMain(project, i, mainColor, currentScheme)
         )}
       </Grid>
     </div>

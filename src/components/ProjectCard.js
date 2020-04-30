@@ -1,6 +1,6 @@
 import React from 'react';
 import './Components.css';
-import { Typography, Card, CardContent, Grid, Chip, Avatar, Link, Button, Tooltip, Divider, IconButton, } from '@material-ui/core';
+import { Typography, CardContent, Grid, Chip, Avatar, Link, Button, Tooltip, Divider, IconButton, } from '@material-ui/core';
 import {
   GithubCircle, AccountCircle, AccountSupervisorCircle, Calendar, ShieldLock, 
   ChevronLeftCircle, ChevronRightCircle, DeveloperBoard, CodeNotEqualVariant, OpenInNew,
@@ -65,7 +65,7 @@ class ProjectCard extends React.Component {
 
   getBanner = (bgColor, projectBanners, viewtext, viewicon, gitlink, viewlink) => {
     return (
-      <div style={{ height: "320px", backgroundColor: bgColor }}>
+      <div style={{backgroundColor: bgColor}} className="BannerContainer">
         {projectBanners.map((banner, i) => (
           <img
             key={`${banner}_${i}_banner`}
@@ -120,7 +120,7 @@ class ProjectCard extends React.Component {
         </div>
 
         {/* Banner carousel dots */}
-        <Grid className="BannerDots" container spacing={16} direction="row" alignItems="center" justify="center">
+        <Grid className="BannerDots" container spacing={8} direction="row" alignItems="center" justify="center">
           {projectBanners.map((banner, i) => (
             <Grid item key={`${banner}_${i}_dot`}
               style={{
@@ -311,14 +311,14 @@ class ProjectCard extends React.Component {
       projectIcon, projectBanners, heading, subheading, tools, team, 
       built, platforms, date, achievements, bgColor, accColor,
       gitlink, viewlink, privacylink, viewtext, viewicon, body, role, 
-      mainColor, currentScheme, status
+      mainColor, currentScheme, status, isDark
     } = this.props;
 
     const lightGray = currentScheme.lightGray;
     const categoryStyle = { fontSize: "14px", color: lightGray, letterSpacing: "0.1px" };
 
     return (
-      <Card className="ProjectCard">
+      <div className={`ProjectCard ${isDark ? "StandardCardDark" : "StandardCard"}`}>
         {this.getBanner(bgColor, projectBanners, viewtext, viewicon, gitlink, viewlink)}
         <div className="ProjectCardContent">
           <CardContent>
@@ -333,7 +333,7 @@ class ProjectCard extends React.Component {
             </Typography>
 
             {/* Body */}
-            <Typography style={{fontSize: "14px"}} variant="body1">
+            <Typography color="textSecondary" style={{fontSize: "14px"}} variant="body1">
               {body}
             </Typography>
 
@@ -351,7 +351,7 @@ class ProjectCard extends React.Component {
             {this.getStatus(status, mainColor)}
           </CardContent>
         </div>
-      </Card>
+      </div>
     );
   }
 }
