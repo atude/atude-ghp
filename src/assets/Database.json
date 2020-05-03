@@ -43,6 +43,27 @@
   },
   "Projects":
   {
+    "Sympt": 
+    {
+      "bgColor": "#00A7AF",
+      "accColor": "#00A7AF",
+      "heading": "Sympt",
+      "subheading": "Disease Statistics Hub",
+      "tools": ["React", "React Native", "Node", "Firebase", "Express", "Material UI", "Puppeteer", "Jest", "CircleCI"],
+      "built": ["TypeScript", "JavaScript", "HTML", "CSS"],
+      "platforms": ["Android", "Web"],
+      "date": "2020",
+      "gitlink": "",
+      "viewlink": "https://youtu.be/1E9If8qvBP4",
+      "privacylink": "",
+      "viewicon": "Youtube",
+      "viewtext": "View on Youtube",
+      "role": "Technical Lead",
+      "team": "5 Members",
+      "achievements": [],
+      "body": "Sympt is a disease hub for statistics and predictions that provides up-to-date analysis on the climate of diseases in Australia, focused on COVID-19. It includes a mobile app as well as a developer dashboard webapp.",
+      "status": "Completed | Discontinued"
+    },
     "Beams": 
     {
       "bgColor": "#212121",
@@ -51,14 +72,14 @@
       "subheading": "Suburb Analysis Webapp",
       "tools": ["React", "Node", "Express", "Material UI"],
       "built": ["JavaScript", "HTML", "CSS"],
-      "platforms": ["Chrome", "Edge", "Firefox"],
+      "platforms": ["Web"],
       "date": "2019",
       "gitlink": "https://github.com/atude/beams",
       "viewlink": "https://youtu.be/vWZBiD6iriM",
       "privacylink": "",
       "viewicon": "Youtube",
       "viewtext": "View on Youtube",
-      "role": "Lead Frontend",
+      "role": "Frontend Lead",
       "team": "5 Members",
       "achievements": [
         "Best UX: Macquarie Group Workshop"
@@ -72,7 +93,7 @@
       "accColor": "#7f74e3",
       "heading": "Unicore",
       "subheading": "University WAM and Course Tracking App",
-      "tools": ["Expo", "React Native", "Firebase", "React Native Paper"],
+      "tools": ["React Native", "Firebase", "React Native Paper"],
       "built": ["JavaScript"],
       "platforms": ["Android"],
       "date": "2019 - 2020",

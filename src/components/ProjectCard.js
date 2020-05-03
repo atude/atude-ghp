@@ -4,7 +4,7 @@ import { Typography, CardContent, Grid, Chip, Avatar, Link, Button, Tooltip, Div
 import {
   GithubCircle, AccountCircle, AccountSupervisorCircle, Calendar, ShieldLock, 
   ChevronLeftCircle, ChevronRightCircle, DeveloperBoard, CodeNotEqualVariant, OpenInNew,
-  CheckBold, CheckNetworkOutline,
+  CheckBold, CheckNetworkOutline, AccountGroup,
 } from 'mdi-material-ui';
 
 const smBreakpoint = 600;
@@ -47,12 +47,14 @@ class ProjectCard extends React.Component {
   getDetailsStaticIcon = (role) => {
     const lightGray = this.props.currentScheme.lightGray;
 
-    switch(role.split(" ").splice(-1)[0]) {
+    switch(role) {
+      case "Technical Lead":
+        return <AccountGroup className="DetailsIconRight" style={{color: lightGray}}/>;
       case "Fullstack":
         return <DeveloperBoard className="DetailsIconRight" style={{color: lightGray}}/>;
       case "Solo":
         return <AccountCircle className="DetailsIconRight" style={{color: lightGray}}/>;
-      case "Frontend":
+      case "Frontend Lead":
         return <CodeNotEqualVariant className="DetailsIconRight" style={{color: lightGray}}/>;
       case "Backend":
         return <CodeNotEqualVariant className="DetailsIconRight" style={{ color: lightGray }} />;
