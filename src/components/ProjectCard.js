@@ -188,9 +188,16 @@ class ProjectCard extends React.Component {
   getDetailsSectionLeft = (categoryText, categoryStyle, rightPadding, items) => {
     return (
       <Grid item container>
-        <Grid container direction="row" justify="flex-start" alignItems="center">
+        <Grid container direction="row" justify="flex-start" alignItems="flex-start">
           <Grid item>
-            <Typography style={{...categoryStyle, paddingRight: rightPadding}} variant="button">
+            <Typography 
+              style={{
+                ...categoryStyle, 
+                paddingRight: rightPadding,
+                paddingTop: "3px",
+              }} 
+              variant="button"
+            >
               {categoryText}
             </Typography>
           </Grid>
@@ -227,7 +234,7 @@ class ProjectCard extends React.Component {
       <Grid container
         direction="row"
       >
-        <Grid item xs={12} sm={6} container direction="column">
+        <Grid item xs={12} sm={7} container direction="column">
           {this.getDetailsSectionLeft("PLATFORMS", categoryStyle, 10,
             Object.keys(platforms).map(item => (
               <Grid key={item} item className="DetailsIconLeft">{platforms[item]}</Grid>
@@ -245,7 +252,7 @@ class ProjectCard extends React.Component {
           )}
         </Grid>
         {this.state.width < smBreakpoint && <Divider style={{ width: "100%", marginTop: "15px", marginBottom: "15px" }} />}
-        <Grid item xs={12} sm={6} container direction="column" justify="flex-start"
+        <Grid item xs={12} sm={5} container direction="column" justify="flex-start"
           alignItems={this.state.width < smBreakpoint ? "flex-start" : "flex-end"}>
           {this.getDetailsSectionRight(date, "Date", categoryStyle, 1, this.getDetailsStaticIcon("Calendar"))}
           {this.getDetailsSectionRight(role, "Role", categoryStyle, 1, this.getDetailsStaticIcon(role))}
