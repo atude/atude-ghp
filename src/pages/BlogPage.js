@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../components/Components.css';
 import { Grid, Slide, Typography, Fab, LinearProgress, Button, CircularProgress, Divider } from '@material-ui/core';
-import { ChevronDownCircleOutline, ArrowUpBold, Label, LabelOutline, LayersSearch, ChevronLeft, ChevronRight } from 'mdi-material-ui';
+import { ArrowUpBold, Label, LabelOutline, LayersSearch, ChevronLeft, ChevronRight } from 'mdi-material-ui';
 import ReactMarkdown from 'react-markdown';
 import CodeBlock from '../components/CodeBlock';
 
