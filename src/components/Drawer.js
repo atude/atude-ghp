@@ -340,7 +340,7 @@ class ResponsiveDrawer extends React.Component {
           <ListItemText 
             primary={
               <Typography 
-                color="primary"
+                color="textPrimary"
                 style={{color: currPath === path && thisColor}} 
                 variant="button">
                   {header}
