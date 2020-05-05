@@ -82,7 +82,7 @@
       "role": "Frontend Lead",
       "team": "5 Members",
       "achievements": [
-        "Best UX: Macquarie Group Workshop"
+        "Best UX: Macquarie Group Workshop | 2019"
       ],
       "body": "Beams is a suburb analysis webapp that merges housing market data and suburb information from a variety of sources to create a user friendly and intuitive hub. This can be used to influence decisions on buying properties by finding suburbs which best matches your criteria.",
       "status": "Completed | Discontinued"
@@ -129,7 +129,8 @@
       "role": "Fullstack",
       "team": "Solo",
       "achievements": [
-        "Featured on Chrome Web Store (May 2020)
+        "Featured on Chrome Web Store | May 2020,https://drive.google.com/file/d/1xhySBmxpCRzXEB7sFEusBj2Q0o9Fp0VJ/view?usp=sharing",
+        "100+ installs"
       ],
       "body": "Kanbie is a simple, dark-themed kanban board, accessed as a chrome extension. Kanbie allows chrome users to manage their task list from any tab - without interrupting their workflow - and with keyboard shortcuts to seamlessly get back to work.",
       "status": "Completed | Maintained"
