@@ -31,6 +31,7 @@ export const getMiniIcons = (types, setColor) => {
           </Tooltip>
         );
         break;
+      case "Chrome API":
       case "Chrome":
         iconList.push(
           <Tooltip disableFocusListener title={item}>

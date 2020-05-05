@@ -18,6 +18,7 @@ import {
   Docker,
   TimelineText,
   BugCheck,
+  GoogleChrome,
 } from 'mdi-material-ui';
 import Database from '../assets/Database';
 

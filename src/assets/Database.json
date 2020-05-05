@@ -117,7 +117,7 @@
       "accColor": "#ed39c9",
       "heading": "Kanbie",
       "subheading": "Kanban Board Chrome Extension",
-      "tools": ["React"],
+      "tools": ["React", "Chrome API"],
       "built": ["JavaScript", "HTML", "CSS"],
       "platforms": ["Chrome"],
       "date": "2020",
