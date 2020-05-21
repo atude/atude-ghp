@@ -233,11 +233,12 @@
   transition: opacity 0.5s ease;
 }
 
-.DownloadFAB{
+.FAB{
   position: fixed;
   right: 0;
   bottom: 0;
   padding: 24px;
+  z-index: 99999;
 }
 
 .ContactForm{

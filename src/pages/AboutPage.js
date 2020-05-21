@@ -77,7 +77,7 @@ const AboutPage = (props) => {
           </Grid>
         </Grid>
       
-        <div className="DownloadFAB">
+        <div className="FAB">
           <Tooltip title="View/Download Resume" placement="left">
             <Fab size="medium" component="a" href={Database["Resume"]} 
             download="_resume_mozamel_anwary" aria-label="DownloadResume"

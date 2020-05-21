@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../components/Components.css";
 import Database from "../assets/Database";
-import { Grid, Typography, Slide } from "@material-ui/core";
+import { Grid, Typography, Slide, Switch, FormControlLabel } from "@material-ui/core";
 import ProjectCard from "../components/ProjectCard";
 import { getMiniIcons } from '../components/ProjectMiniIcons';
 import ReactSVG from "react-svg";
@@ -14,6 +14,7 @@ import {
 
 export default function ProjectsPage(props) {
   const [banners, setBanners] = useState({});
+  const [isLiveProjectsOnly, setLiveProjectsOnly] = useState(false);
   const projects = Database["Projects"];
   const { mainColor, currentScheme, isDark } = props;
 
@@ -55,6 +56,7 @@ export default function ProjectsPage(props) {
           direction="up"
           in
           mountOnEnter
+          unmountOnExit
           timeout={tBase + i * tAdd}
         >
           <ProjectCard
@@ -84,6 +86,26 @@ export default function ProjectsPage(props) {
 
   return (
     <div className="ParentCenterContainer">
+      <div 
+        style={{
+          display: "flex",
+          width: "100%",
+          justifyContent: "flex-end",
+        }}
+      >
+        <FormControlLabel 
+          style={{marginTop: "-8px"}}
+          control={
+            <Switch 
+              color="primary"
+              style={{ color: isLiveProjectsOnly ? mainColor : null }}
+              checked={isLiveProjectsOnly}
+              onChange={() => setLiveProjectsOnly(!isLiveProjectsOnly)}
+            />
+          } 
+          label="Show live projects only" 
+        />
+      </div>
       <Grid
         container
         direction="row"
@@ -91,7 +113,7 @@ export default function ProjectsPage(props) {
         alignItems="stretch"
         justify="center"
       >
-        {Object.values(projects).map((project, i) =>
+        {Object.values(projects).filter(project => isLiveProjectsOnly ? project.live : true).map((project, i) =>
           getCardMain(project, i, mainColor, currentScheme)
         )}
       </Grid>

@@ -236,7 +236,7 @@ const BlogPage = (props) => {
           <br/><br/><br/>
         </Grid>
 
-        <div className="DownloadFAB">
+        <div className="FAB">
           <Fab size="medium" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
           style={{color: "white", backgroundColor: mainColor, opacity: "0.8"}}>
             <ArrowUpBold/>

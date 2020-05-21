@@ -62,7 +62,8 @@
       "team": "5 Members",
       "achievements": [],
       "body": "Sympt is a disease hub for statistics and predictions that provides up-to-date analysis on the climate of diseases in Australia, focused on COVID-19. It includes a mobile app as well as a developer dashboard webapp.",
-      "status": "Completed | Discontinued"
+      "status": "Discontinued",
+      "live": false
     },
     "Beams": 
     {
@@ -85,7 +86,8 @@
         "Best UX: Macquarie Group Workshop | 2019"
       ],
       "body": "Beams is a suburb analysis webapp that merges housing market data and suburb information from a variety of sources to create a user friendly and intuitive hub. This can be used to influence decisions on buying properties by finding suburbs which best matches your criteria.",
-      "status": "Completed | Discontinued"
+      "status": "Discontinued",
+      "live": false
     },
     "Unicore": 
     {
@@ -109,7 +111,8 @@
         "400+ installs"
       ],
       "body": "Unicore is a multi-purpose tool for university students to track their WAM, analyse their marks and compare course progress. It includes a total and term WAM calculator with location-based ranking methods, organised course log with filters, performance graphs, optional online accounts with data syncing, and more.",
-      "status": "Completed | Maintained"
+      "status": "Maintained",
+      "live": true
     },
     "Kanbie": 
     {
@@ -130,11 +133,11 @@
       "team": "Solo",
       "achievements": [
         "Featured on Chrome Web Store | May 2020,https://drive.google.com/file/d/1xhySBmxpCRzXEB7sFEusBj2Q0o9Fp0VJ/view?usp=sharing",
-        "Top 20 Pick in Productivity | 2020",
-        "5500+ installs"
+        "9000+ installs"
       ],
       "body": "Kanbie is a simple, dark-themed kanban board, accessed as a chrome extension. Kanbie allows chrome users to manage their task list from any tab - without interrupting their workflow - and with keyboard shortcuts to seamlessly get back to work.",
-      "status": "Completed | Maintained"
+      "status": "Maintained",
+      "live": true
     },
     "Devote": 
     {
@@ -154,10 +157,11 @@
       "role": "Fullstack",
       "team": "Solo",
       "achievements": [
-        "2500+ Installs"
+        "2500+ installs"
       ],
       "body": "Devote is an all-in-one hub made and refined for high school students to organise your study tasks, track your assessment progress, view your level of productivity and ultimately balance your social and study lifestyle.",
-      "status": "Completed | Discontinued"
+      "status": "Discontinued",
+      "live": true
     }
   },
   "Contact": 
