@@ -1,6 +1,6 @@
 import React from 'react';
 import './Components.css';
-import { Grid, Typography, Tooltip, } from '@material-ui/core';
+import { Grid, Typography, Tooltip } from '@material-ui/core';
 import Slider from '@material-ui/lab/Slider';
 import { 
   LanguageC, 
@@ -14,7 +14,27 @@ import {
   Database as LanguageSQL,
   Coffee as LanguageJava,
 } from 'mdi-material-ui';
-import Database from '../assets/Database'
+
+import Database from '../assets/Database';
+
+const TooltipWrapper = (props) => {
+  return (
+    <Tooltip
+      disableFocusListener 
+      title={
+        <Typography 
+          variant="body2"
+          style={{ color: "#fff" }}
+        >
+          {props.name}
+        </Typography>
+      } 
+      placement="left"
+    >
+      {props.children}
+    </Tooltip>
+  );
+};
 
 class SkillsContent extends React.Component {
   state = {
@@ -41,7 +61,7 @@ class SkillsContent extends React.Component {
 
     switch(type) {
       case "C": return (
-      <Tooltip disableFocusListener title="C" placement="left">
+      <TooltipWrapper name="C" color="#3848AA">
         <LanguageC 
           onMouseEnter={() => {this.setState({onC: true})}}
           onMouseLeave={() => {this.setState({onC: false})}} 
@@ -52,9 +72,9 @@ class SkillsContent extends React.Component {
           }} 
           className={cClass}
         />
-      </Tooltip>);
+      </TooltipWrapper>);
       case "C#": return (
-      <Tooltip disableFocusListener title="C#" placement="left">
+      <TooltipWrapper name="C#">
         <LanguageCsharp
           onMouseEnter={() => {this.setState({onCsharp: true})}}
           onMouseLeave={() => {this.setState({onCsharp: false})}} 
@@ -65,10 +85,10 @@ class SkillsContent extends React.Component {
           }} 
           className={cClass}
         />
-      </Tooltip>);
+      </TooltipWrapper>);
       case "JS": return (
       <Grid container direction="row" alignItems="center">
-        <Tooltip disableFocusListener title="JavaScript" placement="left">
+        <TooltipWrapper name="JavaScript">
           <LanguageJavascript
             onMouseEnter={() => {this.setState({onJavascript: true})}}
             onMouseLeave={() => {this.setState({onJavascript: false})}} 
@@ -79,8 +99,8 @@ class SkillsContent extends React.Component {
             }} 
             className={cClass}
           />
-        </Tooltip>
-        <Tooltip disableFocusListener title="TypeScript" placement="left">
+        </TooltipWrapper>
+        <TooltipWrapper name="TypeScript">
           <LanguageTypescript
             onMouseEnter={() => {this.setState({onTypescript: true})}}
             onMouseLeave={() => {this.setState({onTypescript: false})}} 
@@ -91,11 +111,11 @@ class SkillsContent extends React.Component {
             }} 
             className={cClass}
           />
-        </Tooltip>
+        </TooltipWrapper>
       </Grid>);
       case "HTML": return (
       <Grid container direction="row" alignItems="center">
-        <Tooltip disableFocusListener title="HTML" placement="left">
+        <TooltipWrapper name="HTML5">
           <LanguageHtml5
             onMouseEnter={() => {this.setState({onHtml5: true})}}
             onMouseLeave={() => {this.setState({onHtml5: false})}} 
@@ -106,8 +126,8 @@ class SkillsContent extends React.Component {
             }} 
             className={cClass}
           />
-        </Tooltip>
-        <Tooltip disableFocusListener title="CSS" placement="left">
+        </TooltipWrapper>
+        <TooltipWrapper name="CSS3">
           <LanguageCss3
             onMouseEnter={() => {this.setState({onCss3: true})}}
             onMouseLeave={() => {this.setState({onCss3: false})}} 
@@ -118,10 +138,10 @@ class SkillsContent extends React.Component {
             }} 
             className={cClass}
           />
-        </Tooltip>
+        </TooltipWrapper>
       </Grid>);
       case "Python": return (
-      <Tooltip disableFocusListener title="Python" placement="left">
+      <TooltipWrapper name="Python">
         <LanguagePython
           onMouseEnter={() => {this.setState({onPython: true})}}
           onMouseLeave={() => {this.setState({onPython: false})}} 
@@ -132,9 +152,9 @@ class SkillsContent extends React.Component {
           }} 
           className={cClass}
         />
-      </Tooltip>);
+      </TooltipWrapper>);
       case "Java": return (
-      <Tooltip disableFocusListener title="Java" placement="left">
+      <TooltipWrapper name="Java">
         <LanguageJava
           onMouseEnter={() => {this.setState({onJava: true})}}
           onMouseLeave={() => {this.setState({onJava: false})}} 
@@ -145,9 +165,9 @@ class SkillsContent extends React.Component {
           }} 
           className={cClass}
         />
-      </Tooltip>);
+      </TooltipWrapper>);
       case "Bash": return (
-      <Tooltip disableFocusListener title="Bash" placement="left">
+      <TooltipWrapper name="Bash">
         <LanguageBash
           onMouseEnter={() => {this.setState({onBash: true})}}
           onMouseLeave={() => {this.setState({onBash: false})}} 
@@ -158,9 +178,9 @@ class SkillsContent extends React.Component {
           }} 
           className={cClass}
         />      
-      </Tooltip>);
+      </TooltipWrapper>);
       case "SQL": return (
-      <Tooltip disableFocusListener title="SQL" placement="left">
+      <TooltipWrapper name="SQL">
         <LanguageSQL
           onMouseEnter={() => {this.setState({onSQL: true})}}
           onMouseLeave={() => {this.setState({onSQL: false})}} 
@@ -171,7 +191,7 @@ class SkillsContent extends React.Component {
           }} 
           className={cClass}
         />      
-      </Tooltip>);
+      </TooltipWrapper>);
       default: return;
     }
   }
@@ -189,17 +209,6 @@ class SkillsContent extends React.Component {
               <Grid item xs={12} sm={3} md={3} lg={3} xl={3}>
                 {this.getIconSkills(key)}
               </Grid>
-              {/* <Grid item xs={10} sm={5} md={5} lg={5} xl={5}>
-                <Typography style={{paddingBottom: "3px"}} variant="button">
-                  {item[key].experience}
-                </Typography>
-                
-                {item[key].desc !== "" &&
-                  <Typography className="CaptionText" style={{fontSize: "12px", color: lightGray}} variant="body1">
-                    {item[key].desc}
-                  </Typography>
-                }
-              </Grid> */}
               <Grid item xs={12} sm={8} md={8} lg={8} xl={8} style={{marginTop: "5px"}}>
                 <Typography id="label" style={{fontSize: "12px", color: lightGray}} variant="body1">
                   {Database["Skills Level Frame"][item[key].level]}

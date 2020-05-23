@@ -2,17 +2,17 @@
   "Resume": "https://drive.google.com/file/d/1YD4MRDAQmZVvqhR5rU8Yhbe8wCydcyKz/view?usp=sharing",
   "About me":
   {
-    "A bit about me": "I'm a student at the University of New South Wales, currently undergoing a Bachelor's Degree in Software Engineering. I pursue a passion in creating and designing products with captivating UXs and real-world use to help bring creative solutions to modern challenges. ",
-    "Experience with software": "My experience with development ranges from app development and game creation to web design and scripting. I've become familiar with industry standard tools such as React and Expo, and have utilised both object-oriented and functional programming styles. "
+    "A bit about me": "I'm a student at the University of New South Wales, currently undergoing a Bachelor's Degree in Software Engineering. I pursue a passion in engineering impactful products with captivating real-world use to help bring creative solutions to modern challenges. ",
+    "Experience with software": "My experience with development ranges from app development and game creation to web design and scripting. I've become familiar with industry standard tools for web and mobile development including React and React Native, and have utilised these skills to develop a range of functional apps. "
   },
   "Skillset": 
   {
     "JS":     { "level": 4 },
-    "HTML":   { "level": 3 }, 
-    "C#":     { "level": 2 }, 
+    "HTML":   { "level": 4 },
     "Java":   { "level": 3 }, 
-    "C":      { "level": 2 }, 
-    "Python": { "level": 2 }, 
+    "Python": { "level": 3 }, 
+    "C":      { "level": 3 }, 
+    "C#":     { "level": 2 }, 
     "Bash":   { "level": 3 }, 
     "SQL":    { "level": 3 }
   },
