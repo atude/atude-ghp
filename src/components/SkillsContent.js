@@ -21,14 +21,7 @@ const TooltipWrapper = (props) => {
   return (
     <Tooltip
       disableFocusListener 
-      title={
-        <Typography 
-          variant="body2"
-          style={{ color: "#fff" }}
-        >
-          {props.name}
-        </Typography>
-      } 
+      title={props.name}
       placement="left"
     >
       {props.children}
@@ -211,7 +204,7 @@ class SkillsContent extends React.Component {
               </Grid>
               <Grid item xs={12} sm={8} md={8} lg={8} xl={8} style={{marginTop: "5px"}}>
                 <Typography id="label" style={{fontSize: "12px", color: lightGray}} variant="body1">
-                  {Database["Skills Level Frame"][item[key].level]}
+                  {Database["Skills Level Frame"][item[key].level]} in {item[key].desc}
                 </Typography>
                 <Slider disabled
                   thumb={null}

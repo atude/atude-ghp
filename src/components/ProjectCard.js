@@ -209,7 +209,7 @@ class ProjectCard extends React.Component {
     );
   }
 
-  getDetailsSectionRight = (text, tooltipText, categoryStyle, rightPadding, icon) => {
+  getDetailsSectionRight = (text, categoryStyle, rightPadding, icon) => {
     return (
       <Grid item>
         <Grid container direction="row" alignItems="center">
@@ -220,9 +220,7 @@ class ProjectCard extends React.Component {
             </Typography>
           </Grid>
           <Grid item>
-            <Tooltip title={tooltipText}>
-              {icon}
-            </Tooltip>
+            {icon}
           </Grid>
         </Grid> 
       </Grid>
@@ -254,9 +252,9 @@ class ProjectCard extends React.Component {
         {this.state.width < smBreakpoint && <Divider style={{ width: "100%", marginTop: "15px", marginBottom: "15px" }} />}
         <Grid item xs={12} sm={5} container direction="column" justify="flex-start"
           alignItems={this.state.width < smBreakpoint ? "flex-start" : "flex-end"}>
-          {this.getDetailsSectionRight(date, "Date", categoryStyle, 1, this.getDetailsStaticIcon("Calendar"))}
-          {this.getDetailsSectionRight(role, "Role", categoryStyle, 1, this.getDetailsStaticIcon(role))}
-          {this.getDetailsSectionRight(team, "Team Size", categoryStyle, 1, this.getDetailsStaticIcon(team))}
+          {this.getDetailsSectionRight(date, categoryStyle, 1, this.getDetailsStaticIcon("Calendar"))}
+          {this.getDetailsSectionRight(role, categoryStyle, 1, this.getDetailsStaticIcon(role))}
+          {this.getDetailsSectionRight(team, categoryStyle, 1, this.getDetailsStaticIcon(team))}
         </Grid>
         
       </Grid>
@@ -332,7 +330,7 @@ class ProjectCard extends React.Component {
         <div className="ProjectCardContent">
           <CardContent>
             {this.getHeadings(projectIcon, viewlink, accColor, heading, lightGray, subheading)}
-            {this.getAchievements(achievements ? achievements : [], mainColor, accColor)}
+            {!!achievements.length && this.getAchievements(achievements, mainColor, accColor)}
             {this.getDetailsContainer(categoryStyle, platforms, date, built, tools, role, team)}
             <br/>
             

@@ -7,14 +7,14 @@
   },
   "Skillset": 
   {
-    "JS":     { "level": 4 },
-    "HTML":   { "level": 4 },
-    "Java":   { "level": 3 }, 
-    "Python": { "level": 3 }, 
-    "C":      { "level": 3 }, 
-    "C#":     { "level": 2 }, 
-    "Bash":   { "level": 3 }, 
-    "SQL":    { "level": 3 }
+    "JS":     { "level": 4, "desc": "TypeScript & JavaScript (ES2020)" },
+    "HTML":   { "level": 4, "desc": "HTML5 & CSS3" },
+    "Java":   { "level": 3, "desc": "Java" }, 
+    "Python": { "level": 3, "desc": "Python" }, 
+    "C":      { "level": 3, "desc": "C" }, 
+    "C#":     { "level": 2, "desc": "C#" }, 
+    "Bash":   { "level": 3, "desc": "Bash" }, 
+    "SQL":    { "level": 3, "desc": "SQL (PostgreSQL)" }
   },
   "Toolset": 
   {
