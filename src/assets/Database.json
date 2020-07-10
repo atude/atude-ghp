@@ -19,19 +19,21 @@
   "Toolset": 
   {
     "Frontend": 
-    [ "React", "React Native", "Expo", "Redux", "Immer" ],
+    [ "React", "React Native", "Redux", "Redux Saga", "Immer" ],
     "Backend": 
-    [ "Node", "Firebase", "Apollo", "Express" ],
+    [ "Node", "Apollo", "Express" ],
+    "Cloud Services":
+    [ "Firebase", "Vercel", "Heroku" ],
     "API":  
     [ "GraphQL", "REST" ],
+    "Devops": 
+    [ "CircleCI", "GitLab CI", "GitHub" ],
     "Testing":  
     [ "Puppeteer", "Jest" ],
-    "Devops": 
-    [ "CircleCI", "Heroku", "GitHub", "GitLab" ],
     "UI": 
     [ "Material UI", "React Native Paper", "React Native Elements" ],
     "Design":
-    [ "GIMP", "Photoshop", "XD"  ]
+    [ "Figma", "GIMP", "Photoshop", "XD"  ]
   },
   "Skills Level Frame":
   {
@@ -43,28 +45,6 @@
   },
   "Projects":
   {
-    "Sympt": 
-    {
-      "bgColor": "#00A7AF",
-      "accColor": "#00A7AF",
-      "heading": "Sympt",
-      "subheading": "Disease Statistics Hub",
-      "tools": ["React", "React Native", "Node", "Firebase", "Express", "Material UI", "Puppeteer", "Jest", "CircleCI"],
-      "built": ["TypeScript", "JavaScript", "HTML", "CSS"],
-      "platforms": ["Android", "Web"],
-      "date": "2020",
-      "gitlink": "https://github.com/atude/sympt/",
-      "viewlink": "https://youtu.be/1E9If8qvBP4",
-      "privacylink": "",
-      "viewicon": "Youtube",
-      "viewtext": "View on Youtube",
-      "role": "Technical Lead",
-      "team": "5 Members",
-      "achievements": [],
-      "body": "Sympt is a disease hub for statistics and predictions that provides up-to-date analysis on the climate of diseases in Australia, focused on COVID-19. It includes a mobile app as well as a developer dashboard webapp.",
-      "status": "Discontinued",
-      "live": false
-    },
     "Beams": 
     {
       "bgColor": "#212121",
@@ -114,6 +94,28 @@
       "status": "Maintained",
       "live": true
     },
+    "Sympt": 
+    {
+      "bgColor": "#303a3d",
+      "accColor": "#00A7AF",
+      "heading": "Sympt",
+      "subheading": "Disease Statistics Hub",
+      "tools": ["React", "React Native", "Node", "Firebase", "Express", "Puppeteer", "Jest", "CircleCI"],
+      "built": ["TypeScript", "JavaScript", "HTML", "CSS"],
+      "platforms": ["Android", "Web"],
+      "date": "2020",
+      "gitlink": "https://github.com/atude/sympt/",
+      "viewlink": "https://youtu.be/1E9If8qvBP4",
+      "privacylink": "",
+      "viewicon": "Youtube",
+      "viewtext": "View on Youtube",
+      "role": "Technical Lead",
+      "team": "5 Members",
+      "achievements": [],
+      "body": "Sympt is a disease hub for statistics and predictions that provides up-to-date analysis on the climate of diseases in Australia, focused on COVID-19. It includes a mobile app as well as a developer dashboard webapp.",
+      "status": "Discontinued",
+      "live": false
+    },
     "Kanbie": 
     {
       "bgColor": "#35363a",
@@ -133,7 +135,7 @@
       "team": "Solo",
       "achievements": [
         "Featured on Chrome Web Store | May 2020,https://drive.google.com/file/d/1xhySBmxpCRzXEB7sFEusBj2Q0o9Fp0VJ/view?usp=sharing",
-        "9000+ installs"
+        "10000+ installs"
       ],
       "body": "Kanbie is a simple, dark-themed kanban board, accessed as a chrome extension. Kanbie allows chrome users to manage their task list from any tab - without interrupting their workflow - and with keyboard shortcuts to seamlessly get back to work.",
       "status": "Maintained",
@@ -170,7 +172,7 @@
     {
       "GitHub": ["https://github.com/atude", "My portfolio of open source software projects"],
       "LinkedIn": ["https://www.linkedin.com/in/mozamelanwary/", "My professional profile and network"],
-      "Play Store": ["https://play.google.com/store/apps/developer?id=Atude", "My apps published for Android devices"]
+      "Play Store": ["https://play.google.com/store/apps/developer?id=atude", "My apps published for Android devices"]
     },
     "Contact":
     {
