@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/atude-ghp/static/css/main.d6c6ff20.chunk.css",
-    "main.js": "/atude-ghp/static/js/main.3240e6ac.chunk.js",
-    "main.js.map": "/atude-ghp/static/js/main.3240e6ac.chunk.js.map",
+    "main.js": "/atude-ghp/static/js/main.7487c01c.chunk.js",
+    "main.js.map": "/atude-ghp/static/js/main.7487c01c.chunk.js.map",
     "runtime~main.js": "/atude-ghp/static/js/runtime~main.7ed11088.js",
     "runtime~main.js.map": "/atude-ghp/static/js/runtime~main.7ed11088.js.map",
     "static/css/2.612075aa.chunk.css": "/atude-ghp/static/css/2.612075aa.chunk.css",
     "static/js/2.e6d3d8bd.chunk.js": "/atude-ghp/static/js/2.e6d3d8bd.chunk.js",
     "static/js/2.e6d3d8bd.chunk.js.map": "/atude-ghp/static/js/2.e6d3d8bd.chunk.js.map",
     "index.html": "/atude-ghp/index.html",
-    "precache-manifest.c191487db950a6f24c92d56bde6333ec.js": "/atude-ghp/precache-manifest.c191487db950a6f24c92d56bde6333ec.js",
+    "precache-manifest.463a3403465985f8950f70616cd23479.js": "/atude-ghp/precache-manifest.463a3403465985f8950f70616cd23479.js",
     "service-worker.js": "/atude-ghp/service-worker.js",
     "static/css/2.612075aa.chunk.css.map": "/atude-ghp/static/css/2.612075aa.chunk.css.map",
     "static/css/main.d6c6ff20.chunk.css.map": "/atude-ghp/static/css/main.d6c6ff20.chunk.css.map",
