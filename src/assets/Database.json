@@ -21,11 +21,9 @@
     "Frontend": 
     [ "React", "React Native", "Redux", "Redux Saga", "Immer" ],
     "Backend": 
-    [ "Node", "Apollo", "Express" ],
+    [ "Node", "Apollo", "GraphQL", "Express", "REST" ],
     "Cloud Services":
     [ "Firebase", "Vercel", "Heroku" ],
-    "API":  
-    [ "GraphQL", "REST" ],
     "Devops": 
     [ "CircleCI", "GitLab CI", "GitHub" ],
     "Testing":  
