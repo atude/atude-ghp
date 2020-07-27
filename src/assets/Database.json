@@ -2,8 +2,7 @@
   "Resume": "https://drive.google.com/file/d/1YD4MRDAQmZVvqhR5rU8Yhbe8wCydcyKz/view?usp=sharing",
   "About me":
   {
-    "A bit about me": "I'm a student at the University of New South Wales, currently undergoing a Bachelor's Degree in Software Engineering in my penultimate year. I pursue a passion in engineering impactful products with captivating real-world use to help bring creative solutions to modern challenges. ",
-    "Experience with software": "My experience with development ranges from app development and game creation to web design and scripting. I've become familiar with industry standard tools for web and mobile development such as React, React Native, Node, and more, as well as programming paradigms including functional and object-oriented programming to develop a range of composed, productive apps. "
+    "A bit about me": "I'm a penultimate student at the University of New South Wales, currently undergoing a Bachelor's Degree in Software Engineering. I pursue a passion in engineering impactful products with captivating real-world use to help bring creative solutions to modern challenges. I've become familiar with industry standard tools for web and mobile development across design, frontend, backend and devops, and am capable to deliver fully-fledged projects individually and in agile environments."
   },
   "Skillset": 
   {
@@ -14,14 +13,14 @@
     "C":      { "level": 3, "desc": "C" }, 
     "C#":     { "level": 2, "desc": "C#" }, 
     "Bash":   { "level": 3, "desc": "Bash" }, 
-    "SQL":    { "level": 3, "desc": "SQL (PostgreSQL)" }
+    "SQL":    { "level": 3, "desc": "SQL" }
   },
   "Toolset": 
   {
     "Frontend": 
     [ "React", "React Native", "Redux", "Redux Saga", "Immer" ],
     "Backend": 
-    [ "Node", "Apollo", "GraphQL", "Express", "REST" ],
+    [ "Node", "Apollo", "GraphQL", "Express", "REST", "Postgres" ],
     "Cloud Services":
     [ "Firebase", "Vercel", "Heroku" ],
     "Devops": 
