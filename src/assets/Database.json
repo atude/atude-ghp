@@ -18,9 +18,9 @@
   "Toolset": 
   {
     "Frontend": 
-    [ "React", "React Native", "Redux", "Redux Saga", "Immer" ],
+    [ "React", "React Native", "Redux", "Redux Saga", "Apollo", "Immer" ],
     "Backend": 
-    [ "Node", "Apollo", "GraphQL", "Express", "REST", "Postgres" ],
+    [ "Node", "GraphQL", "Express", "REST", "Postgres" ],
     "Cloud Services":
     [ "Firebase", "Vercel", "Heroku" ],
     "Devops": 
