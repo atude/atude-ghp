@@ -152,7 +152,7 @@ class SkillsContent extends React.Component {
           onMouseEnter={() => {this.setState({onHaskell: true})}}
           onMouseLeave={() => {this.setState({onHaskell: false})}} 
           style={{
-            color: this.state.onHaskell ? "#0062B9" : defIconColor,
+            color: this.state.onHaskell ? "#605286" : defIconColor,
             padding: this.state.onHaskell ? 0 : cStyle.padding,
             fontSize: cStyle.fontSize,
           }} 
