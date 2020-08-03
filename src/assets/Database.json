@@ -6,25 +6,27 @@
   },
   "Skillset": 
   {
-    "JS":     { "level": 4, "desc": "TypeScript & JavaScript (ES2020)" },
-    "HTML":   { "level": 4, "desc": "HTML5 & CSS3" },
-    "Java":   { "level": 3, "desc": "Java" }, 
-    "Python": { "level": 3, "desc": "Python" }, 
-    "SQL":    { "level": 3, "desc": "SQL" },
-    "Bash":   { "level": 3, "desc": "Bash" }, 
-    "C":      { "level": 2, "desc": "C" }, 
-    "C#":     { "level": 2, "desc": "C#" }
+    "TS":       { "level": 4, "desc": "TypeScript" },
+    "JS":       { "level": 4, "desc": "JavaScript (ES2020)" },
+    "HTML":     { "level": 4, "desc": "HTML5 & CSS3" },
+    "Java":     { "level": 3, "desc": "Java" }, 
+    "Python":   { "level": 3, "desc": "Python" }, 
+    "SQL":      { "level": 3, "desc": "SQL" },
+    "Bash":     { "level": 3, "desc": "Bash" }, 
+    "C":        { "level": 2, "desc": "C" }, 
+    "C#":       { "level": 2, "desc": "C#" },
+    "Haskell":  { "level": 1, "desc": "Haskell" }
   },
   "Toolset": 
   {
     "Frontend": 
     [ "React", "React Native", "Redux", "Redux Saga", "Apollo", "Immer" ],
     "Backend": 
-    [ "Node", "GraphQL", "Express", "REST", "Postgres" ],
+    [ "Node", "GraphQL", "Express", "Firestore", "Postgres"  ],
     "Cloud Services":
-    [ "Firebase", "Vercel", "Heroku" ],
+    [ "Firebase" ],
     "Devops": 
-    [ "CircleCI", "GitLab CI", "GitHub" ],
+    [ "Vercel", "Heroku", "CircleCI", "GitLab CI" ],
     "Testing":  
     [ "Puppeteer", "Jest" ],
     "UI": 

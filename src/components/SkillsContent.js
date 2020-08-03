@@ -13,6 +13,7 @@ import {
   Bash as LanguageBash,
   Database as LanguageSQL,
   Coffee as LanguageJava,
+  LanguageHaskell,
 } from 'mdi-material-ui';
 
 import Database from '../assets/Database';
@@ -79,33 +80,32 @@ class SkillsContent extends React.Component {
           className={cClass}
         />
       </TooltipWrapper>);
+      case "TS": return (
+      <TooltipWrapper name="TypeScript">
+        <LanguageTypescript
+          onMouseEnter={() => {this.setState({onTypescript: true})}}
+          onMouseLeave={() => {this.setState({onTypescript: false})}} 
+          style={{
+            color: this.state.onTypescript ? "#0288D1" : defIconColor,
+            padding: this.state.onTypescript ? 0 : cStyle.padding,
+            fontSize: cStyle.fontSize
+          }} 
+          className={cClass}
+        />
+      </TooltipWrapper>);
       case "JS": return (
-      <Grid container direction="row" alignItems="center">
-        <TooltipWrapper name="JavaScript">
-          <LanguageJavascript
-            onMouseEnter={() => {this.setState({onJavascript: true})}}
-            onMouseLeave={() => {this.setState({onJavascript: false})}} 
-            style={{
-              color: this.state.onJavascript ? "#FFCA28" : defIconColor,
-              padding: this.state.onJavascript ? 0 : cStyle.padding,
-              fontSize: cStyle.fontSize
-            }} 
-            className={cClass}
-          />
-        </TooltipWrapper>
-        <TooltipWrapper name="TypeScript">
-          <LanguageTypescript
-            onMouseEnter={() => {this.setState({onTypescript: true})}}
-            onMouseLeave={() => {this.setState({onTypescript: false})}} 
-            style={{
-              color: this.state.onTypescript ? "#0288D1" : defIconColor,
-              padding: this.state.onTypescript ? 0 : cStyle.padding,
-              fontSize: cStyle.fontSize
-            }} 
-            className={cClass}
-          />
-        </TooltipWrapper>
-      </Grid>);
+      <TooltipWrapper name="JavaScript">
+        <LanguageJavascript
+          onMouseEnter={() => {this.setState({onJavascript: true})}}
+          onMouseLeave={() => {this.setState({onJavascript: false})}} 
+          style={{
+            color: this.state.onJavascript ? "#FFCA28" : defIconColor,
+            padding: this.state.onJavascript ? 0 : cStyle.padding,
+            fontSize: cStyle.fontSize
+          }} 
+          className={cClass}
+        />
+      </TooltipWrapper>);
       case "HTML": return (
       <Grid container direction="row" alignItems="center">
         <TooltipWrapper name="HTML5">
@@ -141,6 +141,19 @@ class SkillsContent extends React.Component {
           style={{
             color: this.state.onPython ? "#0062B9" : defIconColor,
             padding: this.state.onPython ? 0 : cStyle.padding,
+            fontSize: cStyle.fontSize,
+          }} 
+          className={cClass}
+        />
+      </TooltipWrapper>);
+      case "Haskell": return (
+      <TooltipWrapper name="Haskell">
+        <LanguageHaskell
+          onMouseEnter={() => {this.setState({onHaskell: true})}}
+          onMouseLeave={() => {this.setState({onHaskell: false})}} 
+          style={{
+            color: this.state.onHaskell ? "#0062B9" : defIconColor,
+            padding: this.state.onHaskell ? 0 : cStyle.padding,
             fontSize: cStyle.fontSize,
           }} 
           className={cClass}
