@@ -5,11 +5,12 @@ import 'typeface-roboto';
 
 class App extends Component {  
   render() {
-  
     return (
-      <div style={{overflowX: "hidden"}}>
-        {/* DrawerCustom renders everything, check in Drawer.js 
-        for redirects into content pages. */}
+      <div style={{ overflowX: "hidden" }}>
+        {/* 
+          DrawerCustom renders everything, check in Drawer.js 
+          for redirects into content pages. 
+        */}
         <DrawerCustom/>
       </div>
     );

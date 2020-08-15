@@ -1,26 +1,46 @@
-import React from 'react';
-import { Route, Link, NavLink, HashRouter, Switch } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Menu, AccountBox, Buffer, GithubBox, LinkedinBox, EmailBox, MessageBulleted, ThemeLightDark, NewspaperVariantMultiple } from 'mdi-material-ui';
-import { createMuiTheme, Typography, IconButton, SwipeableDrawer, List, ListItem, ListItemText, ListItemIcon, Hidden, CssBaseline, MuiThemeProvider, Drawer, Divider, Grid, AppBar, Toolbar, Switch as SwitchButton } from '@material-ui/core';
-import { TransitionGroup, } from 'react-transition-group';
+import { Menu, GithubBox, LinkedinBox, EmailBox, ThemeLightDark } from 'mdi-material-ui';
+import { 
+  createMuiTheme, 
+  Typography, 
+  IconButton, 
+  SwipeableDrawer, 
+  List, 
+  ListItem, 
+  ListItemText, 
+  ListItemIcon, 
+  Hidden, 
+  CssBaseline, 
+  MuiThemeProvider,
+  Drawer, 
+  Divider, 
+  Grid, 
+  AppBar, 
+  Toolbar, 
+  Switch as SwitchButton 
+} from '@material-ui/core';
 
 import icAtude from '../assets/ic_atude.png';
-import icAtudeCircle from '../assets/ic_atude_circle.png';
 
 import colorSetLight from '../assets/colorsetdark.json';
 import colorSetDark from '../assets/colorset.json';
 
 import '../App.css'
 import Database from '../assets/Database'
-import HomePage from '../pages/HomePage.js';
+// import HomePage from '../pages/HomePage.js';
 import AboutPage from '../pages/AboutPage.js';
 import ProjectsPage from '../pages/ProjectsPage.js';
 import ContactPage from '../pages/ContactPage';
-import BlogPage from '../pages/BlogPage';
+// import BlogPage from '../pages/BlogPage';
 
-//My consts
+import { getRoutes } from '../Routes';
+import { Link } from 'react-scroll'
+import { debounce } from '../utils/generic';
+
+const iconSize = "40px";
+
 /* Colors */
 const drawerWidth = 340;
 var mainColor = "#555555";
@@ -164,220 +184,188 @@ const styles = theme => ({
   },
 });
 
-class ResponsiveDrawer extends React.Component {
-  state = {
-    mobileOpen: false,
-    currentScheme: lightScheme,
-    isDark: false,
-    isOnLogo: false,
-  };
+const ResponsiveDrawer = (props) => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [currentScheme, setCurrentScheme] = useState(lightScheme);
+  const [isDark, setDark] = useState(false);
+  const [locationId, setLocationId] = useState();
 
-  componentDidMount() {
-    const isDark = localStorage.getItem("isDark");
-    this.switchDark(isDark === "Dark" ? true : false);
-  }
-
-  switchDark = (isDark) => {
-    this.setState({
-      currentScheme: isDark ? darkScheme : lightScheme,
-      isDark: isDark,
-    })
-
-    localStorage.setItem("isDark", isDark ? "Dark" : "Light");
-  }
-
-  handleDrawerToggle = () => {
-    this.setState(state => ({ mobileOpen: !state.mobileOpen }));
-  };
-
-  handleTabClick = (tab) => {
-    window.scrollTo({top: 0, behavior: 'smooth'});
-
-    if(this.state.mobileOpen) this.handleDrawerToggle();
-    this.setState({selected: tab});
-  }
-
-  getPaths = () => {
-    /* Object References */
-    let paths = {
-      "/":
-      {
-        "title": "",
-        "color": this.state.currentScheme.colorSet.purple,
-      },
-      "/about": 
-      {
-        "title": "About Me",
-        "color": this.state.currentScheme.colorSet.blue,
-        "icAppbar": <AccountBox style={{fontSize: "80px", color: this.state.currentScheme.colorSet.blue}} className="AppbarIcon"/>,
-        "icList": <AccountBox className="ListIcon"/>,
-      },
-      "/projects": 
-      {
-        "title": "Projects",
-        "color": this.state.currentScheme.colorSet.red,
-        "icAppbar": <Buffer style={{fontSize: "80px", color: this.state.currentScheme.colorSet.red}} className="AppbarIcon"/>,
-        "icList": <Buffer className="ListIcon"/>,
-      },
-      "/blog": 
-      {
-        "title": "Research Blog",
-        "color": this.state.currentScheme.colorSet.orange,
-        "icAppbar": <NewspaperVariantMultiple style={{fontSize: "80px", color: this.state.currentScheme.colorSet.orange}} className="AppbarIcon"/>,
-        "icList": <NewspaperVariantMultiple className="ListIcon"/>,
-      },
-      "/contact": 
-      {
-        "title": "Contact",
-        "color": this.state.currentScheme.colorSet.purple,
-        "icAppbar": <MessageBulleted style={{fontSize: "80px", color: this.state.currentScheme.colorSet.purple}} className="AppbarIcon"/>,
-        "icList": <MessageBulleted className="ListIcon"/>,
-      },
+  // Scroll based anchor routing
+  useEffect(() => {
+    const handleScroll = () => {
+      const anchorSections = document.getElementsByClassName("ReferenceAnchor");
+      for (const thisSection of anchorSections) {
+        const top = window.pageYOffset;
+        const dist = top - thisSection.offsetTop;
+        if (dist < 800 && dist > -50 && window.location.hash !== `#${thisSection.id}`) {
+          setHashRoute(thisSection.id);
+          break;
+        }
+      }
     }
 
-    return paths;
-  }
+    window.addEventListener('scroll', debounce(handleScroll, 100));
+    return () => window.removeEventListener('scroll', handleScroll);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  getTitle = (path) => {
-    return this.getPaths()[path].title;
-  }
+  useEffect(() => {
+    // Set dark theme on load
+    const getIsDark = localStorage.getItem("isDark");
+    switchDark(getIsDark === "Dark" ? true : false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  getColor = (path) => {
-    return this.getPaths()[path].color;
-  }
-
-  getIcon = (isAppbar, path) => {
-    if(isAppbar) 
-      return this.getPaths()[path].icAppbar;
-
-    return this.getPaths()[path].icList;
-  }
-
-  getSideHead = () => {
-    const iconSize = "40px";
-
-    return (
-      <div className="SidebarHead">
-      <Grid container direction="column" alignItems="stretch" justify="center">
-        <Grid item>
-        <Link to="/" style={{textDecoration: "none"}} onClick={() => this.handleTabClick("", "/")}>
-          <img 
-            src={icAtudeCircle} alt="icAtudeCircle"  
-            className="SidebarLogoCircle"
-            style={{
-              filter: !this.state.isDark ? "invert(100%)" : "invert(0)",
-              padding: this.state.isOnLogo ? 0 : "20px",
-              opacity: this.state.isOnLogo ? 1 : 0,
-            }}
-          />
-          <img 
-            src={icAtude} alt="icAtude" className="SidebarLogoCircle" 
-            style={{
-              filter: !this.state.isDark ? "invert(100%)" : "invert(0)",
-              padding: this.state.isOnLogo ? "50px" : 0,
-              opacity: this.state.isOnLogo ? 1 : 0,
-            }}
-          />
-          <img 
-            onMouseEnter={() => this.setState({isOnLogo: true})}
-            onMouseLeave={() => this.setState({isOnLogo: false})}
-            src={icAtude} alt="icAtude" className="SidebarIconHead" 
-            style={{
-              filter: !this.state.isDark ? "invert(100%)" : "invert(0)",
-              padding: this.state.isOnLogo ? "14px" : 0,
-            }}
-          />
-
-          <Typography className="SidebarNameText" style={{fontSize: "24px", lineHeight: "32px", textAlign: "right"}} 
-            variant="overline" color="textPrimary">
-              Mozamel<br/><b>Anwary</b>
-          </Typography>
-        </Link>
-        </Grid>
-          
-        <Grid item>
-        <Grid container direction="row" alignItems="stretch" justify="space-around">
-          <Grid item>
-            <IconButton key="Github" component="a"
-              href={Database.Contact.Links.GitHub[0]} target="_blank" rel="noopener noreferrer"
-            >
-              <GithubBox className="DrawerIconButton" style={{ fontSize: iconSize }}/>
-            </IconButton>
-          </Grid>
-          <Grid item>
-            <IconButton key="LinkedIn" component="a"
-              href={Database.Contact.Links.LinkedIn[0]} target="_blank" rel="noopener noreferrer"
-            >
-              <LinkedinBox className="DrawerIconButton" style={{ fontSize: iconSize }}/>
-            </IconButton>
-          </Grid>
-          <Grid item>
-            <IconButton key="Email" component="a"
-              href={`mailto:${Database.Contact.Contact.Email}`}
-            >
-              <EmailBox className="DrawerIconButton" style={{ fontSize: iconSize }}/>
-            </IconButton>
-          </Grid>
-        </Grid>
-        </Grid>
-      </Grid>
-      </div>      
-    );
+  const setHashRoute = (sectionId) => {
+    window.history.replaceState(null, null, `#${sectionId}`);
+    setTimeout(() => setLocationId(sectionId), 100);
   };
 
-  getSideListObject = (currPath, path, thisColor, header) => {
-    return (
-      <NavLink to={path} style={{textDecoration: "none"}}>
-        <ListItem 
-          selected={this.state.selected === header} button className="SideListItem"
-          onClick={() => this.handleTabClick(header, path)} 
-          key={header}
-        >
-          <ListItemIcon 
-            style={{color: currPath === path && thisColor}}
-            className="SideListItem">{this.getIcon(false, path)}
-          </ListItemIcon>
-          <ListItemText 
-            primary={
-              <Typography 
-                color="textPrimary"
-                style={{color: currPath === path && thisColor}} 
-                variant="button">
-                  {header}
-              </Typography>
-            }
-          />
-        </ListItem>
-      </NavLink>
-    );
+  const switchDark = (isDarkVal) => {
+    localStorage.setItem("isDark", isDarkVal ? "Dark" : "Light");
+    setDark(isDarkVal);
+    setCurrentScheme(isDarkVal ? darkScheme : lightScheme);
   }
-  
-  getSideList = (currPath) => {
-    return (
-      <List>
-        <Divider/>
-        {this.getSideListObject(currPath, "/about", this.getColor(currPath), "About Me")}
-        {this.getSideListObject(currPath, "/projects", this.getColor(currPath), "Projects")}
-        {this.getSideListObject(currPath, "/blog", this.getColor(currPath), "Research Blog")}
-        {this.getSideListObject(currPath, "/contact", this.getColor(currPath), "Contact")}    
-      </List>  
-    );
-  };     
 
-  drawer = (currPath) => {
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
+  const handleTabClick = (sectionId) => {
+    if (mobileOpen) {
+      handleDrawerToggle();
+    }
+  }
+
+  const getColor = (sectionId) => {
+    const route = getRoutes(currentScheme)[sectionId];
+    if (route) {
+      return route.color;
+    }
+
+    return currentScheme.colorSet.blue;
+  }
+
+  const getIcon = (sectionId) => {
+    const route = getRoutes(currentScheme)[sectionId];
+    if (route) {
+      return route.icList;
+    }
+    return null;
+  }
+
+  const getSideHead = () => (
+    <div className="SidebarHead">
+    <Grid container direction="column" alignItems="stretch" justify="center">
+      <Grid item>
+        <img 
+          src={icAtude} 
+          alt="Atude" 
+          className="SidebarIconHead" 
+          style={{ filter: !isDark ? "invert(100%)" : "invert(0)" }}
+        />
+        <Typography 
+          className="SidebarNameText" 
+          style={{ fontSize: "24px", lineHeight: "32px", textAlign: "right" }} 
+          variant="overline" 
+          color="textPrimary"
+        >
+          Mozamel<br/><b>Anwary</b>
+        </Typography>
+      </Grid>
+        
+      <Grid item>
+      <Grid container direction="row" alignItems="stretch" justify="space-around">
+        <Grid item>
+          <IconButton key="Github" component="a"
+            href={Database.Contact.Links.GitHub[0]} target="_blank" rel="noopener noreferrer"
+          >
+            <GithubBox className="DrawerIconButton" style={{ fontSize: iconSize }}/>
+          </IconButton>
+        </Grid>
+        <Grid item>
+          <IconButton key="LinkedIn" component="a"
+            href={Database.Contact.Links.LinkedIn[0]} target="_blank" rel="noopener noreferrer"
+          >
+            <LinkedinBox className="DrawerIconButton" style={{ fontSize: iconSize }}/>
+          </IconButton>
+        </Grid>
+        <Grid item>
+          <IconButton 
+            key="Email" 
+            component="a"
+            href={`mailto:${Database.Contact.Contact.Email}`}
+          >
+            <EmailBox 
+              className="DrawerIconButton" 
+              style={{ fontSize: iconSize }}
+            />
+          </IconButton>
+        </Grid>
+      </Grid>
+      </Grid>
+    </Grid>
+    </div>      
+  );
+
+  const getSideListObject = (sectionId, thisColor, header) => (
+    <Link to={sectionId} smooth="true" style={{ textDecoration: "none" }}>
+      <ListItem 
+        button 
+        className="SideListItem"
+        onClick={() => handleTabClick(sectionId)} 
+        key={header}
+      >
+        <ListItemIcon 
+          className="SideListItem"
+          style={{ 
+            color: locationId === sectionId && thisColor 
+          }}
+        >
+          {getIcon(sectionId)}
+        </ListItemIcon>
+        <ListItemText 
+          primary={
+            <Typography 
+              color="textPrimary"
+              style={{ color:  locationId === sectionId && thisColor }} 
+              variant="button">
+                {header}
+            </Typography>
+          }
+        />
+      </ListItem>
+    </Link>
+  );
+  
+  const getSideList = () => (
+    <List>
+      <Divider/>
+      {getSideListObject("about-me", getColor("about-me"), "About Me")}
+      {getSideListObject("projects", getColor("projects"), "Projects")}
+      {/* {getSideListObject(currPath, "/blog", getColor(currPath), "Research Blog")} */}
+      {getSideListObject("contact", getColor("contact"), "Contact")}    
+    </List>  
+  );
+
+  const drawer = () => {
     return (
-      <div style={{backgroundColor: this.state.currentScheme.bg}} className="Sidebar">
-      <MuiThemeProvider theme={this.state.currentScheme.muiSidebarTheme}>
-        {this.getSideHead(currPath)}
-        {this.getSideList(currPath)}
+      <div style={{backgroundColor: currentScheme.bg}} className="Sidebar">
+      <MuiThemeProvider theme={currentScheme.muiSidebarTheme}>
+        {getSideHead()}
+        {getSideList()}
         <Grid container direction="row" alignItems="center" justify="center">
           <Grid item>
             <SwitchButton 
               color="primary" 
-              checked={this.state.isDark} 
-              onChange={() => this.switchDark(!this.state.isDark)}/>
+              checked={isDark} 
+              onChange={() => switchDark(!isDark)}/>
             </Grid>
-          <Grid item><ThemeLightDark style={{color: "#cccccc", marginTop: "4px"}}/></Grid>
+          <Grid item>
+            <ThemeLightDark 
+              style={{ color: "#cccccc", marginTop: "4px" }}
+            />
+          </Grid>
         </Grid>
         <Typography className="CopyrightText" variant="button" style={{fontSize: "10px", color: "#cccccc"}}>
           Atude © 2020
@@ -388,106 +376,80 @@ class ResponsiveDrawer extends React.Component {
     );
   };
 
-  render() {
-    const { classes } = this.props;
-    const { currentScheme } = this.state;
+  const { classes } = props;
 
-    return (
-      <HashRouter basename="/">
-        {/* Use location for render changes*/}
-        <Route render={({location}) => (
+  return (
+    <div className={classes.root}>
+      <MuiThemeProvider theme={currentScheme.muiTheme}>
+        <CssBaseline />
+        <AppBar 
+          position="fixed" 
+          className={classes.appBar}
+          style={{
+            boxShadow: "none", 
+            backgroundColor: "transparent", 
+            borderRadius: "0px 0px 30px 30px"
+          }}
+        >
+          <Toolbar>
+            <IconButton 
+              color="inherit"
+              onClick={handleDrawerToggle} 
+              className={classes.menuButton}
+            >
+              <Menu style={{ color: getColor(locationId) }}/>
+            </IconButton>
+          </Toolbar>
+        </AppBar>
+        <nav className={classes.drawer}>
+          <Hidden smUp implementation="css">
+            <SwipeableDrawer
+              container={props.container}
+              variant="temporary"
+              anchor="left"
+              open={mobileOpen}
+              onClose={handleDrawerToggle}
+              onOpen={handleDrawerToggle}
+              classes={{ paper: classes.drawerPaper }}
+            >
+              {drawer()}
+            </SwipeableDrawer>
+          </Hidden>
+          <Hidden xsDown implementation="css">
+            <Drawer classes={{ paper: classes.drawerPaper }}
+              variant="permanent" open>
+              {drawer()}
+            </Drawer>
+          </Hidden>
+        </nav>
 
-          <div className={classes.root}>
-          <MuiThemeProvider theme={this.state.currentScheme.muiTheme}>
-          <CssBaseline />
-          <AppBar position="fixed" className={classes.appBar}
-          style={{boxShadow: "none", 
-            backgroundColor: location.pathname !== "/" ? this.state.currentScheme.bgSecond : "transparent", 
-            borderRadius: "0px 0px 30px 30px"}}>
-            <Toolbar>
-              <IconButton color="inherit" aria-label="Open drawer"
-                onClick={this.handleDrawerToggle} className={classes.menuButton}>
-                <Menu style={{color: this.getColor(location.pathname)}}/>
-              </IconButton>
-                <Typography className="AppbarText" style={{fontSize: "24px", color: this.getColor(location.pathname)}} variant="h2" inline>
-                  {this.getTitle(location.pathname)}
-                </Typography>
-                {this.getIcon(true, location.pathname)}
-            </Toolbar>
-          </AppBar>
-          <nav className={classes.drawer}>
-            {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-            <Hidden smUp implementation="css">
-              <SwipeableDrawer
-                container={this.props.container}
-                variant="temporary"
-                anchor="left"
-                open={this.state.mobileOpen}
-                onClose={this.handleDrawerToggle}
-                onOpen={this.handleDrawerToggle}
-                classes={{
-                  paper: classes.drawerPaper,
-                }}
-              >
-                {this.drawer(location.pathname)}
-              </SwipeableDrawer>
-            </Hidden>
-            <Hidden xsDown implementation="css">
-              <Drawer classes={{ paper: classes.drawerPaper,}}
-                variant="permanent" open>
-                {this.drawer(location.pathname)}
-              </Drawer>
-            </Hidden>
-          </nav>
-
-            <div className="MainContentCont">
-              <TransitionGroup>
-                <Switch location={location}>
-                  <Route exact path="/" render={() => 
-                    <HomePage 
-                      isDark={this.state.isDark} 
-                      currentScheme={currentScheme} 
-                      mainColor={this.getColor(location.pathname)}
-                    />}
-                  />
-                  <Route path="/about" render={() => 
-                    <AboutPage 
-                      isDark={this.state.isDark} 
-                      currentScheme={currentScheme} 
-                      mainColor={this.getColor(location.pathname)}
-                    />}
-                  />
-                  <Route path="/projects" render={() => 
-                    <ProjectsPage 
-                      isDark={this.state.isDark} 
-                      currentScheme={currentScheme} 
-                      mainColor={this.getColor(location.pathname)}
-                    />}
-                  />
-                  <Route path="/blog" render={() => 
-                    <BlogPage 
-                      isDark={this.state.isDark} 
-                      currentScheme={currentScheme} 
-                      mainColor={this.getColor(location.pathname)}
-                    />}
-                  />
-                  <Route path="/contact" render={() => 
-                    <ContactPage 
-                      isDark={this.state.isDark} 
-                      currentScheme={currentScheme} 
-                      mainColor={this.getColor(location.pathname)}
-                    />}
-                  />
-                </Switch>
-              </TransitionGroup>
-            </div>
-
-          </MuiThemeProvider>
+        <div className="MainContentCont">
+          <AboutPage 
+            sectionId="about-me"
+            isDark={isDark} 
+            currentScheme={currentScheme} 
+            mainColor={getRoutes(currentScheme)["about-me"].color}
+          />
+          <br /><br />
+          <ProjectsPage 
+            sectionId="projects"
+            isDark={isDark} 
+            currentScheme={currentScheme} 
+            mainColor={getRoutes(currentScheme)["projects"].color}
+          />
+          <br /><br />
+          <ContactPage 
+            sectionId="contact"
+            isDark={isDark} 
+            currentScheme={currentScheme} 
+            mainColor={getRoutes(currentScheme)["contact"].color}
+          />
+          <div style={{ marginBottom: "200px" }}/>
         </div>
-        )}/>
-      </HashRouter>
-    );
-  }
+
+      </MuiThemeProvider>
+    </div>
+  );
 }
 
 ResponsiveDrawer.propTypes = {

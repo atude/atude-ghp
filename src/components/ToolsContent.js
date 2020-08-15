@@ -159,7 +159,7 @@ class ToolsContent extends React.Component {
       "Vercel":
       <SvgIcon width="116" height="100" viewBox="0 0 116 100">
         <g transform="scale(0.7, 0.7) translate(40, 20)">
-          <path fill={setColor} fill-rule="evenodd" clip-rule="evenodd" d="M57.5 0L115 100H0L57.5 0z"/>
+          <path fill={setColor} d="M57.5 0L115 100H0L57.5 0z"/>
         </g>
       </SvgIcon>,
 
@@ -183,7 +183,7 @@ class ToolsContent extends React.Component {
 
       "Firestore":
       <SvgIcon width="200" height="200" viewBox="40 40 200 200">
-        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g stroke="none" fill="none">
           <g transform="translate(106, 81)" fill={setColor}>
             <polygon points="0.902735562 20.4855521 52.709637 0 103.866083 19.0345717 103.866083 48.2069143 52.709637 29.1723426 0.902735562 49.6578947"></polygon>
             <polygon points="1.55319149 62.7930857 52.709637 43.7585139 103.866083 62.7930857 103.866083 91.9654283 52.709637 72.9308566 1.55319149 91.9654283"></polygon>
@@ -223,7 +223,6 @@ class ToolsContent extends React.Component {
                   <Grid item key={key}>
                     <Chip variant="default" icon={this.getIconTools(key)} 
                       label={<span style={{paddingLeft: "4px"}}>{key}</span>}
-                      la 
                       style={{
                         color: this.props.currentScheme.bg,
                         backgroundColor: Object.values(colorSet)[i],

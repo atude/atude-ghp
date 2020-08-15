@@ -14,11 +14,14 @@
     "react-markdown": "^4.3.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.0.0",
+    "react-scroll": "^1.8.1",
     "react-svg": "^9.0.4",
     "react-syntax-highlighter": "^12.2.1",
     "react-transition-group": "^4.3.0",
+    "styled-components": "^5.1.1",
     "typeface-roboto": "0.0.54",
-    "typescript": "^3.7.4"
+    "typescript": "^3.7.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.11.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -46,5 +49,8 @@
   "devDependencies": {
     "gh-pages": "^2.1.1"
   },
-  "homepage": "http://atude.github.io/atude-ghp"
+  "homepage": "http://atude.github.io/atude-ghp",
+  "babel": {
+    "plugins": ["@babel/plugin-proposal-optional-chaining"]
+  }
 }

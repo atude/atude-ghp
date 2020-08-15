@@ -1,30 +1,28 @@
 import React, { useState, useEffect } from "react";
 import "../components/Components.css";
 import Database from "../assets/Database";
-import { Grid, Typography, Slide, Switch, FormControlLabel } from "@material-ui/core";
+import { Grid, Typography, Slide } from "@material-ui/core";
 import ProjectCard from "../components/ProjectCard";
 import { getMiniIcons } from '../components/ProjectMiniIcons';
 import ReactSVG from "react-svg";
-
 import {
   GooglePlay,
   Youtube,
   GoogleChrome,
 } from "mdi-material-ui";
+import AnchoredSubheading from "../components/AnchoredSubheading";
+import { getRoutes } from "../Routes";
+
+const viewIcons = {
+  "Google Play": <GooglePlay />,
+  "Youtube": <Youtube />,
+  "Chrome Web Store": <GoogleChrome />
+};
 
 export default function ProjectsPage(props) {
   const [banners, setBanners] = useState({});
-  const [isLiveProjectsOnly, setLiveProjectsOnly] = useState(false);
   const projects = Database["Projects"];
-  const { mainColor, currentScheme, isDark } = props;
-
-  const tBase = 700;
-  const tAdd = 300;
-  const viewIcons = {
-    "Google Play": <GooglePlay />,
-    "Youtube": <Youtube />,
-    "Chrome Web Store": <GoogleChrome />
-  };
+  const { mainColor, currentScheme, isDark, sectionId } = props;
 
   useEffect(() => {
     if (Object.keys(banners).length) return;
@@ -51,14 +49,8 @@ export default function ProjectsPage(props) {
  
   const getCardMain = (project, i, mainColor, currentScheme) => {   
     return (
-      <Grid item container key={project.heading} lg={6} md={6} sm={12} xs={12} alignItems="center" justify="center">
-        <Slide
-          direction="up"
-          in
-          mountOnEnter
-          unmountOnExit
-          timeout={tBase + i * tAdd}
-        >
+      <Grid item container key={project.heading} md={6} xs={12} alignItems="center" justify="center">
+        <Slide in direction="left">
           <ProjectCard
             mainColor={mainColor}
             isDark={isDark}
@@ -85,27 +77,13 @@ export default function ProjectsPage(props) {
   };
 
   return (
-    <div className="ParentCenterContainer">
-      <div 
-        style={{
-          display: "flex",
-          width: "100%",
-          justifyContent: "flex-end",
-        }}
-      >
-        <FormControlLabel 
-          style={{marginTop: "-8px"}}
-          control={
-            <Switch 
-              color="primary"
-              style={{ color: isLiveProjectsOnly ? mainColor : null }}
-              checked={isLiveProjectsOnly}
-              onChange={() => setLiveProjectsOnly(!isLiveProjectsOnly)}
-            />
-          } 
-          label="Show live projects only" 
-        />
-      </div>
+    <div>
+      <AnchoredSubheading 
+        id={sectionId}
+        color={getRoutes(currentScheme)[sectionId].color}
+        title={getRoutes(currentScheme)[sectionId].title}
+        icon={getRoutes(currentScheme)[sectionId].icAppbar}
+      />
       <Grid
         container
         direction="row"
@@ -113,7 +91,7 @@ export default function ProjectsPage(props) {
         alignItems="stretch"
         justify="center"
       >
-        {Object.values(projects).filter(project => isLiveProjectsOnly ? project.live : true).map((project, i) =>
+        {Object.values(projects).map((project, i) =>
           getCardMain(project, i, mainColor, currentScheme)
         )}
       </Grid>
