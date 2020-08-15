@@ -10,7 +10,8 @@ import {
 const getRouteStyle = (currentScheme, color) => {
   return { 
     fontSize: "80px", 
-    color: currentScheme.colorSet[color]
+    // color: currentScheme.colorSet[color]
+    color: currentScheme.bg
   }
 }
 

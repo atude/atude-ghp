@@ -22,9 +22,10 @@ const AboutPage = (props) => {
         color={getRoutes(currentScheme)[sectionId].color}
         title={getRoutes(currentScheme)[sectionId].title}
         icon={getRoutes(currentScheme)[sectionId].icAppbar}
+        currentScheme={currentScheme}
       />
       <Grid container direction="row" spacing={24} alignItems="center" justify="center">
-        <Grid item>
+        <Grid item >
           <Fade in={isAvatarLoad} timeout={700}>
             <Avatar src={imgProfile} alt="profile"
               style={{
@@ -38,7 +39,7 @@ const AboutPage = (props) => {
           <div className="AvatarBgCircle3" style={{marginLeft: 40 - 0.1 * yPos}}/> */}
         </Grid>
 
-        <Grid item lg={8} md={8} sm={10} xs={12}>
+        <Grid item lg={9} sm={12} xs={12}>
           <ContentCard mainColor={mainColor} currentScheme={currentScheme} isDark={isDark}
             headingIcon={<HumanGreeting style={{color: mainColor}} fontSize="large" className="ContentCardHeadIcon"/>}
             heading="Hi, I'm Moz!" 

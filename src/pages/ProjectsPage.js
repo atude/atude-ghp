@@ -83,6 +83,7 @@ export default function ProjectsPage(props) {
         color={getRoutes(currentScheme)[sectionId].color}
         title={getRoutes(currentScheme)[sectionId].title}
         icon={getRoutes(currentScheme)[sectionId].icAppbar}
+        currentScheme={currentScheme}
       />
       <Grid
         container

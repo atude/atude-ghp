@@ -197,7 +197,7 @@ const ResponsiveDrawer = (props) => {
       for (const thisSection of anchorSections) {
         const top = window.pageYOffset;
         const dist = top - thisSection.offsetTop;
-        if (dist < 800 && dist > -50 && window.location.hash !== `#${thisSection.id}`) {
+        if (dist < 800 && dist > -100 && window.location.hash !== `#${thisSection.id}`) {
           setHashRoute(thisSection.id);
           break;
         }
@@ -309,7 +309,7 @@ const ResponsiveDrawer = (props) => {
   );
 
   const getSideListObject = (sectionId, thisColor, header) => (
-    <Link to={sectionId} smooth="true" style={{ textDecoration: "none" }}>
+    <Link to={sectionId} smooth="true" style={{ textDecoration: "none" }} offset={-50}>
       <ListItem 
         button 
         className="SideListItem"

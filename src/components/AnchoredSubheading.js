@@ -8,27 +8,66 @@ const HeadingContainerStyled = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 0.5em;
-  padding-top: 2em;
+  margin-bottom: 2em;
+  margin-top: 2em;
+  border-radius: 10px;  
+  padding: 1em;
+`;
+
+const DotStyled = styled.div`
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+`;
+
+const LineStyled = styled.div`
+  width: 20px;
+  height: 4px;
+  border-radius: 50px;
+  margin: 1em;
+`;
+
+const DividerStyled = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 5em auto 7em;
 `;
 
 const AnchoredSubheading = (props) => {
-  const { color, title, icon, id } = props;
+  const { color, currentScheme, title, icon, id, isFirst } = props;
   return (
-    <HeadingContainerStyled id={id} className="ReferenceAnchor">
-      <Typography 
-        className="AppbarText" 
+    <div > 
+      {!isFirst && 
+        <DividerStyled>
+          <LineStyled style={{ backgroundColor: color }} />
+          <DotStyled style={{ backgroundColor: color }} />
+          <LineStyled style={{ backgroundColor: color }} />
+        </DividerStyled>
+      }
+      <HeadingContainerStyled 
+        id={id}
+        className="ReferenceAnchor"
         style={{ 
-          fontSize: "32px", 
-          color,
-        }} 
-        variant="h2" 
-        inline
+          backgroundColor: color,
+        }}
       >
-        {title}
-      </Typography>
-      {icon}
-    </HeadingContainerStyled>
+        <Typography 
+          className="AppbarText" 
+          style={{ 
+            fontSize: "32px", 
+            color: currentScheme.bg,
+          }} 
+          variant="h2" 
+          inline
+        >
+          {title}
+        </Typography>
+        {icon}
+      </HeadingContainerStyled>
+    </div>
   );
 }
 

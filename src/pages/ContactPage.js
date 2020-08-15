@@ -19,6 +19,7 @@ const ContactPage = (props) => {
         color={getRoutes(currentScheme)[sectionId].color}
         title={getRoutes(currentScheme)[sectionId].title}
         icon={getRoutes(currentScheme)[sectionId].icAppbar}
+        currentScheme={currentScheme}
       />
       <Grid container spacing={24} direction="row" alignItems="stretch" justify="center">
         <Grid item xs={12} sm={6} md={6} lg={6} xl={6} container 
