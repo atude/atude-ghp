@@ -1,7 +1,7 @@
 import React from 'react';
 import '../components/Components.css';
 import { Grid, Typography } from '@material-ui/core';
-import { GithubCircle, Linkedin, EmailMarkAsUnread, Discord, GooglePlay } from 'mdi-material-ui';
+import { Github, Linkedin, EmailMarkAsUnread, Discord, GooglePlay } from 'mdi-material-ui';
 
 class ContactContent extends React.Component {
 
@@ -9,7 +9,7 @@ class ContactContent extends React.Component {
     const cStyle = {fontSize: "38px", color: this.props.currentScheme.lightGray};
 
     const icons = {
-      "GitHub": <GithubCircle style={cStyle} className="ContactIcon"/>,
+      "GitHub": <Github style={cStyle} className="ContactIcon"/>,
       "Play Store": <GooglePlay style={cStyle} className="ContactIcon"/>,
       "LinkedIn": <Linkedin style={cStyle} className="ContactIcon"/>,
       "Email": <EmailMarkAsUnread style={cStyle} />,

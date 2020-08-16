@@ -13,13 +13,14 @@ import AnchoredSubheading from '../components/AnchoredSubheading';
 
 const AboutPage = (props) => {
   const [isAvatarLoad, setAvatarLoad] = useState(false);
-  const { mainColor, currentScheme, isDark, sectionId } = props;
+  const { mainColor, prevColor, currentScheme, isDark, sectionId } = props;
 
   return (
     <div>
       <AnchoredSubheading 
         id={sectionId}
-        color={getRoutes(currentScheme)[sectionId].color}
+        color={mainColor}
+        prevColor={prevColor}
         title={getRoutes(currentScheme)[sectionId].title}
         icon={getRoutes(currentScheme)[sectionId].icAppbar}
         currentScheme={currentScheme}
@@ -27,16 +28,26 @@ const AboutPage = (props) => {
       <Grid container direction="row" spacing={24} alignItems="center" justify="center">
         <Grid item >
           <Fade in={isAvatarLoad} timeout={700}>
-            <Avatar src={imgProfile} alt="profile"
+            <Avatar 
+              src={imgProfile} 
+              alt="avatar"
               style={{
-                width: 200, height: 200, margin: 20,
+                width: 200, 
+                height: 200, 
+                margin: 20,
               }} 
               onLoad={() => setAvatarLoad(true)}
             /> 
           </Fade>
-          {/* <div className="AvatarBgCircle" style={{marginLeft: 0.1 * yPos}}/>
-          <div className="AvatarBgCircle2" style={{marginTop: -200 - 0.1 * yPos}}/>
-          <div className="AvatarBgCircle3" style={{marginLeft: 40 - 0.1 * yPos}}/> */}
+          <div className="AvatarBgCircle" 
+            // style={{marginLeft: 0.1 * yPos}}
+          />
+          <div className="AvatarBgCircle2" 
+            // style={{marginTop: -200 - 0.1 * yPos}}
+          />
+          <div className="AvatarBgCircle3" 
+            // style={{marginLeft: 40 - 0.1 * yPos}}
+          />
         </Grid>
 
         <Grid item lg={9} sm={12} xs={12}>

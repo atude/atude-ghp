@@ -22,7 +22,7 @@ const viewIcons = {
 export default function ProjectsPage(props) {
   const [banners, setBanners] = useState({});
   const projects = Database["Projects"];
-  const { mainColor, currentScheme, isDark, sectionId } = props;
+  const { mainColor, prevColor, currentScheme, isDark, sectionId } = props;
 
   useEffect(() => {
     if (Object.keys(banners).length) return;
@@ -80,7 +80,8 @@ export default function ProjectsPage(props) {
     <div>
       <AnchoredSubheading 
         id={sectionId}
-        color={getRoutes(currentScheme)[sectionId].color}
+        color={mainColor}
+        prevColor={prevColor}
         title={getRoutes(currentScheme)[sectionId].title}
         icon={getRoutes(currentScheme)[sectionId].icAppbar}
         currentScheme={currentScheme}

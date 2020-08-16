@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Menu, GithubBox, LinkedinBox, EmailBox, ThemeLightDark } from 'mdi-material-ui';
+import { Menu, Github, Linkedin, EmailBox, ThemeLightDark } from 'mdi-material-ui';
 import { 
   createMuiTheme, 
   Typography, 
@@ -28,6 +28,7 @@ import colorSetLight from '../assets/colorsetdark.json';
 import colorSetDark from '../assets/colorset.json';
 
 import '../App.css'
+
 import Database from '../assets/Database'
 // import HomePage from '../pages/HomePage.js';
 import AboutPage from '../pages/AboutPage.js';
@@ -37,7 +38,9 @@ import ContactPage from '../pages/ContactPage';
 
 import { getRoutes } from '../Routes';
 import { Link } from 'react-scroll'
-import { debounce } from '../utils/generic';
+import { debounce, throttle } from '../utils/generic';
+import { bottomGutter } from '../utils/layouts';
+import HomePage from '../pages/HomePage';
 
 const iconSize = "40px";
 
@@ -193,6 +196,9 @@ const ResponsiveDrawer = (props) => {
   // Scroll based anchor routing
   useEffect(() => {
     const handleScroll = () => {
+      // Set css --scroll property
+
+      // Set hash routing based on scroll
       const anchorSections = document.getElementsByClassName("ReferenceAnchor");
       for (const thisSection of anchorSections) {
         const top = window.pageYOffset;
@@ -204,8 +210,16 @@ const ResponsiveDrawer = (props) => {
       }
     }
 
-    window.addEventListener('scroll', debounce(handleScroll, 100));
-    return () => window.removeEventListener('scroll', handleScroll);
+    const setCssScrollProperty = () => {
+      document.body.style.setProperty('--scroll', window.pageYOffset / (document.body.offsetHeight - window.innerHeight));
+    }
+
+    window.addEventListener('scroll', debounce(handleScroll, 100), false);
+    window.addEventListener('scroll', throttle(setCssScrollProperty, 150), false);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', setCssScrollProperty);
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -280,14 +294,14 @@ const ResponsiveDrawer = (props) => {
           <IconButton key="Github" component="a"
             href={Database.Contact.Links.GitHub[0]} target="_blank" rel="noopener noreferrer"
           >
-            <GithubBox className="DrawerIconButton" style={{ fontSize: iconSize }}/>
+            <Github className="DrawerIconButton" style={{ fontSize: iconSize }}/>
           </IconButton>
         </Grid>
         <Grid item>
           <IconButton key="LinkedIn" component="a"
             href={Database.Contact.Links.LinkedIn[0]} target="_blank" rel="noopener noreferrer"
           >
-            <LinkedinBox className="DrawerIconButton" style={{ fontSize: iconSize }}/>
+            <Linkedin className="DrawerIconButton" style={{ fontSize: iconSize }}/>
           </IconButton>
         </Grid>
         <Grid item>
@@ -368,7 +382,7 @@ const ResponsiveDrawer = (props) => {
           </Grid>
         </Grid>
         <Typography className="CopyrightText" variant="button" style={{fontSize: "10px", color: "#cccccc"}}>
-          Atude © 2020
+          Mozamel Anwary © 2020
         </Typography>
         
       </MuiThemeProvider>
@@ -429,6 +443,7 @@ const ResponsiveDrawer = (props) => {
             isDark={isDark} 
             currentScheme={currentScheme} 
             mainColor={getRoutes(currentScheme)["about-me"].color}
+            prevColor={getRoutes(currentScheme)["about-me"].prevColor}
           />
           <br /><br />
           <ProjectsPage 
@@ -436,6 +451,7 @@ const ResponsiveDrawer = (props) => {
             isDark={isDark} 
             currentScheme={currentScheme} 
             mainColor={getRoutes(currentScheme)["projects"].color}
+            prevColor={getRoutes(currentScheme)["projects"].prevColor}
           />
           <br /><br />
           <ContactPage 
@@ -443,8 +459,9 @@ const ResponsiveDrawer = (props) => {
             isDark={isDark} 
             currentScheme={currentScheme} 
             mainColor={getRoutes(currentScheme)["contact"].color}
+            prevColor={getRoutes(currentScheme)["contact"].prevColor}
           />
-          <div style={{ marginBottom: "200px" }}/>
+          <div style={{ marginBottom: `${bottomGutter}px` }}/>
         </div>
 
       </MuiThemeProvider>

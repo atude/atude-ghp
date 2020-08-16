@@ -237,11 +237,6 @@
   z-index: 99999;
 }
 
-.ContactForm{
-  padding-top: 10px;
-  margin-bottom: -10px;
-}
-
 .ContactContentCont{
   padding: 20px 15px 5px 15px;
   vertical-align: middle;
@@ -337,7 +332,9 @@
   margin-top: -210px;
   border-radius: 100px;
   z-index: -1;
-  transition: all 0.3s;
+  transition: all 0.2s;
+
+  margin-left: calc(var(--scroll) * 100px);
 }
 
 .AvatarBgCircle2 {
@@ -345,11 +342,12 @@
   width: 200px;
   height: 200px;
   position: absolute;
-  margin-top: -200px;
   margin-left: 40px;
   border-radius: 100px;
   z-index: -1;
-  transition: all 0.3s;
+  transition: all 0.2s;
+
+  margin-top: calc((var(--scroll) * -200px) - 200px);
 }
 
 .AvatarBgCircle3 {
@@ -358,10 +356,11 @@
   height: 200px;
   position: absolute;
   margin-top: -240px;
-  margin-left: 30px;
   border-radius: 100px;
   z-index: -1;
   transition: all 0.3s;
+
+  margin-left: calc((var(--scroll) * -200px) + 40px);
 }
 
 .ProjectMiniIcon {

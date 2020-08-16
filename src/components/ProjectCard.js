@@ -1,88 +1,63 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Components.css';
-import { Typography, CardContent, Grid, Chip, Avatar, Link, Button, Tooltip, Divider, IconButton, } from '@material-ui/core';
+import { 
+  Typography, 
+  CardContent, 
+  Grid, 
+  Chip, 
+  Avatar, 
+  Link, 
+  Button, 
+  Tooltip, 
+  Divider, 
+  IconButton, 
+} from '@material-ui/core';
 import {
-  GithubCircle, AccountCircle, AccountSupervisorCircle, Calendar, ShieldLock, 
-  ChevronLeftCircle, ChevronRightCircle, DeveloperBoard, CodeNotEqualVariant, OpenInNew,
-  CheckBold, CheckNetworkOutline, AccountGroup,
+  Github, 
+  ShieldLock, 
+  ChevronLeftCircle, 
+  ChevronRightCircle, 
+  OpenInNew,
+  CheckBold, 
+  CheckNetworkOutline,
 } from 'mdi-material-ui';
+import { useMediaQuery } from 'react-responsive'
 
-const smBreakpoint = 600;
+import { projectDetailsStaticIcon } from '../utils/icons';
+import { smBreakpoint } from '../utils/layouts';
 
-class ProjectCard extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      bannerIndex: 0,
-      isTransitioning: false,
-      width: 0,
-    };
-
-    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-  }
+const ProjectCard = (props) => {
+  const [bannerIndex, setBannerIndex] = useState(0);
+  const isSmWidth = useMediaQuery({ query: `(max-width:${smBreakpoint}px)` });
   
-  componentDidMount() {
-    this.updateWindowDimensions();
-    window.addEventListener('resize', this.updateWindowDimensions);
-  }
-  
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateWindowDimensions);
-  }
-  
-  updateWindowDimensions() {
-    this.setState({ width: window.innerWidth });
-  }
-
-  bannerControl = (i, len) => {
-    if(!this.state.isTransitioning){
-      if(len - 1 === this.state.bannerIndex && i >= 0) i = -(len - 1);
-      if(0 === this.state.bannerIndex && i <= 0) i = len - 1;
-      this.setState({
-        bannerIndex: this.state.bannerIndex + i,
-      });
+  const bannerControl = (i, len) => {
+    if (len - 1 === bannerIndex && i >= 0) {
+      i = -(len - 1);
     }
-  }
-
-  getDetailsStaticIcon = (role) => {
-    const lightGray = this.props.currentScheme.lightGray;
-
-    switch(role) {
-      case "Technical Lead":
-        return <AccountGroup className="DetailsIconRight" style={{color: lightGray}}/>;
-      case "Fullstack":
-        return <DeveloperBoard className="DetailsIconRight" style={{color: lightGray}}/>;
-      case "Solo":
-        return <AccountCircle className="DetailsIconRight" style={{color: lightGray}}/>;
-      case "Frontend Lead":
-        return <CodeNotEqualVariant className="DetailsIconRight" style={{color: lightGray}}/>;
-      case "Backend":
-        return <CodeNotEqualVariant className="DetailsIconRight" style={{ color: lightGray }} />;
-      case "Calendar":
-        return <Calendar className="DetailsIconRight" style={{ color: lightGray }} />;
-      default:
-        return <AccountSupervisorCircle className="DetailsIconRight" style={{color: lightGray}}/>;
+    if (0 === bannerIndex && i <= 0) {
+      i = len - 1;
     }
+    setBannerIndex(bannerIndex + i);
   }
 
-  getBanner = (bgColor, projectBanners, viewtext, viewicon, gitlink, viewlink) => {
+  const getBanner = (bgColor, projectBanners, viewtext, viewicon, gitlink, viewlink) => {
     return (
       <div style={{backgroundColor: bgColor}} className="BannerContainer">
         {projectBanners.map((banner, i) => (
           <img
             key={`${banner}_${i}_banner`}
             alt={`${banner}_${i}_banner`}
-            style={{ opacity: this.state.bannerIndex === i ? 1 : 0 }}
+            style={{ opacity: bannerIndex === i ? 1 : 0 }}
             className="BannerImg"
             src={banner}
             loading="lazy"
           />
         ))}
                   
-        <Button className="BannerLeft" onClick={() => this.bannerControl(-1, projectBanners.length)}>
+        <Button className="BannerLeft" onClick={() => bannerControl(-1, projectBanners.length)}>
           <ChevronLeftCircle style={{ color: "white", filter: "drop-shadow(0 0 4px rgba(0,0,0,0.2))" }} />
         </Button>
-        <Button className="BannerRight" onClick={() => this.bannerControl(1, projectBanners.length)}>
+        <Button className="BannerRight" onClick={() => bannerControl(1, projectBanners.length)}>
           <ChevronRightCircle style={{ color: "white", filter: "drop-shadow(0 0 4px rgba(0,0,0,0.2))" }} />
         </Button>
 
@@ -111,7 +86,7 @@ class ProjectCard extends React.Component {
                   Find on Github
                 </Typography>
               }
-              avatar={<Avatar><GithubCircle /></Avatar>}
+              avatar={<Avatar><Github /></Avatar>}
               component="a"
               clickable
               href={gitlink}
@@ -126,7 +101,7 @@ class ProjectCard extends React.Component {
           {projectBanners.map((banner, i) => (
             <Grid item key={`${banner}_${i}_dot`}
               style={{
-                opacity: this.state.bannerIndex === i ? 1 : 0.5,
+                opacity: bannerIndex === i ? 1 : 0.5,
                 transition: "all 0.5s ease",
                 filter: "drop-shadow(0 0 4px rgba(0,0,0,0.3))"
               }}>
@@ -140,7 +115,7 @@ class ProjectCard extends React.Component {
     );
   };
 
-  getStatus = (status, mainColor) => {
+  const getStatus = (status, mainColor) => {
     let statusIcon = null;
     const iconStyle = { float: "left", color: mainColor, fontSize: "18px", marginLeft: "3px" };
 
@@ -165,7 +140,7 @@ class ProjectCard extends React.Component {
     );
   }
 
-  getHeadings = (projectIcon, viewlink, accColor, heading, lightGray, subheading) => {
+  const getHeadings = (projectIcon, viewlink, accColor, heading, lightGray, subheading) => {
     return (
       <div className="ProjectCardTextContent">
         {projectIcon}
@@ -185,182 +160,191 @@ class ProjectCard extends React.Component {
     );
   }
 
-  getDetailsSectionLeft = (categoryText, categoryStyle, rightPadding, items) => {
-    return (
-      <Grid item container>
-        <Grid container direction="row" justify="flex-start" alignItems="flex-start">
-          <Grid item>
-            <Typography 
-              style={{
-                ...categoryStyle, 
-                paddingRight: rightPadding,
-                paddingTop: "3px",
-              }} 
-              variant="button"
-            >
-              {categoryText}
-            </Typography>
-          </Grid>
-          <Grid item container direction="row" xs={6}>
-            {items}
-          </Grid> 
+  const getDetailsSectionLeft = (categoryText, categoryStyle, rightPadding, items) => (
+    <Grid item container>
+      <Grid container direction="row" justify="flex-start" alignItems="flex-start">
+        <Grid item>
+          <Typography 
+            style={{
+              ...categoryStyle, 
+              paddingRight: rightPadding,
+              paddingTop: "3px",
+            }} 
+            variant="button"
+          >
+            {categoryText}
+          </Typography>
         </Grid>
-      </Grid>
-    );
-  }
-
-  getDetailsSectionRight = (text, categoryStyle, rightPadding, icon) => {
-    return (
-      <Grid item>
-        <Grid container direction="row" alignItems="center">
-          <Grid item>
-            <Typography style={{...categoryStyle, paddingRight: rightPadding}}
-              variant="button" className="ProjectRightText">
-              {text}
-            </Typography>
-          </Grid>
-          <Grid item>
-            {icon}
-          </Grid>
+        <Grid item container direction="row" xs={6}>
+          {items}
         </Grid> 
       </Grid>
-    );
-  }
+    </Grid>
+  );
 
-  getDetailsContainer = (categoryStyle, platforms, date, built, tools, role, team) => {
-    return (
-      <Grid container
-        direction="row"
-      >
-        <Grid item xs={12} sm={7} container direction="column">
-          {this.getDetailsSectionLeft("PLATFORMS", categoryStyle, 10,
-            Object.keys(platforms).map(item => (
-              <Grid key={item} item className="DetailsIconLeft">{platforms[item]}</Grid>
-            ))
-          )}
-          {this.getDetailsSectionLeft("LANGUAGES", categoryStyle, 10,
-            Object.keys(built).map(item => (
-              <Grid key={item} item className="DetailsIconLeft">{built[item]}</Grid>
-            ))
-          )}
-          {this.getDetailsSectionLeft("TECH STACK", categoryStyle, 8,
-            Object.keys(tools).map(item => (
-              <Grid key={item} item className="DetailsIconLeft">{tools[item]}</Grid>
-            ))
-          )}
+  const getDetailsSectionRight = (text, categoryStyle, rightPadding, icon) => (
+    <Grid item>
+      <Grid container direction="row" alignItems="center">
+        <Grid item>
+          <Typography style={{...categoryStyle, paddingRight: rightPadding}}
+            variant="button" className="ProjectRightText">
+            {text}
+          </Typography>
         </Grid>
-        {this.state.width < smBreakpoint && <Divider style={{ width: "100%", marginTop: "15px", marginBottom: "15px" }} />}
-        <Grid item xs={12} sm={5} container direction="column" justify="flex-start"
-          alignItems={this.state.width < smBreakpoint ? "flex-start" : "flex-end"}>
-          {this.getDetailsSectionRight(date, categoryStyle, 1, this.getDetailsStaticIcon("Calendar"))}
-          {this.getDetailsSectionRight(role, categoryStyle, 1, this.getDetailsStaticIcon(role))}
-          {this.getDetailsSectionRight(team, categoryStyle, 1, this.getDetailsStaticIcon(team))}
+        <Grid item>
+          {icon}
         </Grid>
-        
+      </Grid> 
+    </Grid>
+  );
+
+  const getDetailsContainer = (categoryStyle, platforms, date, built, tools, role, team) => (
+    <Grid container
+      direction="row"
+    >
+      <Grid item xs={12} sm={7} container direction="column">
+        {getDetailsSectionLeft("PLATFORMS", categoryStyle, 10,
+          Object.keys(platforms).map(item => (
+            <Grid key={item} item className="DetailsIconLeft">{platforms[item]}</Grid>
+          ))
+        )}
+        {getDetailsSectionLeft("LANGUAGES", categoryStyle, 10,
+          Object.keys(built).map(item => (
+            <Grid key={item} item className="DetailsIconLeft">{built[item]}</Grid>
+          ))
+        )}
+        {getDetailsSectionLeft("TECH STACK", categoryStyle, 8,
+          Object.keys(tools).map(item => (
+            <Grid key={item} item className="DetailsIconLeft">{tools[item]}</Grid>
+          ))
+        )}
       </Grid>
-    );
-  };
+      {!!isSmWidth && <Divider style={{ width: "100%", marginTop: "15px", marginBottom: "15px" }} />}
+      <Grid 
+        item 
+        xs={12} 
+        sm={5} 
+        container 
+        direction="column" 
+        justify="flex-start"
+        alignItems={isSmWidth ? "flex-start" : "flex-end"}
+      >
+        {getDetailsSectionRight(date, categoryStyle, 1, projectDetailsStaticIcon("Calendar", currentScheme.lightGray))}
+        {getDetailsSectionRight(role, categoryStyle, 1, projectDetailsStaticIcon(role, currentScheme.lightGray))}
+        {getDetailsSectionRight(team, categoryStyle, 1, projectDetailsStaticIcon(team, currentScheme.lightGray))}
+      </Grid>
+      
+    </Grid>
+  );
 
-  getAchievements = (achievements, mainColor, accColor) => {
-    return (
-      <div style={{
-        paddingBottom: "20px",
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
-        flexWrap: "wrap",
-        minHeight: this.state.width > smBreakpoint ? "63px" : 0,
-      }}>
-        {achievements.map(achievement => (
-          <div 
-            key={achievement}
+  const getAchievements = (achievements, mainColor, accColor) =>  (
+    <div style={{
+      paddingBottom: "20px",
+      display: "flex",
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+      flexWrap: "wrap",
+      minHeight: isSmWidth ? "63px" : 0,
+    }}>
+      {achievements.map(achievement => (
+        <div 
+          key={achievement}
+          style={{
+            marginTop: "8px",
+            marginRight: "6px",
+            padding: "4px",
+            backgroundColor: accColor,
+            borderRadius: 30,
+          }}
+        >
+          <Typography
+            variant="button"
             style={{
-              marginTop: "8px",
-              marginRight: "6px",
-              padding: "4px",
-              backgroundColor: accColor,
-              borderRadius: 30,
+              paddingLeft: "12px",
+              paddingRight: "12px",
+              paddingTop: "3px",
+              paddingBottom: "3px",
+              fontSize: "12px", 
+              color: "#fff",
+              textAlign: "center",
             }}
           >
-            <Typography
-              variant="button"
-              style={{
-                paddingLeft: "12px",
-                paddingRight: "12px",
-                paddingTop: "3px",
-                paddingBottom: "3px",
-                fontSize: "12px", 
-                color: "#fff",
-                textAlign: "center",
-              }}
+            {achievement.split(",")[0]}
+            {achievement.split(",").length > 1 &&  
+            <IconButton 
+              href={achievement.split(",")[1]}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{margin: "-12px -14px -10px -5px"}}
             >
-              {achievement.split(",")[0]}
-              {achievement.split(",").length > 1 &&  
-              <IconButton 
-                href={achievement.split(",")[1]}
-                target="_blank"
-                ref="noopener noreferrer"
-                style={{margin: "-12px -14px -10px -5px"}}
-              >
-                <OpenInNew style={{ fontSize: "16px", color: "#fff"}}/>
-              </IconButton>
-            }
-            </Typography>
-          </div>
-        ))}
-      </div>
-    );
-  };
-
-  render() {
-    const { 
-      projectIcon, projectBanners, heading, subheading, tools, team, 
-      built, platforms, date, achievements, bgColor, accColor,
-      gitlink, viewlink, privacylink, viewtext, viewicon, body, role, 
-      mainColor, currentScheme, status, isDark
-    } = this.props;
-
-    const lightGray = currentScheme.lightGray;
-    const categoryStyle = { fontSize: "14px", color: lightGray, letterSpacing: "0.1px" };
-
-    return (
-      <div className={`ProjectCard ${isDark ? "StandardCardDark" : "StandardCard"}`}>
-        {this.getBanner(bgColor, projectBanners, viewtext, viewicon, gitlink, viewlink)}
-        <div className="ProjectCardContent">
-          <CardContent>
-            {this.getHeadings(projectIcon, viewlink, accColor, heading, lightGray, subheading)}
-            {!!achievements.length && this.getAchievements(achievements, mainColor, accColor)}
-            {this.getDetailsContainer(categoryStyle, platforms, date, built, tools, role, team)}
-            <br/>
-            
-            {/* About */}
-            <Typography style={{color: mainColor, paddingBottom: "4px"}} variant="button">
-              ABOUT
-            </Typography>
-
-            {/* Body */}
-            <Typography color="textSecondary" style={{fontSize: "14px"}} variant="body1">
-              {body}
-            </Typography>
-
-            <br/>
-            {privacylink !== "" &&
-              <div className="PrivacyText">
-                <Link href={privacylink} target="_blank" ref="noopener noreferrer" style={{textDecoration: "none"}}>
-                  <ShieldLock style={{float: "right", color: mainColor, fontSize: "18px", marginLeft: "3px"}}/>
-                  <Typography inline style={{fontSize: "11px", color: mainColor, float: "left"}} variant="button">
-                    Privacy policy
-                  </Typography>
-                </Link>
-              </div>
-            }
-            {this.getStatus(status, mainColor)}
-          </CardContent>
+              <OpenInNew style={{ fontSize: "16px", color: "#fff"}}/>
+            </IconButton>
+          }
+          </Typography>
         </div>
+      ))}
+    </div>
+  );
+
+  const { 
+    projectIcon, projectBanners, heading, subheading, tools, team, 
+    built, platforms, date, achievements, bgColor, accColor,
+    gitlink, viewlink, privacylink, viewtext, viewicon, body, role, 
+    mainColor, currentScheme, status, isDark
+  } = props;
+
+  const lightGray = currentScheme.lightGray;
+  const categoryStyle = { fontSize: "14px", color: lightGray, letterSpacing: "0.1px" };
+
+  return (
+    <div className={`ProjectCard ${isDark ? "StandardCardDark" : "StandardCard"}`}>
+      {getBanner(bgColor, projectBanners, viewtext, viewicon, gitlink, viewlink)}
+      <div className="ProjectCardContent">
+        <CardContent>
+          {getHeadings(projectIcon, viewlink, accColor, heading, lightGray, subheading)}
+          {!!achievements.length && getAchievements(achievements, mainColor, accColor)}
+          {getDetailsContainer(categoryStyle, platforms, date, built, tools, role, team)}
+          <br/>
+          
+          {/* About */}
+          <Typography style={{color: mainColor, paddingBottom: "4px"}} variant="button">
+            ABOUT
+          </Typography>
+
+          {/* Body */}
+          <Typography color="textSecondary" style={{fontSize: "14px"}} variant="body1">
+            {body}
+          </Typography>
+
+          <br/>
+          {privacylink !== "" &&
+            <div className="PrivacyText">
+              <Link 
+                href={privacylink} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                style={{ textDecoration: "none" }}
+              >
+                <ShieldLock 
+                  style={{
+                    float: "right", 
+                    color: mainColor, 
+                    fontSize: "18px", 
+                    marginLeft: "3px"
+                  }}
+                />
+                <Typography inline variant="button" style={{ fontSize: "11px", color: mainColor, float: "left" }}>
+                  Privacy policy
+                </Typography>
+              </Link>
+            </div>
+          }
+          {getStatus(status, mainColor)}
+        </CardContent>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default ProjectCard;

@@ -37,14 +37,14 @@ const DividerStyled = styled.div`
 `;
 
 const AnchoredSubheading = (props) => {
-  const { color, currentScheme, title, icon, id, isFirst } = props;
+  const { color, prevColor, currentScheme, title, icon, id, isFirst } = props;
   return (
     <div > 
       {!isFirst && 
         <DividerStyled>
-          <LineStyled style={{ backgroundColor: color }} />
-          <DotStyled style={{ backgroundColor: color }} />
-          <LineStyled style={{ backgroundColor: color }} />
+          <LineStyled style={{ backgroundColor: prevColor }} />
+          <DotStyled style={{ backgroundColor: prevColor }} />
+          <LineStyled style={{ backgroundColor: prevColor }} />
         </DividerStyled>
       }
       <HeadingContainerStyled 
