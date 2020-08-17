@@ -6,16 +6,17 @@ import Database from '../assets/Database';
 
 const darkCircleFilters = "hue-rotate(-45deg)";
 const defaultCircleFilter = "hue-rotate(0)";
-const maxLen = window.innerHeight;
 
-let longshadowStr = "";
-let i = 0;
+// const maxLen = window.innerHeight;
 
-for (i = 0; i < maxLen; i++){
-  longshadowStr += `rgba(90, 90, 90, 1) ${i}px ${i}px,`;
-}
+// let longshadowStr = "";
+// let i = 0;
 
-longshadowStr += `rgba(90, 90, 90, 1) ${i}px ${i}px`;
+// for (i = 0; i < maxLen; i++){
+//   longshadowStr += `rgba(90, 90, 90, 1) ${i}px ${i}px,`;
+// }
+
+// longshadowStr += `rgba(90, 90, 90, 1) ${i}px ${i}px`;
 
 const HomePage = (props) => {
   const { currentScheme, isDark, mainColor, sectionId } = props;
@@ -53,11 +54,9 @@ const HomePage = (props) => {
                 fontSize: "max(2rem, 5vh)", 
                 lineHeight: "max(2rem, 6vh)", 
                 textAlign: "left", 
-                color: "#ffffff",
                 opacity: "0.8",
                 transition: "all 1s ease",
-                textShadow: longshadowStr,
-                mixBlendMode: "hard-light",
+                mixBlendMode: "overlay",
               }}
             >
               Mozamel<br/><b>Anwary</b>
