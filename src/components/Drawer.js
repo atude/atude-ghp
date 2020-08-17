@@ -203,8 +203,12 @@ const ResponsiveDrawer = (props) => {
       for (const thisSection of anchorSections) {
         const top = window.pageYOffset;
         const dist = top - thisSection.offsetTop;
-        if (dist < 800 && dist > -100 && window.location.hash !== `#${thisSection.id}`) {
-          setHashRoute(thisSection.id);
+        if (dist < 700 && dist > -200 && window.location.hash !== `#${thisSection.id}`) {
+          if (thisSection.id === "mozamel-main") {
+            setHashRoute("");
+          } else {
+            setHashRoute(thisSection.id);
+          }
           break;
         }
       }
@@ -272,20 +276,24 @@ const ResponsiveDrawer = (props) => {
     <div className="SidebarHead">
     <Grid container direction="column" alignItems="stretch" justify="center">
       <Grid item>
-        <img 
-          src={icAtude} 
-          alt="Atude" 
-          className="SidebarIconHead" 
-          style={{ filter: !isDark ? "invert(100%)" : "invert(0)" }}
-        />
-        <Typography 
-          className="SidebarNameText" 
-          style={{ fontSize: "24px", lineHeight: "32px", textAlign: "right" }} 
-          variant="overline" 
-          color="textPrimary"
-        >
-          Mozamel<br/><b>Anwary</b>
-        </Typography>
+        <Link to="mozamel-main" smooth="true" style={{ textDecoration: "none" }} offset={-150}>
+          <div style={{ cursor: "pointer" }}>
+            <img 
+              src={icAtude} 
+              alt="Atude" 
+              className="SidebarIconHead" 
+              style={{ filter: !isDark ? "invert(100%)" : "invert(0)" }}
+            />
+            <Typography 
+              className="SidebarNameText" 
+              style={{ fontSize: "24px", lineHeight: "32px", textAlign: "right" }} 
+              variant="overline" 
+              color="textPrimary"
+            >
+              Mozamel<br/><b>Anwary</b>
+            </Typography>
+          </div>
+        </Link>
       </Grid>
         
       <Grid item>
@@ -438,6 +446,12 @@ const ResponsiveDrawer = (props) => {
         </nav>
 
         <div className="MainContentCont">
+          <HomePage 
+            sectionId="mozamel-main"
+            isDark={isDark} 
+            currentScheme={currentScheme} 
+            mainColor={getRoutes(currentScheme)["about-me"].color}
+          />
           <AboutPage 
             sectionId="about-me"
             isDark={isDark} 

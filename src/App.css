@@ -30,17 +30,25 @@
   transition: all 10s;
 }
 
-.SidebarNameText{
+.SidebarNameText {
   transition: all 1s;
 }
 
-.SidebarIconHead{
+.SidebarIconHead {
   width: 90px;
   height: 90px;
   float: left;
   margin-left: 20px;
   margin-top: -16px;
   transition: all 1s;
+}
+
+.SidebarNameText:hover + .SidebarIconHead {
+  padding: 10px;
+}
+
+.SidebarIconHead:hover {
+  padding: 10px;
 }
 
 .SidebarLogoCircle{

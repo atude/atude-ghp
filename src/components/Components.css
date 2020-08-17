@@ -5,31 +5,20 @@
   margin: 0 auto;
 }
 
-.HomePageParent{
-  position: absolute;
-  height: 100%;
-  width: 100vw;
-  overflow: hidden;
-  bottom: 0;
-  right: 0;
-}
-
 .HomePageTextMain{
   margin-left: -150px;
   padding-right: 100px;
 }
 
-.HomePageCont{
-  position: absolute;
+.HomePageCont {
+  margin-top: 100px;
+  margin-bottom: 120px;
   padding: 200px;
-  left: 24vw;
-  top: 17vh;
   background-image: linear-gradient(30deg, #ff77a4, #ca68ff);
   background-blend-mode: normal;
 
   border-radius: 30px;
   overflow: hidden;
-  filter: drop-shadow(20px 20px 40px #ca68ff);
 }
 
 .HomePageCircle1{
@@ -42,7 +31,7 @@
   background-image: linear-gradient(30deg, #6eb9ef, #62dbaf);
   background-blend-mode: normal;
   filter: drop-shadow(0px 0px 4px #62dbaf);
-  transition: all 1s ease-out;
+  transition: all 2s ease-out;
 }
 
 .HomePageCircle2{
@@ -55,7 +44,7 @@
   background-image: linear-gradient(30deg, #ca68ff, #6eb9ef);
   background-blend-mode: normal;
   filter: drop-shadow(0px 0px 4px #ca68ff);
-  transition: all 1s ease-out;
+  transition: all 1.5s ease-out;
 }
 
 .HomePageCircle3{
@@ -68,7 +57,7 @@
   background-image: linear-gradient(30deg, #fff268, #ff77a4);
   background-blend-mode: normal;
   filter: drop-shadow(0px 0px 4px #ff77a4);
-  transition: all 1s ease-out;
+  transition: all 2.5s ease-out;
 }
 
 .ContentCard{
@@ -325,11 +314,11 @@
 }
 
 .AvatarBgCircle {
-  background-image: linear-gradient(30deg, #ca68ff, #6eb9ef);
+  background-image: linear-gradient(-30deg, #ca68ff, #6eb9ef);
   width: 200px;
   height: 200px;
   position: absolute;
-  margin-top: -210px;
+  margin-top: -205px;
   border-radius: 100px;
   z-index: -1;
   transition: all 0.2s;
@@ -342,12 +331,12 @@
   width: 200px;
   height: 200px;
   position: absolute;
-  margin-left: 40px;
+  margin-left: 35px;
   border-radius: 100px;
   z-index: -1;
   transition: all 0.2s;
 
-  margin-top: calc((var(--scroll) * -200px) - 200px);
+  margin-top: calc((var(--scroll) * 200px) - 260px);
 }
 
 .AvatarBgCircle3 {
@@ -355,12 +344,12 @@
   width: 200px;
   height: 200px;
   position: absolute;
-  margin-top: -240px;
+  margin-top: -230px;
   border-radius: 100px;
   z-index: -1;
   transition: all 0.3s;
 
-  margin-left: calc((var(--scroll) * -200px) + 40px);
+  margin-left: calc((var(--scroll) * -200px) + 45px);
 }
 
 .ProjectMiniIcon {
