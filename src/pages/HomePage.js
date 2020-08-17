@@ -6,7 +6,7 @@ import Database from '../assets/Database';
 
 const darkCircleFilters = "hue-rotate(-45deg)";
 const defaultCircleFilter = "hue-rotate(0)";
-const maxLen = 2000;
+const maxLen = window.innerHeight;
 
 let longshadowStr = "";
 let i = 0;
