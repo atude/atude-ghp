@@ -50,7 +50,7 @@
   "devDependencies": {
     "gh-pages": "^2.2.0"
   },
-  "homepage": "http://atude.github.io/portfolio",
+  "homepage": "http://atude.github.io/atude-ghp",
   "babel": {
     "plugins": [
       "@babel/plugin-proposal-optional-chaining"
