@@ -275,9 +275,9 @@ const ResponsiveDrawer = (props) => {
   const getSideHead = () => (
     <div className="SidebarHead">
     <Grid container direction="column" alignItems="stretch" justify="center">
-      <Grid item>
+      <Grid item >
         <Link to="mozamel-main" smooth="true" style={{ textDecoration: "none" }} offset={-150}>
-          <div style={{ cursor: "pointer" }}>
+          <div style={{ cursor: "pointer" }} onClick={() => handleTabClick()}>
             <img 
               src={icAtude} 
               alt="Atude" 
@@ -418,6 +418,10 @@ const ResponsiveDrawer = (props) => {
               color="inherit"
               onClick={handleDrawerToggle} 
               className={classes.menuButton}
+              style={{
+                backgroundColor: currentScheme.bg,
+                opacity: 0.85
+              }}
             >
               <Menu style={{ color: getColor(locationId) }}/>
             </IconButton>
