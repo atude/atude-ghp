@@ -419,6 +419,7 @@ const ResponsiveDrawer = (props) => {
               onClick={handleDrawerToggle} 
               className={classes.menuButton}
               style={{
+                marginTop: "16px",
                 backgroundColor: currentScheme.bg,
                 opacity: 0.85
               }}

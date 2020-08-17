@@ -336,7 +336,7 @@
   z-index: -1;
   transition: all 0.2s;
 
-  margin-top: calc((var(--scroll) * 200px) - 260px);
+  margin-top: calc((var(--scroll) * 200px) - 250px);
 }
 
 .AvatarBgCircle3 {
@@ -349,7 +349,7 @@
   z-index: -1;
   transition: all 0.3s;
 
-  margin-left: calc((var(--scroll) * -200px) + 45px);
+  margin-left: max(5px, calc((var(--scroll) * -150px) + 30px));
 }
 
 .ProjectMiniIcon {
