@@ -1,6 +1,6 @@
 import React from 'react';
 import '../components/Components.css';
-import { Typography, Tooltip, Fab, } from '@material-ui/core';
+import { Typography, Tooltip, Fab, Grow, Slide, } from '@material-ui/core';
 import { React as ReactIcon, MaterialUi, FileDownload, } from 'mdi-material-ui';
 import Database from '../assets/Database';
 
@@ -25,8 +25,10 @@ const HomePage = (props) => {
     <div 
       id={sectionId}
       className="ReferenceAnchor"
-    >
+    > 
+      <Grow in timeout={3000}>
       <div>
+      <Slide in timeout={3000/4} direction="up">
         <div 
           className="HomePageCont" 
           style={{
@@ -73,7 +75,9 @@ const HomePage = (props) => {
             </Typography>
           </div>
         </div>
+      </Slide>
       </div>
+      </Grow>
       
       <Tooltip disableFocusListener title="Powered by React | MaterialUI" placement="left">
         <div className="BuiltCont">

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography } from '@material-ui/core';
+import { Typography, Fade, Slide } from '@material-ui/core';
 import styled from 'styled-components';
 
 const HeadingContainerStyled = styled.div`
@@ -41,11 +41,17 @@ const AnchoredSubheading = (props) => {
   return (
     <div > 
       {!isFirst && 
-        <DividerStyled>
-          <LineStyled style={{ backgroundColor: prevColor }} />
-          <DotStyled style={{ backgroundColor: prevColor }} />
-          <LineStyled style={{ backgroundColor: prevColor }} />
-        </DividerStyled>
+        <Slide in direction="up" timeout={2000}>
+          <div>
+            <Fade in timeout={4000}>
+              <DividerStyled>
+                <LineStyled style={{ backgroundColor: prevColor }} />
+                <DotStyled style={{ backgroundColor: prevColor }} />
+                <LineStyled style={{ backgroundColor: prevColor }} />
+              </DividerStyled>
+            </Fade>
+          </div>
+        </Slide>
       }
       <HeadingContainerStyled 
         id={id}
