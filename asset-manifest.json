@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/atude-ghp/static/css/main.d6c6ff20.chunk.css",
-    "main.js": "/atude-ghp/static/js/main.28663a93.chunk.js",
-    "main.js.map": "/atude-ghp/static/js/main.28663a93.chunk.js.map",
+    "main.css": "/atude-ghp/static/css/main.d77f3ff5.chunk.css",
+    "main.js": "/atude-ghp/static/js/main.3938826d.chunk.js",
+    "main.js.map": "/atude-ghp/static/js/main.3938826d.chunk.js.map",
     "runtime~main.js": "/atude-ghp/static/js/runtime~main.7ed11088.js",
     "runtime~main.js.map": "/atude-ghp/static/js/runtime~main.7ed11088.js.map",
     "static/css/2.612075aa.chunk.css": "/atude-ghp/static/css/2.612075aa.chunk.css",
-    "static/js/2.e9c83e4e.chunk.js": "/atude-ghp/static/js/2.e9c83e4e.chunk.js",
-    "static/js/2.e9c83e4e.chunk.js.map": "/atude-ghp/static/js/2.e9c83e4e.chunk.js.map",
+    "static/js/2.c23babdb.chunk.js": "/atude-ghp/static/js/2.c23babdb.chunk.js",
+    "static/js/2.c23babdb.chunk.js.map": "/atude-ghp/static/js/2.c23babdb.chunk.js.map",
     "index.html": "/atude-ghp/index.html",
-    "precache-manifest.c7fec2891b7d603d992bd49cdc0bc5c9.js": "/atude-ghp/precache-manifest.c7fec2891b7d603d992bd49cdc0bc5c9.js",
+    "precache-manifest.9adaa9eeec7f2d5c81630411f69285ec.js": "/atude-ghp/precache-manifest.9adaa9eeec7f2d5c81630411f69285ec.js",
     "service-worker.js": "/atude-ghp/service-worker.js",
     "static/css/2.612075aa.chunk.css.map": "/atude-ghp/static/css/2.612075aa.chunk.css.map",
-    "static/css/main.d6c6ff20.chunk.css.map": "/atude-ghp/static/css/main.d6c6ff20.chunk.css.map",
+    "static/css/main.d77f3ff5.chunk.css.map": "/atude-ghp/static/css/main.d77f3ff5.chunk.css.map",
     "static/media/0.png": "/atude-ghp/static/media/0.f6654b93.png",
     "static/media/1.png": "/atude-ghp/static/media/1.c53decd3.png",
     "static/media/2.png": "/atude-ghp/static/media/2.d731091f.png",
@@ -21,7 +21,6 @@
     "static/media/5.png": "/atude-ghp/static/media/5.f85db806.png",
     "static/media/ic.svg": "/atude-ghp/static/media/ic.f69a3f3c.svg",
     "static/media/ic_atude.png": "/atude-ghp/static/media/ic_atude.26ff67e3.png",
-    "static/media/ic_atude_circle.png": "/atude-ghp/static/media/ic_atude_circle.44c8b763.png",
     "static/media/profile.jpg": "/atude-ghp/static/media/profile.b622e2aa.jpg",
     "static/media/index.css": "/atude-ghp/static/media/roboto-latin-900italic.bc833e72.woff"
   }
