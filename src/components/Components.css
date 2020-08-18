@@ -323,7 +323,7 @@
   z-index: -1;
   transition: all 0.2s;
 
-  margin-left: calc(var(--scroll) * 100px);
+  margin-left: 14px;
 }
 
 .AvatarBgCircle2 {
@@ -331,12 +331,12 @@
   width: 200px;
   height: 200px;
   position: absolute;
-  margin-left: 35px;
+  margin-left: 34px;
   border-radius: 100px;
   z-index: -1;
   transition: all 0.2s;
 
-  margin-top: calc((var(--scroll) * 200px) - 250px);
+  margin-top: -220px;
 }
 
 .AvatarBgCircle3 {
@@ -349,7 +349,7 @@
   z-index: -1;
   transition: all 0.3s;
 
-  margin-left: max(5px, calc((var(--scroll) * -150px) + 30px));
+  margin-left: 8px;
 }
 
 .ProjectMiniIcon {

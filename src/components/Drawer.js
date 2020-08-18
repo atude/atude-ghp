@@ -38,7 +38,7 @@ import ContactPage from '../pages/ContactPage';
 
 import { getRoutes } from '../Routes';
 import { Link } from 'react-scroll'
-import { debounce, throttle } from '../utils/generic';
+import { debounce } from '../utils/generic';
 import { bottomGutter } from '../utils/layouts';
 import HomePage from '../pages/HomePage';
 
@@ -214,15 +214,14 @@ const ResponsiveDrawer = (props) => {
       }
     }
 
-    const setCssScrollProperty = () => {
-      document.body.style.setProperty('--scroll', window.pageYOffset / (document.body.offsetHeight - window.innerHeight));
-    }
+    // For throttle scroll property
+    // const setCssScrollProperty = () => {
+    //   document.body.style.setProperty('--scroll', window.pageYOffset / (document.body.offsetHeight - window.innerHeight));
+    // }
 
     window.addEventListener('scroll', debounce(handleScroll, 100), false);
-    window.addEventListener('scroll', throttle(setCssScrollProperty, 250), false);
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('scroll', setCssScrollProperty);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

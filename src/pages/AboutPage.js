@@ -39,15 +39,9 @@ const AboutPage = (props) => {
               onLoad={() => setAvatarLoad(true)}
             /> 
           </Fade>
-          <div className="AvatarBgCircle" 
-            // style={{marginLeft: 0.1 * yPos}}
-          />
-          <div className="AvatarBgCircle2" 
-            // style={{marginTop: -200 - 0.1 * yPos}}
-          />
-          <div className="AvatarBgCircle3" 
-            // style={{marginLeft: 40 - 0.1 * yPos}}
-          />
+          <div className="AvatarBgCircle" />
+          <div className="AvatarBgCircle2" />
+          <div className="AvatarBgCircle3" />
         </Grid>
 
         <Grid item lg={9} sm={12} xs={12}>
