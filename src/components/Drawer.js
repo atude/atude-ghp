@@ -219,7 +219,7 @@ const ResponsiveDrawer = (props) => {
     }
 
     window.addEventListener('scroll', debounce(handleScroll, 100), false);
-    window.addEventListener('scroll', throttle(setCssScrollProperty, 150), false);
+    window.addEventListener('scroll', throttle(setCssScrollProperty, 250), false);
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('scroll', setCssScrollProperty);
@@ -481,6 +481,16 @@ const ResponsiveDrawer = (props) => {
             prevColor={getRoutes(currentScheme)["contact"].prevColor}
           />
           <div style={{ marginBottom: `${bottomGutter}px` }}/>
+          <Typography 
+            className="CopyrightText" 
+            variant="button" 
+            style={{
+              fontSize: "10px", 
+              color: currentScheme.lightGray
+            }}
+          >
+            Mozamel Anwary © 2020
+          </Typography>
         </div>
 
       </MuiThemeProvider>
