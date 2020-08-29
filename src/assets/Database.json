@@ -10,12 +10,12 @@
     "JS":       { "level": 4, "desc": "JavaScript (ES2020)" },
     "HTML":     { "level": 4, "desc": "HTML5 & CSS3" },
     "Java":     { "level": 3, "desc": "Java" }, 
+    "C#":       { "level": 3, "desc": "C#" },
     "Python":   { "level": 3, "desc": "Python" }, 
     "SQL":      { "level": 3, "desc": "SQL" },
     "Bash":     { "level": 3, "desc": "Bash" }, 
     "C":        { "level": 2, "desc": "C" }, 
-    "C#":       { "level": 2, "desc": "C#" },
-    "Haskell":  { "level": 1, "desc": "Haskell" }
+    "Haskell":  { "level": 2, "desc": "Haskell" }
   },
   "Toolset": 
   {
