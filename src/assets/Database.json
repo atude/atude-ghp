@@ -58,13 +58,33 @@
       "viewlink": "https://youtu.be/vWZBiD6iriM",
       "privacylink": "",
       "viewicon": "Youtube",
-      "viewtext": "View on Youtube",
-      "role": "Frontend Lead",
+      "role": "Lead Frontend Engineer",
       "team": "5 Members",
       "achievements": [
         "Best UX: Macquarie Group Workshop | 2019"
       ],
-      "body": "Beams is a suburb analysis webapp that merges housing market data and suburb information from a variety of sources to create a user friendly and intuitive hub. This can be used to influence decisions on buying properties by finding suburbs which best matches your criteria.",
+      "body": "A suburb analysis webapp that collates housing market data and suburb information with user financial/ethical requirements to help buy properties in suburbs tailored to you.",
+      "status": "Discontinued",
+      "live": false
+    },
+    "Sympt": 
+    {
+      "bgColor": "#303a3d",
+      "accColor": "#00A7AF",
+      "heading": "Sympt",
+      "subheading": "Disease Statistics Hub",
+      "tools": ["React", "React Native", "Node", "Firebase", "Express", "Puppeteer", "Jest", "CircleCI"],
+      "built": ["TypeScript", "JavaScript", "HTML", "CSS"],
+      "platforms": ["Android", "Web"],
+      "date": "2020",
+      "gitlink": "https://github.com/atude/sympt/",
+      "viewlink": "https://youtu.be/1E9If8qvBP4",
+      "privacylink": "",
+      "viewicon": "Youtube",
+      "role": "Technical Lead",
+      "team": "5 Members",
+      "achievements": [],
+      "body": "A disease hub that provides up-to-date analysis on the climate of diseases in Australia, focused on COVID-19. It includes a mobile app as well as a developer dashboard webapp.",
       "status": "Discontinued",
       "live": false
     },
@@ -82,38 +102,15 @@
       "viewlink": "https://play.google.com/store/apps/details?id=com.atude.mywam",
       "privacylink": "https://atude.github.io/privacy_unicore.html",
       "viewicon": "Google Play",
-      "viewtext": "Get on Google Play",
-      "role": "Fullstack",
+      "role": "Fullstack Engineer",
       "team": "Solo",
       "achievements": [
         "Showcased on React Native Paper,https://callstack.github.io/react-native-paper/showcase.html",
         "500+ installs"
       ],
-      "body": "Unicore is a multi-purpose tool for university students to track their WAM, analyse their marks and compare course progress. It includes a total and term WAM calculator with location-based ranking methods, organised course log with filters, performance graphs, optional online accounts with data syncing, and more.",
+      "body": "A multi-purpose tool for university students to track their WAM, analyse their marks and compare course progress. It includes location-based ranking methods, organised course log with filters, performance graphs and online accounts with data syncing.",
       "status": "Maintained",
       "live": true
-    },
-    "Sympt": 
-    {
-      "bgColor": "#303a3d",
-      "accColor": "#00A7AF",
-      "heading": "Sympt",
-      "subheading": "Disease Statistics Hub",
-      "tools": ["React", "React Native", "Node", "Firebase", "Express", "Puppeteer", "Jest", "CircleCI"],
-      "built": ["TypeScript", "JavaScript", "HTML", "CSS"],
-      "platforms": ["Android", "Web"],
-      "date": "2020",
-      "gitlink": "https://github.com/atude/sympt/",
-      "viewlink": "https://youtu.be/1E9If8qvBP4",
-      "privacylink": "",
-      "viewicon": "Youtube",
-      "viewtext": "View on Youtube",
-      "role": "Technical Lead",
-      "team": "5 Members",
-      "achievements": [],
-      "body": "Sympt is a disease hub for statistics and predictions that provides up-to-date analysis on the climate of diseases in Australia, focused on COVID-19. It includes a mobile app as well as a developer dashboard webapp.",
-      "status": "Discontinued",
-      "live": false
     },
     "Kanbie": 
     {
@@ -129,14 +126,13 @@
       "viewlink": "https://chrome.google.com/webstore/detail/kanbie/hancagoabobbbadijbbfepodbdgjbfpf",
       "privacylink": "",
       "viewicon": "Chrome Web Store",
-      "viewtext": "Get on Chrome Web Store",
-      "role": "Fullstack",
+      "role": "Fullstack Engineer",
       "team": "Solo",
       "achievements": [
         "Featured on Chrome Web Store,https://drive.google.com/file/d/1xhySBmxpCRzXEB7sFEusBj2Q0o9Fp0VJ/view?usp=sharing",
         "10000+ installs"
       ],
-      "body": "Kanbie is a simple, dark-themed kanban board, accessed as a chrome extension. Kanbie allows chrome users to manage their task list from any tab - without interrupting their workflow - and with keyboard shortcuts to seamlessly get back to work.",
+      "body": "A simple, dark-themed kanban board browser extension with data synced across Chrome accounts. ",
       "status": "Maintained",
       "live": true
     },
@@ -154,13 +150,12 @@
       "viewlink": "https://play.google.com/store/apps/details?id=com.cyberscopes.devote",
       "privacylink": "https://atude.github.io/privacy.html",
       "viewicon": "Google Play",
-      "viewtext": "Get on Google Play",
-      "role": "Fullstack",
+      "role": "Fullstack Engineer",
       "team": "Solo",
       "achievements": [
         "2500+ installs"
       ],
-      "body": "Devote is an all-in-one hub made and refined for high school students to organise your study tasks, track your assessment progress, view your level of productivity and ultimately balance your social and study lifestyle.",
+      "body": "An all-in-one hub made for high school students to organise study tasks, track assessment progress, view productively levels and assist in study-life balance.",
       "status": "Discontinued",
       "live": true
     }

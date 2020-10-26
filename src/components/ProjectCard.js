@@ -4,12 +4,9 @@ import {
   Typography, 
   CardContent, 
   Grid, 
-  Chip, 
-  Avatar, 
   Link, 
   Button, 
   Tooltip, 
-  Divider, 
   IconButton, 
 } from '@material-ui/core';
 import {
@@ -23,7 +20,6 @@ import {
 } from 'mdi-material-ui';
 import { useMediaQuery } from 'react-responsive'
 
-import { projectDetailsStaticIcon } from '../utils/icons';
 import { smBreakpoint } from '../utils/layouts';
 
 const ProjectCard = (props) => {
@@ -40,7 +36,7 @@ const ProjectCard = (props) => {
     setBannerIndex(bannerIndex + i);
   }
 
-  const getBanner = (bgColor, projectBanners, viewtext, viewicon, gitlink, viewlink) => {
+  const getBanner = (bgColor, projectBanners, viewicon, gitlink, viewlink, currentScheme) => {
     return (
       <div style={{backgroundColor: bgColor}} className="BannerContainer">
         {projectBanners.map((banner, i) => (
@@ -55,44 +51,42 @@ const ProjectCard = (props) => {
         ))}
                   
         <Button className="BannerLeft" onClick={() => bannerControl(-1, projectBanners.length)}>
-          <ChevronLeftCircle style={{ color: "white", filter: "drop-shadow(0 0 4px rgba(0,0,0,0.2))" }} />
+          <ChevronLeftCircle
+            style={{ 
+              color: "white", 
+              filter: "drop-shadow(0 0 4px rgba(0,0,0,0.2))",
+            }} 
+          />
         </Button>
         <Button className="BannerRight" onClick={() => bannerControl(1, projectBanners.length)}>
-          <ChevronRightCircle style={{ color: "white", filter: "drop-shadow(0 0 4px rgba(0,0,0,0.2))" }} />
+          <ChevronRightCircle 
+            style={{ 
+              color: "white", 
+              filter: "drop-shadow(0 0 4px rgba(0,0,0,0.2))" 
+            }} 
+          />
         </Button>
 
         <div className="BannerShortcutsCont">
           <div className="ViewLink">
-            <Chip
-              style={{ height: "30px" }}
-              label={
-                <Typography style={{ fontSize: "11px" }} variant="button">
-                  {viewtext}
-                </Typography>
-              }
-              avatar={<Avatar>{viewicon}</Avatar>}
+            <IconButton
+              style={{ marginRight: "-4px", color: "#fff" }}
               component="a"
-              clickable
               href={viewlink}
               target="_blank"
               rel="noopener noreferrer"
-            />
-          </div>
-          <div className="ViewLink">
-            <Chip
-              style={{ height: "30px" }}
-              label={
-                <Typography style={{ fontSize: "11px" }} variant="button">
-                  Find on Github
-                </Typography>
-              }
-              avatar={<Avatar><Github /></Avatar>}
+            >
+              {viewicon}
+            </IconButton>
+            <IconButton
+              style={{ color: "#fff" }}
               component="a"
-              clickable
               href={gitlink}
               target="_blank"
               rel="noopener noreferrer"
-            />
+            >
+              <Github />
+            </IconButton>
           </div>
         </div>
 
@@ -140,19 +134,48 @@ const ProjectCard = (props) => {
     );
   }
 
-  const getHeadings = (projectIcon, viewlink, accColor, heading, lightGray, subheading) => {
+  const getHeadings = (projectIcon, viewlink, accColor, heading, lightGray, subheading, role, team, date) => {
     return (
       <div className="ProjectCardTextContent">
         {projectIcon}
-        <Typography component="a" href={viewlink} target="_blank" rel="noopener noreferrer"
-        style={{color: accColor, fontSize: "28px", textDecoration: "none"}} variant="h1">
+        <Typography 
+          component="a" 
+          href={viewlink} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          variant="h1"
+          style={{
+            color: accColor, 
+            fontSize: "28px", 
+            textDecoration: "none"
+          }} 
+        >
           {heading}
         </Typography>
-        <div style={{marginTop: "2px"}}>
-          <Typography className="ProjectCardSubheader"
-            style={{fontSize: "14px", color: lightGray, letterSpacing: "0px"}}
-            variant="body1">
-              {subheading}
+        <div style={{ marginTop: "2px" }}>
+          <Typography 
+            className="ProjectCardSubheader"
+            variant="body1"
+            style={{
+              fontSize: "14px", 
+              color: lightGray, 
+              letterSpacing: "0px"
+            }}
+          >
+            {subheading}
+          </Typography>
+        </div>
+        <div>
+          <Typography 
+            className="ProjectCardSubheader"
+            variant="body1"
+            style={{
+              fontSize: "14px", 
+              color: lightGray, 
+              letterSpacing: "0px"
+            }}
+          >
+            <i>{role} | {team} | {date}</i>
           </Typography>
         </div>
         <br/>
@@ -182,27 +205,9 @@ const ProjectCard = (props) => {
     </Grid>
   );
 
-  const getDetailsSectionRight = (text, categoryStyle, rightPadding, icon) => (
-    <Grid item>
-      <Grid container direction="row" alignItems="center">
-        <Grid item>
-          <Typography style={{...categoryStyle, paddingRight: rightPadding}}
-            variant="button" className="ProjectRightText">
-            {text}
-          </Typography>
-        </Grid>
-        <Grid item>
-          {icon}
-        </Grid>
-      </Grid> 
-    </Grid>
-  );
-
   const getDetailsContainer = (categoryStyle, platforms, date, built, tools, role, team) => (
-    <Grid container
-      direction="row"
-    >
-      <Grid item xs={12} sm={7} container direction="column">
+    <Grid container direction="row">
+      <Grid item xs={12} container direction="column">
         {getDetailsSectionLeft("PLATFORMS", categoryStyle, 10,
           Object.keys(platforms).map(item => (
             <Grid key={item} item className="DetailsIconLeft">{platforms[item]}</Grid>
@@ -219,78 +224,79 @@ const ProjectCard = (props) => {
           ))
         )}
       </Grid>
-      {!!isSmWidth && <Divider style={{ width: "100%", marginTop: "15px", marginBottom: "15px" }} />}
-      <Grid 
-        item 
-        xs={12} 
-        sm={5} 
-        container 
-        direction="column" 
-        justify="flex-start"
-        alignItems={isSmWidth ? "flex-start" : "flex-end"}
-      >
-        {getDetailsSectionRight(date, categoryStyle, 1, projectDetailsStaticIcon("Calendar", currentScheme.lightGray))}
-        {getDetailsSectionRight(role, categoryStyle, 1, projectDetailsStaticIcon(role, currentScheme.lightGray))}
-        {getDetailsSectionRight(team, categoryStyle, 1, projectDetailsStaticIcon(team, currentScheme.lightGray))}
-      </Grid>
-      
     </Grid>
   );
 
-  const getAchievements = (achievements, mainColor, accColor) =>  (
-    <div style={{
-      paddingBottom: "20px",
-      display: "flex",
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "center",
-      flexWrap: "wrap",
-      minHeight: isSmWidth ? "63px" : 0,
-    }}>
-      {achievements.map(achievement => (
+  const getAchievements = (achievements, mainColor, accColor, currentScheme) => {
+    if (achievements.length) {
+      return (
+        <div style={{
+          paddingBottom: "20px",
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
+          flexWrap: "wrap",
+          minHeight: isSmWidth ? "63px" : 0,
+        }}>
+          {achievements.map(achievement => (
+            <div 
+              key={achievement}
+              style={{
+                marginTop: "8px",
+                marginRight: "6px",
+                padding: "4px",
+                backgroundColor: accColor,
+                borderRadius: 30,
+              }}
+            >
+              <Typography
+                variant="button"
+                style={{
+                  paddingLeft: "12px",
+                  paddingRight: "12px",
+                  paddingTop: "3px",
+                  paddingBottom: "3px",
+                  fontSize: "12px", 
+                  color: "#fff",
+                  textAlign: "center",
+                }}
+              >
+                {achievement.split(",")[0]}
+                {achievement.split(",").length > 1 &&  
+                <IconButton 
+                  href={achievement.split(",")[1]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{margin: "-12px -14px -10px -5px"}}
+                >
+                  <OpenInNew style={{ fontSize: "16px", color: "#fff"}}/>
+                </IconButton>
+              }
+              </Typography>
+            </div>
+        ))} 
+        </div>
+      )
+    } else {
+      return (
         <div 
-          key={achievement}
           style={{
-            marginTop: "8px",
-            marginRight: "6px",
-            padding: "4px",
-            backgroundColor: accColor,
+            marginTop: "24px",
+            marginBottom: "34px",
+            paddingTop: "4px",
+            backgroundColor: currentScheme.lightGray,
             borderRadius: 30,
           }}
-        >
-          <Typography
-            variant="button"
-            style={{
-              paddingLeft: "12px",
-              paddingRight: "12px",
-              paddingTop: "3px",
-              paddingBottom: "3px",
-              fontSize: "12px", 
-              color: "#fff",
-              textAlign: "center",
-            }}
-          >
-            {achievement.split(",")[0]}
-            {achievement.split(",").length > 1 &&  
-            <IconButton 
-              href={achievement.split(",")[1]}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{margin: "-12px -14px -10px -5px"}}
-            >
-              <OpenInNew style={{ fontSize: "16px", color: "#fff"}}/>
-            </IconButton>
-          }
-          </Typography>
-        </div>
-      ))}
-    </div>
-  );
+        />
+      )
+    }
+  };
 
   const { 
     projectIcon, projectBanners, heading, subheading, tools, team, 
     built, platforms, date, achievements, bgColor, accColor,
-    gitlink, viewlink, privacylink, viewtext, viewicon, body, role, 
+    gitlink, viewlink, privacylink, viewicon, body, role, 
     mainColor, currentScheme, status, isDark
   } = props;
 
@@ -299,11 +305,11 @@ const ProjectCard = (props) => {
 
   return (
     <div className={`ProjectCard ${isDark ? "StandardCardDark" : "StandardCard"}`}>
-      {getBanner(bgColor, projectBanners, viewtext, viewicon, gitlink, viewlink)}
+      {getBanner(bgColor, projectBanners, viewicon, gitlink, viewlink, currentScheme)}
       <div className="ProjectCardContent">
         <CardContent>
-          {getHeadings(projectIcon, viewlink, accColor, heading, lightGray, subheading)}
-          {!!achievements.length && getAchievements(achievements, mainColor, accColor)}
+          {getHeadings(projectIcon, viewlink, accColor, heading, lightGray, subheading, role, team, date)}
+          {getAchievements(achievements, mainColor, accColor, currentScheme)}
           {getDetailsContainer(categoryStyle, platforms, date, built, tools, role, team)}
           <br/>
           

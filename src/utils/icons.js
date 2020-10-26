@@ -31,13 +31,13 @@ export const projectDetailsStaticIcon = (role, gray) => {
   switch (role) {
     case "Technical Lead":
       return <AccountGroup className="DetailsIconRight" style={{ color: gray }}/>;
-    case "Fullstack":
+    case "Fullstack Engineer":
       return <DeveloperBoard className="DetailsIconRight" style={{ color: gray }}/>;
     case "Solo":
       return <AccountCircle className="DetailsIconRight" style={{ color: gray }}/>;
-    case "Frontend Lead":
+    case "Lead Frontend Engineer":
       return <CodeNotEqualVariant className="DetailsIconRight" style={{ color: gray }}/>;
-    case "Backend":
+    case "Backend Engineer":
       return <CodeNotEqualVariant className="DetailsIconRight" style={{ color: gray }} />;
     case "Calendar":
       return <Calendar className="DetailsIconRight" style={{ color: gray }} />;

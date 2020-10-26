@@ -85,15 +85,15 @@
   height: 100%;
 }
 
-.ProjectCardContent{
+.ProjectCardContent {
   padding: 0.2em 0.625em 1em 0.625em;
 }
 
-.ProjectCardTextContent{
+.ProjectCardTextContent {
   padding-top: 12px;
 }
 
-.ProjectCardSubheader{
+.ProjectCardSubheader {
   padding-left: 57px;
 }
 
@@ -133,11 +133,21 @@
   transition: 0.25s;
 }
 
+@media only screen and (max-width: 600px) {
+  .ProjectCardIcon{
+    display: none;
+  }
+  .ProjectCardSubheader {
+    padding-left: 2px;
+    margin-top: 2px;
+  }
+}
 .ProjectCardIcon{
   float: left;
-  margin-right: 10px;
-  width: 46px;
-  height: 46px;
+  margin-right: 12px;
+  margin-left: -2px;
+  width: 64px;
+  height: 74px;
 }
 
 .IconColor path{
@@ -145,7 +155,7 @@
 }
 
 .BannerShortcutsCont{
-  padding: 10px;
+  padding: 3px;
   position: absolute;
   top: 0;
   right: 0;
