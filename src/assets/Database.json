@@ -20,19 +20,17 @@
   "Toolset": 
   {
     "Frontend": 
-    [ "React", "React Native", "Redux", "Redux Saga", "Apollo", "Immer" ],
+    [ "React", "React Native", "Redux", "Redux Saga", "Apollo", "Immer", "Styled Components"],
     "Backend": 
-    [ "Node", "GraphQL", "Express", "Firestore", "Postgres"  ],
+    [ "Node", "GraphQL", "Express", "Koa", "Postgres" ],
     "Cloud Services":
     [ "Firebase" ],
     "Devops": 
     [ "Vercel", "Heroku", "CircleCI", "GitLab CI" ],
     "Testing":  
     [ "Puppeteer", "Jest" ],
-    "UI": 
-    [ "Material UI", "React Native Paper", "React Native Elements" ],
     "Design":
-    [ "Figma", "GIMP", "Photoshop", "XD"  ]
+    [ "Figma", "XD", "GIMP", "Photoshop" ]
   },
   "Skills Level Frame":
   {

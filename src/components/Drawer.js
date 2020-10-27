@@ -219,7 +219,7 @@ const ResponsiveDrawer = (props) => {
     //   document.body.style.setProperty('--scroll', window.pageYOffset / (document.body.offsetHeight - window.innerHeight));
     // }
 
-    window.addEventListener('scroll', debounce(handleScroll, 100), false);
+    window.addEventListener('scroll', debounce(handleScroll, 200), false);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     }

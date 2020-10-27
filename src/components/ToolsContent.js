@@ -23,13 +23,12 @@ const ToolsContent = (props) => {
           container 
           spacing={isMdWidth ? 16 : 8} 
           direction="row" 
-          alignItems="center" 
           justify="flex-start"
         >
-          <Grid item xs={2} sm={2} md={1} lg={1} xl={1}>
+          <Grid item xs={2} sm={2} md={1} lg={1} xl={1} style={{ marginTop: "4px" }}>
             {toolsIcon(toolskey, Object.values(colorSet)[i], currentScheme)}
           </Grid>
-          <Grid item xs={9} sm={9} md={3} lg={2} xl={2}>
+          <Grid item xs={9} sm={9} md={3} lg={2} xl={2} style={{ marginTop: "5px" }}>
             <Typography 
               gutterBottom 
               variant="button" 
