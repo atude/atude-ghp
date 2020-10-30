@@ -82,29 +82,28 @@ class SkillsContent extends React.Component {
       </TooltipWrapper>);
       case "TS": return (
       <TooltipWrapper name="TypeScript">
-        <LanguageTypescript
-          onMouseEnter={() => {this.setState({onTypescript: true})}}
-          onMouseLeave={() => {this.setState({onTypescript: false})}} 
-          style={{
-            color: this.state.onTypescript ? "#0288D1" : defIconColor,
-            padding: this.state.onTypescript ? 0 : cStyle.padding,
-            fontSize: cStyle.fontSize
-          }} 
-          className={cClass}
-        />
-      </TooltipWrapper>);
-      case "JS": return (
-      <TooltipWrapper name="JavaScript">
-        <LanguageJavascript
-          onMouseEnter={() => {this.setState({onJavascript: true})}}
-          onMouseLeave={() => {this.setState({onJavascript: false})}} 
-          style={{
-            color: this.state.onJavascript ? "#FFCA28" : defIconColor,
-            padding: this.state.onJavascript ? 0 : cStyle.padding,
-            fontSize: cStyle.fontSize
-          }} 
-          className={cClass}
-        />
+        <>
+          <LanguageTypescript
+            onMouseEnter={() => {this.setState({onTypescript: true})}}
+            onMouseLeave={() => {this.setState({onTypescript: false})}} 
+            style={{
+              color: this.state.onTypescript ? "#0288D1" : defIconColor,
+              padding: this.state.onTypescript ? 0 : cStyle.padding,
+              fontSize: cStyle.fontSize
+            }} 
+            className={cClass}
+          />
+          <LanguageJavascript
+            onMouseEnter={() => {this.setState({onJavascript: true})}}
+            onMouseLeave={() => {this.setState({onJavascript: false})}} 
+            style={{
+              color: this.state.onJavascript ? "#FFCA28" : defIconColor,
+              padding: this.state.onJavascript ? 0 : cStyle.padding,
+              fontSize: cStyle.fontSize
+            }} 
+            className={cClass}
+          />
+        </>
       </TooltipWrapper>);
       case "HTML": return (
       <Grid container direction="row" alignItems="center">
@@ -211,7 +210,7 @@ class SkillsContent extends React.Component {
       <div className="SkillsContainer">
         <Grid container direction="row" spacing={16}>
           {Object.keys(item).map(key => (
-            <Grid item xs={6} key={key} container direction="row" justify="space-evenly" alignItems="center">
+            <Grid item xs={12} sm={6} key={key} container direction="row" justify="space-evenly" alignItems="center">
               <Grid item xs={12} sm={3} md={3} lg={3} xl={3}>
                 {this.getIconSkills(key)}
               </Grid>

@@ -6,8 +6,7 @@
   },
   "Skillset": 
   {
-    "TS":       { "level": 4, "desc": "TypeScript" },
-    "JS":       { "level": 4, "desc": "JavaScript (ES2020)" },
+    "TS":       { "level": 4, "desc": "TypeScript & JavaScript (ES2020)" },
     "HTML":     { "level": 4, "desc": "HTML5 & CSS3" },
     "Java":     { "level": 3, "desc": "Java" }, 
     "C#":       { "level": 3, "desc": "C#" },
@@ -20,13 +19,13 @@
   "Toolset": 
   {
     "Frontend": 
-    [ "React", "React Native", "Redux", "Redux Saga", "Apollo", "Immer", "Styled Components"],
+    [ "React", "React Native", "Next", "Expo", "Redux", "Redux Saga", "Apollo", "Immer", "Lottie", "Styled Components", "Material UI"],
     "Backend": 
-    [ "Node", "GraphQL", "Express", "Koa", "Postgres" ],
+    [ "Node", "GraphQL", "Express", "Koa", "PostgreSQL" ],
     "Cloud Services":
     [ "Firebase" ],
     "Devops": 
-    [ "Vercel", "Heroku", "CircleCI", "GitLab CI" ],
+    [ "Vercel", "Docker", "CircleCI", "GitLab CI" ],
     "Testing":  
     [ "Puppeteer", "Jest" ],
     "Design":
