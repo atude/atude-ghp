@@ -51,7 +51,7 @@ const ToolsContent = (props) => {
                     variant="default" 
                     icon={toolsIcon(key, undefined, currentScheme)} 
                     label={
-                      <span style={{ paddingLeft: "4px" }}>
+                      <span style={{ paddingLeft: "2.5px" }}>
                         {key}
                       </span>
                     }

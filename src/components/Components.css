@@ -199,24 +199,25 @@
 
 .BannerLeft{
   position: absolute;
-  height: 100%;
+  height: 50px;
 }
 
 .BannerRight{
-  position: absolute;
   float: right;
-  height: 100%;
+  height: 50px;
 }
 
 .BannerDots{
   position: absolute;
-  top: 290px;
+  top: 288px;
+  pointer-events: none;
 }
 
 .BannerContainer{
   height: 320px;
   overflow: hidden;
   border-radius: 16px;
+  align-items: flex-end;
 }
 
 .BannerImg{

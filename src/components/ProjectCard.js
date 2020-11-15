@@ -4,19 +4,14 @@ import {
   Typography, 
   CardContent, 
   Grid, 
-  Link, 
   Button, 
-  Tooltip, 
   IconButton, 
 } from '@material-ui/core';
 import {
   Github, 
-  ShieldLock, 
-  ChevronLeftCircle, 
-  ChevronRightCircle, 
   OpenInNew,
-  CheckBold, 
-  CheckNetworkOutline,
+  ChevronLeft,
+  ChevronRight
 } from 'mdi-material-ui';
 import { useMediaQuery } from 'react-responsive'
 
@@ -50,19 +45,29 @@ const ProjectCard = (props) => {
           />
         ))}
                   
-        <Button className="BannerLeft" onClick={() => bannerControl(-1, projectBanners.length)}>
-          <ChevronLeftCircle
+        <Button 
+          className="BannerLeft" 
+          onClick={() => bannerControl(-1, projectBanners.length)}
+          style={{ marginTop: "270px" }}
+        >
+          <ChevronLeft
             style={{ 
               color: "white", 
-              filter: "drop-shadow(0 0 4px rgba(0,0,0,0.2))",
+              opacity: 0.9,
+              filter: "drop-shadow(0 0 4px rgba(0,0,0,0.65))",
             }} 
           />
         </Button>
-        <Button className="BannerRight" onClick={() => bannerControl(1, projectBanners.length)}>
-          <ChevronRightCircle 
+        <Button 
+          className="BannerRight" 
+          onClick={() => bannerControl(1, projectBanners.length)}
+          style={{ marginTop: "270px" }}
+        >
+          <ChevronRight
             style={{ 
               color: "white", 
-              filter: "drop-shadow(0 0 4px rgba(0,0,0,0.2))" 
+              opacity: 0.9,
+              filter: "drop-shadow(0 0 4px rgba(0,0,0,0.65))" 
             }} 
           />
         </Button>
@@ -109,31 +114,6 @@ const ProjectCard = (props) => {
     );
   };
 
-  const getStatus = (status, mainColor) => {
-    let statusIcon = null;
-    const iconStyle = { float: "left", color: mainColor, fontSize: "18px", marginLeft: "3px" };
-
-    switch (status) {
-      case "Completed | Discontinued":
-        statusIcon = <CheckBold style={iconStyle}/>
-        break;
-      default:
-        statusIcon = <CheckNetworkOutline style={iconStyle}/>
-        break;
-    };
-
-    return (
-      <div className="StatusContainer">
-        {statusIcon}
-        <Tooltip title="Project Status" placement="top">
-          <Typography inline style={{ float: "right", fontSize: "11px", color: mainColor, marginLeft: "3px" }} variant="button">
-            {status}
-          </Typography>
-        </Tooltip>
-      </div>
-    );
-  }
-
   const getHeadings = (projectIcon, viewlink, accColor, heading, lightGray, subheading, role, team, date) => {
     return (
       <div className="ProjectCardTextContent">
@@ -175,7 +155,7 @@ const ProjectCard = (props) => {
               letterSpacing: "0px"
             }}
           >
-            <i>{role} | {team} | {date}</i>
+            {role}&nbsp; • &nbsp;{team}&nbsp; • &nbsp;{date}
           </Typography>
         </div>
         <br/>
@@ -282,11 +262,12 @@ const ProjectCard = (props) => {
       return (
         <div 
           style={{
-            marginTop: "24px",
-            marginBottom: "34px",
-            paddingTop: "4px",
+            margin: "25px auto 34px",
+            paddingTop: "2px",
             backgroundColor: currentScheme.lightGray,
             borderRadius: 30,
+            width: "50px",
+            opacity: 0.1
           }}
         />
       )
@@ -296,8 +277,8 @@ const ProjectCard = (props) => {
   const { 
     projectIcon, projectBanners, heading, subheading, tools, team, 
     built, platforms, date, achievements, bgColor, accColor,
-    gitlink, viewlink, privacylink, viewicon, body, role, 
-    mainColor, currentScheme, status, isDark
+    gitlink, viewlink, viewicon, body, role, 
+    mainColor, currentScheme, isDark
   } = props;
 
   const lightGray = currentScheme.lightGray;
@@ -312,41 +293,14 @@ const ProjectCard = (props) => {
           {getAchievements(achievements, mainColor, accColor, currentScheme)}
           {getDetailsContainer(categoryStyle, platforms, date, built, tools, role, team)}
           <br/>
-          
           {/* About */}
           <Typography style={{color: mainColor, paddingBottom: "4px"}} variant="button">
             ABOUT
           </Typography>
-
           {/* Body */}
           <Typography color="textSecondary" style={{fontSize: "14px"}} variant="body1">
             {body}
           </Typography>
-
-          <br/>
-          {privacylink !== "" &&
-            <div className="PrivacyText">
-              <Link 
-                href={privacylink} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                style={{ textDecoration: "none" }}
-              >
-                <ShieldLock 
-                  style={{
-                    float: "right", 
-                    color: mainColor, 
-                    fontSize: "18px", 
-                    marginLeft: "3px"
-                  }}
-                />
-                <Typography inline variant="button" style={{ fontSize: "11px", color: mainColor, float: "left" }}>
-                  Privacy policy
-                </Typography>
-              </Link>
-            </div>
-          }
-          {getStatus(status, mainColor)}
         </CardContent>
       </div>
     </div>

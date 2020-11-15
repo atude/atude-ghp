@@ -2,7 +2,7 @@
   "Resume": "https://drive.google.com/file/d/1YD4MRDAQmZVvqhR5rU8Yhbe8wCydcyKz/view?usp=sharing",
   "About me":
   {
-    "": "I'm a penultimate student at the University of New South Wales, currently undergoing a Bachelor's Degree in Software Engineering. I pursue a passion in engineering impactful products with captivating real-world use to help bring creative solutions to modern challenges. I've become familiar with industry standard tools for web and mobile development across design, frontend, backend and devops, and am capable to deliver fully-fledged projects individually and in agile environments."
+    "": "I'm a software engineer with a passion in building impactful products with captivating real-world use to help bring creative solutions to modern challenges. I've become familiar with industry standard tools for web and mobile development across design, frontend, backend and the cloud, and am capable of delivering fully-fledged projects individually and in agile environments."
   },
   "Skillset": 
   {
@@ -10,10 +10,10 @@
     "HTML":     { "level": 4, "desc": "HTML5 & CSS3" },
     "Java":     { "level": 3, "desc": "Java" }, 
     "C#":       { "level": 3, "desc": "C#" },
-    "Python":   { "level": 3, "desc": "Python" }, 
-    "SQL":      { "level": 3, "desc": "SQL" },
+    "Python":   { "level": 4, "desc": "Python" }, 
+    "C":        { "level": 3, "desc": "C" }, 
     "Bash":     { "level": 3, "desc": "Bash" }, 
-    "C":        { "level": 2, "desc": "C" }, 
+    "SQL":      { "level": 3, "desc": "SQL" },
     "Haskell":  { "level": 2, "desc": "Haskell" }
   },
   "Toolset": 
@@ -21,9 +21,9 @@
     "Frontend": 
     [ "React", "React Native", "Next", "Expo", "Redux", "Redux Saga", "Apollo", "Immer", "Lottie", "Styled Components", "Material UI"],
     "Backend": 
-    [ "Node", "GraphQL", "Express", "Koa", "PostgreSQL" ],
+    [ "Node", "GraphQL", "Express", "Koa", "Serverless Framework", "PostgreSQL" ],
     "Cloud Services":
-    [ "Firebase" ],
+    [ "AWS Lambda", "AWS DynamoDB", "AWS API Gateway", "Firebase" ],
     "Devops": 
     [ "Vercel", "Docker", "CircleCI", "GitLab CI" ],
     "Testing":  
@@ -53,7 +53,6 @@
       "date": "2019",
       "gitlink": "https://github.com/atude/beams",
       "viewlink": "https://youtu.be/vWZBiD6iriM",
-      "privacylink": "",
       "viewicon": "Youtube",
       "role": "Lead Frontend Engineer",
       "team": "5 Members",
@@ -61,7 +60,6 @@
         "Best UX: Macquarie Group Workshop | 2019"
       ],
       "body": "A suburb analysis webapp that collates housing market data and suburb information with user financial/ethical requirements to help buy properties in suburbs tailored to you.",
-      "status": "Discontinued",
       "live": false
     },
     "Sympt": 
@@ -76,13 +74,11 @@
       "date": "2020",
       "gitlink": "https://github.com/atude/sympt/",
       "viewlink": "https://youtu.be/1E9If8qvBP4",
-      "privacylink": "",
       "viewicon": "Youtube",
       "role": "Technical Lead",
       "team": "5 Members",
       "achievements": [],
       "body": "A disease hub that provides up-to-date analysis on the climate of diseases in Australia, focused on COVID-19. It includes a mobile app as well as a developer dashboard webapp.",
-      "status": "Discontinued",
       "live": false
     },
     "Unicore": 
@@ -91,13 +87,12 @@
       "accColor": "#7f74e3",
       "heading": "Unicore",
       "subheading": "University WAM and Course Tracking App",
-      "tools": ["React Native", "Firebase", "React Native Paper"],
+      "tools": ["React Native", "Expo", "Firebase", "React Native Paper"],
       "built": ["JavaScript"],
       "platforms": ["Android"],
       "date": "2019 - 2020",
       "gitlink": "https://github.com/atude/wam-calc",
       "viewlink": "https://play.google.com/store/apps/details?id=com.atude.mywam",
-      "privacylink": "https://atude.github.io/privacy_unicore.html",
       "viewicon": "Google Play",
       "role": "Fullstack Engineer",
       "team": "Solo",
@@ -106,7 +101,6 @@
         "500+ installs"
       ],
       "body": "A multi-purpose tool for university students to track their WAM, analyse their marks and compare course progress. It includes location-based ranking methods, organised course log with filters, performance graphs and online accounts with data syncing.",
-      "status": "Maintained",
       "live": true
     },
     "Kanbie": 
@@ -121,7 +115,6 @@
       "date": "2020",
       "gitlink": "https://github.com/atude/kanbie-extension",
       "viewlink": "https://chrome.google.com/webstore/detail/kanbie/hancagoabobbbadijbbfepodbdgjbfpf",
-      "privacylink": "",
       "viewicon": "Chrome Web Store",
       "role": "Fullstack Engineer",
       "team": "Solo",
@@ -130,7 +123,6 @@
         "10000+ installs"
       ],
       "body": "A simple, dark-themed kanban board browser extension with data synced across Chrome accounts. ",
-      "status": "Maintained",
       "live": true
     },
     "Devote": 
@@ -145,7 +137,6 @@
       "date": "2017 - 2018",
       "gitlink": "https://github.com/atude/devote",
       "viewlink": "https://play.google.com/store/apps/details?id=com.cyberscopes.devote",
-      "privacylink": "https://atude.github.io/privacy.html",
       "viewicon": "Google Play",
       "role": "Fullstack Engineer",
       "team": "Solo",
@@ -153,7 +144,6 @@
         "2500+ installs"
       ],
       "body": "An all-in-one hub made for high school students to organise study tasks, track assessment progress, view productively levels and assist in study-life balance.",
-      "status": "Discontinued",
       "live": true
     }
   },
