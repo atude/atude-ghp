@@ -1,310 +1,417 @@
-import React, { useState } from 'react';
-import './Components.css';
-import { 
-  Typography, 
-  CardContent, 
-  Grid, 
-  Button, 
-  IconButton, 
-} from '@material-ui/core';
+import React, { useState } from "react";
+import "./Components.css";
 import {
-  Github, 
-  OpenInNew,
-  ChevronLeft,
-  ChevronRight
-} from 'mdi-material-ui';
-import { useMediaQuery } from 'react-responsive'
+	Typography,
+	CardContent,
+	Grid,
+	Button,
+	IconButton,
+} from "@material-ui/core";
+import { Github, OpenInNew, ChevronLeft, ChevronRight } from "mdi-material-ui";
+import { useMediaQuery } from "react-responsive";
 
-import { smBreakpoint } from '../utils/layouts';
+import { smBreakpoint } from "../utils/layouts";
 
 const ProjectCard = (props) => {
-  const [bannerIndex, setBannerIndex] = useState(0);
-  const isSmWidth = useMediaQuery({ query: `(max-width:${smBreakpoint}px)` });
-  
-  const bannerControl = (i, len) => {
-    if (len - 1 === bannerIndex && i >= 0) {
-      i = -(len - 1);
-    }
-    if (0 === bannerIndex && i <= 0) {
-      i = len - 1;
-    }
-    setBannerIndex(bannerIndex + i);
-  }
+	const [bannerIndex, setBannerIndex] = useState(0);
+	const isSmWidth = useMediaQuery({ query: `(max-width:${smBreakpoint}px)` });
 
-  const getBanner = (bgColor, projectBanners, viewicon, gitlink, viewlink, currentScheme) => {
-    return (
-      <div style={{backgroundColor: bgColor}} className="BannerContainer">
-        {projectBanners.map((banner, i) => (
-          <img
-            key={`${banner}_${i}_banner`}
-            alt={`${banner}_${i}_banner`}
-            style={{ opacity: bannerIndex === i ? 1 : 0 }}
-            className="BannerImg"
-            src={banner}
-            loading="lazy"
-          />
-        ))}
-                  
-        <Button 
-          className="BannerLeft" 
-          onClick={() => bannerControl(-1, projectBanners.length)}
-          style={{ marginTop: "270px" }}
-        >
-          <ChevronLeft
-            style={{ 
-              color: "white", 
-              opacity: 0.9,
-              filter: "drop-shadow(0 0 4px rgba(0,0,0,0.65))",
-            }} 
-          />
-        </Button>
-        <Button 
-          className="BannerRight" 
-          onClick={() => bannerControl(1, projectBanners.length)}
-          style={{ marginTop: "270px" }}
-        >
-          <ChevronRight
-            style={{ 
-              color: "white", 
-              opacity: 0.9,
-              filter: "drop-shadow(0 0 4px rgba(0,0,0,0.65))" 
-            }} 
-          />
-        </Button>
+	const bannerControl = (i, len) => {
+		if (len - 1 === bannerIndex && i >= 0) {
+			i = -(len - 1);
+		}
+		if (0 === bannerIndex && i <= 0) {
+			i = len - 1;
+		}
+		setBannerIndex(bannerIndex + i);
+	};
 
-        <div className="BannerShortcutsCont">
-          <div className="ViewLink">
-            <IconButton
-              style={{ marginRight: "-4px", color: "#fff" }}
-              component="a"
-              href={viewlink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {viewicon}
-            </IconButton>
-            <IconButton
-              style={{ color: "#fff" }}
-              component="a"
-              href={gitlink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Github />
-            </IconButton>
-          </div>
-        </div>
+	const getBanner = (bgColor, projectBanners, viewicon, gitlink, viewlink) => {
+		return (
+			<div style={{ backgroundColor: bgColor }} className="BannerContainer">
+				{projectBanners.map((banner, i) => (
+					<img
+						key={`${banner}_${i}_banner`}
+						alt={`${banner}_${i}_banner`}
+						style={{ opacity: bannerIndex === i ? 1 : 0 }}
+						className="BannerImg"
+						src={banner}
+						loading="lazy"
+					/>
+				))}
 
-        {/* Banner carousel dots */}
-        <Grid className="BannerDots" container spacing={8} direction="row" alignItems="center" justify="center">
-          {projectBanners.map((banner, i) => (
-            <Grid item key={`${banner}_${i}_dot`}
-              style={{
-                opacity: bannerIndex === i ? 1 : 0.5,
-                transition: "all 0.5s ease",
-                filter: "drop-shadow(0 0 4px rgba(0,0,0,0.3))"
-              }}>
-              <svg height="10" width="10">
-                <circle fill="white" cx="3" cy="3" r="3" />
-              </svg>
-            </Grid>
-          ))}
-        </Grid>
-      </div>
-    );
-  };
+				<Button
+					className="BannerLeft"
+					onClick={() => bannerControl(-1, projectBanners.length)}
+					style={{ marginTop: "270px" }}
+				>
+					<ChevronLeft
+						style={{
+							color: "white",
+							opacity: 0.9,
+							filter: "drop-shadow(0 0 4px rgba(0,0,0,0.65))",
+						}}
+					/>
+				</Button>
+				<Button
+					className="BannerRight"
+					onClick={() => bannerControl(1, projectBanners.length)}
+					style={{ marginTop: "270px" }}
+				>
+					<ChevronRight
+						style={{
+							color: "white",
+							opacity: 0.9,
+							filter: "drop-shadow(0 0 4px rgba(0,0,0,0.65))",
+						}}
+					/>
+				</Button>
 
-  const getHeadings = (projectIcon, viewlink, accColor, heading, lightGray, subheading, role, team, date) => {
-    return (
-      <div className="ProjectCardTextContent">
-        {projectIcon}
-        <Typography 
-          component="a" 
-          href={viewlink} 
-          target="_blank" 
-          rel="noopener noreferrer"
-          variant="h1"
-          style={{
-            color: accColor, 
-            fontSize: "28px", 
-            textDecoration: "none"
-          }} 
-        >
-          {heading}
-        </Typography>
-        <div style={{ marginTop: "2px" }}>
-          <Typography 
-            className="ProjectCardSubheader"
-            variant="body1"
-            style={{
-              fontSize: "14px", 
-              color: lightGray, 
-              letterSpacing: "0px"
-            }}
-          >
-            {subheading}
-          </Typography>
-        </div>
-        <div>
-          <Typography 
-            className="ProjectCardSubheader"
-            variant="body1"
-            style={{
-              fontSize: "14px", 
-              color: lightGray, 
-              letterSpacing: "0px"
-            }}
-          >
-            {role}&nbsp; • &nbsp;{team}&nbsp; • &nbsp;{date}
-          </Typography>
-        </div>
-        <br/>
-      </div>
-    );
-  }
+				<div className="BannerShortcutsCont">
+					<div className="ViewLink">
+						<IconButton
+							style={{ marginRight: "-4px", color: "#fff" }}
+							component="a"
+							href={viewlink}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							{viewicon}
+						</IconButton>
+						<IconButton
+							style={{ color: "#fff" }}
+							component="a"
+							href={gitlink}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<Github />
+						</IconButton>
+					</div>
+				</div>
 
-  const getDetailsSectionLeft = (categoryText, categoryStyle, rightPadding, items) => (
-    <Grid item container>
-      <Grid container direction="row" justify="flex-start" alignItems="flex-start">
-        <Grid item>
-          <Typography 
-            style={{
-              ...categoryStyle, 
-              paddingRight: rightPadding,
-              paddingTop: "3px",
-            }} 
-            variant="button"
-          >
-            {categoryText}
-          </Typography>
-        </Grid>
-        <Grid item container direction="row" xs={6}>
-          {items}
-        </Grid> 
-      </Grid>
-    </Grid>
-  );
+				{/* Banner carousel dots */}
+				<Grid
+					className="BannerDots"
+					container
+					spacing={8}
+					direction="row"
+					alignItems="center"
+					justify="center"
+				>
+					{projectBanners.map((banner, i) => (
+						<Grid
+							item
+							key={`${banner}_${i}_dot`}
+							style={{
+								opacity: bannerIndex === i ? 1 : 0.5,
+								transition: "all 0.5s ease",
+								filter: "drop-shadow(0 0 4px rgba(0,0,0,0.3))",
+							}}
+						>
+							<svg height="10" width="10">
+								<circle fill="white" cx="3" cy="3" r="3" />
+							</svg>
+						</Grid>
+					))}
+				</Grid>
+			</div>
+		);
+	};
 
-  const getDetailsContainer = (categoryStyle, platforms, date, built, tools, role, team) => (
-    <Grid container direction="row">
-      <Grid item xs={12} container direction="column">
-        {getDetailsSectionLeft("PLATFORMS", categoryStyle, 10,
-          Object.keys(platforms).map(item => (
-            <Grid key={item} item className="DetailsIconLeft">{platforms[item]}</Grid>
-          ))
-        )}
-        {getDetailsSectionLeft("LANGUAGES", categoryStyle, 10,
-          Object.keys(built).map(item => (
-            <Grid key={item} item className="DetailsIconLeft">{built[item]}</Grid>
-          ))
-        )}
-        {getDetailsSectionLeft("TECH STACK", categoryStyle, 8,
-          Object.keys(tools).map(item => (
-            <Grid key={item} item className="DetailsIconLeft">{tools[item]}</Grid>
-          ))
-        )}
-      </Grid>
-    </Grid>
-  );
+	const getHeadings = (
+		projectIcon,
+		viewlink,
+		accColor,
+		heading,
+		lightGray,
+		subheading,
+		role,
+		team,
+		date
+	) => {
+		return (
+			<div className="ProjectCardTextContent">
+				{projectIcon}
+				<Typography
+					component="a"
+					href={viewlink}
+					target="_blank"
+					rel="noopener noreferrer"
+					variant="h1"
+					style={{
+						color: accColor,
+						fontSize: "28px",
+						textDecoration: "none",
+					}}
+				>
+					{heading}
+				</Typography>
+				<div style={{ marginTop: "2px" }}>
+					<Typography
+						className="ProjectCardSubheader"
+						variant="body1"
+						style={{
+							fontSize: "14px",
+							color: lightGray,
+							letterSpacing: "0px",
+						}}
+					>
+						{subheading}
+					</Typography>
+				</div>
+				<div>
+					<Typography
+						className="ProjectCardSubheader"
+						variant="body1"
+						style={{
+							fontSize: "14px",
+							color: lightGray,
+							letterSpacing: "0px",
+						}}
+					>
+						{role}&nbsp; • &nbsp;{team}&nbsp; • &nbsp;{date}
+					</Typography>
+				</div>
+				<br />
+			</div>
+		);
+	};
 
-  const getAchievements = (achievements, mainColor, accColor, currentScheme) => {
-    if (achievements.length) {
-      return (
-        <div style={{
-          paddingBottom: "20px",
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "center",
-          flexWrap: "wrap",
-          minHeight: isSmWidth ? "63px" : 0,
-        }}>
-          {achievements.map(achievement => (
-            <div 
-              key={achievement}
-              style={{
-                marginTop: "8px",
-                marginRight: "6px",
-                padding: "4px",
-                backgroundColor: accColor,
-                borderRadius: 30,
-              }}
-            >
-              <Typography
-                variant="button"
-                style={{
-                  paddingLeft: "12px",
-                  paddingRight: "12px",
-                  paddingTop: "3px",
-                  paddingBottom: "3px",
-                  fontSize: "12px", 
-                  color: "#fff",
-                  textAlign: "center",
-                }}
-              >
-                {achievement.split(",")[0]}
-                {achievement.split(",").length > 1 &&  
-                <IconButton 
-                  href={achievement.split(",")[1]}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{margin: "-12px -14px -10px -5px"}}
-                >
-                  <OpenInNew style={{ fontSize: "16px", color: "#fff"}}/>
-                </IconButton>
-              }
-              </Typography>
-            </div>
-        ))} 
-        </div>
-      )
-    } else {
-      return (
-        <div 
-          style={{
-            margin: "25px auto 34px",
-            paddingTop: "2px",
-            backgroundColor: currentScheme.lightGray,
-            borderRadius: 30,
-            width: "50px",
-            opacity: 0.1
-          }}
-        />
-      )
-    }
-  };
+	const getDetailsSectionLeft = (
+		categoryText,
+		categoryStyle,
+		rightPadding,
+		items
+	) => (
+		<Grid item container>
+			<Grid
+				container
+				direction="row"
+				justify="flex-start"
+				alignItems="flex-start"
+			>
+				<Grid item>
+					<Typography
+						style={{
+							...categoryStyle,
+							paddingRight: rightPadding,
+							paddingTop: "3px",
+						}}
+						variant="button"
+					>
+						{categoryText}
+					</Typography>
+				</Grid>
+				<Grid item container direction="row" xs={6}>
+					{items}
+				</Grid>
+			</Grid>
+		</Grid>
+	);
 
-  const { 
-    projectIcon, projectBanners, heading, subheading, tools, team, 
-    built, platforms, date, achievements, bgColor, accColor,
-    gitlink, viewlink, viewicon, body, role, 
-    mainColor, currentScheme, isDark
-  } = props;
+	const getDetailsContainer = (
+		categoryStyle,
+		platforms,
+		date,
+		built,
+		tools
+	) => (
+		<Grid container direction="row">
+			<Grid item xs={12} container direction="column">
+				{getDetailsSectionLeft(
+					"PLATFORMS",
+					categoryStyle,
+					10,
+					Object.keys(platforms).map((item) => (
+						<Grid key={item} item className="DetailsIconLeft">
+							{platforms[item]}
+						</Grid>
+					))
+				)}
+				{getDetailsSectionLeft(
+					"LANGUAGES",
+					categoryStyle,
+					10,
+					Object.keys(built).map((item) => (
+						<Grid key={item} item className="DetailsIconLeft">
+							{built[item]}
+						</Grid>
+					))
+				)}
+				{getDetailsSectionLeft(
+					"TECH STACK",
+					categoryStyle,
+					8,
+					Object.keys(tools).map((item) => (
+						<Grid key={item} item className="DetailsIconLeft">
+							{tools[item]}
+						</Grid>
+					))
+				)}
+			</Grid>
+		</Grid>
+	);
 
-  const lightGray = currentScheme.lightGray;
-  const categoryStyle = { fontSize: "14px", color: lightGray, letterSpacing: "0.1px" };
+	const getAchievements = (
+		achievements,
+		mainColor,
+		accColor,
+		currentScheme
+	) => {
+		if (achievements.length) {
+			return (
+				<div
+					style={{
+						paddingBottom: "20px",
+						display: "flex",
+						flexDirection: "row",
+						alignItems: "center",
+						justifyContent: "center",
+						flexWrap: "wrap",
+						minHeight: isSmWidth ? "63px" : 0,
+					}}
+				>
+					{achievements.map((achievement) => (
+						<div
+							key={achievement}
+							style={{
+								marginTop: "8px",
+								marginRight: "6px",
+								padding: "4px",
+								backgroundColor: accColor,
+								borderRadius: 30,
+							}}
+						>
+							<Typography
+								variant="button"
+								style={{
+									paddingLeft: "12px",
+									paddingRight: "12px",
+									paddingTop: "3px",
+									paddingBottom: "3px",
+									fontSize: "12px",
+									color: "#fff",
+									textAlign: "center",
+								}}
+							>
+								{achievement.split(",")[0]}
+								{achievement.split(",").length > 1 && (
+									<IconButton
+										href={achievement.split(",")[1]}
+										target="_blank"
+										rel="noopener noreferrer"
+										style={{ margin: "-12px -14px -10px -5px" }}
+									>
+										<OpenInNew style={{ fontSize: "16px", color: "#fff" }} />
+									</IconButton>
+								)}
+							</Typography>
+						</div>
+					))}
+				</div>
+			);
+		} else {
+			return (
+				<div
+					style={{
+						margin: "25px auto 34px",
+						paddingTop: "2px",
+						backgroundColor: currentScheme.lightGray,
+						borderRadius: 30,
+						width: "50px",
+						opacity: 0.1,
+					}}
+				/>
+			);
+		}
+	};
 
-  return (
-    <div className={`ProjectCard ${isDark ? "StandardCardDark" : "StandardCard"}`}>
-      {getBanner(bgColor, projectBanners, viewicon, gitlink, viewlink, currentScheme)}
-      <div className="ProjectCardContent">
-        <CardContent>
-          {getHeadings(projectIcon, viewlink, accColor, heading, lightGray, subheading, role, team, date)}
-          {getAchievements(achievements, mainColor, accColor, currentScheme)}
-          {getDetailsContainer(categoryStyle, platforms, date, built, tools, role, team)}
-          <br/>
-          {/* About */}
-          <Typography style={{color: mainColor, paddingBottom: "4px"}} variant="button">
-            ABOUT
-          </Typography>
-          {/* Body */}
-          <Typography color="textSecondary" style={{fontSize: "14px"}} variant="body1">
-            {body}
-          </Typography>
-        </CardContent>
-      </div>
-    </div>
-  );
-}
+	const {
+		projectIcon,
+		projectBanners,
+		heading,
+		subheading,
+		tools,
+		team,
+		built,
+		platforms,
+		date,
+		achievements,
+		bgColor,
+		accColor,
+		gitlink,
+		viewlink,
+		viewicon,
+		body,
+		role,
+		mainColor,
+		currentScheme,
+		isDark,
+	} = props;
+
+	const lightGray = currentScheme.lightGray;
+	const categoryStyle = {
+		fontSize: "14px",
+		color: lightGray,
+		letterSpacing: "0.1px",
+	};
+
+	return (
+		<div
+			className={`ProjectCard ${isDark ? "StandardCardDark" : "StandardCard"}`}
+		>
+			{getBanner(
+				bgColor,
+				projectBanners,
+				viewicon,
+				gitlink,
+				viewlink,
+				currentScheme
+			)}
+			<div className="ProjectCardContent">
+				<CardContent>
+					{getHeadings(
+						projectIcon,
+						viewlink,
+						accColor,
+						heading,
+						lightGray,
+						subheading,
+						role,
+						team,
+						date
+					)}
+					{getAchievements(achievements, mainColor, accColor, currentScheme)}
+					{getDetailsContainer(
+						categoryStyle,
+						platforms,
+						date,
+						built,
+						tools,
+						role,
+						team
+					)}
+					<br />
+					{/* About */}
+					<Typography
+						style={{ color: mainColor, paddingBottom: "4px" }}
+						variant="button"
+					>
+						ABOUT
+					</Typography>
+					{/* Body */}
+					<Typography
+						color="textSecondary"
+						style={{ fontSize: "14px" }}
+						variant="body1"
+					>
+						{body}
+					</Typography>
+				</CardContent>
+			</div>
+		</div>
+	);
+};
 
 export default ProjectCard;
