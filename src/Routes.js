@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { AccountBox, Buffer, MessageBulleted } from "mdi-material-ui";
+import { AccountBox, Buffer } from "mdi-material-ui";
 
 const getRouteStyle = (currentScheme) => {
 	return {
@@ -11,7 +11,7 @@ const getRouteStyle = (currentScheme) => {
 
 export const getRoutes = (currentScheme) => {
 	return {
-		"/": {
+		home: {
 			title: "",
 			color: currentScheme.colorSet.purple,
 			prevColor: currentScheme.colorSet.grey,
@@ -36,24 +36,6 @@ export const getRoutes = (currentScheme) => {
 				<Buffer style={getRouteStyle(currentScheme)} className="AppbarIcon" />
 			),
 			icList: <Buffer className="ListIcon" />,
-		},
-		// "/blog": {
-		//   "title": "Research Blog",
-		//   "color": currentScheme.colorSet.orange,
-		//   "icAppbar": <NewspaperVariantMultiple style={getRouteStyle(currentScheme, "orange")} className="AppbarIcon"/>,
-		//   "icList": <NewspaperVariantMultiple className="ListIcon"/>,
-		// },
-		contact: {
-			title: "Contact",
-			color: currentScheme.colorSet.purple,
-			prevColor: currentScheme.colorSet.red,
-			icAppbar: (
-				<MessageBulleted
-					style={getRouteStyle(currentScheme, "purple")}
-					className="AppbarIcon"
-				/>
-			),
-			icList: <MessageBulleted className="ListIcon" />,
 		},
 	};
 };

@@ -120,10 +120,9 @@
       "team": "Solo",
       "achievements": [
         "Featured on Chrome Web Store,https://drive.google.com/file/d/1xhySBmxpCRzXEB7sFEusBj2Q0o9Fp0VJ/view?usp=sharing",
-        "15,000+ installs",
-        "6000+ peak active users"
+        "7000+ peak active users"
       ],
-      "body": "A simple, dark-themed kanban board browser extension with data synced across Chrome accounts. ",
+      "body": "A dark themed kanban board accessible in-tab with labelling and shortcuts, integrating with Chrome API for sync across Google accounts. ",
       "live": true
     },
     "Devote": 

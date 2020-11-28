@@ -1,13 +1,8 @@
 import React, { useState } from "react";
 import "../components/Components.css";
 import ContentCard from "../components/ContentCard.js";
-import { Grid, Avatar, Fade, Fab, Tooltip } from "@material-ui/core";
-import {
-	HumanGreeting,
-	CubeOutline,
-	CodeBraces,
-	FileDownload,
-} from "mdi-material-ui";
+import { Grid, Avatar, Fade } from "@material-ui/core";
+import { HumanGreeting, CubeOutline, CodeBraces } from "mdi-material-ui";
 import Database from "../assets/Database";
 import SkillsContent from "../components/SkillsContent";
 import ToolsContent from "../components/ToolsContent";
@@ -105,24 +100,6 @@ const AboutPage = (props) => {
 					/>
 				</Grid>
 			</Grid>
-			<div className="FAB">
-				<Tooltip title="View/Download Resume" placement="left">
-					<Fab
-						size="medium"
-						component="a"
-						href={Database["Resume"]}
-						download="_resume_mozamel_anwary"
-						aria-label="DownloadResume"
-						style={{
-							color: "white",
-							backgroundColor: mainColor,
-							opacity: "0.8",
-						}}
-					>
-						<FileDownload />
-					</Fab>
-				</Tooltip>
-			</div>
 		</div>
 	);
 };

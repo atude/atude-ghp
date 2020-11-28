@@ -24,6 +24,7 @@
 		"prettier/prettier": "warn",
     "quotes": ["warn", "double"],
     "semi": ["warn", "always"],
-    "react/prop-types": 0
+		"react/prop-types": 0,
+		"react/display-name": 0
   }
 }

@@ -32,7 +32,8 @@ export default function ProjectsPage(props) {
 			// eslint-disable-next-line no-constant-condition
 			while (true) {
 				try {
-					const banner = require(`../assets/projects/${project.heading}/${j}.png`);
+					const banner = require(`../assets/projects/${project.heading}/${j}.png`)
+						.default;
 					fetchBanners[project.heading].push(banner);
 				} catch {
 					break;
@@ -64,7 +65,10 @@ export default function ProjectsPage(props) {
 								<ReactSVG
 									className="IconColor"
 									svgClassName="ProjectCardIcon"
-									src={require(`../assets/projects/${project.heading}/ic.svg`)}
+									src={
+										require(`../assets/projects/${project.heading}/ic.svg`)
+											.default
+									}
 								/>
 							</Typography>
 						}

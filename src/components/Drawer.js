@@ -36,16 +36,11 @@ import colorSetDark from "../assets/colorset.json";
 import "../App.css";
 
 import Database from "../assets/Database";
-// import HomePage from '../pages/HomePage.js';
 import AboutPage from "../pages/AboutPage.js";
 import ProjectsPage from "../pages/ProjectsPage.js";
-import ContactPage from "../pages/ContactPage";
-// import BlogPage from '../pages/BlogPage';
 
 import { getRoutes } from "../Routes";
 import { Link } from "react-scroll";
-import { debounce } from "../utils/generic";
-import { bottomGutter } from "../utils/layouts";
 import HomePage from "../pages/HomePage";
 
 const iconSize = "40px";
@@ -196,54 +191,12 @@ const ResponsiveDrawer = (props) => {
 	const [mobileOpen, setMobileOpen] = useState(false);
 	const [currentScheme, setCurrentScheme] = useState(lightScheme);
 	const [isDark, setDark] = useState(false);
-	const [locationId, setLocationId] = useState();
-
-	// Scroll based anchor routing
-	useEffect(() => {
-		const handleScroll = () => {
-			// Set css --scroll property
-
-			// Set hash routing based on scroll
-			const anchorSections = document.getElementsByClassName("ReferenceAnchor");
-			for (const thisSection of anchorSections) {
-				const top = window.pageYOffset;
-				const dist = top - thisSection.offsetTop;
-				if (
-					dist < 700 &&
-					dist > -200 &&
-					window.location.hash !== `#${thisSection.id}`
-				) {
-					if (thisSection.id === "mozamel-main") {
-						setHashRoute("");
-					} else {
-						setHashRoute(thisSection.id);
-					}
-					break;
-				}
-			}
-		};
-
-		// For throttle scroll property
-		// const setCssScrollProperty = () => {
-		//   document.body.style.setProperty('--scroll', window.pageYOffset / (document.body.offsetHeight - window.innerHeight));
-		// }
-
-		window.addEventListener("scroll", debounce(handleScroll, 200), false);
-		return () => {
-			window.removeEventListener("scroll", handleScroll);
-		};
-	}, []);
 
 	useEffect(() => {
 		// Set dark theme on load
 		const getIsDark = localStorage.getItem("isDark");
 		switchDark(getIsDark === "Dark" ? true : false);
 	}, []);
-
-	const setHashRoute = (sectionId) => {
-		window.history.replaceState(null, null, `#${sectionId}`);
-		setTimeout(() => setLocationId(sectionId), 100);
-	};
 
 	const switchDark = (isDarkVal) => {
 		localStorage.setItem("isDark", isDarkVal ? "Dark" : "Light");
@@ -261,14 +214,14 @@ const ResponsiveDrawer = (props) => {
 		}
 	};
 
-	const getColor = (sectionId) => {
-		const route = getRoutes(currentScheme)[sectionId];
-		if (route) {
-			return route.color;
-		}
+	// const getColor = (sectionId) => {
+	// 	const route = getRoutes(currentScheme)[sectionId];
+	// 	if (route) {
+	// 		return route.color;
+	// 	}
 
-		return currentScheme.colorSet.blue;
-	};
+	// 	return currentScheme.colorSet.blue;
+	// };
 
 	const getIcon = (sectionId) => {
 		const route = getRoutes(currentScheme)[sectionId];
@@ -366,7 +319,7 @@ const ResponsiveDrawer = (props) => {
 		</div>
 	);
 
-	const getSideListObject = (sectionId, thisColor, header) => (
+	const getSideListObject = (sectionId, header) => (
 		<Link
 			to={sectionId}
 			smooth="true"
@@ -379,21 +332,12 @@ const ResponsiveDrawer = (props) => {
 				onClick={() => handleTabClick()}
 				key={header}
 			>
-				<ListItemIcon
-					className="SideListItem"
-					style={{
-						color: locationId === sectionId && thisColor,
-					}}
-				>
+				<ListItemIcon className="SideListItem">
 					{getIcon(sectionId)}
 				</ListItemIcon>
 				<ListItemText
 					primary={
-						<Typography
-							color="textPrimary"
-							style={{ color: locationId === sectionId && thisColor }}
-							variant="button"
-						>
+						<Typography color="textPrimary" variant="button">
 							{header}
 						</Typography>
 					}
@@ -405,10 +349,8 @@ const ResponsiveDrawer = (props) => {
 	const getSideList = () => (
 		<List>
 			<Divider />
-			{getSideListObject("about-me", getColor("about-me"), "About Me")}
-			{getSideListObject("projects", getColor("projects"), "Projects")}
-			{/* {getSideListObject(currPath, "/blog", getColor(currPath), "Research Blog")} */}
-			{getSideListObject("contact", getColor("contact"), "Contact")}
+			{getSideListObject("about-me", "About Me")}
+			{getSideListObject("projects", "Projects")}
 		</List>
 	);
 
@@ -468,7 +410,7 @@ const ResponsiveDrawer = (props) => {
 								opacity: 0.85,
 							}}
 						>
-							<Menu style={{ color: getColor(locationId) }} />
+							<Menu style={{ color: mainColor }} />
 						</IconButton>
 					</Toolbar>
 				</AppBar>
@@ -502,7 +444,7 @@ const ResponsiveDrawer = (props) => {
 						sectionId="mozamel-main"
 						isDark={isDark}
 						currentScheme={currentScheme}
-						mainColor={getRoutes(currentScheme)["about-me"].color}
+						mainColor={getRoutes(currentScheme)["home"].color}
 					/>
 					<AboutPage
 						sectionId="about-me"
@@ -522,24 +464,8 @@ const ResponsiveDrawer = (props) => {
 					/>
 					<br />
 					<br />
-					<ContactPage
-						sectionId="contact"
-						isDark={isDark}
-						currentScheme={currentScheme}
-						mainColor={getRoutes(currentScheme)["contact"].color}
-						prevColor={getRoutes(currentScheme)["contact"].prevColor}
-					/>
-					<div style={{ marginBottom: `${bottomGutter}px` }} />
-					<Typography
-						className="CopyrightText"
-						variant="button"
-						style={{
-							fontSize: "10px",
-							color: currentScheme.lightGray,
-						}}
-					>
-						Mozamel Anwary © 2020
-					</Typography>
+					<br />
+					<br />
 				</div>
 			</MuiThemeProvider>
 		</div>
