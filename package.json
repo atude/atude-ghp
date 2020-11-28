@@ -15,7 +15,7 @@
     "react-markdown": "^4.3.1",
     "react-responsive": "^8.1.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.0.0",
+    "react-scripts": "4.0.1",
     "react-scroll": "^1.8.1",
     "react-svg": "^9.0.4",
     "react-syntax-highlighter": "^12.2.1",
@@ -49,8 +49,11 @@
   },
   "devDependencies": {
     "eslint": "^7.14.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
-    "gh-pages": "^2.2.0"
+    "gh-pages": "^2.2.0",
+    "prettier": "2.2.1"
   },
   "homepage": "http://atude.github.io/atude-ghp",
   "babel": {

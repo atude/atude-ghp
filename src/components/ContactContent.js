@@ -1,62 +1,98 @@
-import React from 'react';
-import '../components/Components.css';
-import { Grid, Typography } from '@material-ui/core';
-import { Github, Linkedin, EmailMarkAsUnread, Discord, GooglePlay } from 'mdi-material-ui';
+import React from "react";
+import "../components/Components.css";
+import { Grid, Typography } from "@material-ui/core";
+import {
+	Github,
+	Linkedin,
+	EmailMarkAsUnread,
+	Discord,
+	GooglePlay,
+} from "mdi-material-ui";
 
-class ContactContent extends React.Component {
+const ContactContent = (props) => {
+	const { source, isLinks, currentScheme, mainColor } = props;
 
-  getIconObj = (type) => {
-    const cStyle = {fontSize: "38px", color: this.props.currentScheme.lightGray};
+	const getIconObj = (type) => {
+		const cStyle = {
+			fontSize: "38px",
+			color: currentScheme.lightGray,
+		};
+		const icons = {
+			GitHub: <Github style={cStyle} className="ContactIcon" />,
+			"Play Store": <GooglePlay style={cStyle} className="ContactIcon" />,
+			LinkedIn: <Linkedin style={cStyle} className="ContactIcon" />,
+			Email: <EmailMarkAsUnread style={cStyle} />,
+			Discord: <Discord style={cStyle} />,
+		};
 
-    const icons = {
-      "GitHub": <Github style={cStyle} className="ContactIcon"/>,
-      "Play Store": <GooglePlay style={cStyle} className="ContactIcon"/>,
-      "LinkedIn": <Linkedin style={cStyle} className="ContactIcon"/>,
-      "Email": <EmailMarkAsUnread style={cStyle} />,
-      "Discord": <Discord style={cStyle} />,
-    };
+		return icons[type];
+	};
 
-    return icons[type];
-  }
+	const getIcon = (name, link) => {
+		return (
+			<Grid
+				item
+				xs={3}
+				component="a"
+				href={link}
+				rel="noopener noreferrer"
+				target="_blank"
+			>
+				{getIconObj(name)}
+			</Grid>
+		);
+	};
 
-  getIcon = (name, link) => {
-    return (
-      <Grid item xs={3}
-        component="a" href={link} ref="noopener noreferrer" target="_blank"
-      >
-        {this.getIconObj(name)}
-      </Grid>
-    );
-  }
+	const getName = (name, desc, link) => {
+		return (
+			<Grid item xs={9}>
+				<Typography
+					variant="button"
+					style={{
+						textDecoration: "none",
+						fontSize: "15px",
+						color: mainColor,
+					}}
+					component="a"
+					href={link}
+					rel="noopener noreferrer"
+					target="_blank"
+				>
+					{name}
+				</Typography>
+				<Typography
+					style={{
+						fontSize: "12px",
+						color: currentScheme.lightGray,
+						wordWrap: "break-word",
+					}}
+					variant="body1"
+				>
+					{desc}
+				</Typography>
+			</Grid>
+		);
+	};
 
-  getName = (name, desc, link) => {
-    return (
-      <Grid item xs={9}>
-        <Typography variant="button" style={{textDecoration: "none", fontSize: "15px", color: this.props.mainColor}}
-        component="a" href={link} ref="noopener noreferrer" target="_blank">
-          {name}
-        </Typography>
-        <Typography style={{fontSize: "12px", color: this.props.currentScheme.lightGray, wordWrap: "break-word"}} variant="body1">
-          {desc}
-        </Typography>
-      </Grid>
-    );
-  }
-
-  render() {    
-    const { source, isLinks } = this.props;
-    
-    return(
-      <Grid container direction="column" alignItems="flex-start" justify="center" spacing={16} className="ContactContentCont">
-        {Object.keys(source).map(key => (
-          <Grid container direction="row" key={key} xs={12} sm={12} md={12} lg={12} xl={12} item>
-            {this.getIcon(key, isLinks ? source[key][0] : null)}
-            {isLinks ? this.getName(key, source[key][1], source[key][0]) : this.getName(key, source[key])}
-          </Grid>
-        ))}
-      </Grid>
-    )
-  }
-}
+	return (
+		<Grid
+			container
+			direction="column"
+			alignItems="flex-start"
+			justify="center"
+			spacing={16}
+			className="ContactContentCont"
+		>
+			{Object.keys(source).map((key) => (
+				<Grid item container direction="row" key={key} xs={12}>
+					{getIcon(key, isLinks ? source[key][0] : null)}
+					{isLinks
+						? getName(key, source[key][1], source[key][0])
+						: getName(key, source[key])}
+				</Grid>
+			))}
+		</Grid>
+	);
+};
 
 export default ContactContent;

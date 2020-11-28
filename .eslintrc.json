@@ -1,26 +1,29 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+		"es2021": true,
+		"amd": true
   },
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended"
+		"plugin:react/recommended",
+		"plugin:prettier/recommended"
   ],
   "parserOptions": {
     "ecmaFeatures": {
-        "jsx": true
+			"jsx": true
     },
     "ecmaVersion": 12,
     "sourceType": "module"
   },
   "plugins": [
-    "react"
+		"react",
+		"prettier"
   ],
   "rules": {
-    "indent": ["warn", "tab"],
-    "linebreak-style": ["warn", "unix"],
+		"prettier/prettier": "warn",
     "quotes": ["warn", "double"],
-    "semi": ["warn", "always"]
+    "semi": ["warn", "always"],
+    "react/prop-types": 0
   }
 }
