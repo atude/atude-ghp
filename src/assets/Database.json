@@ -19,7 +19,7 @@
   "Toolset": 
   {
     "Frontend": 
-    [ "React", "React Native", "Next", "Expo", "Redux", "Redux Saga", "Apollo", "Immer", "Lottie", "Styled Components", "Material UI"],
+    [ "React", "React Native", "Next", "Vue", "Expo", "Redux", "Redux Saga", "Apollo", "Immer", "Lottie", "Styled Components", "Material UI"],
     "Backend": 
     [ "Node", "GraphQL", "Express", "Koa", "Serverless Framework", "PostgreSQL" ],
     "Cloud Services":
@@ -78,7 +78,7 @@
       "role": "Technical Lead",
       "team": "5 Members",
       "achievements": [],
-      "body": "A disease hub that provides up-to-date analysis on the climate of diseases in Australia, focused on COVID-19. It includes a mobile app as well as a developer dashboard webapp.",
+      "body": "A disease hub that provides up-to-date analysis on the climate of diseases in Australia, focused on COVID-19. Sympt includes the mobile app for users as well as an API and dashboard for developers.",
       "live": false
     },
     "Unicore": 
@@ -97,10 +97,10 @@
       "role": "Fullstack Engineer",
       "team": "Solo",
       "achievements": [
-        "Showcased on React Native Paper,https://callstack.github.io/react-native-paper/showcase.html",
-        "500+ installs"
+        "500+ installs",
+        "Showcased on React Native Paper,https://callstack.github.io/react-native-paper/showcase.html"
       ],
-      "body": "A multi-purpose tool for university students to track their WAM, analyse their marks and compare course progress. It includes location-based ranking methods, organised course log with filters, performance graphs and online accounts with data syncing.",
+      "body": "A multi-purpose tool for university students to track WAM, analyse marks and compare course progress. Includes location-based ranking methods, organised course log with filters, performance graphs and online accounts with data syncing.",
       "live": true
     },
     "Kanbie": 
@@ -119,10 +119,10 @@
       "role": "Fullstack Engineer",
       "team": "Solo",
       "achievements": [
-        "Featured on Chrome Web Store,https://drive.google.com/file/d/1xhySBmxpCRzXEB7sFEusBj2Q0o9Fp0VJ/view?usp=sharing",
-        "7000+ peak active users"
+				"20,000+ installs",
+        "Featured on Chrome Web Store,https://drive.google.com/file/d/1xhySBmxpCRzXEB7sFEusBj2Q0o9Fp0VJ/view?usp=sharing"
       ],
-      "body": "A dark themed kanban board accessible in-tab with labelling and shortcuts, integrating with Chrome API for sync across Google accounts. ",
+      "body": "A dark themed kanban board accessible in-tab with labelling, shortcuts and themes, integrating with Chrome's API for syncing across Google accounts. ",
       "live": true
     },
     "Devote": 
