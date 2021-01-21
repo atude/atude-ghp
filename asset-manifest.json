@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/atude-ghp/static/css/main.721bbb65.chunk.css",
-    "main.js": "/atude-ghp/static/js/main.3bb405e9.chunk.js",
-    "main.js.map": "/atude-ghp/static/js/main.3bb405e9.chunk.js.map",
+    "main.js": "/atude-ghp/static/js/main.ba256c3d.chunk.js",
+    "main.js.map": "/atude-ghp/static/js/main.ba256c3d.chunk.js.map",
     "runtime-main.js": "/atude-ghp/static/js/runtime-main.dad1829e.js",
     "runtime-main.js.map": "/atude-ghp/static/js/runtime-main.dad1829e.js.map",
     "static/css/2.9057a367.chunk.css": "/atude-ghp/static/css/2.9057a367.chunk.css",
-    "static/js/2.45eb213c.chunk.js": "/atude-ghp/static/js/2.45eb213c.chunk.js",
-    "static/js/2.45eb213c.chunk.js.map": "/atude-ghp/static/js/2.45eb213c.chunk.js.map",
+    "static/js/2.779ad8ab.chunk.js": "/atude-ghp/static/js/2.779ad8ab.chunk.js",
+    "static/js/2.779ad8ab.chunk.js.map": "/atude-ghp/static/js/2.779ad8ab.chunk.js.map",
     "index.html": "/atude-ghp/index.html",
     "static/css/2.9057a367.chunk.css.map": "/atude-ghp/static/css/2.9057a367.chunk.css.map",
     "static/css/main.721bbb65.chunk.css.map": "/atude-ghp/static/css/main.721bbb65.chunk.css.map",
-    "static/js/2.45eb213c.chunk.js.LICENSE.txt": "/atude-ghp/static/js/2.45eb213c.chunk.js.LICENSE.txt",
+    "static/js/2.779ad8ab.chunk.js.LICENSE.txt": "/atude-ghp/static/js/2.779ad8ab.chunk.js.LICENSE.txt",
     "static/media/0.png": "/atude-ghp/static/media/0.d36157c2.png",
     "static/media/1.png": "/atude-ghp/static/media/1.fdc78de7.png",
     "static/media/2.png": "/atude-ghp/static/media/2.ea9dcd67.png",
@@ -26,8 +26,8 @@
   "entrypoints": [
     "static/js/runtime-main.dad1829e.js",
     "static/css/2.9057a367.chunk.css",
-    "static/js/2.45eb213c.chunk.js",
+    "static/js/2.779ad8ab.chunk.js",
     "static/css/main.721bbb65.chunk.css",
-    "static/js/main.3bb405e9.chunk.js"
+    "static/js/main.ba256c3d.chunk.js"
   ]
 }
