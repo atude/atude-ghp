@@ -19,13 +19,13 @@
   "Toolset": 
   {
     "Frontend": 
-    [ "React", "React Native", "Next", "Vue", "Expo", "Redux", "Redux Saga", "Apollo", "Immer", "Lottie", "Styled Components", "Material UI"],
+    [ "React", "React Native", "Next", "Vue", "Expo", "Redux", "Redux Saga", "Apollo", "Lottie", "Styled Components", "Material UI"],
     "Backend": 
-    [ "Node", "GraphQL", "Express", "Koa", "Serverless Framework", "PostgreSQL" ],
+    [ "Node", "Express", "GraphQL", "Serverless", "PostgreSQL" ],
     "Cloud Services":
     [ "AWS Lambda", "AWS DynamoDB", "AWS API Gateway", "Firebase" ],
     "Devops": 
-    [ "Vercel", "Docker", "CircleCI", "GitLab CI" ],
+    [ "Azure DevOps", "CircleCI", "GitLab CI", "Fastlane", "Vercel" ],
     "Testing":  
     [ "Puppeteer", "Jest" ],
     "Design":
