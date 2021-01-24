@@ -337,7 +337,11 @@ const ResponsiveDrawer = (props) => {
 				</ListItemIcon>
 				<ListItemText
 					primary={
-						<Typography color="textPrimary" variant="button">
+						<Typography
+							color="textPrimary"
+							variant="button"
+							style={{ fontSize: "14px" }}
+						>
 							{header}
 						</Typography>
 					}
@@ -374,7 +378,7 @@ const ResponsiveDrawer = (props) => {
 					</Grid>
 					<Typography
 						className="CopyrightText"
-						variant="button"
+						variant="overline"
 						style={{ fontSize: "10px", color: "#cccccc" }}
 					>
 						Mozamel Anwary © 2020

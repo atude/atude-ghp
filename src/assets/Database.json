@@ -2,19 +2,17 @@
   "Resume": "https://drive.google.com/file/d/1YD4MRDAQmZVvqhR5rU8Yhbe8wCydcyKz/view?usp=sharing",
   "About me":
   {
-    "": "I'm a software engineer with a passion in building impactful products with captivating real-world use to help bring creative solutions to modern challenges. I've become familiar with industry standard tools for web and mobile development across design, frontend, backend and the cloud, and am capable of delivering fully-fledged projects individually and in agile environments."
+		"Hi! I'm Moz, a software engineer in Sydney, Australia. ": "I have a passion to build well-engineered, scalable, maintainable and beautiful apps. With a skillset across frontend, design, backend and cloud, I'm able to create captivating experiences make our everyday lives interesting.",
+		"": "Some of the languages I've used recently include:"
   },
   "Skillset": 
   {
-    "TS":       { "level": 4, "desc": "TypeScript & JavaScript (ES2020)" },
-    "HTML":     { "level": 4, "desc": "HTML5 & CSS3" },
-    "Java":     { "level": 3, "desc": "Java" }, 
-    "C#":       { "level": 3, "desc": "C#" },
+		"TS":       { "level": 4, "desc": "TypeScript" },
+		"JS":       { "level": 4, "desc": "JavaScript (ES2020)" },
     "Python":   { "level": 4, "desc": "Python" }, 
-    "C":        { "level": 3, "desc": "C" }, 
-    "Bash":     { "level": 3, "desc": "Bash" }, 
-    "SQL":      { "level": 3, "desc": "SQL" },
-    "Haskell":  { "level": 2, "desc": "Haskell" }
+    "C#":       { "level": 3, "desc": "C#" },
+		"Bash":     { "level": 3, "desc": "Bash" }, 
+		"HTML":     { "level": 4, "desc": "HTML/CSS/SCSS" }
   },
   "Toolset": 
   {
@@ -22,7 +20,7 @@
     [ "React", "React Native", "Next", "Vue", "Expo", "Redux", "Redux Saga", "Apollo", "Lottie", "Styled Components", "Material UI"],
     "Backend": 
     [ "Node", "Express", "GraphQL", "Serverless", "PostgreSQL" ],
-    "Cloud Services":
+    "Cloud":
     [ "AWS Lambda", "AWS DynamoDB", "AWS API Gateway", "Firebase" ],
     "Devops": 
     [ "Azure DevOps", "CircleCI", "GitLab CI", "Fastlane", "Vercel" ],
@@ -98,7 +96,7 @@
       "team": "Solo",
       "achievements": [
         "500+ installs",
-        "Showcased on React Native Paper,https://callstack.github.io/react-native-paper/showcase.html"
+        "Showcased on React Native Paper;https://callstack.github.io/react-native-paper/showcase.html"
       ],
       "body": "A multi-purpose tool for university students to track WAM, analyse marks and compare course progress. Includes location-based ranking methods, organised course log with filters, performance graphs and online accounts with data syncing.",
       "live": true
@@ -119,8 +117,8 @@
       "role": "Fullstack Engineer",
       "team": "Solo",
       "achievements": [
-				"20 000+ installs",
-        "Featured on Chrome Web Store,https://drive.google.com/file/d/1xhySBmxpCRzXEB7sFEusBj2Q0o9Fp0VJ/view?usp=sharing"
+				"20,000+ installs",
+        "Featured on Chrome Web Store;https://drive.google.com/file/d/1xhySBmxpCRzXEB7sFEusBj2Q0o9Fp0VJ/view?usp=sharing"
       ],
       "body": "A dark themed kanban board accessible in-tab with labelling, shortcuts and themes, integrating with Chrome's API for syncing across Google accounts. ",
       "live": true

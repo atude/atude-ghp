@@ -30,12 +30,13 @@ const ToolsContent = (props) => {
 					</Grid>
 					<Grid item xs={9} md={3} lg={2} style={{ marginTop: "5px" }}>
 						<Typography
-							gutterBottom
-							variant="button"
+							variant="overline"
 							style={{
 								color: Object.values(colorSet)[i],
 								display: "flex",
-								verticalAlign: "middle",
+								marginTop: "-5px",
+								fontSize: "0.9em",
+								fontWeight: 500,
 							}}
 						>
 							{toolskey}

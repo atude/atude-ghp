@@ -54,18 +54,11 @@ const AboutPage = (props) => {
 						mainColor={mainColor}
 						currentScheme={currentScheme}
 						isDark={isDark}
-						headingIcon={
-							<HumanGreeting
-								style={{ color: mainColor }}
-								fontSize="large"
-								className="ContentCardHeadIcon"
-							/>
-						}
-						heading="Hi, I'm Moz!"
 						body={Database["About me"]}
+						content={<SkillsContent currentScheme={currentScheme} />}
 					/>
 				</Grid>
-				<Grid item xs={12}>
+				{/* <Grid item xs={12}>
 					<ContentCard
 						mainColor={mainColor}
 						currentScheme={currentScheme}
@@ -77,11 +70,11 @@ const AboutPage = (props) => {
 								className="ContentCardHeadIcon"
 							/>
 						}
-						heading="Programming Experience"
-						body={""}
+						heading="Programming Languages"
+						body=""
 						content={<SkillsContent currentScheme={currentScheme} />}
 					/>
-				</Grid>
+				</Grid> */}
 				<Grid item xs={12}>
 					<ContentCard
 						mainColor={mainColor}

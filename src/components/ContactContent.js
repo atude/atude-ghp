@@ -47,7 +47,7 @@ const ContactContent = (props) => {
 		return (
 			<Grid item xs={9}>
 				<Typography
-					variant="button"
+					variant="overline"
 					style={{
 						textDecoration: "none",
 						fontSize: "15px",

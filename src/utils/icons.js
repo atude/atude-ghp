@@ -88,7 +88,7 @@ export const toolsIcon = (type, setColor, currentScheme) => {
 		API: <TimelineText style={mainStyle} />,
 		Testing: <BugCheck style={mainStyle} />,
 		Devops: <Infinity style={mainStyle} />,
-		"Cloud Services": <Cloud style={mainStyle} />,
+		Cloud: <Cloud style={mainStyle} />,
 		UI: <DeveloperBoard style={mainStyle} />,
 		Design: <FormatColorFill style={mainStyle} />,
 

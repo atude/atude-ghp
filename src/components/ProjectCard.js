@@ -178,12 +178,7 @@ const ProjectCard = (props) => {
 		);
 	};
 
-	const getDetailsSectionLeft = (
-		categoryText,
-		categoryStyle,
-		rightPadding,
-		items
-	) => (
+	const getDetailsSectionLeft = (categoryStyle, rightPadding, items) => (
 		<Grid item container>
 			<Grid
 				container
@@ -191,64 +186,28 @@ const ProjectCard = (props) => {
 				justify="flex-start"
 				alignItems="flex-start"
 			>
-				<Grid item>
-					<Typography
-						style={{
-							...categoryStyle,
-							paddingRight: rightPadding,
-							paddingTop: "3px",
-						}}
-						variant="button"
-					>
-						{categoryText}
-					</Typography>
-				</Grid>
-				<Grid item container direction="row" xs={6}>
+				<Grid container direction="row" xs={12} justify="center">
 					{items}
 				</Grid>
 			</Grid>
 		</Grid>
 	);
 
-	const getDetailsContainer = (
-		categoryStyle,
-		platforms,
-		date,
-		built,
-		tools
-	) => (
+	const getDetailsContainer = (categoryStyle, built, tools) => (
 		<Grid container direction="row">
 			<Grid item xs={12} container direction="column">
-				{getDetailsSectionLeft(
-					"PLATFORMS",
-					categoryStyle,
-					10,
-					Object.keys(platforms).map((item) => (
-						<Grid key={item} item className="DetailsIconLeft">
-							{platforms[item]}
-						</Grid>
-					))
-				)}
-				{getDetailsSectionLeft(
-					"LANGUAGES",
-					categoryStyle,
-					10,
-					Object.keys(built).map((item) => (
+				{getDetailsSectionLeft(categoryStyle, 10, [
+					...Object.keys(built).map((item) => (
 						<Grid key={item} item className="DetailsIconLeft">
 							{built[item]}
 						</Grid>
-					))
-				)}
-				{getDetailsSectionLeft(
-					"TECH STACK",
-					categoryStyle,
-					8,
-					Object.keys(tools).map((item) => (
+					)),
+					...Object.keys(tools).map((item) => (
 						<Grid key={item} item className="DetailsIconLeft">
 							{tools[item]}
 						</Grid>
-					))
-				)}
+					)),
+				])}
 			</Grid>
 		</Grid>
 	);
@@ -295,10 +254,10 @@ const ProjectCard = (props) => {
 									textAlign: "center",
 								}}
 							>
-								{achievement.split(",")[0]}
-								{achievement.split(",").length > 1 && (
+								{achievement.split(";")[0]}
+								{achievement.split(";").length > 1 && (
 									<IconButton
-										href={achievement.split(",")[1]}
+										href={achievement.split(";")[1]}
 										target="_blank"
 										rel="noopener noreferrer"
 										style={{ margin: "-12px -14px -10px -5px" }}
@@ -335,7 +294,6 @@ const ProjectCard = (props) => {
 		tools,
 		team,
 		built,
-		platforms,
 		date,
 		achievements,
 		bgColor,
@@ -383,20 +341,12 @@ const ProjectCard = (props) => {
 						date
 					)}
 					{getAchievements(achievements, mainColor, accColor, currentScheme)}
-					{getDetailsContainer(
-						categoryStyle,
-						platforms,
-						date,
-						built,
-						tools,
-						role,
-						team
-					)}
+					{getDetailsContainer(categoryStyle, built, tools)}
 					<br />
 					{/* About */}
 					<Typography
-						style={{ color: mainColor, paddingBottom: "4px" }}
-						variant="button"
+						style={{ color: mainColor, paddingBottom: "4px", fontSize: "14px" }}
+						variant="overline"
 					>
 						ABOUT
 					</Typography>

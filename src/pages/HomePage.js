@@ -26,7 +26,7 @@ const HomePage = (props) => {
 							<div className="HomePageCircle3" />
 							<div className="HomePageTextMain">
 								<Typography
-									variant="button"
+									variant="headline"
 									style={{
 										color: "#ffffff",
 										opacity: "0.8",
@@ -34,7 +34,7 @@ const HomePage = (props) => {
 										fontSize: "max(1rem, 2vh)",
 									}}
 								>
-									hi, i&apos;m
+									Hi, I&apos;m
 								</Typography>
 								<Typography
 									variant="overline"
@@ -49,11 +49,11 @@ const HomePage = (props) => {
 								>
 									Mozamel
 									<br />
-									<b>Anwary</b>
+									<b>Anwary.</b>
 								</Typography>
 								<br />
 								<Typography
-									variant="button"
+									variant="headline"
 									style={{
 										color: "#ffffff",
 										opacity: "0.8",
@@ -62,7 +62,7 @@ const HomePage = (props) => {
 										lineHeight: "max(1.5rem, 3vh)",
 									}}
 								>
-									Software Engineer
+									I engineer things for web and mobile.
 								</Typography>
 							</div>
 						</div>
