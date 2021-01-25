@@ -50,7 +50,7 @@ export default function ProjectsPage(props) {
 				item
 				container
 				key={project.heading}
-				md={6}
+				md={12}
 				xs={12}
 				alignItems="center"
 				justify="center"

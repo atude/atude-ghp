@@ -26,51 +26,62 @@ const ProjectCard = (props) => {
 		setBannerIndex(bannerIndex + i);
 	};
 
-	const getBanner = (bgColor, projectBanners, viewicon, gitlink, viewlink) => {
+	const getBanner = (
+		bgColor,
+		projectBanners,
+		viewicon,
+		gitlink,
+		viewlink,
+		currentScheme
+	) => {
 		return (
 			<div style={{ backgroundColor: bgColor }} className="BannerContainer">
-				{projectBanners.map((banner, i) => (
-					<img
-						key={`${banner}_${i}_banner`}
-						alt={`${banner}_${i}_banner`}
-						style={{ opacity: bannerIndex === i ? 1 : 0 }}
-						className="BannerImg"
-						src={banner}
-						loading="lazy"
-					/>
-				))}
+				<div className="BannerImgContainer">
+					{projectBanners.map((banner, i) => (
+						<img
+							key={`${banner}_${i}_banner`}
+							alt={`${banner}_${i}_banner`}
+							style={{ opacity: bannerIndex === i ? 1 : 0 }}
+							className="BannerImg"
+							src={banner}
+							loading="lazy"
+						/>
+					))}
+				</div>
 
-				<Button
-					className="BannerLeft"
-					onClick={() => bannerControl(-1, projectBanners.length)}
-					style={{ marginTop: "270px" }}
-				>
-					<ChevronLeft
-						style={{
-							color: "white",
-							opacity: 0.9,
-							filter: "drop-shadow(0 0 4px rgba(0,0,0,0.65))",
-						}}
-					/>
-				</Button>
-				<Button
-					className="BannerRight"
-					onClick={() => bannerControl(1, projectBanners.length)}
-					style={{ marginTop: "270px" }}
-				>
-					<ChevronRight
-						style={{
-							color: "white",
-							opacity: 0.9,
-							filter: "drop-shadow(0 0 4px rgba(0,0,0,0.65))",
-						}}
-					/>
-				</Button>
+				<div className="BannerMoveContainer">
+					<Button
+						className="BannerLeft"
+						onClick={() => bannerControl(-1, projectBanners.length)}
+						style={{ marginTop: "270px" }}
+					>
+						<ChevronLeft
+							style={{
+								color: "white",
+								opacity: 0.9,
+								filter: "drop-shadow(0 0 4px rgba(0,0,0,0.65))",
+							}}
+						/>
+					</Button>
+					<Button
+						className="BannerRight"
+						onClick={() => bannerControl(1, projectBanners.length)}
+						style={{ marginTop: "270px" }}
+					>
+						<ChevronRight
+							style={{
+								color: "white",
+								opacity: 0.9,
+								filter: "drop-shadow(0 0 4px rgba(0,0,0,0.65))",
+							}}
+						/>
+					</Button>
+				</div>
 
 				<div className="BannerShortcutsCont">
 					<div className="ViewLink">
 						<IconButton
-							style={{ marginRight: "-4px", color: "#fff" }}
+							style={{ marginRight: "-4px", color: currentScheme.lightGray }}
 							component="a"
 							href={viewlink}
 							target="_blank"
@@ -79,7 +90,7 @@ const ProjectCard = (props) => {
 							{viewicon}
 						</IconButton>
 						<IconButton
-							style={{ color: "#fff" }}
+							style={{ color: currentScheme.lightGray }}
 							component="a"
 							href={gitlink}
 							target="_blank"
@@ -98,6 +109,7 @@ const ProjectCard = (props) => {
 					direction="row"
 					alignItems="center"
 					justify="center"
+					style={{ width: "50%" }}
 				>
 					{projectBanners.map((banner, i) => (
 						<Grid
@@ -353,7 +365,7 @@ const ProjectCard = (props) => {
 					{/* Body */}
 					<Typography
 						color="textSecondary"
-						style={{ fontSize: "14px" }}
+						style={{ fontSize: "14px", marginBottom: "-16px" }}
 						variant="body1"
 					>
 						{body}

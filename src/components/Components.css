@@ -1,7 +1,7 @@
 .MainContentCont{
   padding: 20px;
   width: 100%;
-  max-width: 1100px;
+  max-width: 1220px;
   margin: 0 auto;
 }
 
@@ -82,11 +82,14 @@
 }
 
 .ProjectCard{
-  height: 100%;
+	height: 100%;
+	display: flex;
+	flex: 1;
 }
 
 .ProjectCardContent {
-  padding: 0.2em 0.625em 1em 0.625em;
+	padding: 0.2em 0.625em 1em 0.625em;
+	flex: 1;
 }
 
 .ProjectCardTextContent {
@@ -171,15 +174,6 @@
   float: right;
   clear: both;
 	opacity: 0.9;
-	border-top: 2px rgba(255, 255, 255, 0.2) solid;
-	border-right: 2px rgba(255, 255, 255, 0.2) solid;
-	border-top-right-radius: 10px;
-}
-
-.ViewLink:hover{
-	transition: all 0.2s;
-	border-top: 2px rgba(255, 255, 255, 1) solid;
-	border-right: 2px rgba(255, 255, 255, 1) solid;
 }
 
 .ToolsText{
@@ -210,17 +204,29 @@
   height: 50px;
 }
 
+.BannerMoveContainer {
+	width: 100%;
+	position: relative;
+}
+
 .BannerDots{
-  position: absolute;
-  top: 288px;
-  pointer-events: none;
+	position: absolute;
+	width: 50%;
+  bottom: 12px;
+	pointer-events: none;
 }
 
 .BannerContainer{
-  height: 320px;
+	height: 100%;
+	flex: 1;
   overflow: hidden;
   border-radius: 16px;
   align-items: flex-end;
+}
+
+.BannerImgContainer{
+	position: relative;
+	height: 100%;
 }
 
 .BannerImg{
@@ -228,7 +234,7 @@
   position: absolute;
   width: 100%;
   border-radius: 14px;
-  height: 320px;
+  height: 100%;
   transition: opacity 0.5s ease;
 }
 
