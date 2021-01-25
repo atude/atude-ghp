@@ -44,11 +44,39 @@ import { Link } from "react-scroll";
 import HomePage from "../pages/HomePage";
 
 const iconSize = "40px";
-
-/* Colors */
 const drawerWidth = 340;
-var mainColor = "#555555";
-const secondaryColor = "#342E37";
+
+const muiGlobalConfig = {
+	typography: {
+		useNextVariants: true,
+		fontFamily: [
+			"-apple-system",
+			"BlinkMacSystemFont",
+			"\"Segoe UI\"",
+			"Roboto",
+			"\"Helvetica Neue\"",
+			"Arial",
+			"sans-serif",
+			"\"Apple Color Emoji\"",
+			"\"Segoe UI Emoji\"",
+			"\"Segoe UI Symbol\"",
+		].join(","),
+	},
+	palette: {
+		primary: {
+			main: "#555555",
+			text: "#ffffff",
+		},
+		secondary: {
+			main: "#342E37",
+		},
+		error: {
+			main: "#ffffff",
+		},
+		contrastThreshold: 3,
+		tonalOffset: 0.2,
+	},
+};
 
 const lightScheme = {
 	bg: "#ffffff",
@@ -56,44 +84,18 @@ const lightScheme = {
 	bgSecond: "#fafafa",
 	lightGray: "#555",
 	muiTheme: createMuiTheme({
+		...muiGlobalConfig,
 		palette: {
+			...muiGlobalConfig.palette,
 			type: "light",
-			primary: {
-				main: mainColor,
-				text: "#ffffff",
-			},
-			secondary: {
-				main: secondaryColor,
-			},
-			error: {
-				main: "#ffffff",
-			},
-
-			contrastThreshold: 3,
-			tonalOffset: 0.2,
 		},
-
-		typography: { useNextVariants: true },
 	}),
 	muiSidebarTheme: createMuiTheme({
+		...muiGlobalConfig,
 		palette: {
+			...muiGlobalConfig.palette,
 			type: "light",
-			primary: {
-				main: mainColor,
-				text: "#ffffff",
-			},
-			secondary: {
-				main: secondaryColor,
-			},
-			error: {
-				main: "#ffffff",
-			},
-
-			contrastThreshold: 3,
-			tonalOffset: 0.2,
 		},
-
-		typography: { useNextVariants: true },
 	}),
 	colorSet: colorSetLight,
 };
@@ -104,44 +106,18 @@ const darkScheme = {
 	bgSecond: "#303030",
 	lightGray: "#e5e5e5",
 	muiTheme: createMuiTheme({
+		...muiGlobalConfig,
 		palette: {
+			...muiGlobalConfig.palette,
 			type: "dark",
-			primary: {
-				main: mainColor,
-				text: "#ffffff",
-			},
-			secondary: {
-				main: secondaryColor,
-			},
-			error: {
-				main: "#ffffff",
-			},
-
-			contrastThreshold: 3,
-			tonalOffset: 0.2,
 		},
-
-		typography: { useNextVariants: true },
 	}),
 	muiSidebarTheme: createMuiTheme({
+		...muiGlobalConfig,
 		palette: {
+			...muiGlobalConfig.palette,
 			type: "dark",
-			primary: {
-				main: mainColor,
-				text: "#ffffff",
-			},
-			secondary: {
-				main: secondaryColor,
-			},
-			error: {
-				main: "#ffffff",
-			},
-
-			contrastThreshold: 3,
-			tonalOffset: 0.2,
 		},
-
-		typography: { useNextVariants: true },
 	}),
 	colorSet: colorSetDark,
 };
@@ -414,7 +390,7 @@ const ResponsiveDrawer = (props) => {
 								opacity: 0.85,
 							}}
 						>
-							<Menu style={{ color: mainColor }} />
+							<Menu style={{ color: "#555555" }} />
 						</IconButton>
 					</Toolbar>
 				</AppBar>
