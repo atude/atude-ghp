@@ -13,29 +13,39 @@ export const getRoutes = (currentScheme) => {
 	return {
 		home: {
 			title: "",
-			color: currentScheme.colorSet.purple,
-			prevColor: currentScheme.colorSet.grey,
+			color: currentScheme.lightGray,
+			prevColor: currentScheme.lightGray,
 		},
 		"about-me": {
 			title: "About Me",
-			color: currentScheme.colorSet.blue,
-			prevColor: currentScheme.colorSet.purple,
+			color: currentScheme.lightGray,
+			prevColor: currentScheme.lightGray,
 			icAppbar: (
 				<AccountBox
 					style={getRouteStyle(currentScheme)}
 					className="AppbarIcon"
 				/>
 			),
-			icList: <AccountBox className="ListIcon" />,
+			icList: (
+				<AccountBox
+					className="ListIcon"
+					style={{ color: currentScheme.lightGray }}
+				/>
+			),
 		},
 		projects: {
 			title: "Projects",
-			color: currentScheme.colorSet.red,
-			prevColor: currentScheme.colorSet.blue,
+			color: currentScheme.lightGray,
+			prevColor: currentScheme.lightGray,
 			icAppbar: (
 				<Buffer style={getRouteStyle(currentScheme)} className="AppbarIcon" />
 			),
-			icList: <Buffer className="ListIcon" />,
+			icList: (
+				<Buffer
+					className="ListIcon"
+					style={{ color: currentScheme.lightGray }}
+				/>
+			),
 		},
 	};
 };

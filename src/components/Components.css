@@ -1,7 +1,7 @@
 .MainContentCont{
   padding: 20px;
   width: 100%;
-  max-width: 1220px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -87,6 +87,12 @@
 	flex: 1;
 }
 
+@media only screen and (max-width: 960px) {
+	.ProjectCard{
+		flex-direction: column;
+	}
+}
+
 .ProjectCardContent {
 	padding: 0.2em 0.625em 1em 0.625em;
 	flex: 1;
@@ -107,7 +113,7 @@
 }
 
 .ToolsContainer{
-  padding-top: 12px;
+  padding-top: 30px;
   padding-left: 5px;
   padding-right: 5px;
 }
@@ -195,24 +201,22 @@
 }
 
 .BannerLeft{
-  position: absolute;
   height: 50px;
 }
 
 .BannerRight{
-  float: right;
   height: 50px;
 }
 
-.BannerMoveContainer {
+.BannerRelativeContainer {
 	width: 100%;
 	position: relative;
 }
 
 .BannerDots{
 	position: absolute;
-	width: 50%;
-  bottom: 12px;
+	width: 100%;
+  bottom: 16px;
 	pointer-events: none;
 }
 
@@ -221,7 +225,7 @@
 	flex: 1;
   overflow: hidden;
   border-radius: 16px;
-  align-items: flex-end;
+	align-items: flex-end;
 }
 
 .BannerImgContainer{
@@ -233,9 +237,11 @@
   object-fit: cover;
   position: absolute;
   width: 100%;
-  border-radius: 14px;
   height: 100%;
-  transition: opacity 0.5s ease;
+	transition: opacity 0.5s ease;
+	padding-top: 54px;
+	margin-top: -54px;
+	border-bottom: solid 1px rgba(255, 255, 255, 0.2);
 }
 
 .FAB{

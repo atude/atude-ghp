@@ -81,6 +81,7 @@ export const toolsIcon = (type, setColor, currentScheme) => {
 		fontSize: "28px",
 		marginLeft: "5px",
 		marginRight: "5px",
+		transition: "all 0.1s",
 	};
 	const iconSwitch = {
 		Frontend: <Iframe style={mainStyle} />,

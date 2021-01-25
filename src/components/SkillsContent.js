@@ -50,15 +50,33 @@ const TooltipTextStyled = styled.div`
 `;
 
 const TooltipWrapper = (props) => {
-	const { name, defColor } = props;
+	const [active, setActive] = useState(false);
+	const { name, defColor, color } = props;
 
 	return (
-		<TooltipStyled className="Hoverable">
-			<TooltipTextStyled className="Hoverable">
+		<TooltipStyled
+			key={name}
+			className="Hoverable"
+			onMouseEnter={() => setActive(true)}
+			onMouseLeave={() => setActive(false)}
+		>
+			<TooltipTextStyled
+				className="Hoverable"
+				style={{
+					paddingLeft: active ? "12px" : 0,
+					marginRight: active ? "-12px" : 0,
+				}}
+			>
 				<ArrowRightBoldHexagonOutline
-					style={{ color: defColor, marginRight: "6px" }}
+					style={{
+						color: active ? color : defColor,
+						marginRight: "6px",
+					}}
 				/>
-				<Typography style={{ color: defColor, flex: 2 }} variant="overline">
+				<Typography
+					style={{ color: active ? color : defColor, flex: 2 }}
+					variant="overline"
+				>
 					{name}
 				</Typography>
 			</TooltipTextStyled>
@@ -101,7 +119,7 @@ const SkillsContent = (props) => {
 					<TooltipWrapper
 						name="JavaScript (ES2020)"
 						iconComponent={LanguageJavascript}
-						color="#FFCA28"
+						color="#dbab18"
 						defColor={props.currentScheme.lightGray}
 					/>
 				);

@@ -14,6 +14,7 @@ import { smBreakpoint } from "../utils/layouts";
 
 const ProjectCard = (props) => {
 	const [bannerIndex, setBannerIndex] = useState(0);
+	const [active, setActive] = useState(false);
 	const isSmWidth = useMediaQuery({ query: `(max-width:${smBreakpoint}px)` });
 
 	const bannerControl = (i, len) => {
@@ -49,11 +50,11 @@ const ProjectCard = (props) => {
 					))}
 				</div>
 
-				<div className="BannerMoveContainer">
+				<div className="BannerRelativeContainer">
 					<Button
 						className="BannerLeft"
 						onClick={() => bannerControl(-1, projectBanners.length)}
-						style={{ marginTop: "270px" }}
+						style={{ position: "absolute", bottom: "2px", left: "8px" }}
 					>
 						<ChevronLeft
 							style={{
@@ -66,7 +67,7 @@ const ProjectCard = (props) => {
 					<Button
 						className="BannerRight"
 						onClick={() => bannerControl(1, projectBanners.length)}
-						style={{ marginTop: "270px" }}
+						style={{ position: "absolute", bottom: "2px", right: "8px" }}
 					>
 						<ChevronRight
 							style={{
@@ -102,31 +103,33 @@ const ProjectCard = (props) => {
 				</div>
 
 				{/* Banner carousel dots */}
-				<Grid
-					className="BannerDots"
-					container
-					spacing={8}
-					direction="row"
-					alignItems="center"
-					justify="center"
-					style={{ width: "50%" }}
-				>
-					{projectBanners.map((banner, i) => (
-						<Grid
-							item
-							key={`${banner}_${i}_dot`}
-							style={{
-								opacity: bannerIndex === i ? 1 : 0.5,
-								transition: "all 0.5s ease",
-								filter: "drop-shadow(0 0 4px rgba(0,0,0,0.3))",
-							}}
-						>
-							<svg height="10" width="10">
-								<circle fill="white" cx="3" cy="3" r="3" />
-							</svg>
-						</Grid>
-					))}
-				</Grid>
+				<div className="BannerRelativeContainer">
+					<Grid
+						className="BannerDots"
+						container
+						spacing={8}
+						direction="row"
+						alignItems="center"
+						justify="center"
+						style={{ width: "100%" }}
+					>
+						{projectBanners.map((banner, i) => (
+							<Grid
+								item
+								key={`${banner}_${i}_dot`}
+								style={{
+									opacity: bannerIndex === i ? 1 : 0.5,
+									transition: "all 0.5s ease",
+									filter: "drop-shadow(0 0 4px rgba(0,0,0,0.3))",
+								}}
+							>
+								<svg height="10" width="10">
+									<circle fill="white" cx="3" cy="3" r="3" />
+								</svg>
+							</Grid>
+						))}
+					</Grid>
+				</div>
 			</div>
 		);
 	};
@@ -198,7 +201,7 @@ const ProjectCard = (props) => {
 				justify="flex-start"
 				alignItems="flex-start"
 			>
-				<Grid container direction="row" xs={12} justify="center">
+				<Grid container direction="row" justify="center">
 					{items}
 				</Grid>
 			</Grid>
@@ -210,12 +213,12 @@ const ProjectCard = (props) => {
 			<Grid item xs={12} container direction="column">
 				{getDetailsSectionLeft(categoryStyle, 10, [
 					...Object.keys(built).map((item) => (
-						<Grid key={item} item className="DetailsIconLeft">
+						<Grid key={item + "built"} item className="DetailsIconLeft">
 							{built[item]}
 						</Grid>
 					)),
 					...Object.keys(tools).map((item) => (
-						<Grid key={item} item className="DetailsIconLeft">
+						<Grid key={item + "tool"} item className="DetailsIconLeft">
 							{tools[item]}
 						</Grid>
 					)),
@@ -309,13 +312,13 @@ const ProjectCard = (props) => {
 		date,
 		achievements,
 		bgColor,
-		accColor,
 		gitlink,
 		viewlink,
 		viewicon,
 		body,
 		role,
 		mainColor,
+		accColor,
 		currentScheme,
 		isDark,
 	} = props;
@@ -330,6 +333,12 @@ const ProjectCard = (props) => {
 	return (
 		<div
 			className={`ProjectCard ${isDark ? "StandardCardDark" : "StandardCard"}`}
+			style={{
+				filter: active ? "grayscale(0%)" : "grayscale(80%)",
+				transition: "all 0.2s",
+			}}
+			onMouseEnter={() => setActive(true)}
+			onMouseLeave={() => setActive(false)}
 		>
 			{getBanner(
 				bgColor,
@@ -357,7 +366,7 @@ const ProjectCard = (props) => {
 					<br />
 					{/* About */}
 					<Typography
-						style={{ color: mainColor, paddingBottom: "4px", fontSize: "14px" }}
+						style={{ color: accColor, paddingBottom: "4px", fontSize: "14px" }}
 						variant="overline"
 					>
 						ABOUT

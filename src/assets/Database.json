@@ -2,9 +2,12 @@
   "Resume": "https://drive.google.com/file/d/1YD4MRDAQmZVvqhR5rU8Yhbe8wCydcyKz/view?usp=sharing",
   "About me":
   {
-		"Hi! I'm Moz, a software engineer in Sydney, Australia. ": "I have a passion to build well-engineered, scalable, maintainable and beautiful apps. With a skillset across frontend, design, backend and cloud, I'm able to create captivating experiences make our everyday lives interesting.",
+		"NULL": "I have a passion to build well-engineered, scalable, maintainable and beautiful apps. With a skillset across frontend, design, backend and cloud, I'm able to create captivating experiences make our everyday lives interesting.",
 		"": "Some of the languages I've used recently include:"
-  },
+	},
+	"Technologies": {
+		"": "Here's a snapshot of tech I've used from small scale personal projects to large scale commercial products."
+	},
   "Skillset": 
   {
 		"TS":       { "level": 4, "desc": "TypeScript" },

@@ -25,42 +25,48 @@ export const getMiniIcons = (types, setColor) => {
 	types.forEach((item) => {
 		switch (item) {
 			case "Android":
-				iconList.push(<Android fontSize="medium" style={miniIconColor} />);
+				iconList.push(<Android fontSize="default" style={miniIconColor} />);
 				break;
 			case "Chrome API":
 			case "Chrome":
-				iconList.push(<GoogleChrome fontSize="medium" style={miniIconColor} />);
+				iconList.push(
+					<GoogleChrome fontSize="default" style={miniIconColor} />
+				);
 				break;
 			case "Web":
-				iconList.push(<Application fontSize="medium" style={miniIconColor} />);
+				iconList.push(<Application fontSize="default" style={miniIconColor} />);
 				break;
 			case "C":
-				iconList.push(<LanguageC fontSize="medium" style={miniIconColor} />);
+				iconList.push(<LanguageC fontSize="default" style={miniIconColor} />);
 				break;
 			case "C#":
 				iconList.push(
-					<LanguageCsharp fontSize="medium" style={miniIconColor} />
+					<LanguageCsharp fontSize="default" style={miniIconColor} />
 				);
 				break;
 			case "TypeScript":
 				iconList.push(
-					<LanguageTypescript fontSize="medium" style={miniIconColor} />
+					<LanguageTypescript fontSize="default" style={miniIconColor} />
 				);
 				break;
 			case "JavaScript":
 				iconList.push(
-					<LanguageJavascript fontSize="medium" style={miniIconColor} />
+					<LanguageJavascript fontSize="default" style={miniIconColor} />
 				);
 				break;
 			case "React":
-				iconList.push(<ReactIcon fontSize="medium" style={miniIconColor} />);
+				iconList.push(<ReactIcon fontSize="default" style={miniIconColor} />);
 				break;
 			case "React Native":
-				iconList.push(<ReactIcon fontSize="medium" style={miniIconColor} />);
+				iconList.push(<ReactIcon fontSize="default" style={miniIconColor} />);
 				break;
 			case "React Native Paper":
 				iconList.push(
-					<SvgIcon fontSize="medium" viewBox="0 0 850 850" style={miniIconColor}>
+					<SvgIcon
+						fontSize="default"
+						viewBox="0 0 850 850"
+						style={miniIconColor}
+					>
 						<g transform="translate(0,800) scale(0.1,-0.1)">
 							<path
 								stroke={miniIconColor.color}
@@ -72,30 +78,42 @@ export const getMiniIcons = (types, setColor) => {
 				);
 				break;
 			case "Material UI":
-				iconList.push(<MaterialUi fontSize="medium" style={miniIconColor} />);
+				iconList.push(<MaterialUi fontSize="default" style={miniIconColor} />);
 				break;
 			case "Expo":
 				iconList.push(
-					<SvgIcon fontSize="medium" viewBox="0 0 256 256" style={miniIconColor}>
+					<SvgIcon
+						fontSize="default"
+						viewBox="0 0 256 256"
+						style={miniIconColor}
+					>
 						<path d="M46 178.5c.3 3.62 1.56 7.24 4.89 12.1 3.94 5.77 10.72 8.94 15.66 3.85 3.34-3.43 39.42-66.5 56.81-90.4a5.18 5.18 0 0 1 8.5 0c17.39 23.9 53.47 86.97 56.8 90.4 4.94 5.09 11.73 1.92 15.67-3.85 3.88-5.68 4.95-9.66 4.95-13.92 0-2.9-56.19-107.49-61.85-116.19-5.45-8.37-7.1-10.2-16.31-10.49h-7.02c-9.21.3-10.87 2.12-16.31 10.49-5.55 8.52-59.55 108.98-61.79 115.87v2.14z" />
 					</SvgIcon>
 				);
 				break;
 			case "HTML":
-				iconList.push(<LanguageHtml5 fontSize="medium" style={miniIconColor} />);
+				iconList.push(
+					<LanguageHtml5 fontSize="default" style={miniIconColor} />
+				);
 				break;
 			case "CSS":
-				iconList.push(<LanguageCss3 fontSize="medium" style={miniIconColor} />);
+				iconList.push(
+					<LanguageCss3 fontSize="default" style={miniIconColor} />
+				);
 				break;
 			case "Unity":
-				iconList.push(<Unity fontSize="medium" style={miniIconColor} />);
+				iconList.push(<Unity fontSize="default" style={miniIconColor} />);
 				break;
 			case "Firebase":
-				iconList.push(<Firebase fontSize="medium" style={miniIconColor} />);
+				iconList.push(<Firebase fontSize="default" style={miniIconColor} />);
 				break;
 			case "Express":
 				iconList.push(
-					<SvgIcon fontSize="medium" viewBox="0 0 128 128" style={miniIconColor}>
+					<SvgIcon
+						fontSize="default"
+						viewBox="0 0 128 128"
+						style={miniIconColor}
+					>
 						<g transform="translate(6.4, 6.4) scale(0.9, 0.9)">
 							<path d="M126.67,98.44c-4.56,1.16-7.38.05-9.91-3.75-5.68-8.51-11.95-16.63-18-24.9-.78-1.07-1.59-2.12-2.6-3.45C89,76,81.85,85.2,75.14,94.77c-2.4,3.42-4.92,4.91-9.4,3.7L92.66,62.34,67.6,29.71c4.31-.84,7.29-.41,9.93,3.45,5.83,8.52,12.26,16.63,18.67,25.21C102.65,49.82,109,41.7,115,33.26c2.41-3.42,5-4.72,9.33-3.46-3.28,4.35-6.49,8.63-9.72,12.88-4.36,5.73-8.64,11.53-13.16,17.14-1.61,2-1.35,3.3.09,5.19C109.9,76,118.16,87.1,126.67,98.44Z" />
 							<path d="M1.33,61.74c.72-3.61,1.2-7.29,2.2-10.83,6-21.43,30.6-30.34,47.5-17.06C60.93,41.64,63.39,52.62,62.9,65H7.1c-.84,22.21,15.15,35.62,35.53,28.78,7.15-2.4,11.36-8,13.47-15,1.07-3.51,2.84-4.06,6.14-3.06-1.69,8.76-5.52,16.08-13.52,20.66-12,6.86-29.13,4.64-38.14-4.89C5.26,85.89,3,78.92,2,71.39c-.15-1.2-.46-2.38-.7-3.57Q1.33,64.78,1.33,61.74ZM7.2,60.25H57.63c-.33-16.06-10.33-27.47-24-27.57C18.63,32.56,7.85,43.7,7.2,60.25Z" />
@@ -105,7 +123,11 @@ export const getMiniIcons = (types, setColor) => {
 				break;
 			case "Koa":
 				iconList.push(
-					<SvgIcon fontSize="medium" viewBox="0 0 512 275" style={miniIconColor}>
+					<SvgIcon
+						fontSize="default"
+						viewBox="0 0 512 275"
+						style={miniIconColor}
+					>
 						<g>
 							<path
 								d="M25.6523877,0 L25.6523877,182.498415 L106.274177,91.6156702 L109.938804,91.6156702 L50.2053873,159.044803 L128.994864,274.847011 L103.342476,274.847011 L35.54688,175.169161 L25.6523877,186.529505 L25.6523877,274.847011 L0,274.847011 L0,0 L25.6523877,0 Z M153.010067,184.729644 C153.010067,125.276424 191.37165,92.1677439 241.314089,92.1677439 C287.275608,92.1677439 326.722897,115.664226 326.722897,180.457556 C326.722897,239.910777 288.361313,273.019456 238.418875,273.019456 C192.457356,273.019456 153.010067,249.522974 153.010067,184.729644 Z M176.806345,184.741069 C176.806345,247.375581 204.303498,270.639829 238.399967,270.639829 C274.32958,270.639829 302.926619,237.711971 302.926619,180.446131 C302.926619,117.811619 275.429466,94.5473716 241.332997,94.5473716 C205.403384,94.5473716 176.806345,127.475229 176.806345,184.741069 Z M500.990371,271.957131 C457.662155,271.957131 459.793051,246.680612 459.793051,246.680612 L459.793051,241.696509 C452.690065,254.512773 439.194391,273.38116 404.034609,273.38116 C362.482139,273.38116 355.379153,247.036619 353.248257,232.796327 C349.696764,208.943837 358.220347,191.143472 421.436925,186.871384 C437.418644,185.447355 455.531259,186.159369 459.793051,186.515377 L459.793051,127.418163 C459.793051,127.418163 463.699693,95.3775057 422.502373,95.3775057 C400.483116,95.3775057 373.136619,104.633696 364.257886,109.617798 L362.837288,107.125747 C367.45423,104.989703 389.118338,92.5294473 427.119314,92.5294473 C478.615965,92.5294473 484.653503,115.313915 484.653503,127.418163 L484.653503,246.680612 C484.653503,269.821087 500.990371,269.109072 500.990371,269.109072 L512,269.109072 L512,271.957131 L500.990371,271.957131 Z M410.248646,271.001532 C436.87535,271.001532 458.597134,246.764229 459.648188,232.294197 L459.648188,188.522351 C455.443972,188.160601 438.977458,186.713598 421.459889,188.884102 C384.322645,193.225112 376.965266,206.24814 379.067374,232.655948 C380.468779,250.381737 385.72405,271.001532 410.248646,271.001532 Z"
@@ -118,7 +140,11 @@ export const getMiniIcons = (types, setColor) => {
 				break;
 			case "Node":
 				iconList.push(
-					<SvgIcon fontSize="medium" viewBox="0 0 600 600" style={miniIconColor}>
+					<SvgIcon
+						fontSize="default"
+						viewBox="0 0 600 600"
+						style={miniIconColor}
+					>
 						<g transform="translate(60, 60) scale(0.9, 0.95)">
 							<path d="m485.291 129.408-224-128c-3.285-1.877-7.296-1.877-10.581 0l-224 128c-3.328 1.899-5.376 5.44-5.376 9.259v234.667c0 3.819 2.048 7.36 5.376 9.259l224 128c1.643.939 3.456 1.408 5.291 1.408s3.648-.469 5.291-1.408l224-128c3.328-1.899 5.376-5.44 5.376-9.259v-234.667c-.001-3.819-2.049-7.36-5.377-9.259z" />
 						</g>
@@ -127,7 +153,11 @@ export const getMiniIcons = (types, setColor) => {
 				break;
 			case "Apollo":
 				iconList.push(
-					<SvgIcon fontSize="medium" viewBox="0 0 256 256" style={miniIconColor}>
+					<SvgIcon
+						fontSize="default"
+						viewBox="0 0 256 256"
+						style={miniIconColor}
+					>
 						<g>
 							<path
 								d="M160.227,178.5186 L187.857,178.5186 L143.75,64.0486 L113.201,64.0486 L69.094,178.5186 L96.726,178.5186 L103.934,159.1286 L145.609,159.1286 L138.065,137.6726 L110.625,137.6726 L128.475,88.4186 L160.227,178.5186 Z M251.339,93.768 C250.357,90.232 246.705,88.155 243.154,89.141 C239.617,90.123 237.544,93.787 238.526,97.324 C241.299,107.309 242.704,117.63 242.704,128 C242.704,191.248 191.248,242.702 128,242.702 C64.752,242.702 13.297,191.248 13.297,128 C13.297,64.751 64.752,13.296 128,13.296 C154.793,13.296 180.718,22.814 201.179,39.752 C200.383,41.652 199.941,43.737 199.941,45.925 C199.941,54.76 207.103,61.922 215.938,61.922 C224.773,61.922 231.935,54.76 231.935,45.925 C231.935,37.09 224.773,29.928 215.938,29.928 C214.237,29.928 212.6,30.199 211.062,30.691 C188.022,11.056 158.513,0 128,0 C57.421,0 0,57.42 0,128 C0,198.579 57.421,255.999 128,255.999 C198.579,255.999 256,198.579 256,128 C256,116.428 254.433,104.91 251.339,93.768 Z"
@@ -140,7 +170,7 @@ export const getMiniIcons = (types, setColor) => {
 			case "Puppeteer":
 				iconList.push(
 					<SvgIcon
-						fontSize="medium"
+						fontSize="default"
 						viewBox="-35 -75 460 460"
 						style={miniIconColor}
 					>
@@ -151,7 +181,7 @@ export const getMiniIcons = (types, setColor) => {
 			case "CircleCI":
 				iconList.push(
 					<SvgIcon
-						fontSize="medium"
+						fontSize="default"
 						viewBox="-10 -6 120 120"
 						style={miniIconColor}
 					>
@@ -162,7 +192,7 @@ export const getMiniIcons = (types, setColor) => {
 			case "Jest":
 				iconList.push(
 					<SvgIcon
-						fontSize="medium"
+						fontSize="default"
 						viewBox="-25 -25 306 323"
 						style={miniIconColor}
 					>
@@ -181,7 +211,7 @@ export const getMiniIcons = (types, setColor) => {
 				key={i}
 				className={
 					"ProjectMiniIconParent " +
-					(setColor === "#e5e5e5" && "ProjectMiniIconParentDark")
+					(setColor === "#CCC9DC" && "ProjectMiniIconParentDark")
 				}
 			>
 				<div className="ProjectMiniIcon">{iconObj}</div>

@@ -13,7 +13,7 @@ const ContentCard = (props) => {
 				<>
 					{headingIcon}
 					<Typography
-						style={{ color: mainColor, fontSize: "26px" }}
+						style={{ color: mainColor, fontSize: "18px", fontWeight: 500 }}
 						variant="h2"
 					>
 						{heading}
@@ -33,7 +33,7 @@ const ContentCard = (props) => {
 						}}
 						variant="headline"
 					>
-						{key !== "" && key}
+						{key !== "" && !key.includes("NULL") && key}
 					</Typography>
 					<Typography
 						color="textSecondary"

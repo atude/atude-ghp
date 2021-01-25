@@ -79,10 +79,10 @@ const muiGlobalConfig = {
 };
 
 const lightScheme = {
-	bg: "#ffffff",
+	bg: "#FFFCF9",
 	bgInv: "#000000",
-	bgSecond: "#fafafa",
-	lightGray: "#555",
+	bgSecond: "#CCC9DC",
+	lightGray: "#324A5F",
 	muiTheme: createMuiTheme({
 		...muiGlobalConfig,
 		palette: {
@@ -101,10 +101,10 @@ const lightScheme = {
 };
 
 const darkScheme = {
-	bg: "#101010",
+	bg: "#0C1821",
 	bgInv: "#ffffff",
-	bgSecond: "#303030",
-	lightGray: "#e5e5e5",
+	bgSecond: "#0C1821",
+	lightGray: "#CCC9DC",
 	muiTheme: createMuiTheme({
 		...muiGlobalConfig,
 		palette: {
@@ -230,9 +230,9 @@ const ResponsiveDrawer = (props) => {
 									fontSize: "24px",
 									lineHeight: "32px",
 									textAlign: "right",
+									color: currentScheme.lightGray,
 								}}
 								variant="overline"
-								color="textPrimary"
 							>
 								Mozamel
 								<br />
@@ -259,7 +259,7 @@ const ResponsiveDrawer = (props) => {
 							>
 								<Github
 									className="DrawerIconButton"
-									style={{ fontSize: iconSize }}
+									style={{ fontSize: iconSize, color: currentScheme.lightGray }}
 								/>
 							</IconButton>
 						</Grid>
@@ -273,7 +273,7 @@ const ResponsiveDrawer = (props) => {
 							>
 								<Linkedin
 									className="DrawerIconButton"
-									style={{ fontSize: iconSize }}
+									style={{ fontSize: iconSize, color: currentScheme.lightGray }}
 								/>
 							</IconButton>
 						</Grid>
@@ -285,7 +285,7 @@ const ResponsiveDrawer = (props) => {
 							>
 								<EmailBox
 									className="DrawerIconButton"
-									style={{ fontSize: iconSize }}
+									style={{ fontSize: iconSize, color: currentScheme.lightGray }}
 								/>
 							</IconButton>
 						</Grid>
@@ -316,7 +316,7 @@ const ResponsiveDrawer = (props) => {
 						<Typography
 							color="textPrimary"
 							variant="button"
-							style={{ fontSize: "14px" }}
+							style={{ fontSize: "14px", color: currentScheme.lightGray }}
 						>
 							{header}
 						</Typography>

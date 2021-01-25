@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../components/Components.css";
 import ContentCard from "../components/ContentCard.js";
 import { Grid, Avatar, Fade } from "@material-ui/core";
-import { HumanGreeting, CubeOutline, CodeBraces } from "mdi-material-ui";
+import { CubeOutline, HumanGreeting } from "mdi-material-ui";
 import Database from "../assets/Database";
 import SkillsContent from "../components/SkillsContent";
 import ToolsContent from "../components/ToolsContent";
@@ -24,6 +24,7 @@ const AboutPage = (props) => {
 				title={getRoutes(currentScheme)[sectionId].title}
 				icon={getRoutes(currentScheme)[sectionId].icAppbar}
 				currentScheme={currentScheme}
+				isDark={isDark}
 			/>
 			<Grid
 				container
@@ -54,6 +55,13 @@ const AboutPage = (props) => {
 						mainColor={mainColor}
 						currentScheme={currentScheme}
 						isDark={isDark}
+						headingIcon={
+							<HumanGreeting
+								style={{ color: mainColor }}
+								className="ContentCardHeadIcon"
+							/>
+						}
+						heading="Hi! I'm Moz, a software engineer in Sydney, Australia."
 						body={Database["About me"]}
 						content={<SkillsContent currentScheme={currentScheme} />}
 					/>
@@ -83,12 +91,11 @@ const AboutPage = (props) => {
 						headingIcon={
 							<CubeOutline
 								style={{ color: mainColor }}
-								fontSize="large"
 								className="ContentCardHeadIcon"
 							/>
 						}
-						heading="Software Technologies"
-						body={""}
+						heading="Tech I'm Familiar With"
+						body={Database["Technologies"]}
 						content={<ToolsContent currentScheme={currentScheme} />}
 					/>
 				</Grid>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Components.css";
 import { Grid, Typography, Chip, Divider } from "@material-ui/core";
 
@@ -10,6 +10,7 @@ import { toolsIcon } from "../utils/icons";
 const tools = Database["Toolset"];
 
 const ToolsContent = (props) => {
+	const [active, setActive] = useState("");
 	const isMdWidth = useMediaQuery({ query: `(max-width:${mdBreakpoint}px)` });
 	const { currentScheme } = props;
 	const colorSet = currentScheme.colorSet;
@@ -24,19 +25,31 @@ const ToolsContent = (props) => {
 					spacing={isMdWidth ? 16 : 8}
 					direction="row"
 					justify="flex-start"
+					onMouseEnter={() => setActive(toolskey)}
+					onMouseLeave={() => setActive("")}
 				>
 					<Grid item xs={2} md={1} style={{ marginTop: "4px" }}>
-						{toolsIcon(toolskey, Object.values(colorSet)[i], currentScheme)}
+						{toolsIcon(
+							toolskey,
+							active === toolskey
+								? Object.values(colorSet)[i]
+								: currentScheme.lightGray,
+							currentScheme
+						)}
 					</Grid>
 					<Grid item xs={9} md={3} lg={2} style={{ marginTop: "5px" }}>
 						<Typography
 							variant="overline"
 							style={{
-								color: Object.values(colorSet)[i],
+								color:
+									active === toolskey
+										? Object.values(colorSet)[i]
+										: currentScheme.lightGray,
 								display: "flex",
 								marginTop: "-5px",
 								fontSize: "0.9em",
 								fontWeight: 500,
+								transition: "all 0.1s",
 							}}
 						>
 							{toolskey}
@@ -58,7 +71,10 @@ const ToolsContent = (props) => {
 										label={<span style={{ paddingLeft: "2.5px" }}>{key}</span>}
 										style={{
 											color: props.currentScheme.bg,
-											backgroundColor: Object.values(colorSet)[i],
+											backgroundColor:
+												active === toolskey
+													? Object.values(colorSet)[i]
+													: currentScheme.lightGray,
 										}}
 									/>
 								</Grid>
