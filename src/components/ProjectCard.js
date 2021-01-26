@@ -335,7 +335,7 @@ const ProjectCard = (props) => {
 			className={`ProjectCard ${isDark ? "StandardCardDark" : "StandardCard"}`}
 			style={{
 				filter: active ? "grayscale(0%)" : "grayscale(80%)",
-				transition: "all 0.2s",
+				transition: "all 0.3s ease",
 			}}
 			onMouseEnter={() => setActive(true)}
 			onMouseLeave={() => setActive(false)}

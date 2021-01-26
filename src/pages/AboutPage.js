@@ -35,16 +35,18 @@ const AboutPage = (props) => {
 			>
 				<Grid item>
 					<Fade in={isAvatarLoad} timeout={700}>
-						<Avatar
-							src={imgProfile}
-							alt="avatar"
-							style={{
-								width: 200,
-								height: 200,
-								margin: 20,
-							}}
-							onLoad={() => setAvatarLoad(true)}
-						/>
+						<div className="AvatarImg">
+							<Avatar
+								src={imgProfile}
+								alt="avatar"
+								style={{
+									width: 200,
+									height: 200,
+									margin: 20,
+								}}
+								onLoad={() => setAvatarLoad(true)}
+							/>
+						</div>
 					</Fade>
 					<div className="AvatarBgCircle" />
 					<div className="AvatarBgCircle2" />
@@ -57,7 +59,7 @@ const AboutPage = (props) => {
 						isDark={isDark}
 						headingIcon={
 							<HumanGreeting
-								style={{ color: mainColor }}
+								style={{ color: currentScheme.secondary }}
 								className="ContentCardHeadIcon"
 							/>
 						}
@@ -66,23 +68,6 @@ const AboutPage = (props) => {
 						content={<SkillsContent currentScheme={currentScheme} />}
 					/>
 				</Grid>
-				{/* <Grid item xs={12}>
-					<ContentCard
-						mainColor={mainColor}
-						currentScheme={currentScheme}
-						isDark={isDark}
-						headingIcon={
-							<CodeBraces
-								style={{ color: mainColor }}
-								fontSize="large"
-								className="ContentCardHeadIcon"
-							/>
-						}
-						heading="Programming Languages"
-						body=""
-						content={<SkillsContent currentScheme={currentScheme} />}
-					/>
-				</Grid> */}
 				<Grid item xs={12}>
 					<ContentCard
 						mainColor={mainColor}
@@ -90,7 +75,7 @@ const AboutPage = (props) => {
 						isDark={isDark}
 						headingIcon={
 							<CubeOutline
-								style={{ color: mainColor }}
+								style={{ color: currentScheme.secondary }}
 								className="ContentCardHeadIcon"
 							/>
 						}

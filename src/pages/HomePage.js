@@ -1,11 +1,19 @@
 import React from "react";
 import "../components/Components.css";
 import { Typography, Tooltip, Fab, Grow, Slide } from "@material-ui/core";
-import { React as ReactIcon, MaterialUi, FileDownload } from "mdi-material-ui";
+import { React as ReactIcon, FileDownload } from "mdi-material-ui";
 import Database from "../assets/Database";
+import styled from "styled-components";
 
 const darkCircleFilters = "hue-rotate(-45deg)";
 const defaultCircleFilter = "hue-rotate(0)";
+
+const NameTextStyled = styled(Typography)`
+	padding-left: 0px;
+	:hover {
+		padding-left: 20px;
+	}
+`;
 
 const HomePage = (props) => {
 	const { currentScheme, isDark, mainColor, sectionId } = props;
@@ -36,8 +44,7 @@ const HomePage = (props) => {
 								>
 									Hi, I&apos;m
 								</Typography>
-								<Typography
-									variant="overline"
+								<NameTextStyled
 									style={{
 										fontSize: "max(2rem, 5vh)",
 										lineHeight: "max(2rem, 6vh)",
@@ -48,10 +55,8 @@ const HomePage = (props) => {
 									}}
 								>
 									Mozamel
-									<br />
-									<b>Anwary.</b>
-								</Typography>
-								<br />
+									<b> Anwary.</b>
+								</NameTextStyled>
 								<Typography
 									variant="headline"
 									style={{
@@ -69,17 +74,9 @@ const HomePage = (props) => {
 					</Slide>
 				</div>
 			</Grow>
-			<Tooltip
-				disableFocusListener
-				title="Powered by React | MaterialUI"
-				placement="left"
-			>
-				<div className="BuiltCont">
-					<ReactIcon style={{ color: currentScheme.bgInv }} />
-					<br />
-					<MaterialUi style={{ color: currentScheme.bgInv }} />
-				</div>
-			</Tooltip>
+			<div className="BuiltCont">
+				<ReactIcon style={{ color: currentScheme.lightGray }} />
+			</div>
 			<div className="FAB">
 				<Tooltip title="View/Download Resume" placement="left">
 					<Fab

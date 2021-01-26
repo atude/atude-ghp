@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Typography, Fade, Slide } from "@material-ui/core";
 import styled from "styled-components";
 import "./Components.css";
@@ -22,10 +22,8 @@ const DotStyled = styled.div`
 `;
 
 const LineStyled = styled.div`
-	width: 20px;
 	height: 4px;
 	border-radius: 50px;
-	margin: 1em;
 `;
 
 const DividerStyled = styled.div`
@@ -38,6 +36,7 @@ const DividerStyled = styled.div`
 `;
 
 const AnchoredSubheading = (props) => {
+	const [active, setActive] = useState(false);
 	const {
 		color,
 		prevColor,
@@ -55,10 +54,33 @@ const AnchoredSubheading = (props) => {
 				<Slide in direction="up" timeout={2000}>
 					<div>
 						<Fade in timeout={4000}>
-							<DividerStyled>
-								<LineStyled style={{ backgroundColor: prevColor }} />
-								<DotStyled style={{ backgroundColor: prevColor }} />
-								<LineStyled style={{ backgroundColor: prevColor }} />
+							<DividerStyled
+								onMouseEnter={() => setActive(true)}
+								onMouseLeave={() => setActive(false)}
+							>
+								<LineStyled
+									style={{
+										backgroundColor: prevColor,
+										transition: "all 0.5s ease",
+										marginRight: active ? "4em" : "1em",
+										width: active ? "120px" : "20px",
+									}}
+								/>
+								<DotStyled
+									style={{
+										backgroundColor: prevColor,
+										transition: "all 0.5s ease",
+										transform: active ? "scale(0.8, 0.8)" : "scale(1, 1)",
+									}}
+								/>
+								<LineStyled
+									style={{
+										backgroundColor: prevColor,
+										transition: "all 0.5s ease",
+										marginLeft: active ? "4em" : "1em",
+										width: active ? "120px" : "20px",
+									}}
+								/>
 							</DividerStyled>
 						</Fade>
 					</div>

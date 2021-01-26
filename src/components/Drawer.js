@@ -83,6 +83,7 @@ const lightScheme = {
 	bgInv: "#000000",
 	bgSecond: "#CCC9DC",
 	lightGray: "#324A5F",
+	secondary: "#1B9AAA",
 	muiTheme: createMuiTheme({
 		...muiGlobalConfig,
 		palette: {
@@ -104,7 +105,8 @@ const darkScheme = {
 	bg: "#0C1821",
 	bgInv: "#ffffff",
 	bgSecond: "#0C1821",
-	lightGray: "#CCC9DC",
+	lightGray: "#A1B9CE",
+	secondary: "#3DCEE1",
 	muiTheme: createMuiTheme({
 		...muiGlobalConfig,
 		palette: {
@@ -222,17 +224,22 @@ const ResponsiveDrawer = (props) => {
 								src={icAtude}
 								alt="Atude"
 								className="SidebarIconHead"
-								style={{ filter: !isDark ? "invert(100%)" : "invert(0)" }}
+								style={{
+									filter: !isDark
+										? "invert(0%)"
+										: "invert(100%) grayscale(100%)",
+								}}
 							/>
 							<Typography
 								className="SidebarNameText"
 								style={{
 									fontSize: "24px",
-									lineHeight: "32px",
+									lineHeight: "30px",
 									textAlign: "right",
+									marginRight: "24px",
 									color: currentScheme.lightGray,
 								}}
-								variant="overline"
+								variant="headline"
 							>
 								Mozamel
 								<br />

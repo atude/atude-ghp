@@ -36,7 +36,7 @@ const ContactPage = (props) => {
 						isDark={isDark}
 						headingIcon={
 							<OpenInNew
-								style={{ color: mainColor }}
+								style={{ color: currentScheme.secondary }}
 								fontSize="large"
 								className="ContentCardHeadIcon"
 							/>
@@ -60,7 +60,7 @@ const ContactPage = (props) => {
 						isDark={isDark}
 						headingIcon={
 							<Forum
-								style={{ color: mainColor }}
+								style={{ color: currentScheme.secondary }}
 								fontSize="large"
 								className="ContentCardHeadIcon"
 							/>

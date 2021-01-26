@@ -3,7 +3,15 @@ import "./Components.css";
 import { Typography } from "@material-ui/core";
 
 const ContentCard = (props) => {
-	const { headingIcon, heading, body, content, mainColor, isDark } = props;
+	const {
+		headingIcon,
+		heading,
+		body,
+		content,
+		mainColor,
+		isDark,
+		currentScheme,
+	} = props;
 	return (
 		<div
 			className={`ContentCard ${isDark ? "StandardCardDark" : "StandardCard"}`}
@@ -13,7 +21,11 @@ const ContentCard = (props) => {
 				<>
 					{headingIcon}
 					<Typography
-						style={{ color: mainColor, fontSize: "18px", fontWeight: 500 }}
+						style={{
+							color: currentScheme.secondary,
+							fontSize: "18px",
+							fontWeight: 500,
+						}}
 						variant="h2"
 					>
 						{heading}
