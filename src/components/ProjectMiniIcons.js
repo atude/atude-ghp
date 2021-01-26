@@ -211,7 +211,7 @@ export const getMiniIcons = (types, setColor) => {
 				key={i}
 				className={
 					"ProjectMiniIconParent " +
-					(setColor === "#CCC9DC" && "ProjectMiniIconParentDark")
+					(setColor === "#A1B9CE" && "ProjectMiniIconParentDark")
 				}
 			>
 				<div className="ProjectMiniIcon">{iconObj}</div>

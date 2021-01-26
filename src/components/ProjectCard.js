@@ -333,12 +333,11 @@ const ProjectCard = (props) => {
 	return (
 		<div
 			className={`ProjectCard ${isDark ? "StandardCardDark" : "StandardCard"}`}
-			style={{
-				filter: active ? "grayscale(0%)" : "grayscale(80%)",
-				transition: "all 0.3s ease",
-			}}
 			onMouseEnter={() => setActive(true)}
 			onMouseLeave={() => setActive(false)}
+			style={{
+				filter: active ? "grayscale(0%)" : "grayscale(80%)",
+			}}
 		>
 			{getBanner(
 				bgColor,

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../components/Components.css";
 import Database from "../assets/Database";
-import { Grid, Typography, Slide } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import ProjectCard from "../components/ProjectCard";
 import { getMiniIcons } from "../components/ProjectMiniIcons";
 import ReactSVG from "react-svg";
@@ -55,33 +55,31 @@ export default function ProjectsPage(props) {
 				alignItems="center"
 				justify="center"
 			>
-				<Slide in direction="left">
-					<ProjectCard
-						mainColor={mainColor}
-						isDark={isDark}
-						currentScheme={currentScheme}
-						projectIcon={
-							<Typography component="span" style={{ color: project.accColor }}>
-								<ReactSVG
-									className="IconColor"
-									svgClassName="ProjectCardIcon"
-									src={
-										require(`../assets/projects/${project.heading}/ic.svg`)
-											.default
-									}
-								/>
-							</Typography>
-						}
-						{...project}
-						projectBanners={
-							banners[project.heading] ? banners[project.heading] : []
-						}
-						tools={getMiniIcons(project.tools, currentScheme.lightGray)}
-						built={getMiniIcons(project.built, currentScheme.lightGray)}
-						platforms={getMiniIcons(project.platforms, currentScheme.lightGray)}
-						viewicon={viewIcons[project.viewicon]}
-					/>
-				</Slide>
+				<ProjectCard
+					mainColor={mainColor}
+					isDark={isDark}
+					currentScheme={currentScheme}
+					projectIcon={
+						<Typography component="span" style={{ color: project.accColor }}>
+							<ReactSVG
+								className="IconColor"
+								svgClassName="ProjectCardIcon"
+								src={
+									require(`../assets/projects/${project.heading}/ic.svg`)
+										.default
+								}
+							/>
+						</Typography>
+					}
+					{...project}
+					projectBanners={
+						banners[project.heading] ? banners[project.heading] : []
+					}
+					tools={getMiniIcons(project.tools, currentScheme.lightGray)}
+					built={getMiniIcons(project.built, currentScheme.lightGray)}
+					platforms={getMiniIcons(project.platforms, currentScheme.lightGray)}
+					viewicon={viewIcons[project.viewicon]}
+				/>
 			</Grid>
 		);
 	};
