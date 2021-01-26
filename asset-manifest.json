@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/atude-ghp/static/css/main.57a3b539.chunk.css",
-    "main.js": "/atude-ghp/static/js/main.5bac1ed2.chunk.js",
-    "main.js.map": "/atude-ghp/static/js/main.5bac1ed2.chunk.js.map",
+    "main.css": "/atude-ghp/static/css/main.93d486c6.chunk.css",
+    "main.js": "/atude-ghp/static/js/main.713553b0.chunk.js",
+    "main.js.map": "/atude-ghp/static/js/main.713553b0.chunk.js.map",
     "runtime-main.js": "/atude-ghp/static/js/runtime-main.dad1829e.js",
     "runtime-main.js.map": "/atude-ghp/static/js/runtime-main.dad1829e.js.map",
     "static/css/2.9057a367.chunk.css": "/atude-ghp/static/css/2.9057a367.chunk.css",
-    "static/js/2.b04688f8.chunk.js": "/atude-ghp/static/js/2.b04688f8.chunk.js",
-    "static/js/2.b04688f8.chunk.js.map": "/atude-ghp/static/js/2.b04688f8.chunk.js.map",
+    "static/js/2.46150b56.chunk.js": "/atude-ghp/static/js/2.46150b56.chunk.js",
+    "static/js/2.46150b56.chunk.js.map": "/atude-ghp/static/js/2.46150b56.chunk.js.map",
     "index.html": "/atude-ghp/index.html",
     "static/css/2.9057a367.chunk.css.map": "/atude-ghp/static/css/2.9057a367.chunk.css.map",
-    "static/css/main.57a3b539.chunk.css.map": "/atude-ghp/static/css/main.57a3b539.chunk.css.map",
-    "static/js/2.b04688f8.chunk.js.LICENSE.txt": "/atude-ghp/static/js/2.b04688f8.chunk.js.LICENSE.txt",
+    "static/css/main.93d486c6.chunk.css.map": "/atude-ghp/static/css/main.93d486c6.chunk.css.map",
+    "static/js/2.46150b56.chunk.js.LICENSE.txt": "/atude-ghp/static/js/2.46150b56.chunk.js.LICENSE.txt",
     "static/media/0.png": "/atude-ghp/static/media/0.d36157c2.png",
     "static/media/1.png": "/atude-ghp/static/media/1.fdc78de7.png",
     "static/media/2.png": "/atude-ghp/static/media/2.ea9dcd67.png",
@@ -19,15 +19,15 @@
     "static/media/4.png": "/atude-ghp/static/media/4.c4df9d04.png",
     "static/media/5.png": "/atude-ghp/static/media/5.76359781.png",
     "static/media/ic.svg": "/atude-ghp/static/media/ic.f9ee99d6.svg",
-    "static/media/ic_atude.508fc5ca.png": "/atude-ghp/static/media/ic_atude.508fc5ca.png",
+    "static/media/ic_atude.99f5c6c9.png": "/atude-ghp/static/media/ic_atude.99f5c6c9.png",
     "static/media/profile.e0c7595a.jpg": "/atude-ghp/static/media/profile.e0c7595a.jpg",
     "static/media/index.css": "/atude-ghp/static/media/roboto-latin-900italic.ae5f802c.woff2"
   },
   "entrypoints": [
     "static/js/runtime-main.dad1829e.js",
     "static/css/2.9057a367.chunk.css",
-    "static/js/2.b04688f8.chunk.js",
-    "static/css/main.57a3b539.chunk.css",
-    "static/js/main.5bac1ed2.chunk.js"
+    "static/js/2.46150b56.chunk.js",
+    "static/css/main.93d486c6.chunk.css",
+    "static/js/main.713553b0.chunk.js"
   ]
 }
