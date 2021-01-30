@@ -38,7 +38,7 @@ const HomePage = (props) => {
 									style={{
 										color: "#ffffff",
 										opacity: "0.8",
-										transition: "all 1s ease",
+										transition: "all 0.5s ease",
 										fontSize: "max(1rem, 2vh)",
 									}}
 								>
@@ -50,7 +50,7 @@ const HomePage = (props) => {
 										lineHeight: "max(2rem, 6vh)",
 										textAlign: "left",
 										opacity: "0.8",
-										transition: "all 1s ease",
+										transition: "all 0.5s ease",
 										mixBlendMode: "overlay",
 									}}
 								>
@@ -78,7 +78,7 @@ const HomePage = (props) => {
 				<ReactIcon style={{ color: currentScheme.lightGray }} />
 			</div>
 			<div className="FAB">
-				<Tooltip title="View/Download Resume" placement="left">
+				<Tooltip title="View My Resume" placement="left">
 					<Fab
 						size="large"
 						component="a"

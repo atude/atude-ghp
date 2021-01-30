@@ -76,7 +76,6 @@ export default function ProjectsPage(props) {
 						banners[project.heading] ? banners[project.heading] : []
 					}
 					tools={getMiniIcons(project.tools, currentScheme.lightGray)}
-					built={getMiniIcons(project.built, currentScheme.lightGray)}
 					platforms={getMiniIcons(project.platforms, currentScheme.lightGray)}
 					viewicon={viewIcons[project.viewicon]}
 				/>
@@ -91,6 +90,7 @@ export default function ProjectsPage(props) {
 				color={mainColor}
 				prevColor={prevColor}
 				title={getRoutes(currentScheme)[sectionId].title}
+				subtitle={getRoutes(currentScheme)[sectionId].subtitle ?? ""}
 				icon={getRoutes(currentScheme)[sectionId].icAppbar}
 				currentScheme={currentScheme}
 				isDark={isDark}

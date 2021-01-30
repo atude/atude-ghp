@@ -75,13 +75,17 @@ export const toolsIcon = (type, setColor, currentScheme) => {
 		setColor = currentScheme.bg;
 	}
 
-	const cStyle = { color: setColor, fontSize: "21px", marginLeft: "7px" };
+	const cStyle = {
+		color: setColor,
+		fontSize: "21px",
+		marginLeft: "7px",
+	};
 	const mainStyle = {
+		transition: "all 0.1s ease",
 		color: setColor,
 		fontSize: "28px",
 		marginLeft: "5px",
 		marginRight: "5px",
-		transition: "all 0.1s",
 	};
 	const iconSwitch = {
 		Frontend: <Iframe style={mainStyle} />,

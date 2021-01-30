@@ -6,7 +6,7 @@
 		"": "Some of the languages I've used recently include:"
 	},
 	"Technologies": {
-		"": "Here's a snapshot of tech I've used from small scale personal projects to large scale commercial products."
+		"": "Here's a snapshot of tech I've used from small scale apps to large scale commercial products."
 	},
   "Skillset": 
   {
@@ -48,50 +48,47 @@
       "accColor": "#f74d00",
       "heading": "Beams",
       "subheading": "Suburb Analysis Webapp",
-      "tools": ["React", "Node", "Express", "Material UI"],
-      "built": ["JavaScript", "HTML", "CSS"],
+      "tools": ["JavaScript", "React", "Node", "Express", "Material UI"],
       "platforms": ["Web"],
-      "date": "2019",
       "gitlink": "https://github.com/atude/beams",
       "viewlink": "https://youtu.be/vWZBiD6iriM",
       "viewicon": "Youtube",
       "role": "Lead Frontend Engineer",
       "team": "5 Members",
       "achievements": [
-        "Best UX: Macquarie Group Workshop | 2019"
+        "Best UX: Macquarie Group Workshop 2019"
       ],
       "body": "A suburb analysis webapp that collates housing market data and suburb information with user financial/ethical requirements to help buy properties in suburbs tailored to you.",
       "live": false
-    },
-    "Sympt": 
+		},
+		"Kanbie": 
     {
-      "bgColor": "#303a3d",
-      "accColor": "#00A7AF",
-      "heading": "Sympt",
-      "subheading": "Disease Statistics Hub",
-      "tools": ["React", "React Native", "Node", "Firebase", "Express", "Puppeteer", "Jest", "CircleCI"],
-      "built": ["TypeScript", "JavaScript", "HTML", "CSS"],
-      "platforms": ["Android", "Web"],
-      "date": "2020",
-      "gitlink": "https://github.com/atude/sympt/",
-      "viewlink": "https://youtu.be/1E9If8qvBP4",
-      "viewicon": "Youtube",
-      "role": "Technical Lead",
-      "team": "5 Members",
-      "achievements": [],
-      "body": "A disease hub that provides up-to-date analysis on the climate of diseases in Australia, focused on COVID-19. Sympt includes the mobile app for users as well as an API and dashboard for developers.",
-      "live": false
-    },
-    "Unicore": 
+      "bgColor": "#35363a",
+      "accColor": "#ed39c9",
+      "heading": "Kanbie",
+      "subheading": "Kanban Board Chrome Extension",
+      "tools": ["JavaScript", "React", "Chrome API"],
+      "platforms": ["Chrome"],
+      "gitlink": "https://github.com/atude/kanbie-extension",
+      "viewlink": "https://chrome.google.com/webstore/detail/kanbie/hancagoabobbbadijbbfepodbdgjbfpf",
+      "viewicon": "Chrome Web Store",
+      "role": "Fullstack Engineer",
+      "team": "Solo",
+      "achievements": [
+				"20,000+ installs",
+        "Featured on Chrome Web Store;https://drive.google.com/file/d/1xhySBmxpCRzXEB7sFEusBj2Q0o9Fp0VJ/view?usp=sharing"
+      ],
+      "body": "A dark themed kanban board accessible in-tab with labelling, shortcuts and themes, integrating with Chrome's API for syncing across Google accounts. ",
+      "live": true
+		},
+		"Unicore": 
     {
       "bgColor": "#453aa1",
       "accColor": "#7f74e3",
       "heading": "Unicore",
       "subheading": "University WAM and Course Tracking App",
-      "tools": ["React Native", "Expo", "Firebase", "React Native Paper"],
-      "built": ["JavaScript"],
+      "tools": ["JavaScript", "React Native", "Expo", "Firebase", "React Native Paper"],
       "platforms": ["Android"],
-      "date": "2019 - 2020",
       "gitlink": "https://github.com/atude/wam-calc",
       "viewlink": "https://play.google.com/store/apps/details?id=com.atude.mywam",
       "viewicon": "Google Play",
@@ -104,27 +101,22 @@
       "body": "A multi-purpose tool for university students to track WAM, analyse marks and compare course progress. Includes location-based ranking methods, organised course log with filters, performance graphs and online accounts with data syncing.",
       "live": true
     },
-    "Kanbie": 
+    "Sympt": 
     {
-      "bgColor": "#35363a",
-      "accColor": "#ed39c9",
-      "heading": "Kanbie",
-      "subheading": "Kanban Board Chrome Extension",
-      "tools": ["React", "Chrome API"],
-      "built": ["JavaScript", "HTML", "CSS"],
-      "platforms": ["Chrome"],
-      "date": "2020",
-      "gitlink": "https://github.com/atude/kanbie-extension",
-      "viewlink": "https://chrome.google.com/webstore/detail/kanbie/hancagoabobbbadijbbfepodbdgjbfpf",
-      "viewicon": "Chrome Web Store",
-      "role": "Fullstack Engineer",
-      "team": "Solo",
-      "achievements": [
-				"20,000+ installs",
-        "Featured on Chrome Web Store;https://drive.google.com/file/d/1xhySBmxpCRzXEB7sFEusBj2Q0o9Fp0VJ/view?usp=sharing"
-      ],
-      "body": "A dark themed kanban board accessible in-tab with labelling, shortcuts and themes, integrating with Chrome's API for syncing across Google accounts. ",
-      "live": true
+      "bgColor": "#303a3d",
+      "accColor": "#00A7AF",
+      "heading": "Sympt",
+      "subheading": "Disease Statistics Hub",
+      "tools": ["TypeScript", "React", "React Native", "Node", "Firebase", "Express", "Puppeteer", "Jest", "CircleCI"],
+      "platforms": ["Android", "Web"],
+      "gitlink": "https://github.com/atude/sympt/",
+      "viewlink": "https://youtu.be/1E9If8qvBP4",
+      "viewicon": "Youtube",
+      "role": "Technical Lead",
+      "team": "5 Members",
+      "achievements": [],
+      "body": "A disease hub that provides up-to-date analysis on the climate of diseases in Australia, focused on COVID-19. Sympt includes the mobile app for users as well as an API and dashboard for developers.",
+      "live": false
     },
     "Devote": 
     {
@@ -132,10 +124,8 @@
       "accColor": "#3d95e8",
       "heading": "Devote",
       "subheading": "Study Management App",
-      "tools": ["Unity"],
-      "built": ["C#"],
+      "tools": ["C#", "Unity"],
       "platforms": ["Android"],
-      "date": "2017 - 2018",
       "gitlink": "https://github.com/atude/devote",
       "viewlink": "https://play.google.com/store/apps/details?id=com.cyberscopes.devote",
       "viewicon": "Google Play",

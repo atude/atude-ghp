@@ -34,7 +34,7 @@ export const getRoutes = (currentScheme) => {
 			),
 		},
 		projects: {
-			title: "Projects",
+			title: "Featured Projects",
 			color: currentScheme.lightGray,
 			prevColor: currentScheme.lightGray,
 			icAppbar: (

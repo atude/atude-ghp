@@ -143,11 +143,11 @@ const ProjectCard = (props) => {
 		subheading,
 		role,
 		team,
-		date
+		achievements
 	) => {
 		return (
 			<div className="ProjectCardTextContent">
-				{projectIcon}
+				{/* {projectIcon} */}
 				<Typography
 					component="a"
 					href={viewlink}
@@ -158,11 +158,13 @@ const ProjectCard = (props) => {
 						color: accColor,
 						fontSize: "28px",
 						textDecoration: "none",
+						paddingBottom: "0.5em",
 					}}
 				>
 					{heading}
 				</Typography>
-				<div style={{ marginTop: "2px" }}>
+				{achievements}
+				<div style={{ marginTop: "0.6em" }}>
 					<Typography
 						className="ProjectCardSubheader"
 						variant="body1"
@@ -185,7 +187,7 @@ const ProjectCard = (props) => {
 							letterSpacing: "0px",
 						}}
 					>
-						{role}&nbsp; • &nbsp;{team}&nbsp; • &nbsp;{date}
+						{role}&nbsp; • &nbsp;{team}
 					</Typography>
 				</div>
 				<br />
@@ -200,29 +202,28 @@ const ProjectCard = (props) => {
 				direction="row"
 				justify="flex-start"
 				alignItems="flex-start"
+				// Offset due to icon padding
+				style={{ marginLeft: "-7px" }}
 			>
-				<Grid container direction="row" justify="center">
+				<Grid container direction="row" justify="flex-start">
 					{items}
 				</Grid>
 			</Grid>
 		</Grid>
 	);
 
-	const getDetailsContainer = (categoryStyle, built, tools) => (
+	const getDetailsContainer = (categoryStyle, tools) => (
 		<Grid container direction="row">
 			<Grid item xs={12} container direction="column">
-				{getDetailsSectionLeft(categoryStyle, 10, [
-					...Object.keys(built).map((item) => (
-						<Grid key={item + "built"} item className="DetailsIconLeft">
-							{built[item]}
-						</Grid>
-					)),
-					...Object.keys(tools).map((item) => (
+				{getDetailsSectionLeft(
+					categoryStyle,
+					10,
+					Object.keys(tools).map((item) => (
 						<Grid key={item + "tool"} item className="DetailsIconLeft">
 							{tools[item]}
 						</Grid>
-					)),
-				])}
+					))
+				)}
 			</Grid>
 		</Grid>
 	);
@@ -237,47 +238,37 @@ const ProjectCard = (props) => {
 			return (
 				<div
 					style={{
-						paddingBottom: "20px",
 						display: "flex",
 						flexDirection: "row",
-						alignItems: "center",
-						justifyContent: "center",
+						alignItems: "flex-start",
+						justifyContent: "flex-start",
 						flexWrap: "wrap",
-						minHeight: isSmWidth ? "63px" : 0,
+						// minHeight: isSmWidth ? "63px" : 0,
 					}}
 				>
-					{achievements.map((achievement) => (
-						<div
-							key={achievement}
-							style={{
-								marginTop: "8px",
-								marginRight: "6px",
-								padding: "4px",
-								backgroundColor: accColor,
-								borderRadius: 30,
-							}}
-						>
+					{achievements.map((achievement, i) => (
+						<div key={achievement}>
 							<Typography
 								variant="button"
 								style={{
-									paddingLeft: "12px",
-									paddingRight: "12px",
-									paddingTop: "3px",
-									paddingBottom: "3px",
+									marginBottom: "0.5em",
 									fontSize: "12px",
-									color: "#fff",
-									textAlign: "center",
+									color: accColor,
+									lineHeight: "1.3",
 								}}
 							>
-								{achievement.split(";")[0]}
-								{achievement.split(";").length > 1 && (
+								{achievement.split(";")[0]}{" "}
+								{i !== achievements.length - 1 && !isSmWidth && (
+									<span>&nbsp;|&nbsp;&nbsp;</span>
+								)}
+								{achievement.split(";").length > 1 && !isSmWidth && (
 									<IconButton
 										href={achievement.split(";")[1]}
 										target="_blank"
 										rel="noopener noreferrer"
-										style={{ margin: "-12px -14px -10px -5px" }}
+										style={{ margin: "-22px -14px -20px -5px" }}
 									>
-										<OpenInNew style={{ fontSize: "16px", color: "#fff" }} />
+										<OpenInNew style={{ fontSize: "16px", color: accColor }} />
 									</IconButton>
 								)}
 							</Typography>
@@ -288,14 +279,14 @@ const ProjectCard = (props) => {
 		} else {
 			return (
 				<div
-					style={{
-						margin: "25px auto 34px",
-						paddingTop: "2px",
-						backgroundColor: currentScheme.lightGray,
-						borderRadius: 30,
-						width: "50px",
-						opacity: 0.1,
-					}}
+				// style={{
+				// 	margin: "25px auto 34px",
+				// 	paddingTop: "2px",
+				// 	backgroundColor: currentScheme.lightGray,
+				// 	borderRadius: 30,
+				// 	width: "50px",
+				// 	opacity: 0.1,
+				// }}
 				/>
 			);
 		}
@@ -308,8 +299,6 @@ const ProjectCard = (props) => {
 		subheading,
 		tools,
 		team,
-		built,
-		date,
 		achievements,
 		bgColor,
 		gitlink,
@@ -358,10 +347,9 @@ const ProjectCard = (props) => {
 						subheading,
 						role,
 						team,
-						date
+						getAchievements(achievements, mainColor, accColor, currentScheme)
 					)}
-					{getAchievements(achievements, mainColor, accColor, currentScheme)}
-					{getDetailsContainer(categoryStyle, built, tools)}
+					{getDetailsContainer(categoryStyle, tools)}
 					<br />
 					{/* About */}
 					<Typography

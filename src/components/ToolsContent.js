@@ -41,6 +41,7 @@ const ToolsContent = (props) => {
 						<Typography
 							variant="overline"
 							style={{
+								transition: "all 0.1s ease",
 								color:
 									active === toolskey
 										? Object.values(colorSet)[i]
@@ -49,7 +50,6 @@ const ToolsContent = (props) => {
 								marginTop: "-5px",
 								fontSize: "0.9em",
 								fontWeight: 500,
-								transition: "all 0.1s",
 							}}
 						>
 							{toolskey}
@@ -70,6 +70,7 @@ const ToolsContent = (props) => {
 										icon={toolsIcon(key, undefined, currentScheme)}
 										label={<span style={{ paddingLeft: "2.5px" }}>{key}</span>}
 										style={{
+											transition: "all 0.1s ease",
 											color: props.currentScheme.bg,
 											backgroundColor:
 												active === toolskey

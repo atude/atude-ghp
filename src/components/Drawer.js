@@ -106,7 +106,7 @@ const darkScheme = {
 	bgInv: "#ffffff",
 	bgSecond: "#0C1821",
 	lightGray: "#A1B9CE",
-	secondary: "#3DCEE1",
+	secondary: "#55b5c2",
 	muiTheme: createMuiTheme({
 		...muiGlobalConfig,
 		palette: {

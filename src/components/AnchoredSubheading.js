@@ -5,14 +5,25 @@ import "./Components.css";
 
 const HeadingContainerStyled = styled.div`
 	display: flex;
-	flex-direction: row;
-	align-items: center;
+	flex-direction: column;
 	justify-content: space-between;
 	width: 100%;
 	margin-bottom: 2em;
 	margin-top: 2em;
 	border-radius: 10px;
 	padding: 1em;
+`;
+
+const HeadingContentStyled = styled.div`
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+`;
+
+const SubtitleStyled = styled(Typography)`
+	margin-left: 24px;
 `;
 
 const DotStyled = styled.div`
@@ -43,6 +54,7 @@ const AnchoredSubheading = (props) => {
 		currentScheme,
 		isDark,
 		title,
+		subtitle,
 		icon,
 		id,
 		isFirst,
@@ -93,18 +105,30 @@ const AnchoredSubheading = (props) => {
 					backgroundColor: color,
 				}}
 			>
-				<Typography
-					className="AppbarText"
-					style={{
-						fontSize: "32px",
-						color: currentScheme.bg,
-					}}
-					variant="h2"
-					inline
-				>
-					{title}
-				</Typography>
-				{icon}
+				<HeadingContentStyled>
+					<Typography
+						className="AppbarText"
+						style={{
+							fontSize: "32px",
+							color: currentScheme.bg,
+						}}
+						variant="h2"
+						inline
+					>
+						{title}
+					</Typography>
+					{icon}
+				</HeadingContentStyled>
+				{!!subtitle && (
+					<SubtitleStyled
+						style={{
+							fontSize: "16px",
+							color: currentScheme.bg,
+						}}
+					>
+						{subtitle}
+					</SubtitleStyled>
+				)}
 			</HeadingContainerStyled>
 		</div>
 	);
