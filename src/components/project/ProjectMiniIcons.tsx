@@ -18,8 +18,11 @@ import {
 	LanguageTypescript,
 } from "mdi-material-ui";
 
-export const getMiniIcons = (types, setColor) => {
-	const iconList = [];
+export const getMiniIcons = (
+	types: string[],
+	setColor: string
+): JSX.Element[] => {
+	const iconList: JSX.Element[] = [];
 	const miniIconColor = { color: setColor };
 
 	types.forEach((item) => {

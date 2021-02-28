@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import "../components/Components.css";
 import database from "../data/database";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import ProjectCard from "../components/project/ProjectCard";
 import { getMiniIcons } from "../components/project/ProjectMiniIcons";
-import ReactSVG from "react-svg";
 import { GooglePlay, Youtube, GoogleChrome } from "mdi-material-ui";
 import AnchoredSubheading from "../components/AnchoredSubheading";
 import { getRoutes } from "../routes/Routes";
@@ -66,7 +65,6 @@ const ProjectsPage = (props: PageProps): JSX.Element => {
 						banners[project.heading] ? banners[project.heading] : []
 					}
 					tools={getMiniIcons(project.tools, theme.lightGray)}
-					platforms={getMiniIcons(project.platforms, theme.lightGray)}
 					viewicon={viewIcons[project.viewicon]}
 				/>
 			</Grid>

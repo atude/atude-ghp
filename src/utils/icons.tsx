@@ -1,13 +1,7 @@
 import React, { useContext } from "react";
-import "../components/Components.css";
 import { SvgIcon } from "@material-ui/core";
 import {
-	AccountCircle,
-	AccountSupervisorCircle,
-	Calendar,
 	DeveloperBoard,
-	CodeNotEqualVariant,
-	AccountGroup,
 	React as ReactIcon,
 	Unity,
 	Github,
@@ -33,49 +27,6 @@ import { ThemeContext } from "../context/ThemeContext";
 
 type IconSwitch = {
 	[key: string]: JSX.Element;
-};
-
-export const projectDetailsStaticIcon = (
-	role: string,
-	gray: string
-): JSX.Element => {
-	switch (role) {
-		case "Technical Lead":
-			return (
-				<AccountGroup className="DetailsIconRight" style={{ color: gray }} />
-			);
-		case "Fullstack Engineer":
-			return (
-				<DeveloperBoard className="DetailsIconRight" style={{ color: gray }} />
-			);
-		case "Solo":
-			return (
-				<AccountCircle className="DetailsIconRight" style={{ color: gray }} />
-			);
-		case "Lead Frontend Engineer":
-			return (
-				<CodeNotEqualVariant
-					className="DetailsIconRight"
-					style={{ color: gray }}
-				/>
-			);
-		case "Backend Engineer":
-			return (
-				<CodeNotEqualVariant
-					className="DetailsIconRight"
-					style={{ color: gray }}
-				/>
-			);
-		case "Calendar":
-			return <Calendar className="DetailsIconRight" style={{ color: gray }} />;
-		default:
-			return (
-				<AccountSupervisorCircle
-					className="DetailsIconRight"
-					style={{ color: gray }}
-				/>
-			);
-	}
 };
 
 export const toolsIcon = (type: string, setColor: string): JSX.Element => {

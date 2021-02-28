@@ -78,10 +78,7 @@ const database: Database = {
 			viewicon: "Chrome Web Store",
 			role: "Fullstack Engineer",
 			team: "Solo",
-			achievements: [
-				"20,000+ installs",
-				"Featured on Chrome Web Store;https://drive.google.com/file/d/1xhySBmxpCRzXEB7sFEusBj2Q0o9Fp0VJ/view?usp=sharing",
-			],
+			achievements: ["20,000+ installs", "Featured on Chrome Web Store"],
 			body:
 				"A dark themed kanban board accessible in-tab with labelling, shortcuts and themes, integrating with Chrome's API for syncing across Google accounts. ",
 			live: true,
@@ -104,10 +101,7 @@ const database: Database = {
 			viewicon: "Google Play",
 			role: "Fullstack Engineer",
 			team: "Solo",
-			achievements: [
-				"500+ installs",
-				"Showcased on React Native Paper;https://callstack.github.io/react-native-paper/showcase.html",
-			],
+			achievements: ["500+ installs", "Showcased on React Native Paper"],
 			body:
 				"A multi-purpose tool for university students to track WAM, analyse marks and compare course progress. Includes location-based ranking methods, organised course log with filters, performance graphs and online accounts with data syncing.",
 			live: true,

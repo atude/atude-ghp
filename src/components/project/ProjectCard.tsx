@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import "../Components.css";
 import {
 	Typography,
 	CardContent,
@@ -8,14 +7,34 @@ import {
 	IconButton,
 	Link,
 } from "@material-ui/core";
-import { Github, OpenInNew, ChevronLeft, ChevronRight } from "mdi-material-ui";
+import { Github, ChevronLeft, ChevronRight } from "mdi-material-ui";
 import { useMediaQuery } from "react-responsive";
 
-import { smBreakpoint } from "../../utils/layouts";
+import { mdBreakpoint } from "../../utils/layouts";
 import { ThemeContext } from "../../context/ThemeContext";
 import styled from "styled-components";
 import StandardCard from "../_shared/StandardCard";
-import { ThemedProps } from "../../config/styled";
+import {
+	ThemedActiveProps,
+	ThemedProps,
+	ThemedTypographyProps,
+} from "../../config/styled";
+
+type ProjectProps = {
+	projectBanners: string[];
+	heading: string;
+	subheading: string;
+	tools: JSX.Element[];
+	team: string;
+	achievements: string[];
+	bgColor: string;
+	gitlink: string;
+	viewlink: string;
+	viewicon: JSX.Element;
+	body: string;
+	role: string;
+	accColor: string;
+};
 
 const ProjectCardContainer = styled(StandardCard)<ThemedProps>`
 	height: 100%;
@@ -46,15 +65,59 @@ const BannerContainer = styled.div`
 	background-color: ${(props) => props.color};
 `;
 
+const BannerImageContainer = styled.div`
+	height: 100%;
+	position: relative;
+`;
+
 const BannerRelativeContainer = styled.div`
 	width: 100%;
 	position: relative;
+`;
+
+const BannerImage = styled.img<ThemedActiveProps>`
+	object-fit: cover;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	transition: opacity 0.5s ease;
+	padding-top: 54px;
+	margin-top: -54px;
+	border-bottom: solid 1px rgba(255, 255, 255, 0.2);
+	opacity: ${(props) => (props.active ? 1 : 0)};
+`;
+
+const BannerLinksContainer = styled.div`
+	padding: 3px;
+	position: absolute;
+	top: 0;
+	right: 0;
+`;
+
+const BannerLinksContentContainer = styled.div`
+	margin: 3px;
+	float: right;
+	clear: both;
+	opacity: 0.9;
 `;
 
 const BannerButton = styled(Button)`
 	height: 50px;
 	position: absolute;
 	bottom: 2px;
+`;
+
+const BannerDotsContainer = styled(Grid)`
+	position: absolute;
+	width: 100%;
+	bottom: 16px;
+	pointer-events: none;
+`;
+
+const BannerDot = styled(Grid)<ThemedActiveProps>`
+	transition: all 0.5s ease;
+	filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.3));
+	opacity: ${(props) => (props.active ? 1 : 0.5)};
 `;
 
 const BannerChevronWrapper = styled.div`
@@ -65,11 +128,62 @@ const BannerChevronWrapper = styled.div`
 	}
 `;
 
-const ProjectCard = (props: any): JSX.Element => {
+const ProjectHeading = styled(Typography)<ThemedTypographyProps>`
+	color: ${(props) => props.textColor};
+	font-size: 28px;
+	text-decoration: none;
+	padding-bottom: 0.5em;
+`;
+
+const ProjectSubheading = styled(Typography)<ThemedTypographyProps>`
+	color: ${(props) => props.textColor};
+	font-size: 14px;
+	letter-spacing: 0;
+	margin-top: 0.6px;
+	@media only screen and (max-width: 600px) {
+		margin-top: 2px;
+	}
+`;
+
+const ToolIconContainer = styled(Grid)`
+	padding: 5px 0 0 7px;
+`;
+
+const AchievementsContainer = styled.div`
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+`;
+
+const AchievementText = styled(Typography)<ThemedTypographyProps>`
+	margin-bottom: 0.5em;
+	font-size: 12px;
+	color: ${(props) => props.textColor};
+	line-height: 1.3;
+	:not(:last-child):after {
+		white-space: pre;
+		content: "  •  ";
+	}
+`;
+
+const AboutText = styled(Typography)<ThemedTypographyProps>`
+	color: ${(props) => props.textColor};
+	padding-bottom: 4px;
+	font-size: 14px;
+`;
+
+const DescriptionText = styled(Typography)`
+	font-size: 14px;
+	margin-bottom: -16px;
+`;
+
+const ProjectCard = (props: ProjectProps): JSX.Element => {
 	const [bannerIndex, setBannerIndex] = useState(0);
 	const themeContext = useContext(ThemeContext);
 	const { theme, isDark } = themeContext;
-	const isSmWidth = useMediaQuery({ query: `(max-width:${smBreakpoint}px)` });
+	const isMdWidth = useMediaQuery({ query: `(max-width:${mdBreakpoint}px)` });
 
 	const {
 		projectBanners,
@@ -99,19 +213,17 @@ const ProjectCard = (props: any): JSX.Element => {
 
 	const getBanner = () => (
 		<BannerContainer color={bgColor}>
-			<div className="BannerImgContainer">
-				{projectBanners.map((banner: any, i: number) => (
-					<img
-						key={`${banner}_${i}_banner`}
+			<BannerImageContainer>
+				{projectBanners.map((banner: string, i: number) => (
+					<BannerImage
+						key={i}
 						alt={`${banner}_${i}_banner`}
-						style={{ opacity: bannerIndex === i ? 1 : 0 }}
-						className="BannerImg"
+						active={bannerIndex === i}
 						src={banner}
 						loading="lazy"
 					/>
 				))}
-			</div>
-
+			</BannerImageContainer>
 			<BannerRelativeContainer>
 				<BannerButton
 					onClick={() => bannerControl(-1, projectBanners.length)}
@@ -130,8 +242,8 @@ const ProjectCard = (props: any): JSX.Element => {
 					</BannerChevronWrapper>
 				</BannerButton>
 			</BannerRelativeContainer>
-			<div className="BannerShortcutsCont">
-				<div className="ViewLink">
+			<BannerLinksContainer>
+				<BannerLinksContentContainer>
 					<IconButton
 						style={{ marginRight: "-4px", color: theme.lightGray }}
 						component="a"
@@ -150,34 +262,28 @@ const ProjectCard = (props: any): JSX.Element => {
 					>
 						<Github />
 					</IconButton>
-				</div>
-			</div>
+				</BannerLinksContentContainer>
+			</BannerLinksContainer>
 			<BannerRelativeContainer>
-				<Grid
-					className="BannerDots"
+				<BannerDotsContainer
 					container
 					spacing={8}
 					direction="row"
 					alignItems="center"
 					justify="center"
-					style={{ width: "100%" }}
 				>
-					{projectBanners.map((banner: any, i: number) => (
-						<Grid
+					{projectBanners.map((banner: string, i: number) => (
+						<BannerDot
 							item
 							key={`${banner}_${i}_dot`}
-							style={{
-								opacity: bannerIndex === i ? 1 : 0.5,
-								transition: "all 0.5s ease",
-								filter: "drop-shadow(0 0 4px rgba(0,0,0,0.3))",
-							}}
+							active={bannerIndex === i}
 						>
 							<svg height="10" width="10">
 								<circle fill="white" cx="3" cy="3" r="3" />
 							</svg>
-						</Grid>
+						</BannerDot>
 					))}
-				</Grid>
+				</BannerDotsContainer>
 			</BannerRelativeContainer>
 		</BannerContainer>
 	);
@@ -190,50 +296,21 @@ const ProjectCard = (props: any): JSX.Element => {
 				rel="noopener noreferrer"
 				style={{ textDecoration: "none" }}
 			>
-				<Typography
-					variant="h1"
-					style={{
-						color: accColor,
-						fontSize: "28px",
-						textDecoration: "none",
-						paddingBottom: "0.5em",
-					}}
-				>
+				<ProjectHeading variant="h1" textColor={accColor}>
 					{heading}
-				</Typography>
+				</ProjectHeading>
 			</Link>
 			{getAchievements()}
-			<div style={{ marginTop: "0.6em" }}>
-				<Typography
-					className="ProjectCardSubheader"
-					variant="body1"
-					style={{
-						fontSize: "14px",
-						color: theme.lightGray,
-						letterSpacing: "0px",
-					}}
-				>
-					{subheading}
-				</Typography>
-			</div>
-			<div>
-				<Typography
-					className="ProjectCardSubheader"
-					variant="body1"
-					style={{
-						fontSize: "14px",
-						color: theme.lightGray,
-						letterSpacing: "0px",
-					}}
-				>
-					{role}&nbsp; • &nbsp;{team}
-				</Typography>
-			</div>
+			<ProjectSubheading variant="body1" textColor={theme.lightGray}>
+				{subheading}
+				<br />
+				{role}&nbsp; • &nbsp;{team}
+			</ProjectSubheading>
 			<br />
 		</ProjectCardTextContent>
 	);
 
-	const getDetailsSectionLeft = (items: any) => (
+	const getDetailsSectionLeft = (items: JSX.Element[]) => (
 		<Grid item container>
 			<Grid
 				container
@@ -254,10 +331,10 @@ const ProjectCard = (props: any): JSX.Element => {
 		<Grid container direction="row">
 			<Grid item xs={12} container direction="column">
 				{getDetailsSectionLeft(
-					Object.keys(tools).map((item) => (
-						<Grid key={item + "tool"} item className="DetailsIconLeft">
-							{tools[item]}
-						</Grid>
+					tools.map((tool: JSX.Element, i: number) => (
+						<ToolIconContainer key={i} item>
+							{tool}
+						</ToolIconContainer>
 					))
 				)}
 			</Grid>
@@ -267,71 +344,37 @@ const ProjectCard = (props: any): JSX.Element => {
 	const getAchievements = () => {
 		if (achievements.length) {
 			return (
-				<div
-					style={{
-						display: "flex",
-						flexDirection: "row",
-						alignItems: "flex-start",
-						justifyContent: "flex-start",
-						flexWrap: "wrap",
-					}}
-				>
-					{achievements.map((achievement: string, i: number) => (
-						<div key={achievement}>
-							<Typography
-								variant="button"
-								style={{
-									marginBottom: "0.5em",
-									fontSize: "12px",
-									color: accColor,
-									lineHeight: "1.3",
-								}}
-							>
-								{achievement.split(";")[0]}{" "}
-								{i !== achievements.length - 1 && !isSmWidth && (
-									<span>&nbsp;|&nbsp;&nbsp;</span>
-								)}
-								{achievement.split(";").length > 1 && !isSmWidth && (
-									<IconButton
-										href={achievement.split(";")[1]}
-										target="_blank"
-										rel="noopener noreferrer"
-										style={{ margin: "-22px -14px -20px -5px" }}
-									>
-										<OpenInNew style={{ fontSize: "16px", color: accColor }} />
-									</IconButton>
-								)}
-							</Typography>
-						</div>
+				<AchievementsContainer>
+					{achievements.map((achievement: string) => (
+						<AchievementText
+							key={achievement}
+							variant="button"
+							textColor={accColor}
+						>
+							{achievement}
+						</AchievementText>
 					))}
-				</div>
+				</AchievementsContainer>
 			);
 		} else {
-			return <div />;
+			return <></>;
 		}
 	};
 
 	return (
 		<ProjectCardContainer isDark={isDark}>
-			{getBanner()}
+			{!isMdWidth && getBanner()}
 			<ProjectCardContentContainer>
 				<CardContent>
 					{getHeadings()}
 					{getDetailsContainer()}
 					<br />
-					<Typography
-						style={{ color: accColor, paddingBottom: "4px", fontSize: "14px" }}
-						variant="overline"
-					>
+					<AboutText variant="overline" textColor={accColor}>
 						ABOUT
-					</Typography>
-					<Typography
-						color="textSecondary"
-						style={{ fontSize: "14px", marginBottom: "-16px" }}
-						variant="body1"
-					>
+					</AboutText>
+					<DescriptionText variant="body1" color="textSecondary">
 						{body}
-					</Typography>
+					</DescriptionText>
 				</CardContent>
 			</ProjectCardContentContainer>
 		</ProjectCardContainer>
