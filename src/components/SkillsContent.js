@@ -14,7 +14,7 @@ import {
 	ArrowRightBoldHexagonOutline,
 } from "mdi-material-ui";
 
-import Database from "../assets/Database";
+import Database from "../data/database";
 import styled from "styled-components";
 import { Typography } from "@material-ui/core";
 import { smBreakpoint } from "../utils/layouts";

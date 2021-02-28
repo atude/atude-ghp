@@ -3,6 +3,13 @@ import { Typography, Fade, Slide } from "@material-ui/core";
 import styled from "styled-components";
 import "./Components.css";
 
+type ComponentProps = {
+	active: boolean;
+	color: string;
+	right?: boolean;
+	left?: boolean;
+}
+
 const HeadingContainerStyled = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -26,15 +33,23 @@ const SubtitleStyled = styled(Typography)`
 	margin-left: 24px;
 `;
 
-const DotStyled = styled.div`
+const Dot = styled.div<ComponentProps>`
 	width: 20px;
 	height: 20px;
 	border-radius: 50px;
+	background-color: ${props => props.color};
+	transition: all 0.5s ease;
+	transform: ${props => props.active ? "scale(0.8, 0.8)" : "scale(1, 1)"};
 `;
 
-const LineStyled = styled.div`
+const Line = styled.div<ComponentProps>`
 	height: 4px;
 	border-radius: 50px;
+	transition: all 0.5s ease;
+	background-color: ${props => props.color};
+	width: ${props => props.active ? "120px" : "20px"};
+	margin-right: ${props => props.active && props.right ? "4em" : "1em"};
+	margin-left: ${props => props.active && props.left ? "4em" : "1em"};
 `;
 
 const DividerStyled = styled.div`
@@ -46,7 +61,7 @@ const DividerStyled = styled.div`
 	margin: 5em auto 7em;
 `;
 
-const AnchoredSubheading = (props) => {
+const AnchoredSubheading = (props: any) => {
 	const [active, setActive] = useState(false);
 	const {
 		color,
@@ -70,29 +85,9 @@ const AnchoredSubheading = (props) => {
 								onMouseEnter={() => setActive(true)}
 								onMouseLeave={() => setActive(false)}
 							>
-								<LineStyled
-									style={{
-										backgroundColor: prevColor,
-										transition: "all 0.5s ease",
-										marginRight: active ? "4em" : "1em",
-										width: active ? "120px" : "20px",
-									}}
-								/>
-								<DotStyled
-									style={{
-										backgroundColor: prevColor,
-										transition: "all 0.5s ease",
-										transform: active ? "scale(0.8, 0.8)" : "scale(1, 1)",
-									}}
-								/>
-								<LineStyled
-									style={{
-										backgroundColor: prevColor,
-										transition: "all 0.5s ease",
-										marginLeft: active ? "4em" : "1em",
-										width: active ? "120px" : "20px",
-									}}
-								/>
+								<Line color={prevColor} active={active} right />
+								<Dot color={prevColor} active={active} />
+								<Line color={prevColor} active={active} left />
 							</DividerStyled>
 						</Fade>
 					</div>
@@ -111,6 +106,8 @@ const AnchoredSubheading = (props) => {
 						style={{
 							fontSize: "32px",
 							color: currentScheme.bg,
+							width: "100%",
+							paddingLeft: "16px",
 						}}
 						variant="h2"
 						inline

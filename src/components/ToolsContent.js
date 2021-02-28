@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Components.css";
 import { Grid, Typography, Chip, Divider } from "@material-ui/core";
 
-import Database from "../assets/Database";
+import Database from "../data/database";
 import { mdBreakpoint } from "../utils/layouts";
 import { useMediaQuery } from "react-responsive";
 import { toolsIcon } from "../utils/icons";
@@ -33,8 +33,7 @@ const ToolsContent = (props) => {
 							toolskey,
 							active === toolskey
 								? Object.values(colorSet)[i]
-								: currentScheme.lightGray,
-							currentScheme
+								: currentScheme.lightGray
 						)}
 					</Grid>
 					<Grid item xs={9} md={3} lg={2} style={{ marginTop: "5px" }}>
@@ -67,7 +66,7 @@ const ToolsContent = (props) => {
 								<Grid item key={key}>
 									<Chip
 										variant="default"
-										icon={toolsIcon(key, undefined, currentScheme)}
+										icon={toolsIcon(key, undefined)}
 										label={<span style={{ paddingLeft: "2.5px" }}>{key}</span>}
 										style={{
 											transition: "all 0.1s ease",

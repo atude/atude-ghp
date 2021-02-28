@@ -3,12 +3,12 @@ import "../components/Components.css";
 import ContentCard from "../components/ContentCard.js";
 import { Grid, Avatar, Fade } from "@material-ui/core";
 import { CubeOutline, HumanGreeting } from "mdi-material-ui";
-import Database from "../assets/Database";
+import Database from "../data/database";
 import SkillsContent from "../components/SkillsContent";
 import ToolsContent from "../components/ToolsContent";
 
 import imgProfile from "../assets/profile.jpg";
-import { getRoutes } from "../Routes";
+import { getRoutes } from "../routes/Routes";
 import AnchoredSubheading from "../components/AnchoredSubheading";
 
 const AboutPage = (props) => {

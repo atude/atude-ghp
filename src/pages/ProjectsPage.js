@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "../components/Components.css";
-import Database from "../assets/Database";
+import Database from "../data/database";
 import { Grid, Typography } from "@material-ui/core";
 import ProjectCard from "../components/ProjectCard";
 import { getMiniIcons } from "../components/ProjectMiniIcons";
 import ReactSVG from "react-svg";
 import { GooglePlay, Youtube, GoogleChrome } from "mdi-material-ui";
 import AnchoredSubheading from "../components/AnchoredSubheading";
-import { getRoutes } from "../Routes";
+import { getRoutes } from "../routes/Routes";
 
 const viewIcons = {
 	"Google Play": <GooglePlay />,

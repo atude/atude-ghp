@@ -2,7 +2,7 @@ import React from "react";
 import "../components/Components.css";
 import { Typography, Tooltip, Fab, Grow, Slide } from "@material-ui/core";
 import { React as ReactIcon, FileDownload } from "mdi-material-ui";
-import Database from "../assets/Database";
+import Database from "../data/database";
 import styled from "styled-components";
 
 const darkCircleFilters = "hue-rotate(-45deg)";

@@ -4,9 +4,9 @@ import ContentCard from "../components/ContentCard.js";
 import { Grid } from "@material-ui/core";
 import { OpenInNew, Forum } from "mdi-material-ui";
 import ContactContent from "../components/ContactContent";
-import Database from "../assets/Database";
+import Database from "../data/database";
 import AnchoredSubheading from "../components/AnchoredSubheading";
-import { getRoutes } from "../Routes";
+import { getRoutes } from "../routes/Routes";
 
 const ContactPage = (props) => {
 	const { mainColor, prevColor, currentScheme, isDark, sectionId } = props;

@@ -4,10 +4,13 @@
 		"es2021": true,
 		"amd": true
   },
+	"parser": "@typescript-eslint/parser",
   "extends": [
     "eslint:recommended",
 		"plugin:react/recommended",
-		"plugin:prettier/recommended"
+		"plugin:prettier/recommended",
+		"plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
   "parserOptions": {
     "ecmaFeatures": {
@@ -18,7 +21,8 @@
   },
   "plugins": [
 		"react",
-		"prettier"
+		"prettier",
+		"@typescript-eslint"
   ],
   "rules": {
 		"prettier/prettier": "warn",

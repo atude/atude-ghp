@@ -2,3 +2,4 @@ export const smBreakpoint = 600;
 export const mdBreakpoint = 960;
 
 export const bottomGutter = 500;
+export const drawerWidth = 340;
