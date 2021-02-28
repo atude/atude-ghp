@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Typography, Fade, Slide } from "@material-ui/core";
 import styled from "styled-components";
 import "./Components.css";
-import { ThemedActiveProps } from "../config/styled";
+import { ThemedActiveProps, ThemedProps } from "../config/styled";
 import { ThemeContext } from "../context/ThemeContext";
 
 type ThemedLineProps = {
@@ -17,7 +17,7 @@ type Props = {
 	isFirst?: boolean;
 };
 
-const HeadingContainerStyled = styled.div`
+const HeadingContainerStyled = styled.div<ThemedProps>`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -89,11 +89,7 @@ const AnchoredSubheading = (props: Props): JSX.Element => {
 					</div>
 				</Slide>
 			)}
-			<HeadingContainerStyled
-				id={id}
-				className={themeContext.isDark ? "StandardCardDark" : "StandardCard"}
-				color={theme.lightGray}
-			>
+			<HeadingContainerStyled id={id} color={theme.lightGray}>
 				<HeadingContentStyled>
 					<Typography
 						className="AppbarText"

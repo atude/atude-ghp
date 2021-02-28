@@ -13,10 +13,60 @@ import { useMediaQuery } from "react-responsive";
 
 import { smBreakpoint } from "../../utils/layouts";
 import { ThemeContext } from "../../context/ThemeContext";
+import styled from "styled-components";
+import StandardCard from "../_shared/StandardCard";
+import { ThemedProps } from "../../config/styled";
 
-const ProjectCard = (props: any) => {
+const ProjectCardContainer = styled(StandardCard)<ThemedProps>`
+	height: 100%;
+	display: flex;
+	flex: 1;
+	transition: all 0.25s ease;
+	filter: grayscale(80%);
+	:hover {
+		filter: grayscale(0%);
+	}
+`;
+
+const ProjectCardContentContainer = styled.div`
+	padding: 0.2em 0.625em 1em 0.625em;
+	flex: 1;
+`;
+
+const ProjectCardTextContent = styled.div`
+	padding-top: 12px;
+`;
+
+const BannerContainer = styled.div`
+	height: 100%;
+	flex: 1;
+	overflow: hidden;
+	border-radius: 16px;
+	align-items: flex-end;
+	background-color: ${(props) => props.color};
+`;
+
+const BannerRelativeContainer = styled.div`
+	width: 100%;
+	position: relative;
+`;
+
+const BannerButton = styled(Button)`
+	height: 50px;
+	position: absolute;
+	bottom: 2px;
+`;
+
+const BannerChevronWrapper = styled.div`
+	svg {
+		color: #fff;
+		opacity: 0.9;
+		filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.65));
+	}
+`;
+
+const ProjectCard = (props: any): JSX.Element => {
 	const [bannerIndex, setBannerIndex] = useState(0);
-	const [active, setActive] = useState(false);
 	const themeContext = useContext(ThemeContext);
 	const { theme, isDark } = themeContext;
 	const isSmWidth = useMediaQuery({ query: `(max-width:${smBreakpoint}px)` });
@@ -48,7 +98,7 @@ const ProjectCard = (props: any) => {
 	};
 
 	const getBanner = () => (
-		<div style={{ backgroundColor: bgColor }} className="BannerContainer">
+		<BannerContainer color={bgColor}>
 			<div className="BannerImgContainer">
 				{projectBanners.map((banner: any, i: number) => (
 					<img
@@ -62,35 +112,24 @@ const ProjectCard = (props: any) => {
 				))}
 			</div>
 
-			<div className="BannerRelativeContainer">
-				<Button
-					className="BannerLeft"
+			<BannerRelativeContainer>
+				<BannerButton
 					onClick={() => bannerControl(-1, projectBanners.length)}
-					style={{ position: "absolute", bottom: "2px", left: "8px" }}
+					style={{ left: "8px" }}
 				>
-					<ChevronLeft
-						style={{
-							color: "white",
-							opacity: 0.9,
-							filter: "drop-shadow(0 0 4px rgba(0,0,0,0.65))",
-						}}
-					/>
-				</Button>
-				<Button
-					className="BannerRight"
+					<BannerChevronWrapper>
+						<ChevronLeft />
+					</BannerChevronWrapper>
+				</BannerButton>
+				<BannerButton
 					onClick={() => bannerControl(1, projectBanners.length)}
-					style={{ position: "absolute", bottom: "2px", right: "8px" }}
+					style={{ right: "8px" }}
 				>
-					<ChevronRight
-						style={{
-							color: "white",
-							opacity: 0.9,
-							filter: "drop-shadow(0 0 4px rgba(0,0,0,0.65))",
-						}}
-					/>
-				</Button>
-			</div>
-
+					<BannerChevronWrapper>
+						<ChevronRight />
+					</BannerChevronWrapper>
+				</BannerButton>
+			</BannerRelativeContainer>
 			<div className="BannerShortcutsCont">
 				<div className="ViewLink">
 					<IconButton
@@ -113,9 +152,7 @@ const ProjectCard = (props: any) => {
 					</IconButton>
 				</div>
 			</div>
-
-			{/* Banner carousel dots */}
-			<div className="BannerRelativeContainer">
+			<BannerRelativeContainer>
 				<Grid
 					className="BannerDots"
 					container
@@ -141,12 +178,12 @@ const ProjectCard = (props: any) => {
 						</Grid>
 					))}
 				</Grid>
-			</div>
-		</div>
+			</BannerRelativeContainer>
+		</BannerContainer>
 	);
 
 	const getHeadings = () => (
-		<div className="ProjectCardTextContent">
+		<ProjectCardTextContent>
 			<Link
 				href={viewlink}
 				target="_blank"
@@ -193,7 +230,7 @@ const ProjectCard = (props: any) => {
 				</Typography>
 			</div>
 			<br />
-		</div>
+		</ProjectCardTextContent>
 	);
 
 	const getDetailsSectionLeft = (items: any) => (
@@ -237,7 +274,6 @@ const ProjectCard = (props: any) => {
 						alignItems: "flex-start",
 						justifyContent: "flex-start",
 						flexWrap: "wrap",
-						// minHeight: isSmWidth ? "63px" : 0,
 					}}
 				>
 					{achievements.map((achievement: string, i: number) => (
@@ -276,16 +312,9 @@ const ProjectCard = (props: any) => {
 	};
 
 	return (
-		<div
-			className={`ProjectCard ${isDark ? "StandardCardDark" : "StandardCard"}`}
-			onMouseEnter={() => setActive(true)}
-			onMouseLeave={() => setActive(false)}
-			style={{
-				filter: active ? "grayscale(0%)" : "grayscale(80%)",
-			}}
-		>
+		<ProjectCardContainer isDark={isDark}>
 			{getBanner()}
-			<div className="ProjectCardContent">
+			<ProjectCardContentContainer>
 				<CardContent>
 					{getHeadings()}
 					{getDetailsContainer()}
@@ -304,8 +333,8 @@ const ProjectCard = (props: any) => {
 						{body}
 					</Typography>
 				</CardContent>
-			</div>
-		</div>
+			</ProjectCardContentContainer>
+		</ProjectCardContainer>
 	);
 };
 

@@ -61,19 +61,6 @@ const ProjectsPage = (props: PageProps): JSX.Element => {
 				justify="center"
 			>
 				<ProjectCard
-					projectIcon={
-						<Typography component="span" style={{ color: project.accColor }}>
-							<ReactSVG
-								className="IconColor"
-								svgClassName="ProjectCardIcon"
-								src={
-									// eslint-disable-next-line @typescript-eslint/no-var-requires
-									require(`../assets/projects/${project.heading}/ic.svg`)
-										.default
-								}
-							/>
-						</Typography>
-					}
 					{...project}
 					projectBanners={
 						banners[project.heading] ? banners[project.heading] : []

@@ -38,6 +38,9 @@ const TooltipStyled = styled.div`
 	align-items: center;
 	justify-content: center;
 	height: 30px;
+	:hover {
+		transition: 0.25s;
+	}
 `;
 
 const TooltipTextStyled = styled.div`
@@ -47,6 +50,9 @@ const TooltipTextStyled = styled.div`
 	transition: all 0.2s ease-out;
 	margin-left: 2px;
 	font-size: 0.9em;
+	:hover {
+		transition: 0.25s;
+	}
 `;
 
 const TooltipWrapper = (props) => {
@@ -56,12 +62,10 @@ const TooltipWrapper = (props) => {
 	return (
 		<TooltipStyled
 			key={name}
-			className="Hoverable"
 			onMouseEnter={() => setActive(true)}
 			onMouseLeave={() => setActive(false)}
 		>
 			<TooltipTextStyled
-				className="Hoverable"
 				style={{
 					paddingLeft: active ? "12px" : 0,
 					marginRight: active ? "-12px" : 0,

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import "../components/Components.css";
-import ContentCard from "../components/ContentCard.js";
+import ContentCard from "../components/ContentCard";
 import { Grid, Avatar, Fade } from "@material-ui/core";
 import { CubeOutline, HumanGreeting } from "mdi-material-ui";
 import Database from "../data/database";
@@ -54,9 +54,6 @@ const AboutPage = (props: PageProps): JSX.Element => {
 				</Grid>
 				<Grid item lg={9} sm={12} xs={12}>
 					<ContentCard
-						mainColor={theme.lightGray}
-						currentScheme={theme}
-						isDark={isDark}
 						headingIcon={
 							<HumanGreeting
 								style={{ color: theme.secondary }}
@@ -70,9 +67,6 @@ const AboutPage = (props: PageProps): JSX.Element => {
 				</Grid>
 				<Grid item xs={12}>
 					<ContentCard
-						mainColor={theme.lightGray}
-						currentScheme={theme}
-						isDark={isDark}
 						headingIcon={
 							<CubeOutline
 								style={{ color: theme.secondary }}

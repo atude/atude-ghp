@@ -129,6 +129,13 @@ const SidebarIconWrapper = styled.div`
 	}
 `;
 
+const MainContentContainer = styled.div`
+	padding: 20px;
+	width: 100%;
+	max-width: 1100px;
+	margin: 0 auto;
+`;
+
 const CopyrightText = styled(Typography)<ThemedTypographyProps>`
 	padding: 10px;
 	z-index: 0;
@@ -343,7 +350,7 @@ const ResponsiveDrawer = (props: any) => {
 					</Hidden>
 				</nav>
 
-				<div className="MainContentCont">
+				<MainContentContainer>
 					<HomePage sectionId="mozamel-main" />
 					<AboutPage sectionId="about-me" />
 					<br />
@@ -353,7 +360,7 @@ const ResponsiveDrawer = (props: any) => {
 					<br />
 					<br />
 					<br />
-				</div>
+				</MainContentContainer>
 			</MuiThemeProvider>
 		</div>
 	);
