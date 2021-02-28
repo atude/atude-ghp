@@ -275,12 +275,6 @@ const ProjectCard = (props: any) => {
 		}
 	};
 
-	const categoryStyle = {
-		fontSize: "14px",
-		color: theme.lightGray,
-		letterSpacing: "0.1px",
-	};
-
 	return (
 		<div
 			className={`ProjectCard ${isDark ? "StandardCardDark" : "StandardCard"}`}

@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Typography, Fade, Slide } from "@material-ui/core";
 import styled from "styled-components";
 import "./Components.css";
-import { ThemedActiveProps, ThemedTypographyProps } from "../config/styled";
+import { ThemedActiveProps } from "../config/styled";
 import { ThemeContext } from "../context/ThemeContext";
 
 type ThemedLineProps = {
@@ -26,7 +26,7 @@ const HeadingContainerStyled = styled.div`
 	margin-top: 2em;
 	border-radius: 10px;
 	padding: 1em;
-	background-color: ${props => props.color};
+	background-color: ${(props) => props.color};
 `;
 
 const HeadingContentStyled = styled.div`
@@ -35,11 +35,6 @@ const HeadingContentStyled = styled.div`
 	align-items: center;
 	justify-content: space-between;
 	width: 100%;
-`;
-
-const SubtitleStyled = styled(Typography)<ThemedTypographyProps>`
-	color: ${(props) => props.textColor};
-	margin-left: 24px;
 `;
 
 const Dot = styled.div<ThemedActiveProps>`
