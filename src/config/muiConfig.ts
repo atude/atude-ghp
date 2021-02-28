@@ -63,7 +63,7 @@ export const lightScheme: ThemeScheme = {
 			type: "light",
 		},
 	}),
-	colorSet: colorsLight,
+	colorSet: colorsDark,
 };
 
 export const darkScheme: ThemeScheme = {
@@ -86,5 +86,5 @@ export const darkScheme: ThemeScheme = {
 			type: "dark",
 		},
 	}),
-	colorSet: colorsDark,
+	colorSet: colorsLight,
 };

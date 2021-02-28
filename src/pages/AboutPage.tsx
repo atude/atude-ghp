@@ -4,8 +4,8 @@ import ContentCard from "../components/ContentCard.js";
 import { Grid, Avatar, Fade } from "@material-ui/core";
 import { CubeOutline, HumanGreeting } from "mdi-material-ui";
 import Database from "../data/database";
-import SkillsContent from "../components/SkillsContent";
-import ToolsContent from "../components/ToolsContent";
+import SkillsContent from "../components/about/SkillsContent";
+import ToolsContent from "../components/about/ToolsContent";
 
 import imgProfile from "../assets/profile.jpg";
 import { getRoutes } from "../routes/Routes";

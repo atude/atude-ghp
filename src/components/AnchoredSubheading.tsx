@@ -26,6 +26,7 @@ const HeadingContainerStyled = styled.div`
 	margin-top: 2em;
 	border-radius: 10px;
 	padding: 1em;
+	background-color: ${props => props.color};
 `;
 
 const HeadingContentStyled = styled.div`

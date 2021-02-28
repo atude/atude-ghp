@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Components.css";
+import "../Components.css";
 import {
 	LanguageC,
 	LanguageCsharp,
@@ -14,10 +14,10 @@ import {
 	ArrowRightBoldHexagonOutline,
 } from "mdi-material-ui";
 
-import Database from "../data/database";
+import Database from "../../data/database";
 import styled from "styled-components";
 import { Typography } from "@material-ui/core";
-import { smBreakpoint } from "../utils/layouts";
+import { smBreakpoint } from "../../utils/layouts";
 
 const SkillsContainerStyled = styled.div`
 	display: flex;

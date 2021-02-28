@@ -2,8 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 import "../components/Components.css";
 import database from "../data/database";
 import { Grid, Typography } from "@material-ui/core";
-import ProjectCard from "../components/ProjectCard";
-import { getMiniIcons } from "../components/ProjectMiniIcons";
+import ProjectCard from "../components/project/ProjectCard";
+import { getMiniIcons } from "../components/project/ProjectMiniIcons";
 import ReactSVG from "react-svg";
 import { GooglePlay, Youtube, GoogleChrome } from "mdi-material-ui";
 import AnchoredSubheading from "../components/AnchoredSubheading";
@@ -21,7 +21,7 @@ const viewIcons: Record<DatabaseProjectViewIcon, JSX.Element> = {
 const ProjectsPage = (props: PageProps): JSX.Element => {
 	const [banners, setBanners] = useState<Record<string, any[]>>({});
 	const themeContext = useContext(ThemeContext);
-	const { theme, isDark } = themeContext;
+	const { theme } = themeContext;
 	const { sectionId } = props;
 	const projects = database.Projects;
 

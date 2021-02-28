@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import "./Components.css";
+import "../Components.css";
 import { Grid, Typography, Chip, Divider } from "@material-ui/core";
 
-import Database from "../data/database";
-import { mdBreakpoint } from "../utils/layouts";
+import Database from "../../data/database";
+import { mdBreakpoint } from "../../utils/layouts";
 import { useMediaQuery } from "react-responsive";
-import { toolsIcon } from "../utils/icons";
+import { toolsIcon } from "../../utils/icons";
 
 const tools = Database["Toolset"];
 

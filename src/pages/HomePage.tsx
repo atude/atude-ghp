@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../components/Components.css";
 import { Typography, Tooltip, Fab, Grow, Slide } from "@material-ui/core";
 import { React as ReactIcon, FileDownload } from "mdi-material-ui";
 import Database from "../data/database";
 import styled from "styled-components";
+import { ThemeContext } from "../context/ThemeContext";
+import { PageProps } from "../types";
 
 const darkCircleFilters = "hue-rotate(-45deg)";
 const defaultCircleFilter = "hue-rotate(0)";
@@ -15,8 +17,10 @@ const NameTextStyled = styled(Typography)`
 	}
 `;
 
-const HomePage = (props) => {
-	const { currentScheme, isDark, mainColor, sectionId } = props;
+const HomePage = (props: PageProps): JSX.Element => {
+	const themeContext = useContext(ThemeContext);
+	const { theme, isDark } = themeContext;
+	const { sectionId } = props;
 
 	return (
 		<div id={sectionId} className="ReferenceAnchor">
@@ -75,7 +79,7 @@ const HomePage = (props) => {
 				</div>
 			</Grow>
 			<div className="BuiltCont">
-				<ReactIcon style={{ color: currentScheme.lightGray }} />
+				<ReactIcon style={{ color: theme.lightGray }} />
 			</div>
 			<div className="FAB">
 				<Tooltip title="View My Resume" placement="left">
@@ -87,7 +91,7 @@ const HomePage = (props) => {
 						aria-label="DownloadResume"
 						style={{
 							color: "white",
-							backgroundColor: mainColor,
+							backgroundColor: theme.lightGray,
 							opacity: "0.9",
 						}}
 					>
