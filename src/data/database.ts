@@ -1,4 +1,6 @@
-const database = {
+import { Database } from "./types";
+
+const database: Database = {
 	Resume:
 		"https://drive.google.com/file/d/1YD4MRDAQmZVvqhR5rU8Yhbe8wCydcyKz/view?usp=sharing",
 	"About me": {

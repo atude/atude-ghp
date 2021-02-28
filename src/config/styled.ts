@@ -6,6 +6,10 @@ export type ThemedProps = {
 	currentScheme?: ThemeScheme;
 };
 
+export type ThemedActiveProps = ThemedProps & {
+	active: boolean;
+};
+
 export type ThemedTypographyProps = Omit<ThemedProps, "color"> & {
 	textColor?: string;
 };

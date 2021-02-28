@@ -4,8 +4,6 @@ import { ThemeContext } from "../context/ThemeContext";
 
 type Route = {
 	title: string;
-	color: string;
-	prevColor: string;
 	icAppbar?: JSX.Element;
 	icList?: JSX.Element;
 };
@@ -15,13 +13,9 @@ export const getRoutes = (): Record<string, Route> => {
 	return {
 		home: {
 			title: "",
-			color: themeContext.theme.lightGray,
-			prevColor: themeContext.theme.lightGray,
 		},
 		"about-me": {
 			title: "About Me",
-			color: themeContext.theme.lightGray,
-			prevColor: themeContext.theme.lightGray,
 			icAppbar: (
 				<AccountBox
 					style={{
@@ -36,8 +30,6 @@ export const getRoutes = (): Record<string, Route> => {
 		},
 		projects: {
 			title: "Featured Projects",
-			color: themeContext.theme.lightGray,
-			prevColor: themeContext.theme.lightGray,
 			icAppbar: (
 				<Buffer
 					style={{

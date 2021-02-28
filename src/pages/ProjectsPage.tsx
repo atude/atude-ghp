@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../components/Components.css";
-import Database from "../data/database";
+import database from "../data/database";
 import { Grid, Typography } from "@material-ui/core";
 import ProjectCard from "../components/ProjectCard";
 import { getMiniIcons } from "../components/ProjectMiniIcons";
@@ -8,23 +8,28 @@ import ReactSVG from "react-svg";
 import { GooglePlay, Youtube, GoogleChrome } from "mdi-material-ui";
 import AnchoredSubheading from "../components/AnchoredSubheading";
 import { getRoutes } from "../routes/Routes";
+import { ThemeContext } from "../context/ThemeContext";
+import { DatabaseProject, DatabaseProjectViewIcon } from "../data/types";
+import { PageProps } from "../types";
 
-const viewIcons = {
+const viewIcons: Record<DatabaseProjectViewIcon, JSX.Element> = {
 	"Google Play": <GooglePlay />,
 	Youtube: <Youtube />,
 	"Chrome Web Store": <GoogleChrome />,
 };
 
-export default function ProjectsPage(props) {
-	const [banners, setBanners] = useState({});
-	const projects = Database["Projects"];
-	const { mainColor, prevColor, currentScheme, isDark, sectionId } = props;
+const ProjectsPage = (props: PageProps): JSX.Element => {
+	const [banners, setBanners] = useState<Record<string, any[]>>({});
+	const themeContext = useContext(ThemeContext);
+	const { theme, isDark } = themeContext;
+	const { sectionId } = props;
+	const projects = database.Projects;
 
 	useEffect(() => {
 		if (Object.keys(banners).length) {
 			return;
 		}
-		let fetchBanners = {};
+		const fetchBanners: Record<string, any[]> = {};
 
 		Object.values(projects).forEach((project) => {
 			fetchBanners[project.heading] = [];
@@ -32,6 +37,7 @@ export default function ProjectsPage(props) {
 			// eslint-disable-next-line no-constant-condition
 			while (true) {
 				try {
+					// eslint-disable-next-line @typescript-eslint/no-var-requires
 					const banner = require(`../assets/projects/${project.heading}/${j}.png`)
 						.default;
 					fetchBanners[project.heading].push(banner);
@@ -44,27 +50,24 @@ export default function ProjectsPage(props) {
 		setBanners(fetchBanners);
 	}, [banners, projects]);
 
-	const getCardMain = (project, i, mainColor, currentScheme) => {
+	const getCardMain = (project: DatabaseProject) => {
 		return (
 			<Grid
 				item
 				container
 				key={project.heading}
 				md={12}
-				xs={12}
 				alignItems="center"
 				justify="center"
 			>
 				<ProjectCard
-					mainColor={mainColor}
-					isDark={isDark}
-					currentScheme={currentScheme}
 					projectIcon={
 						<Typography component="span" style={{ color: project.accColor }}>
 							<ReactSVG
 								className="IconColor"
 								svgClassName="ProjectCardIcon"
 								src={
+									// eslint-disable-next-line @typescript-eslint/no-var-requires
 									require(`../assets/projects/${project.heading}/ic.svg`)
 										.default
 								}
@@ -75,8 +78,8 @@ export default function ProjectsPage(props) {
 					projectBanners={
 						banners[project.heading] ? banners[project.heading] : []
 					}
-					tools={getMiniIcons(project.tools, currentScheme.lightGray)}
-					platforms={getMiniIcons(project.platforms, currentScheme.lightGray)}
+					tools={getMiniIcons(project.tools, theme.lightGray)}
+					platforms={getMiniIcons(project.platforms, theme.lightGray)}
 					viewicon={viewIcons[project.viewicon]}
 				/>
 			</Grid>
@@ -87,13 +90,8 @@ export default function ProjectsPage(props) {
 		<div>
 			<AnchoredSubheading
 				id={sectionId}
-				color={mainColor}
-				prevColor={prevColor}
-				title={getRoutes(currentScheme)[sectionId].title}
-				subtitle={getRoutes(currentScheme)[sectionId].subtitle ?? ""}
-				icon={getRoutes(currentScheme)[sectionId].icAppbar}
-				currentScheme={currentScheme}
-				isDark={isDark}
+				title={getRoutes()[sectionId].title}
+				icon={getRoutes()[sectionId].icAppbar}
 			/>
 			<Grid
 				container
@@ -102,10 +100,10 @@ export default function ProjectsPage(props) {
 				alignItems="stretch"
 				justify="center"
 			>
-				{Object.values(projects).map((project, i) =>
-					getCardMain(project, i, mainColor, currentScheme)
-				)}
+				{Object.values(projects).map((project) => getCardMain(project))}
 			</Grid>
 		</div>
 	);
-}
+};
+
+export default ProjectsPage;

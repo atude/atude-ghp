@@ -344,28 +344,11 @@ const ResponsiveDrawer = (props: any) => {
 				</nav>
 
 				<div className="MainContentCont">
-					<HomePage
-						sectionId="mozamel-main"
-						isDark={isDark}
-						currentScheme={currentScheme}
-						mainColor={getRoutes()["home"].color}
-					/>
-					<AboutPage
-						sectionId="about-me"
-						isDark={isDark}
-						currentScheme={currentScheme}
-						mainColor={getRoutes()["about-me"].color}
-						prevColor={getRoutes()["about-me"].prevColor}
-					/>
+					<HomePage sectionId="mozamel-main" />
+					<AboutPage sectionId="about-me" />
 					<br />
 					<br />
-					<ProjectsPage
-						sectionId="projects"
-						isDark={isDark}
-						currentScheme={currentScheme}
-						mainColor={getRoutes()["projects"].color}
-						prevColor={getRoutes()["projects"].prevColor}
-					/>
+					<ProjectsPage sectionId="projects" />
 					<br />
 					<br />
 					<br />

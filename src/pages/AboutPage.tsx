@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "../components/Components.css";
 import ContentCard from "../components/ContentCard.js";
 import { Grid, Avatar, Fade } from "@material-ui/core";
@@ -10,21 +10,21 @@ import ToolsContent from "../components/ToolsContent";
 import imgProfile from "../assets/profile.jpg";
 import { getRoutes } from "../routes/Routes";
 import AnchoredSubheading from "../components/AnchoredSubheading";
+import { ThemeContext } from "../context/ThemeContext";
+import { PageProps } from "../types";
 
-const AboutPage = (props) => {
+const AboutPage = (props: PageProps): JSX.Element => {
 	const [isAvatarLoad, setAvatarLoad] = useState(false);
-	const { mainColor, prevColor, currentScheme, isDark, sectionId } = props;
+	const themeContext = useContext(ThemeContext);
+	const { theme, isDark } = themeContext;
+	const { sectionId } = props;
 
 	return (
 		<div>
 			<AnchoredSubheading
 				id={sectionId}
-				color={mainColor}
-				prevColor={prevColor}
-				title={getRoutes(currentScheme)[sectionId].title}
-				icon={getRoutes(currentScheme)[sectionId].icAppbar}
-				currentScheme={currentScheme}
-				isDark={isDark}
+				title={getRoutes()[sectionId].title}
+				icon={getRoutes()[sectionId].icAppbar}
 			/>
 			<Grid
 				container
@@ -54,34 +54,34 @@ const AboutPage = (props) => {
 				</Grid>
 				<Grid item lg={9} sm={12} xs={12}>
 					<ContentCard
-						mainColor={mainColor}
-						currentScheme={currentScheme}
+						mainColor={theme.lightGray}
+						currentScheme={theme}
 						isDark={isDark}
 						headingIcon={
 							<HumanGreeting
-								style={{ color: currentScheme.secondary }}
+								style={{ color: theme.secondary }}
 								className="ContentCardHeadIcon"
 							/>
 						}
 						heading="Hi! I'm Moz, a software engineer in Sydney, Australia."
 						body={Database["About me"]}
-						content={<SkillsContent currentScheme={currentScheme} />}
+						content={<SkillsContent currentScheme={theme} />}
 					/>
 				</Grid>
 				<Grid item xs={12}>
 					<ContentCard
-						mainColor={mainColor}
-						currentScheme={currentScheme}
+						mainColor={theme.lightGray}
+						currentScheme={theme}
 						isDark={isDark}
 						headingIcon={
 							<CubeOutline
-								style={{ color: currentScheme.secondary }}
+								style={{ color: theme.secondary }}
 								className="ContentCardHeadIcon"
 							/>
 						}
 						heading="Tech I'm Familiar With"
 						body={Database["Technologies"]}
-						content={<ToolsContent currentScheme={currentScheme} />}
+						content={<ToolsContent currentScheme={theme} />}
 					/>
 				</Grid>
 			</Grid>
