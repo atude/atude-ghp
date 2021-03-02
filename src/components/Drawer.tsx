@@ -39,7 +39,7 @@ import { Link } from "react-scroll";
 import { drawerWidth } from "../utils/layouts";
 import { ThemeContext } from "../context/ThemeContext";
 import styled from "styled-components";
-import { ThemedProps, ThemedTypographyProps } from "../config/styled";
+import { ThemedProps, ThemedWithColorProps } from "../config/styled";
 
 const styles = (theme: Theme) => ({
 	root: {
@@ -106,13 +106,13 @@ const SidebarHeadIcon = styled.img<ThemedProps>`
 		!props.isDark ? "invert(0%)" : "invert(100%) grayscale(100%)"};
 `;
 
-const SidebarNameText = styled(Typography)<ThemedTypographyProps>`
+const SidebarNameText = styled(Typography)<ThemedWithColorProps>`
 	font-size: 24px;
 	line-height: 30px;
 	text-align: right;
 	margin-right: 24px;
 	transition: all 1s;
-	color: ${(props) => props.textColor};
+	color: ${(props) => props.styledcolor};
 `;
 
 const SidebarIconWrapper = styled.div`
@@ -136,7 +136,7 @@ const MainContentContainer = styled.div`
 	margin: 0 auto;
 `;
 
-const CopyrightText = styled(Typography)<ThemedTypographyProps>`
+const CopyrightText = styled(Typography)<ThemedWithColorProps>`
 	padding: 10px;
 	z-index: 0;
 	position: static;
@@ -150,7 +150,7 @@ const CopyrightText = styled(Typography)<ThemedTypographyProps>`
 const ResponsiveDrawer = (props: any) => {
 	const [mobileOpen, setMobileOpen] = useState(false);
 	const themeContext = useContext(ThemeContext);
-	const currentScheme = themeContext.theme;
+	const theme = themeContext.theme;
 	const isDark = themeContext.isDark;
 
 	const handleDrawerToggle = () => {
@@ -183,10 +183,7 @@ const ResponsiveDrawer = (props: any) => {
 					>
 						<div style={{ cursor: "pointer" }} onClick={() => handleTabClick()}>
 							<SidebarHeadIcon src={icAtude} alt="Atude" isDark={isDark} />
-							<SidebarNameText
-								textColor={currentScheme.lightGray}
-								variant="headline"
-							>
+							<SidebarNameText styledcolor={theme.lightGray} variant="h5">
 								Mozamel
 								<br />
 								<b>Anwary</b>
@@ -209,7 +206,7 @@ const ResponsiveDrawer = (props: any) => {
 								target="_blank"
 								rel="noopener noreferrer"
 							>
-								<SidebarIconWrapper color={currentScheme.lightGray}>
+								<SidebarIconWrapper color={theme.lightGray}>
 									<Github />
 								</SidebarIconWrapper>
 							</IconButton>
@@ -222,7 +219,7 @@ const ResponsiveDrawer = (props: any) => {
 								target="_blank"
 								rel="noopener noreferrer"
 							>
-								<SidebarIconWrapper color={currentScheme.lightGray}>
+								<SidebarIconWrapper color={theme.lightGray}>
 									<Linkedin />
 								</SidebarIconWrapper>
 							</IconButton>
@@ -233,7 +230,7 @@ const ResponsiveDrawer = (props: any) => {
 								component="a"
 								href={`mailto:${database.Contact.Contact.Email}`}
 							>
-								<SidebarIconWrapper color={currentScheme.lightGray}>
+								<SidebarIconWrapper color={theme.lightGray}>
 									<EmailBox />
 								</SidebarIconWrapper>
 							</IconButton>
@@ -263,7 +260,7 @@ const ResponsiveDrawer = (props: any) => {
 						<Typography
 							color="textPrimary"
 							variant="button"
-							style={{ fontSize: "14px", color: currentScheme.lightGray }}
+							style={{ fontSize: "14px", color: theme.lightGray }}
 						>
 							{header}
 						</Typography>
@@ -282,8 +279,8 @@ const ResponsiveDrawer = (props: any) => {
 	);
 
 	const drawer = () => (
-		<div style={{ backgroundColor: currentScheme.bg, height: "100%" }}>
-			<MuiThemeProvider theme={currentScheme.muiSidebarTheme}>
+		<div style={{ backgroundColor: theme.bg, height: "100%" }}>
+			<MuiThemeProvider theme={theme.muiSidebarTheme}>
 				{getSideHead()}
 				{getSideList()}
 				<Grid container direction="row" alignItems="center" justify="center">
@@ -307,7 +304,7 @@ const ResponsiveDrawer = (props: any) => {
 
 	return (
 		<div className={classes.root}>
-			<MuiThemeProvider theme={currentScheme.muiTheme}>
+			<MuiThemeProvider theme={theme.muiTheme}>
 				<CssBaseline />
 				<AppBar position="fixed" className={classes.appBar}>
 					<Toolbar>
@@ -317,7 +314,7 @@ const ResponsiveDrawer = (props: any) => {
 							className={classes.menuButton}
 							style={{
 								marginTop: "16px",
-								backgroundColor: currentScheme.bg,
+								backgroundColor: theme.bg,
 								opacity: 0.85,
 							}}
 						>

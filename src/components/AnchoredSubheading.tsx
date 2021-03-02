@@ -81,9 +81,9 @@ const AnchoredSubheading = (props: Props): JSX.Element => {
 								onMouseEnter={() => setActive(true)}
 								onMouseLeave={() => setActive(false)}
 							>
-								<Line color={theme.lightGray} active={active} right />
-								<Dot color={theme.lightGray} active={active} />
-								<Line color={theme.lightGray} active={active} left />
+								<Line color={theme.lightGray} active={active ? 1 : 0} right />
+								<Dot color={theme.lightGray} active={active ? 1 : 0} />
+								<Line color={theme.lightGray} active={active ? 1 : 0} left />
 							</DividerStyled>
 						</Fade>
 					</div>
@@ -92,7 +92,6 @@ const AnchoredSubheading = (props: Props): JSX.Element => {
 			<HeadingContainerStyled id={id} color={theme.lightGray}>
 				<HeadingContentStyled>
 					<Typography
-						className="AppbarText"
 						style={{
 							fontSize: "32px",
 							color: theme.bg,

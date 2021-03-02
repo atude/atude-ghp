@@ -3,18 +3,16 @@ import { ThemeScheme } from "./muiConfig";
 export type ThemedProps = {
 	color?: string;
 	isDark?: boolean;
-	currentScheme?: ThemeScheme;
+	theme?: ThemeScheme;
 	id?: string;
 };
 
 export type ThemedActiveProps = ThemedProps & {
-	active: boolean;
+	// Have to use number or React will complain
+	// -> Also look at styled-components transient props
+	active: number;
 };
 
-export type ThemedTypographyProps = Omit<ThemedProps, "color"> & {
-	textColor?: string;
-};
-
-export type ThemedGenericColorProps = {
-	styledColor: string;
+export type ThemedWithColorProps = Omit<ThemedProps, "color"> & {
+	styledcolor?: string;
 };

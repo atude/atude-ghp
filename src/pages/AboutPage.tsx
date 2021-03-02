@@ -12,11 +12,67 @@ import { getRoutes } from "../routes/Routes";
 import AnchoredSubheading from "../components/AnchoredSubheading";
 import { ThemeContext } from "../context/ThemeContext";
 import { PageProps } from "../types";
+import styled from "styled-components";
+
+const AvatarContainer = styled(Grid)`
+	img {
+		filter: grayscale(50%);
+		transition: all 0.5s;
+	}
+	div:not(:first-child) {
+		filter: grayscale(80%);
+	}
+	:hover {
+		div:not(:first-child) {
+			filter: grayscale(0);
+			transform: scale(1.1, 1.1) rotate(45deg);
+		}
+		img {
+			filter: grayscale(0);
+		}
+	}
+`;
+
+const AvatarCircleA = styled.div`
+	background-image: linear-gradient(-30deg, #ca68ff, #6eb9ef);
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	margin-top: -205px;
+	border-radius: 100px;
+	z-index: -1;
+	transition: all 0.5s;
+	margin-left: 14px;
+`;
+
+const AvatarCircleB = styled.div`
+	background-image: linear-gradient(30deg, #6eb9ef, #62dbaf);
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	margin-left: 34px;
+	border-radius: 100px;
+	z-index: -1;
+	transition: all 0.3s;
+	margin-top: -220px;
+`;
+
+const AvatarCircleC = styled.div`
+	background-image: linear-gradient(30deg, #fff268, #ff77a4);
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	margin-top: -230px;
+	border-radius: 100px;
+	z-index: -1;
+	transition: all 0.8s;
+	margin-left: 8px;
+`;
 
 const AboutPage = (props: PageProps): JSX.Element => {
 	const [isAvatarLoad, setAvatarLoad] = useState(false);
 	const themeContext = useContext(ThemeContext);
-	const { theme, isDark } = themeContext;
+	const { theme } = themeContext;
 	const { sectionId } = props;
 
 	return (
@@ -33,49 +89,33 @@ const AboutPage = (props: PageProps): JSX.Element => {
 				alignItems="center"
 				justify="center"
 			>
-				<Grid item>
+				<AvatarContainer item>
 					<Fade in={isAvatarLoad} timeout={700}>
-						<div className="AvatarImg">
-							<Avatar
-								src={imgProfile}
-								alt="avatar"
-								style={{
-									width: 200,
-									height: 200,
-									margin: 20,
-								}}
-								onLoad={() => setAvatarLoad(true)}
-							/>
-						</div>
+						<Avatar
+							src={imgProfile}
+							alt="avatar"
+							style={{ width: 200, height: 200, margin: 20 }}
+							onLoad={() => setAvatarLoad(true)}
+						/>
 					</Fade>
-					<div className="AvatarBgCircle" />
-					<div className="AvatarBgCircle2" />
-					<div className="AvatarBgCircle3" />
-				</Grid>
+					<AvatarCircleA />
+					<AvatarCircleB />
+					<AvatarCircleC />
+				</AvatarContainer>
 				<Grid item lg={9} sm={12} xs={12}>
 					<ContentCard
-						headingIcon={
-							<HumanGreeting
-								style={{ color: theme.secondary }}
-								className="ContentCardHeadIcon"
-							/>
-						}
+						headingIcon={<HumanGreeting />}
 						heading="Hi! I'm Moz, a software engineer in Sydney, Australia."
-						body={Database["About me"]}
-						content={<SkillsContent currentScheme={theme} />}
+						paragraphs={Database["About me"]}
+						content={<SkillsContent theme={theme} />}
 					/>
 				</Grid>
 				<Grid item xs={12}>
 					<ContentCard
-						headingIcon={
-							<CubeOutline
-								style={{ color: theme.secondary }}
-								className="ContentCardHeadIcon"
-							/>
-						}
+						headingIcon={<CubeOutline />}
 						heading="Tech I'm Familiar With"
-						body={Database["Technologies"]}
-						content={<ToolsContent currentScheme={theme} />}
+						paragraphs={Database["Technologies"]}
+						content={<ToolsContent theme={theme} />}
 					/>
 				</Grid>
 			</Grid>

@@ -9,21 +9,21 @@ export type ColorSet = {
 };
 
 export const colorsLight: ColorSet = {
-	purple: "#ca68ff",
-	red: "#ff77a4",
-	blue: "#6eb9ef",
-	electric: "#727ee8",
-	green: "#51cfa1",
+	purple: "#d199f0",
+	red: "#ed8cac",
 	orange: "#FFC107",
+	electric: "#97a0f0",
+	green: "#51cfa1",
+	blue: "#6eb9ef",
 	grey: "#90A4AE",
 };
 
 export const colorsDark: ColorSet = {
 	purple: "#a100f6",
 	red: "#ff1c68",
-	blue: "#198fe3",
+	orange: "#FF8F00",
 	electric: "#4657eb",
 	green: "#15ad76",
-	orange: "#FF8F00",
+	blue: "#198fe3",
 	grey: "#607D8B",
 };

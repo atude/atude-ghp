@@ -214,6 +214,7 @@ export const getMiniIcons = (
 				key={i}
 				className={
 					"ProjectMiniIconParent " +
+					// Fix this color check hack
 					(setColor === "#A1B9CE" && "ProjectMiniIconParentDark")
 				}
 			>

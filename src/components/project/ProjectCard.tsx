@@ -17,7 +17,7 @@ import StandardCard from "../_shared/StandardCard";
 import {
 	ThemedActiveProps,
 	ThemedProps,
-	ThemedTypographyProps,
+	ThemedWithColorProps,
 } from "../../config/styled";
 
 type ProjectProps = {
@@ -128,15 +128,15 @@ const BannerChevronWrapper = styled.div`
 	}
 `;
 
-const ProjectHeading = styled(Typography)<ThemedTypographyProps>`
-	color: ${(props) => props.textColor};
+const ProjectHeading = styled(Typography)<ThemedWithColorProps>`
+	color: ${(props) => props.styledcolor};
 	font-size: 28px;
 	text-decoration: none;
 	padding-bottom: 0.5em;
 `;
 
-const ProjectSubheading = styled(Typography)<ThemedTypographyProps>`
-	color: ${(props) => props.textColor};
+const ProjectSubheading = styled(Typography)<ThemedWithColorProps>`
+	color: ${(props) => props.styledcolor};
 	font-size: 14px;
 	letter-spacing: 0;
 	margin-top: 0.6px;
@@ -157,10 +157,10 @@ const AchievementsContainer = styled.div`
 	flex-wrap: wrap;
 `;
 
-const AchievementText = styled(Typography)<ThemedTypographyProps>`
+const AchievementText = styled(Typography)<ThemedWithColorProps>`
 	margin-bottom: 0.5em;
 	font-size: 12px;
-	color: ${(props) => props.textColor};
+	color: ${(props) => props.styledcolor};
 	line-height: 1.3;
 	:not(:last-child):after {
 		white-space: pre;
@@ -168,8 +168,8 @@ const AchievementText = styled(Typography)<ThemedTypographyProps>`
 	}
 `;
 
-const AboutText = styled(Typography)<ThemedTypographyProps>`
-	color: ${(props) => props.textColor};
+const AboutText = styled(Typography)<ThemedWithColorProps>`
+	color: ${(props) => props.styledcolor};
 	padding-bottom: 4px;
 	font-size: 14px;
 `;
@@ -217,8 +217,8 @@ const ProjectCard = (props: ProjectProps): JSX.Element => {
 				{projectBanners.map((banner: string, i: number) => (
 					<BannerImage
 						key={i}
-						alt={`${banner}_${i}_banner`}
-						active={bannerIndex === i}
+						alt={`${banner}${i}`}
+						active={bannerIndex === i ? 1 : 0}
 						src={banner}
 						loading="lazy"
 					/>
@@ -275,8 +275,8 @@ const ProjectCard = (props: ProjectProps): JSX.Element => {
 					{projectBanners.map((banner: string, i: number) => (
 						<BannerDot
 							item
-							key={`${banner}_${i}_dot`}
-							active={bannerIndex === i}
+							key={`${banner}${i}dot`}
+							active={bannerIndex === i ? 1 : 0}
 						>
 							<svg height="10" width="10">
 								<circle fill="white" cx="3" cy="3" r="3" />
@@ -296,12 +296,12 @@ const ProjectCard = (props: ProjectProps): JSX.Element => {
 				rel="noopener noreferrer"
 				style={{ textDecoration: "none" }}
 			>
-				<ProjectHeading variant="h1" textColor={accColor}>
+				<ProjectHeading variant="h1" styledcolor={accColor}>
 					{heading}
 				</ProjectHeading>
 			</Link>
 			{getAchievements()}
-			<ProjectSubheading variant="body1" textColor={theme.lightGray}>
+			<ProjectSubheading variant="body1" styledcolor={theme.lightGray}>
 				{subheading}
 				<br />
 				{role}&nbsp; • &nbsp;{team}
@@ -349,7 +349,7 @@ const ProjectCard = (props: ProjectProps): JSX.Element => {
 						<AchievementText
 							key={achievement}
 							variant="button"
-							textColor={accColor}
+							styledcolor={accColor}
 						>
 							{achievement}
 						</AchievementText>
@@ -369,7 +369,7 @@ const ProjectCard = (props: ProjectProps): JSX.Element => {
 					{getHeadings()}
 					{getDetailsContainer()}
 					<br />
-					<AboutText variant="overline" textColor={accColor}>
+					<AboutText variant="overline" styledcolor={accColor}>
 						ABOUT
 					</AboutText>
 					<DescriptionText variant="body1" color="textSecondary">

@@ -5,7 +5,7 @@ import Database from "../data/database";
 import styled from "styled-components";
 import { ThemeContext } from "../context/ThemeContext";
 import { PageProps } from "../types";
-import { ThemedProps, ThemedGenericColorProps } from "../config/styled";
+import { ThemedProps, ThemedWithColorProps } from "../config/styled";
 
 const CircleLarge = styled.div`
 	position: absolute;
@@ -107,9 +107,9 @@ const FabContainer = styled.div`
 	z-index: 99999;
 `;
 
-const FabStyled = styled(Fab)<ThemedGenericColorProps>`
+const FabStyled = styled(Fab)<ThemedWithColorProps>`
 	color: #fff;
-	background-color: ${(props) => props.styledColor};
+	background-color: ${(props) => props.styledcolor};
 	opacity: 0.9;
 `;
 
@@ -128,14 +128,12 @@ const HomePage = (props: PageProps): JSX.Element => {
 							<CircleMedium />
 							<CircleSmall />
 							<MainTextContainer>
-								<PrefixTextStyled variant="headline">
-									{"Hi, I'm"}
-								</PrefixTextStyled>
+								<PrefixTextStyled variant="h5">{"Hi, I'm"}</PrefixTextStyled>
 								<NameTextStyled>
 									Mozamel
 									<b> Anwary.</b>
 								</NameTextStyled>
-								<SuffixTextStyled variant="headline">
+								<SuffixTextStyled variant="h5">
 									I engineer things for web and mobile.
 								</SuffixTextStyled>
 							</MainTextContainer>
@@ -150,7 +148,7 @@ const HomePage = (props: PageProps): JSX.Element => {
 						component="a"
 						href={Database["Resume"]}
 						download="_resume_mozamel_anwary"
-						styledColor={theme.lightGray}
+						styledcolor={theme.lightGray}
 					>
 						<FileDownload />
 					</FabStyled>

@@ -3,23 +3,21 @@ import { Database } from "./types";
 const database: Database = {
 	Resume:
 		"https://drive.google.com/file/d/1YD4MRDAQmZVvqhR5rU8Yhbe8wCydcyKz/view?usp=sharing",
-	"About me": {
-		NULL:
-			"I have a passion to build well-engineered, scalable, maintainable and beautiful apps. With a skillset across frontend, design, backend and cloud, I'm able to create captivating experiences make our everyday lives interesting.",
-		"": "Some of the languages I've used recently include:",
-	},
-	Technologies: {
-		"":
-			"Here's a snapshot of tech I've used from small scale apps to large scale commercial products.",
-	},
-	Skillset: {
-		TS: { level: 4, desc: "TypeScript" },
-		JS: { level: 4, desc: "JavaScript (ES2020)" },
-		Python: { level: 4, desc: "Python" },
-		"C#": { level: 3, desc: "C#" },
-		Bash: { level: 3, desc: "Bash" },
-		HTML: { level: 4, desc: "HTML/CSS/SCSS" },
-	},
+	"About me": [
+		"I have a passion in building well-engineered, scalable, maintainable and beautiful apps. With a skillset across frontend, design, backend and cloud, I'm able to create fullstack products that are *friendly for devs* and *captivating for users*.",
+		"Some of the languages I've used recently include:",
+	],
+	Technologies: [
+		"Here's a snapshot of tech I've used in projects ranging from small scale apps to large scale commercial products.",
+	],
+	Skillset: [
+		"TypeScript",
+		"JavaScript (ES2020)",
+		"Python",
+		"C#",
+		"Bash",
+		"HTML/CSS/SCSS",
+	],
 	Toolset: {
 		Frontend: [
 			"React",
