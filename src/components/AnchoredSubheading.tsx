@@ -2,7 +2,11 @@ import React, { useContext, useState } from "react";
 import { Typography, Fade, Slide } from "@material-ui/core";
 import styled from "styled-components";
 import "./Components.css";
-import { ThemedActiveProps, ThemedProps } from "../config/styled";
+import {
+	ThemedActiveProps,
+	ThemedProps,
+	ThemedWithColorProps,
+} from "../config/styled";
 import { ThemeContext } from "../context/ThemeContext";
 
 type ThemedLineProps = {
@@ -35,6 +39,13 @@ const HeadingContentStyled = styled.div`
 	align-items: center;
 	justify-content: space-between;
 	width: 100%;
+`;
+
+const HeadingContentText = styled(Typography)<ThemedWithColorProps>`
+	font-size: 32px;
+	color: ${(props) => props.styledcolor};
+	width: 100%;
+	padding-left: 16px;
 `;
 
 const Dot = styled.div<ThemedActiveProps>`
@@ -91,18 +102,9 @@ const AnchoredSubheading = (props: Props): JSX.Element => {
 			)}
 			<HeadingContainerStyled id={id} color={theme.lightGray}>
 				<HeadingContentStyled>
-					<Typography
-						style={{
-							fontSize: "32px",
-							color: theme.bg,
-							width: "100%",
-							paddingLeft: "16px",
-						}}
-						variant="h2"
-						inline
-					>
+					<HeadingContentText styledcolor={theme.bg} variant="h2" inline>
 						{title}
-					</Typography>
+					</HeadingContentText>
 					{icon}
 				</HeadingContentStyled>
 			</HeadingContainerStyled>

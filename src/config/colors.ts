@@ -21,7 +21,7 @@ export const colorsLight: ColorSet = {
 export const colorsDark: ColorSet = {
 	purple: "#a100f6",
 	red: "#ff1c68",
-	orange: "#FF8F00",
+	orange: "#db8009",
 	electric: "#4657eb",
 	green: "#15ad76",
 	blue: "#198fe3",
