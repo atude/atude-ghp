@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Typography, Fade, Slide } from "@material-ui/core";
 import styled from "styled-components";
-import "./Components.css";
 import {
 	ThemedActiveProps,
 	ThemedProps,
@@ -48,6 +47,15 @@ const HeadingContentText = styled(Typography)<ThemedWithColorProps>`
 	padding-left: 16px;
 `;
 
+const HeadingIconWrapper = styled.div<ThemedWithColorProps>`
+	svg {
+		font-size: 80px;
+		padding: 15px;
+		float: right;
+		color: ${(props) => props.styledcolor};
+	}
+`;
+
 const Dot = styled.div<ThemedActiveProps>`
 	width: 20px;
 	height: 20px;
@@ -80,32 +88,30 @@ const AnchoredSubheading = (props: Props): JSX.Element => {
 	const [active, setActive] = useState(false);
 	const themeContext = useContext(ThemeContext);
 	const theme = themeContext.theme;
-	const { title, icon, id, isFirst } = props;
+	const { title, icon, id } = props;
 
 	return (
 		<div>
-			{!isFirst && (
-				<Slide in direction="up" timeout={2000}>
-					<div>
-						<Fade in timeout={4000}>
-							<DividerStyled
-								onMouseEnter={() => setActive(true)}
-								onMouseLeave={() => setActive(false)}
-							>
-								<Line color={theme.lightGray} active={active ? 1 : 0} right />
-								<Dot color={theme.lightGray} active={active ? 1 : 0} />
-								<Line color={theme.lightGray} active={active ? 1 : 0} left />
-							</DividerStyled>
-						</Fade>
-					</div>
-				</Slide>
-			)}
+			<Slide in direction="up" timeout={2000}>
+				<div>
+					<Fade in timeout={4000}>
+						<DividerStyled
+							onMouseEnter={() => setActive(true)}
+							onMouseLeave={() => setActive(false)}
+						>
+							<Line color={theme.lightGray} active={active ? 1 : 0} right />
+							<Dot color={theme.lightGray} active={active ? 1 : 0} />
+							<Line color={theme.lightGray} active={active ? 1 : 0} left />
+						</DividerStyled>
+					</Fade>
+				</div>
+			</Slide>
 			<HeadingContainerStyled id={id} color={theme.lightGray}>
 				<HeadingContentStyled>
 					<HeadingContentText styledcolor={theme.bg} variant="h2" inline>
 						{title}
 					</HeadingContentText>
-					{icon}
+					<HeadingIconWrapper styledcolor={theme.bg}>{icon}</HeadingIconWrapper>
 				</HeadingContentStyled>
 			</HeadingContainerStyled>
 		</div>

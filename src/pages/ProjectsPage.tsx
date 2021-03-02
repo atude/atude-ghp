@@ -1,35 +1,24 @@
 import React, { useState, useEffect, useContext } from "react";
-import "../components/Components.css";
 import database from "../data/database";
 import { Grid } from "@material-ui/core";
 import ProjectCard from "../components/project/ProjectCard";
 import { getMiniIcons } from "../components/project/ProjectMiniIcons";
-import { GooglePlay, Youtube, GoogleChrome } from "mdi-material-ui";
-import AnchoredSubheading from "../components/AnchoredSubheading";
-import { getRoutes } from "../routes/Routes";
 import { ThemeContext } from "../context/ThemeContext";
-import { DatabaseProject, DatabaseProjectViewIcon } from "../data/types";
-import { PageProps } from "../types";
+import { DatabaseProject } from "../data/types";
+import icons from "../components/icons";
 
-const viewIcons: Record<DatabaseProjectViewIcon, JSX.Element> = {
-	"Google Play": <GooglePlay />,
-	Youtube: <Youtube />,
-	"Chrome Web Store": <GoogleChrome />,
-};
-
-const ProjectsPage = (props: PageProps): JSX.Element => {
+const ProjectsPage = (): JSX.Element => {
 	const [banners, setBanners] = useState<Record<string, any[]>>({});
 	const themeContext = useContext(ThemeContext);
 	const { theme } = themeContext;
-	const { sectionId } = props;
 	const projects = database.Projects;
 
 	useEffect(() => {
 		if (Object.keys(banners).length) {
 			return;
 		}
-		const fetchBanners: Record<string, any[]> = {};
 
+		const fetchBanners: Record<string, string[]> = {};
 		Object.values(projects).forEach((project) => {
 			fetchBanners[project.heading] = [];
 			let j = 0;
@@ -65,7 +54,7 @@ const ProjectsPage = (props: PageProps): JSX.Element => {
 						banners[project.heading] ? banners[project.heading] : []
 					}
 					tools={getMiniIcons(project.tools, theme.lightGray)}
-					viewicon={viewIcons[project.viewicon]}
+					viewicon={icons[project.viewicon]}
 				/>
 			</Grid>
 		);
@@ -73,11 +62,6 @@ const ProjectsPage = (props: PageProps): JSX.Element => {
 
 	return (
 		<div>
-			<AnchoredSubheading
-				id={sectionId}
-				title={getRoutes()[sectionId].title}
-				icon={getRoutes()[sectionId].icAppbar}
-			/>
 			<Grid
 				container
 				direction="row"

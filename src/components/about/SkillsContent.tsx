@@ -1,5 +1,4 @@
 import React from "react";
-import "../Components.css";
 import { ArrowRightBoldHexagonOutline } from "mdi-material-ui";
 
 import Database from "../../data/database";

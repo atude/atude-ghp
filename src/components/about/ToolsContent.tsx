@@ -1,12 +1,11 @@
 import React from "react";
-import "../Components.css";
 import { Grid, Typography, Chip, Divider } from "@material-ui/core";
 
 import Database from "../../data/database";
 import { mdBreakpoint } from "../../utils/layouts";
 import { useMediaQuery } from "react-responsive";
-import { toolsIcon } from "../icons/toolsIcons";
-import { toolsCategoryIcon } from "../icons/toolsCategoryIcons";
+import ToolIcon from "../icons/ToolIcon";
+import ToolCategoryIcon from "../icons/ToolCategoryIcon";
 import { ThemeScheme } from "../../config/muiConfig";
 import styled from "styled-components";
 import { ThemedProps, ThemedWithColorProps } from "../../config/styled";
@@ -37,7 +36,7 @@ const ToolsContentContainer = styled(Grid)<ThemedProps>`
 	}
 `;
 
-const ToolsCategoryIconContainer = styled(Grid)`
+const ToolCategoryIconContainer = styled(Grid)`
 	margin-top: 4px;
 `;
 
@@ -85,9 +84,9 @@ const ToolsContent = (props: Props): JSX.Element => {
 					theme={theme}
 					color={Object.values(colorSet)[i]}
 				>
-					<ToolsCategoryIconContainer item xs={2} md={1}>
-						{toolsCategoryIcon(toolskey)}
-					</ToolsCategoryIconContainer>
+					<ToolCategoryIconContainer item xs={2} md={1}>
+						{ToolCategoryIcon(toolskey)}
+					</ToolCategoryIconContainer>
 					<ToolsCategoryTextContainer item xs={9} md={3} lg={2}>
 						<ToolsCategoryText variant="overline">{toolskey}</ToolsCategoryText>
 					</ToolsCategoryTextContainer>
@@ -103,7 +102,7 @@ const ToolsContent = (props: Props): JSX.Element => {
 								<Grid item key={key}>
 									<ToolChip
 										variant="default"
-										icon={toolsIcon(key)}
+										icon={ToolIcon(key)}
 										label={<span>{key}</span>}
 										styledcolor={theme.bg}
 									/>

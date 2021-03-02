@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import "../components/Components.css";
 import ContentCard from "../components/ContentCard";
 import { Grid, Avatar, Fade } from "@material-ui/core";
 import { CubeOutline, HumanGreeting } from "mdi-material-ui";
@@ -8,10 +7,7 @@ import SkillsContent from "../components/about/SkillsContent";
 import ToolsContent from "../components/about/ToolsContent";
 
 import imgProfile from "../assets/profile.jpg";
-import { getRoutes } from "../routes/Routes";
-import AnchoredSubheading from "../components/AnchoredSubheading";
 import { ThemeContext } from "../context/ThemeContext";
-import { PageProps } from "../types";
 import styled from "styled-components";
 
 const AvatarContainer = styled(Grid)`
@@ -69,19 +65,13 @@ const AvatarCircleC = styled.div`
 	margin-left: 8px;
 `;
 
-const AboutPage = (props: PageProps): JSX.Element => {
+const AboutPage = (): JSX.Element => {
 	const [isAvatarLoad, setAvatarLoad] = useState(false);
 	const themeContext = useContext(ThemeContext);
 	const { theme } = themeContext;
-	const { sectionId } = props;
 
 	return (
 		<div>
-			<AnchoredSubheading
-				id={sectionId}
-				title={getRoutes()[sectionId].title}
-				icon={getRoutes()[sectionId].icAppbar}
-			/>
 			<Grid
 				container
 				direction="row"
@@ -119,6 +109,8 @@ const AboutPage = (props: PageProps): JSX.Element => {
 					/>
 				</Grid>
 			</Grid>
+			<br />
+			<br />
 		</div>
 	);
 };

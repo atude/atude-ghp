@@ -1,12 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Theme, withStyles } from "@material-ui/core/styles";
-import {
-	Menu,
-	Github,
-	Linkedin,
-	EmailBox,
-	ThemeLightDark,
-} from "mdi-material-ui";
+import { Menu, ThemeLightDark } from "mdi-material-ui";
 import {
 	Typography,
 	IconButton,
@@ -26,20 +20,14 @@ import {
 	Switch as SwitchButton,
 } from "@material-ui/core";
 
-import icAtude from "../assets/ic_atude.png";
+import routes from "../routes/Routes";
+import styled from "styled-components";
 
-import database from "../data/database";
-
-import AboutPage from "../pages/AboutPage";
-import ProjectsPage from "../pages/ProjectsPage";
-import HomePage from "../pages/HomePage";
-
-import { getRoutes } from "../routes/Routes";
+import { ThemedProps, ThemedWithColorProps } from "../config/styled";
 import { Link } from "react-scroll";
 import { drawerWidth } from "../utils/layouts";
 import { ThemeContext } from "../context/ThemeContext";
-import styled from "styled-components";
-import { ThemedProps, ThemedWithColorProps } from "../config/styled";
+import SidebarHead from "./drawer/SidebarHead";
 
 const styles = (theme: Theme) => ({
 	root: {
@@ -85,59 +73,38 @@ const styles = (theme: Theme) => ({
 	},
 });
 
-const SidebarHead = styled.div`
-	padding: 20% 30px 0 20px;
-	height: 30%;
-	min-height: 300px;
-	transition: all 10s;
+const SidebarDrawerContainer = styled.div<ThemedWithColorProps>`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	flex: 1;
+	background-color: ${(props) => props.styledcolor};
 `;
 
-const SidebarHeadIcon = styled.img<ThemedProps>`
-	:hover {
-		padding: 10px;
-	}
-	width: 90px;
-	height: 90px;
-	float: left;
-	margin-left: 20px;
-	margin-top: -16px;
-	transition: all 1s;
-	filter: ${(props) =>
-		!props.isDark ? "invert(0%)" : "invert(100%) grayscale(100%)"};
-`;
-
-const SidebarNameText = styled(Typography)<ThemedWithColorProps>`
-	font-size: 24px;
-	line-height: 30px;
-	text-align: right;
-	margin-right: 24px;
-	transition: all 1s;
-	color: ${(props) => props.styledcolor};
-`;
-
-const SidebarIconWrapper = styled.div`
+const SidebarRouteIconWrapper = styled(ListItemIcon)<ThemedProps>`
+	padding: 10px;
 	svg {
-		font-size: 40px;
-		color: ${(props) => props.color};
-		:not(:hover) {
-			transition: all 0.25s;
-		}
-		:hover {
-			transform: scale(1.15);
-			transition: all 0.25s;
-		}
+		color: ${(props) => props.theme.lightGray};
+	}
+`;
+
+const SidebarRouteItemText = styled(ListItemText)<ThemedWithColorProps>`
+	span {
+		font-size: 14px;
+		color: ${(props) => props.styledcolor};
 	}
 `;
 
 const MainContentContainer = styled.div`
 	padding: 20px;
+	padding-bottom: 100px;
 	width: 100%;
 	max-width: 1100px;
 	margin: 0 auto;
 `;
 
 const CopyrightText = styled(Typography)<ThemedWithColorProps>`
-	padding: 10px;
+	padding: 20px 0 30px;
 	z-index: 0;
 	position: static;
 	bottom: 8px;
@@ -163,105 +130,21 @@ const ResponsiveDrawer = (props: any) => {
 		}
 	};
 
-	const getIcon = (sectionId: string): JSX.Element => {
-		const route = getRoutes()[sectionId];
-		if (route?.icList) {
-			return route.icList;
-		}
-		return <></>;
-	};
-
-	const getSideHead = () => (
-		<SidebarHead>
-			<Grid container direction="column" alignItems="stretch" justify="center">
-				<Grid item>
-					<Link
-						to="mozamel-main"
-						smooth="true"
-						style={{ textDecoration: "none" }}
-						offset={-150}
-					>
-						<div style={{ cursor: "pointer" }} onClick={() => handleTabClick()}>
-							<SidebarHeadIcon src={icAtude} alt="Atude" isDark={isDark} />
-							<SidebarNameText styledcolor={theme.lightGray} variant="h5">
-								Mozamel
-								<br />
-								<b>Anwary</b>
-							</SidebarNameText>
-						</div>
-					</Link>
-				</Grid>
-				<Grid item>
-					<Grid
-						container
-						direction="row"
-						alignItems="stretch"
-						justify="space-around"
-					>
-						<Grid item>
-							<IconButton
-								key="Github"
-								component="a"
-								href={database.Contact.Links.GitHub[0]}
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								<SidebarIconWrapper color={theme.lightGray}>
-									<Github />
-								</SidebarIconWrapper>
-							</IconButton>
-						</Grid>
-						<Grid item>
-							<IconButton
-								key="LinkedIn"
-								component="a"
-								href={database.Contact.Links.LinkedIn[0]}
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								<SidebarIconWrapper color={theme.lightGray}>
-									<Linkedin />
-								</SidebarIconWrapper>
-							</IconButton>
-						</Grid>
-						<Grid item>
-							<IconButton
-								key="Email"
-								component="a"
-								href={`mailto:${database.Contact.Contact.Email}`}
-							>
-								<SidebarIconWrapper color={theme.lightGray}>
-									<EmailBox />
-								</SidebarIconWrapper>
-							</IconButton>
-						</Grid>
-					</Grid>
-				</Grid>
-			</Grid>
-		</SidebarHead>
-	);
-
-	const getSideListObject = (
-		sectionId: string,
-		header: string
-	): JSX.Element => (
+	const getSideListObject = (routeId: string, header: string): JSX.Element => (
 		<Link
-			to={sectionId}
+			to={routeId}
 			smooth="true"
 			style={{ textDecoration: "none" }}
 			offset={-50}
 		>
 			<ListItem button onClick={() => handleTabClick()} key={header}>
-				<ListItemIcon style={{ padding: "10px" }}>
-					{getIcon(sectionId)}
-				</ListItemIcon>
-				<ListItemText
+				<SidebarRouteIconWrapper theme={theme}>
+					{routes[routeId].icon ?? <></>}
+				</SidebarRouteIconWrapper>
+				<SidebarRouteItemText
+					styledcolor={theme.lightGray}
 					primary={
-						<Typography
-							color="textPrimary"
-							variant="button"
-							style={{ fontSize: "14px", color: theme.lightGray }}
-						>
+						<Typography color="textPrimary" variant="button">
 							{header}
 						</Typography>
 					}
@@ -270,34 +153,43 @@ const ResponsiveDrawer = (props: any) => {
 		</Link>
 	);
 
-	const getSideList = () => (
+	const SidebarRoutes = (): JSX.Element => (
 		<List>
 			<Divider />
-			{getSideListObject("about-me", "About Me")}
-			{getSideListObject("projects", "Projects")}
+			{Object.keys(routes).map(
+				(routeId) =>
+					routes[routeId].title &&
+					getSideListObject(routeId, routes[routeId].title ?? "")
+			)}
 		</List>
 	);
 
-	const drawer = () => (
-		<div style={{ backgroundColor: theme.bg, height: "100%" }}>
+	const SidebarDrawer = () => (
+		<SidebarDrawerContainer styledcolor={theme.bg}>
 			<MuiThemeProvider theme={theme.muiSidebarTheme}>
-				{getSideHead()}
-				{getSideList()}
-				<Grid container direction="row" alignItems="center" justify="center">
-					<Grid item>
-						<SwitchButton
-							color="primary"
-							checked={isDark}
-							onChange={() => themeContext.toggleTheme()}
-						/>
+				<div>
+					<SidebarHead handleTabClick={handleTabClick} />
+					<SidebarRoutes />
+				</div>
+				<div>
+					<Grid container direction="row" alignItems="center" justify="center">
+						<Grid item>
+							<SwitchButton
+								color="primary"
+								checked={isDark}
+								onChange={() => themeContext.toggleTheme()}
+							/>
+						</Grid>
+						<Grid item>
+							<ThemeLightDark style={{ color: "#cccccc", marginTop: "4px" }} />
+						</Grid>
 					</Grid>
-					<Grid item>
-						<ThemeLightDark style={{ color: "#cccccc", marginTop: "4px" }} />
-					</Grid>
-				</Grid>
-				<CopyrightText variant="overline">Mozamel Anwary © 2020</CopyrightText>
+					<CopyrightText variant="overline">
+						Mozamel Anwary © {new Date().getFullYear()}
+					</CopyrightText>
+				</div>
 			</MuiThemeProvider>
-		</div>
+		</SidebarDrawerContainer>
 	);
 
 	const { classes } = props;
@@ -333,7 +225,7 @@ const ResponsiveDrawer = (props: any) => {
 							onOpen={handleDrawerToggle}
 							classes={{ paper: classes.drawerPaper }}
 						>
-							{drawer()}
+							<SidebarDrawer />
 						</SwipeableDrawer>
 					</Hidden>
 					<Hidden xsDown implementation="css">
@@ -342,21 +234,12 @@ const ResponsiveDrawer = (props: any) => {
 							variant="permanent"
 							open
 						>
-							{drawer()}
+							<SidebarDrawer />
 						</Drawer>
 					</Hidden>
 				</nav>
-
 				<MainContentContainer>
-					<HomePage sectionId="mozamel-main" />
-					<AboutPage sectionId="about-me" />
-					<br />
-					<br />
-					<ProjectsPage sectionId="projects" />
-					<br />
-					<br />
-					<br />
-					<br />
+					{Object.keys(routes).map((routeId) => routes[routeId].page)}
 				</MainContentContainer>
 			</MuiThemeProvider>
 		</div>

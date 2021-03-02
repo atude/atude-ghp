@@ -4,7 +4,6 @@ import { FileDownload } from "mdi-material-ui";
 import Database from "../data/database";
 import styled from "styled-components";
 import { ThemeContext } from "../context/ThemeContext";
-import { PageProps } from "../types";
 import { ThemedProps, ThemedWithColorProps } from "../config/styled";
 
 const CircleLarge = styled.div`
@@ -113,13 +112,13 @@ const FabStyled = styled(Fab)<ThemedWithColorProps>`
 	opacity: 0.9;
 `;
 
-const HomePage = (props: PageProps): JSX.Element => {
+const HomePage = (props: { routeId: string }): JSX.Element => {
 	const themeContext = useContext(ThemeContext);
 	const { theme, isDark } = themeContext;
-	const { sectionId } = props;
+	const { routeId } = props;
 
 	return (
-		<div id={sectionId}>
+		<div id={routeId}>
 			<Grow in timeout={3000}>
 				<div>
 					<Slide in timeout={750} direction="up">
