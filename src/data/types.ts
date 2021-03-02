@@ -20,7 +20,16 @@ export type DatabaseProject = {
 	live: boolean;
 };
 
+export type DatabaseExperience = {
+	company: string;
+	role: string;
+	yearStart?: string;
+	yearEnd: string;
+	description: string;
+};
+
 export type Database = {
 	[key: string]: any;
 	Projects: Record<string, DatabaseProject>;
+	Experience: DatabaseExperience[];
 };

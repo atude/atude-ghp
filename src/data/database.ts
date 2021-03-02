@@ -45,6 +45,20 @@ const database: Database = {
 		"3": "Well-versed",
 		"4": "Proficient",
 	},
+	Experience: [
+		{
+			company: "Amazon Web Services (AWS)",
+			role: "Software Development Engineer",
+			yearEnd: "Present",
+			description: "This is a company description etcetcetc yes This is a company description etcetcetc yes This is a company This is a company description etcetcetc yes This is a company description etcetcetc yes This is a company description etcetcetc yes This is a company description etcetcetc yes This is a company description etcetcetc yes description etcetcetc yes",
+		},
+		{
+			company: "Zip",
+			role: "Software Engineer",
+			yearEnd: "Mar 2021",
+			description: "This is a company description etcetcetc yes",
+		},
+	],
 	Projects: {
 		Beams: {
 			bgColor: "#212121",

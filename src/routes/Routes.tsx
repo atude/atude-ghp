@@ -35,16 +35,16 @@ const routes: Record<string, Route> = {
 		page: withHeading(<AboutPage />, "aboutMe", "About Me", <AccountBox />),
 		icon: <AccountBox />,
 	},
-	// experience: {
-	// 	title: "Experience",
-	// 	page: withHeading(
-	// 		<ExperiencePage />,
-	// 		"experience",
-	// 		"Experience",
-	// 		<BriefcaseClock />
-	// 	),
-	// 	icon: <BriefcaseClock />,
-	// },
+	experience: {
+		title: "Experience",
+		page: withHeading(
+			<ExperiencePage />,
+			"experience",
+			"Experience",
+			<BriefcaseClock />
+		),
+		icon: <BriefcaseClock />,
+	},
 	projects: {
 		title: "Projects",
 		page: withHeading(

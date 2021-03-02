@@ -1,13 +1,14 @@
-import { createMuiTheme } from "@material-ui/core";
+import { createMuiTheme, Theme } from "@material-ui/core";
 import { colorsDark, ColorSet, colorsLight } from "./colors";
 
 export type ThemeScheme = {
 	bg: string;
 	bgInv: string;
 	bgSecond: string;
+	bgTertiary: string;
 	lightGray: string;
 	secondary: string;
-	muiTheme: any;
+	muiTheme: Theme;
 	muiSidebarTheme: any;
 	colorSet: ColorSet;
 };
@@ -47,6 +48,7 @@ export const lightScheme: ThemeScheme = {
 	bg: "#FFFCF9",
 	bgInv: "#000000",
 	bgSecond: "#CCC9DC",
+	bgTertiary: "#CECECE",
 	lightGray: "#324A5F",
 	secondary: "#1B9AAA",
 	muiTheme: createMuiTheme({
@@ -70,6 +72,7 @@ export const darkScheme: ThemeScheme = {
 	bg: "#0C1821",
 	bgInv: "#ffffff",
 	bgSecond: "#0C1821",
+	bgTertiary: "#616161",
 	lightGray: "#A1B9CE",
 	secondary: "#55b5c2",
 	muiTheme: createMuiTheme({
