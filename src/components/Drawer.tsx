@@ -102,7 +102,7 @@ const MainContentContainer = styled.div`
 	max-width: 1100px;
 	margin: 0 auto;
 	@media (max-width: ${`${smBreakpoint}px`}) {
-		padding: 2px;
+		padding: 6px;
 		padding-bottom: 100px;
 	}
 `;
