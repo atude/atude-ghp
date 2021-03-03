@@ -4,6 +4,7 @@ import { ThemeContext } from "../context/ThemeContext";
 import styled from "styled-components";
 import StandardCard from "./_shared/StandardCard";
 import { ThemedProps, ThemedWithColorProps } from "../config/styled";
+import { mdBreakpoint, smBreakpoint } from "../utils/layouts";
 
 type Props = {
 	heading: string;
@@ -15,8 +16,11 @@ type Props = {
 const ContentCardContainer = styled(StandardCard)`
 	padding: 2em;
 	height: 100%;
-	@media only screen and (max-width: 960px) {
+	@media (max-width: ${`${mdBreakpoint}px`}) {
 		flex-direction: column;
+	}
+	@media (max-width: ${`${smBreakpoint}px`}) {
+		padding: 1.5em 1em;
 	}
 `;
 
@@ -26,6 +30,9 @@ const ContentCardHeadingIcon = styled.div<ThemedProps>`
 		margin-top: -4px;
 		float: left;
 		color: ${(props) => props.color};
+	}
+	@media (max-width: ${`${smBreakpoint}px`}) {
+		display: none;
 	}
 `;
 

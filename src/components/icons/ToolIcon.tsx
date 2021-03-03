@@ -6,7 +6,7 @@ const IconWrapper = styled.div`
 	svg {
 		font-size: 21px;
 		margin-left: 5px;
-		margin-top: 2px;
+		margin-top: 3px;
 	}
 `;
 

@@ -50,7 +50,7 @@ export const lightScheme: ThemeScheme = {
 	bgSecond: "#CCC9DC",
 	bgTertiary: "#CECECE",
 	lightGray: "#324A5F",
-	secondary: "#1B9AAA",
+	secondary: "#198c9c",
 	muiTheme: createMuiTheme({
 		...muiGlobalConfig,
 		palette: {

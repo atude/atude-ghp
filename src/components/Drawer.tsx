@@ -25,7 +25,7 @@ import styled from "styled-components";
 
 import { ThemedProps, ThemedWithColorProps } from "../config/styled";
 import { Link } from "react-scroll";
-import { drawerWidth } from "../utils/layouts";
+import { drawerWidth, smBreakpoint } from "../utils/layouts";
 import { ThemeContext } from "../context/ThemeContext";
 import SidebarHead from "./drawer/SidebarHead";
 
@@ -101,6 +101,10 @@ const MainContentContainer = styled.div`
 	width: 100%;
 	max-width: 1100px;
 	margin: 0 auto;
+	@media (max-width: ${`${smBreakpoint}px`}) {
+		padding: 2px;
+		padding-bottom: 100px;
+	}
 `;
 
 const CopyrightText = styled(Typography)<ThemedWithColorProps>`

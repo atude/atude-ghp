@@ -10,7 +10,7 @@ import {
 import { Github, ChevronLeft, ChevronRight } from "mdi-material-ui";
 import { useMediaQuery } from "react-responsive";
 
-import { mdBreakpoint } from "../../utils/layouts";
+import { mdBreakpoint, smBreakpoint } from "../../utils/layouts";
 import { ThemeContext } from "../../context/ThemeContext";
 import styled from "styled-components";
 import StandardCard from "../_shared/StandardCard";
@@ -19,12 +19,13 @@ import {
 	ThemedProps,
 	ThemedWithColorProps,
 } from "../../config/styled";
+import ToolsList from "../_shared/ToolsList";
 
 type ProjectProps = {
 	projectBanners: string[];
 	heading: string;
 	subheading: string;
-	tools: JSX.Element[];
+	tools: string[];
 	team: string;
 	achievements: string[];
 	bgColor: string;
@@ -50,6 +51,9 @@ const ProjectCardContainer = styled(StandardCard)<ThemedProps>`
 const ProjectCardContentContainer = styled.div`
 	padding: 0.2em 0.625em 1em 0.625em;
 	flex: 1;
+	@media (max-width: ${`${smBreakpoint}px`}) {
+		padding: 0 0 1.5em;
+	}
 `;
 
 const ProjectCardTextContent = styled.div`
@@ -143,10 +147,6 @@ const ProjectSubheading = styled(Typography)<ThemedWithColorProps>`
 	@media only screen and (max-width: 600px) {
 		margin-top: 2px;
 	}
-`;
-
-const ToolIconContainer = styled(Grid)`
-	padding: 5px 0 0 7px;
 `;
 
 const AchievementsContainer = styled.div`
@@ -310,33 +310,10 @@ const ProjectCard = (props: ProjectProps): JSX.Element => {
 		</ProjectCardTextContent>
 	);
 
-	const getDetailsSectionLeft = (items: JSX.Element[]) => (
-		<Grid item container>
-			<Grid
-				container
-				direction="row"
-				justify="flex-start"
-				alignItems="flex-start"
-				// Offset due to icon padding
-				style={{ marginLeft: "-7px" }}
-			>
-				<Grid container direction="row" justify="flex-start">
-					{items}
-				</Grid>
-			</Grid>
-		</Grid>
-	);
-
 	const getDetailsContainer = () => (
 		<Grid container direction="row">
 			<Grid item xs={12} container direction="column">
-				{getDetailsSectionLeft(
-					tools.map((tool: JSX.Element, i: number) => (
-						<ToolIconContainer key={i} item>
-							{tool}
-						</ToolIconContainer>
-					))
-				)}
+				<ToolsList tools={tools} color={theme.lightGray} isDark={isDark} />
 			</Grid>
 		</Grid>
 	);

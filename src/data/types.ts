@@ -23,8 +23,8 @@ export type DatabaseProject = {
 export type DatabaseExperience = {
 	company: string;
 	role: string;
-	yearStart?: string;
-	yearEnd: string;
+	tools: string[];
+	year: string;
 	description: string;
 };
 

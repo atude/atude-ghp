@@ -1,16 +1,12 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import database from "../data/database";
 import { Grid } from "@material-ui/core";
 import ProjectCard from "../components/project/ProjectCard";
-import { getMiniIcons } from "../components/project/ProjectMiniIcons";
-import { ThemeContext } from "../context/ThemeContext";
 import { DatabaseProject } from "../data/types";
 import icons from "../components/icons";
 
 const ProjectsPage = (): JSX.Element => {
 	const [banners, setBanners] = useState<Record<string, any[]>>({});
-	const themeContext = useContext(ThemeContext);
-	const { theme } = themeContext;
 	const projects = database.Projects;
 
 	useEffect(() => {
@@ -53,7 +49,6 @@ const ProjectsPage = (): JSX.Element => {
 					projectBanners={
 						banners[project.heading] ? banners[project.heading] : []
 					}
-					tools={getMiniIcons(project.tools, theme.lightGray)}
 					viewicon={icons[project.viewicon]}
 				/>
 			</Grid>
