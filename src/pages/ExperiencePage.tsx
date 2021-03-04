@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Database from "../data/database";
 
 import { ThemeContext } from "../context/ThemeContext";
 import styled from "styled-components";
 import StandardCard from "../components/_shared/StandardCard";
-import { ThemedActiveProps, ThemedWithColorProps } from "../config/styled";
+import { ThemedWithColorProps } from "../config/styled";
 import { Typography } from "@material-ui/core";
 import { DatabaseExperience } from "../data/types";
 import ToolsList from "../components/_shared/ToolsList";
@@ -27,6 +27,26 @@ const ExperiencesContainer = styled(StandardCard)`
 const ExperienceContainer = styled.div`
 	display: flex;
 	flex-direction: row;
+
+	:hover {
+		.ExperienceDot {
+			border: 5px solid ${(props) => props.color};
+			transform: scale(1.2, 1.2);
+		}
+		.ExperienceLine {
+			background-color: ${(props) => props.color};
+		}
+		.ExperienceLogo {
+			svg {
+				color: ${(props) => props.color};
+				stroke: ${(props) => props.color};
+				transform: scale(1, 1);
+			}
+		}
+		.CompanyText {
+			color: ${(props) => props.color};
+		}
+	}
 `;
 
 const ExperienceDate = styled(Typography)<ThemedWithColorProps>`
@@ -47,6 +67,7 @@ const ExperienceLineContainer = styled.div`
 	opacity: 1;
 	div {
 		background-color: ${(props) => props.color};
+		border-color: ${(props) => props.color};
 	}
 	@media (max-width: ${`${smBreakpoint}px`}) {
 		display: none;
@@ -54,17 +75,21 @@ const ExperienceLineContainer = styled.div`
 `;
 
 const ExperienceDot = styled.div`
+	transition: all 0.15s ease;
 	width: 20px;
 	height: 20px;
 	margin: 0 2em;
 	border-radius: 100px;
+	background-color: transparent !important;
+	border: 3px solid;
+	z-index: 1;
 `;
 
 const ExperienceLine = styled.div`
-	width: 6px;
+	transition: all 0.15s ease;
+	width: 2px;
 	height: 100%;
-	margin-top: -14px;
-	margin-bottom: -14px;
+	flex-shrink: 1000;
 `;
 
 const ExperienceTextContainer = styled.div`
@@ -78,35 +103,48 @@ const ExperienceCompanyHeader = styled.div`
 	margin-bottom: 1em;
 `;
 
-const ExperienceCompanyIconWrapper = styled.div`
+const ExperienceCompanyIconWrapper = styled.div<ThemedWithColorProps>`
 	margin-right: 12px;
 	margin-bottom: -5px;
 	margin-top: -8px;
 	align-items: center;
 	svg {
 		font-size: 40px;
-		color: ${(props) => props.color};
-		stroke: ${(props) => props.color};
+		transition: all 0.15s ease;
+		color: ${(props) => props.styledcolor};
+		stroke: ${(props) => props.styledcolor};
 		/* Dont enable stroke unless set by svg */
 		stroke-width: 0;
+		transform: scale(0.9, 0.9);
 	}
 `;
 
+const ExperienceHeaderTextContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	margin-top: -8px;
+`;
+
 const ExperienceCompanyText = styled(Typography)<ThemedWithColorProps>`
+	transition: all 0.15s ease;
 	color: ${(props) => props.styledcolor};
 	font-weight: 500;
 	line-height: 1.3;
 `;
 
-const ExperienceDescription = styled(Typography)<ThemedActiveProps>`
+const ExperienceRoleText = styled(Typography)<ThemedWithColorProps>`
+	color: ${(props) => props.styledcolor};
+	line-height: 1.3;
+	font-size: 0.875em;
+	font-weight: 500;
+`;
+
+const ExperienceDescription = styled(Typography)`
 	transition: all 0.25s ease;
 	margin-bottom: 1em;
-	/* flex: ${(props) => (props.active ? 1 : 0)};
-	opacity: ${(props) => (props.active ? 1 : 0)}; */
 `;
 
 const ExperiencePage = (): JSX.Element => {
-	const [activeCompany, setActiveCompany] = useState(experiences[0].company);
 	const isSmWidth = useMediaQuery({ query: `(max-width:${smBreakpoint}px)` });
 	const themeContext = useContext(ThemeContext);
 	const { theme, isDark } = themeContext;
@@ -116,7 +154,7 @@ const ExperiencePage = (): JSX.Element => {
 			{experiences.map((experience: DatabaseExperience, i: number) => (
 				<ExperienceContainer
 					key={experience.company}
-					onMouseEnter={() => setActiveCompany(experience.company)}
+					color={isDark ? experience.colorDark : experience.color}
 				>
 					{!isSmWidth && (
 						<ExperienceDate variant="button" styledcolor={theme.lightGray}>
@@ -124,31 +162,41 @@ const ExperiencePage = (): JSX.Element => {
 						</ExperienceDate>
 					)}
 					<ExperienceLineContainer color={theme.bgTertiary}>
-						<ExperienceDot />
-						{i !== experiences.length - 1 && <ExperienceLine />}
+						<ExperienceDot className="ExperienceDot" color={theme.lightGray} />
+						{i !== experiences.length - 1 && (
+							<ExperienceLine className="ExperienceLine" />
+						)}
 					</ExperienceLineContainer>
 					<ExperienceTextContainer>
 						<ExperienceCompanyHeader>
-							<ExperienceCompanyIconWrapper color={theme.secondary}>
+							<ExperienceCompanyIconWrapper
+								styledcolor={theme.secondary}
+								className="ExperienceLogo"
+							>
 								{icons[experience.company]}
 							</ExperienceCompanyIconWrapper>
-							<ExperienceCompanyText
-								variant="body1"
-								styledcolor={theme.secondary}
-							>
-								{experience.company}
-							</ExperienceCompanyText>
+							<ExperienceHeaderTextContainer>
+								<ExperienceCompanyText
+									variant="body1"
+									styledcolor={theme.secondary}
+									className="CompanyText"
+								>
+									{experience.company}
+								</ExperienceCompanyText>
+								<ExperienceRoleText
+									variant="body1"
+									styledcolor={theme.lightGray}
+								>
+									{experience.role}
+								</ExperienceRoleText>
+							</ExperienceHeaderTextContainer>
 							{isSmWidth && (
 								<ExperienceDate variant="button" styledcolor={theme.lightGray}>
 									{experience.year}
 								</ExperienceDate>
 							)}
 						</ExperienceCompanyHeader>
-						<ExperienceDescription
-							variant="body2"
-							color="textSecondary"
-							active={experience.company === activeCompany ? 1 : 0}
-						>
+						<ExperienceDescription variant="body2" color="textSecondary">
 							{experience.description}
 						</ExperienceDescription>
 						<ToolsList

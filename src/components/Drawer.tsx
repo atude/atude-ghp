@@ -107,7 +107,7 @@ const MainContentContainer = styled.div`
 	}
 `;
 
-const CopyrightText = styled(Typography)<ThemedWithColorProps>`
+const CopyrightText = styled(Typography)`
 	padding: 20px 0 30px;
 	z-index: 0;
 	position: static;

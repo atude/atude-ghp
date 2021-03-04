@@ -23,6 +23,8 @@ export type DatabaseProject = {
 export type DatabaseExperience = {
 	company: string;
 	role: string;
+	color: string;
+	colorDark: string;
 	tools: string[];
 	year: string;
 	description: string;

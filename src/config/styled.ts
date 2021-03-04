@@ -14,5 +14,8 @@ export type ThemedActiveProps = ThemedProps & {
 };
 
 export type ThemedWithColorProps = Omit<ThemedProps, "color"> & {
-	styledcolor?: string;
+	styledcolor: string;
+	altcolor?: string;
 };
+
+export type ThemedActiveColorProps = ThemedActiveProps & ThemedWithColorProps;

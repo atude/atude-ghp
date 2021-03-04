@@ -48,14 +48,18 @@ const database: Database = {
 	Experience: [
 		{
 			company: "Amazon Web Services",
-			role: "Software Development Engineer",
+			role: "Software Development Engineer I",
+			color: "#d98507",
+			colorDark: "#e8ae56",
 			year: "2021",
 			tools: [],
 			description: "",
 		},
 		{
 			company: "Zip",
-			role: "Software Engineer",
+			role: "Software Engineer II",
+			color: "#21285C",
+			colorDark: "#6d7de3",
 			year: "2020",
 			tools: [
 				"TypeScript",
@@ -76,6 +80,8 @@ const database: Database = {
 		{
 			company: "ConsenSys",
 			role: "Software Engineer",
+			color: "#2C56DD",
+			colorDark: "#8096e0",
 			year: "2019",
 			tools: [
 				"TypeScript",

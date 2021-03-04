@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Typography, Fade, Slide } from "@material-ui/core";
 import styled from "styled-components";
 import {
@@ -56,23 +56,22 @@ const HeadingIconWrapper = styled.div<ThemedWithColorProps>`
 	}
 `;
 
-const Dot = styled.div<ThemedActiveProps>`
+const Dot = styled.div`
 	width: 20px;
 	height: 20px;
 	border-radius: 50px;
 	background-color: ${(props) => props.color};
-	transition: all 0.5s ease;
-	transform: ${(props) => (props.active ? "scale(0.8, 0.8)" : "scale(1, 1)")};
+	transition: all 0.25s ease;
 `;
 
-const Line = styled.div<ThemedActiveProps & ThemedLineProps>`
+const Line = styled.div`
 	height: 4px;
 	border-radius: 50px;
-	transition: all 0.5s ease;
+	transition: all 0.4s ease;
 	background-color: ${(props) => props.color};
-	width: ${(props) => (props.active ? "120px" : "20px")};
-	margin-right: ${(props) => (props.active && props.right ? "4em" : "1em")};
-	margin-left: ${(props) => (props.active && props.left ? "4em" : "1em")};
+	width: 20px;
+	margin-right: 1em;
+	margin-left: 1em;
 `;
 
 const DividerStyled = styled.div`
@@ -82,10 +81,22 @@ const DividerStyled = styled.div`
 	justify-content: center;
 	align-items: center;
 	margin: 5em auto 7em;
+	:hover {
+		:first-child > :first-child {
+			width: 120px;
+			margin-right: 4em;
+		}
+		:first-child > :last-child {
+			width: 120px;
+			margin-left: 4em;
+		}
+		:first-child > :nth-child(2) {
+			transform: scale(0.8, 0.8);
+		}
+	}
 `;
 
 const AnchoredSubheading = (props: Props): JSX.Element => {
-	const [active, setActive] = useState(false);
 	const themeContext = useContext(ThemeContext);
 	const theme = themeContext.theme;
 	const { title, icon, id } = props;
@@ -95,13 +106,10 @@ const AnchoredSubheading = (props: Props): JSX.Element => {
 			<Slide in direction="up" timeout={2000}>
 				<div>
 					<Fade in timeout={4000}>
-						<DividerStyled
-							onMouseEnter={() => setActive(true)}
-							onMouseLeave={() => setActive(false)}
-						>
-							<Line color={theme.lightGray} active={active ? 1 : 0} right />
-							<Dot color={theme.lightGray} active={active ? 1 : 0} />
-							<Line color={theme.lightGray} active={active ? 1 : 0} left />
+						<DividerStyled>
+							<Line color={theme.lightGray} />
+							<Dot color={theme.lightGray} />
+							<Line color={theme.lightGray} />
 						</DividerStyled>
 					</Fade>
 				</div>
