@@ -139,6 +139,14 @@ const ExperienceRoleText = styled(Typography)<ThemedWithColorProps>`
 	font-weight: 500;
 `;
 
+const ExperienceDescriptionContainer = styled.div`
+	transition: all 0.15s ease;
+	margin-left: 52px;
+	@media (max-width: ${`${smBreakpoint}px`}) {
+		margin-left: 0;
+	}
+`;
+
 const ExperienceDescription = styled(Typography)`
 	transition: all 0.25s ease;
 	margin-bottom: 1em;
@@ -196,14 +204,16 @@ const ExperiencePage = (): JSX.Element => {
 								</ExperienceDate>
 							)}
 						</ExperienceCompanyHeader>
-						<ExperienceDescription variant="body2" color="textSecondary">
-							{experience.description}
-						</ExperienceDescription>
-						<ToolsList
-							tools={experience.tools}
-							color={theme.lightGray}
-							isDark={isDark}
-						/>
+						<ExperienceDescriptionContainer>
+							<ExperienceDescription variant="body2" color="textSecondary">
+								{experience.description}
+							</ExperienceDescription>
+							<ToolsList
+								tools={experience.tools}
+								color={theme.lightGray}
+								isDark={isDark}
+							/>
+						</ExperienceDescriptionContainer>
 					</ExperienceTextContainer>
 				</ExperienceContainer>
 			))}
