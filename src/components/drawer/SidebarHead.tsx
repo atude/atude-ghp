@@ -98,7 +98,10 @@ const SidebarHead = (props: Props): JSX.Element => {
 								target="_blank"
 								rel="noopener noreferrer"
 							>
-								<SidebarIconWrapper styledcolor={theme.lightGray} altcolor={theme.secondary}>
+								<SidebarIconWrapper
+									styledcolor={theme.lightGray}
+									altcolor={theme.secondary}
+								>
 									<Github />
 								</SidebarIconWrapper>
 							</IconButton>
@@ -111,7 +114,10 @@ const SidebarHead = (props: Props): JSX.Element => {
 								target="_blank"
 								rel="noopener noreferrer"
 							>
-								<SidebarIconWrapper styledcolor={theme.lightGray} altcolor={theme.secondary}>
+								<SidebarIconWrapper
+									styledcolor={theme.lightGray}
+									altcolor={theme.secondary}
+								>
 									<Linkedin />
 								</SidebarIconWrapper>
 							</IconButton>
@@ -122,7 +128,10 @@ const SidebarHead = (props: Props): JSX.Element => {
 								component="a"
 								href={`mailto:${database.Contact.Contact.Email}`}
 							>
-								<SidebarIconWrapper styledcolor={theme.lightGray} altcolor={theme.secondary}>
+								<SidebarIconWrapper
+									styledcolor={theme.lightGray}
+									altcolor={theme.secondary}
+								>
 									<EmailBox />
 								</SidebarIconWrapper>
 							</IconButton>
