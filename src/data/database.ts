@@ -48,7 +48,7 @@ const database: Database = {
 	Experience: [
 		{
 			company: "Amazon Web Services",
-			role: "Software Development Engineer I",
+			role: "Software Development Engineer",
 			color: "#d98507",
 			colorDark: "#e8ae56",
 			year: "2021",
@@ -57,7 +57,7 @@ const database: Database = {
 		},
 		{
 			company: "Zip",
-			role: "Software Engineer II",
+			role: "Software Engineer",
 			color: "#21285C",
 			colorDark: "#6d7de3",
 			year: "2020",
@@ -113,7 +113,7 @@ const database: Database = {
 			team: "5 Members",
 			achievements: ["Best UX: Macquarie Group Workshop 2019"],
 			body:
-				"A suburb analysis webapp that collates housing market data and suburb information with user financial/ethical requirements to help buy properties in suburbs tailored to you.",
+				"A suburb analysis webapp that collates housing market data, suburb information and the user's financial and ethical requirements to help buy properties in suburbs tailored to them.",
 			live: false,
 		},
 		Kanbie: {
@@ -181,7 +181,7 @@ const database: Database = {
 			team: "5 Members",
 			achievements: [],
 			body:
-				"A disease hub that provides up-to-date analysis on the climate of diseases in Australia, focused on COVID-19. Sympt includes the mobile app for users as well as an API and dashboard for developers.",
+				"A disease hub that provides up-to-date analysis on the climate of diseases in Australia, focused on COVID-19. Sympt includes an API that processes real-time COVID data, a mobile app for viewing disease spread and an API dashboard for developers.",
 			live: false,
 		},
 		Devote: {

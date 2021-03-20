@@ -54,7 +54,7 @@ const ToolsCategoryText = styled(Typography)<ThemedProps>`
 
 const ToolChip = styled(Chip)<ThemedWithColorProps>`
 	transition: all 0.1s ease;
-	color: ${(props) => props.color};
+	background-color: ${(props) => props.styledcolor};
 	* > span {
 		padding-left: 2.5px;
 	}
@@ -104,7 +104,7 @@ const ToolsContent = (props: Props): JSX.Element => {
 										variant="default"
 										icon={ToolIcon(key)}
 										label={<span>{key}</span>}
-										styledcolor={theme.bg}
+										styledcolor={theme.bgTertiary}
 									/>
 								</Grid>
 							))}

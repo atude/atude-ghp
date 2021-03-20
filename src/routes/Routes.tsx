@@ -19,16 +19,16 @@ const withHeading = (
 	title: string,
 	icon: JSX.Element
 ) => (
-	<>
+	<React.Fragment key={routeId}>
 		<AnchoredSubheading id={routeId} title={title} icon={icon} />
 		{page}
-	</>
+	</React.Fragment>
 );
 
 const routes: Record<string, Route> = {
 	home: {
 		title: "",
-		page: <HomePage routeId="home" />,
+		page: <HomePage routeId="home" key="home" />,
 	},
 	aboutMe: {
 		title: "About Me",

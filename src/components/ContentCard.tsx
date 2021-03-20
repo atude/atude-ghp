@@ -14,13 +14,15 @@ type Props = {
 };
 
 const ContentCardContainer = styled(StandardCard)`
-	padding: 2em;
+	padding: 0 2em;
+	margin: 2em 0;
 	height: 100%;
 	@media (max-width: ${`${mdBreakpoint}px`}) {
 		flex-direction: column;
 	}
 	@media (max-width: ${`${smBreakpoint}px`}) {
 		padding: 1.5em 1em;
+		margin: 0;
 	}
 `;
 

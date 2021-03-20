@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import "typeface-roboto";
 import Drawer from "./components/Drawer";
 import { ThemeProvider } from "./context/ThemeContext";
 

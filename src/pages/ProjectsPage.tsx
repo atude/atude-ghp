@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import database from "../data/database";
 import { Grid } from "@material-ui/core";
 import ProjectCard from "../components/project/ProjectCard";
@@ -6,33 +6,7 @@ import { DatabaseProject } from "../data/types";
 import icons from "../components/icons";
 
 const ProjectsPage = (): JSX.Element => {
-	const [banners, setBanners] = useState<Record<string, any[]>>({});
 	const projects = database.Projects;
-
-	useEffect(() => {
-		if (Object.keys(banners).length) {
-			return;
-		}
-
-		const fetchBanners: Record<string, string[]> = {};
-		Object.values(projects).forEach((project) => {
-			fetchBanners[project.heading] = [];
-			let j = 0;
-			// eslint-disable-next-line no-constant-condition
-			while (true) {
-				try {
-					// eslint-disable-next-line @typescript-eslint/no-var-requires
-					const banner = require(`../assets/projects/${project.heading}/${j}.png`)
-						.default;
-					fetchBanners[project.heading].push(banner);
-				} catch {
-					break;
-				}
-				j++;
-			}
-		});
-		setBanners(fetchBanners);
-	}, [banners, projects]);
 
 	const getCardMain = (project: DatabaseProject) => {
 		return (
@@ -44,13 +18,7 @@ const ProjectsPage = (): JSX.Element => {
 				alignItems="center"
 				justify="center"
 			>
-				<ProjectCard
-					{...project}
-					projectBanners={
-						banners[project.heading] ? banners[project.heading] : []
-					}
-					viewicon={icons[project.viewicon]}
-				/>
+				<ProjectCard {...project} viewicon={icons[project.viewicon]} />
 			</Grid>
 		);
 	};

@@ -137,6 +137,7 @@ const ResponsiveDrawer = (props: any) => {
 	const getSideListObject = (routeId: string, header: string): JSX.Element => (
 		<Link
 			to={routeId}
+			key={routeId}
 			smooth="true"
 			style={{ textDecoration: "none" }}
 			offset={-50}
@@ -199,7 +200,10 @@ const ResponsiveDrawer = (props: any) => {
 	const { classes } = props;
 
 	return (
-		<div className={classes.root}>
+		<div
+			style={{ backgroundColor: theme.bgSecondary }}
+			className={classes.root}
+		>
 			<MuiThemeProvider theme={theme.muiTheme}>
 				<CssBaseline />
 				<AppBar position="fixed" className={classes.appBar}>

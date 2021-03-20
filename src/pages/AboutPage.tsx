@@ -36,7 +36,7 @@ const AvatarCircleA = styled.div`
 	position: absolute;
 	margin-top: -205px;
 	border-radius: 100px;
-	z-index: -1;
+	z-index: 1;
 	transition: all 0.5s;
 	margin-left: 14px;
 `;
@@ -48,7 +48,7 @@ const AvatarCircleB = styled.div`
 	position: absolute;
 	margin-left: 34px;
 	border-radius: 100px;
-	z-index: -1;
+	z-index: 1;
 	transition: all 0.3s;
 	margin-top: -220px;
 `;
@@ -60,7 +60,7 @@ const AvatarCircleC = styled.div`
 	position: absolute;
 	margin-top: -230px;
 	border-radius: 100px;
-	z-index: -1;
+	z-index: 1;
 	transition: all 0.8s;
 	margin-left: 8px;
 `;
@@ -80,7 +80,7 @@ const AboutPage = (): JSX.Element => {
 				justify="center"
 			>
 				<AvatarContainer item>
-					<Fade in={isAvatarLoad} timeout={700}>
+					<Fade in={isAvatarLoad} timeout={700} style={{ zIndex: 3 }}>
 						<Avatar
 							src={imgProfile}
 							alt="avatar"
@@ -95,7 +95,7 @@ const AboutPage = (): JSX.Element => {
 				<Grid item lg={9} sm={12} xs={12}>
 					<ContentCard
 						headingIcon={<HumanGreeting />}
-						heading="Hi! I'm Moz, a software engineer in Sydney, Australia."
+						heading="I'm Moz, a software engineer in Sydney, Australia."
 						paragraphs={Database["About me"]}
 						content={<SkillsContent theme={theme} />}
 					/>

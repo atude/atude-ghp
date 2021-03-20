@@ -15,7 +15,8 @@ import { useMediaQuery } from "react-responsive";
 const experiences = Database.Experience;
 
 const ExperiencesContainer = styled(StandardCard)`
-	padding: 4em 2em 2em;
+	padding: 0 2em;
+	margin-top: 6em;
 	margin-bottom: 7em;
 	display: flex;
 	flex-direction: column;

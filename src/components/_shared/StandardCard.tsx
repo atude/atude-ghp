@@ -1,19 +1,26 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { ThemedProps } from "../../config/styled";
+import { ThemedColorDirectionalProps } from "../../config/styled";
 import { ThemeContext } from "../../context/ThemeContext";
 
-const StandardCardStyled = styled.div<ThemedProps>`
-	border-radius: 16px;
-	background: ${(props) => (props.isDark ? "#2a2929" : "#e9e9e9")};
-	box-shadow: ${(props) =>
-		props.isDark
-			? "12px 12px 24px 0 #242323, -12px -12px 24px 0 #302f2f"
-			: "12px 12px 24px 0 rgba(0, 0, 0, 0.2), -12px -12px 24px 0 rgba(255, 255, 255, 0.4)"};
+const StandardCardStyled = styled.div<ThemedColorDirectionalProps>`
+	transition: border 0.25s ease;
+	border: 2px solid transparent;
+	:hover {
+		border-left: ${(props) =>
+			!props.isRight
+				? `2px solid ${props.styledcolor}`
+				: "2px solid transparent"};
+		border-right: ${(props) =>
+			props.isRight
+				? `2px solid ${props.styledcolor}`
+				: "2px solid transparent"};
+	}
 `;
 
 type Props = {
 	isDark: boolean;
+	isRight?: boolean;
 	className?: string;
 };
 
@@ -24,7 +31,9 @@ const StandardCard = (
 	return (
 		<StandardCardStyled
 			isDark={themeContext.isDark}
+			isRight={props.isRight}
 			className={props.className}
+			styledcolor={themeContext.theme.secondary}
 		>
 			{props.children}
 		</StandardCardStyled>

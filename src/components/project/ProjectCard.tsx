@@ -1,28 +1,21 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import {
 	Typography,
 	CardContent,
 	Grid,
-	Button,
 	IconButton,
 	Link,
 } from "@material-ui/core";
-import { Github, ChevronLeft, ChevronRight } from "mdi-material-ui";
+import { Github } from "mdi-material-ui";
 import { useMediaQuery } from "react-responsive";
-
 import { mdBreakpoint, smBreakpoint } from "../../utils/layouts";
 import { ThemeContext } from "../../context/ThemeContext";
 import styled from "styled-components";
 import StandardCard from "../_shared/StandardCard";
-import {
-	ThemedActiveProps,
-	ThemedProps,
-	ThemedWithColorProps,
-} from "../../config/styled";
+import { ThemedProps, ThemedWithColorProps } from "../../config/styled";
 import ToolsList from "../_shared/ToolsList";
 
 type ProjectProps = {
-	projectBanners: string[];
 	heading: string;
 	subheading: string;
 	tools: string[];
@@ -41,11 +34,8 @@ const ProjectCardContainer = styled(StandardCard)<ThemedProps>`
 	height: 100%;
 	display: flex;
 	flex: 1;
-	transition: all 0.25s ease;
-	filter: grayscale(80%);
-	:hover {
-		filter: grayscale(0%);
-	}
+	transition: border 0.25s ease;
+	filter: grayscale(0);
 `;
 
 const ProjectCardContentContainer = styled.div`
@@ -62,7 +52,7 @@ const ProjectCardTextContent = styled.div`
 
 const BannerContainer = styled.div`
 	height: 100%;
-	flex: 1;
+	flex: 1.2;
 	overflow: hidden;
 	border-radius: 16px;
 	align-items: flex-end;
@@ -74,21 +64,11 @@ const BannerImageContainer = styled.div`
 	position: relative;
 `;
 
-const BannerRelativeContainer = styled.div`
-	width: 100%;
-	position: relative;
-`;
-
-const BannerImage = styled.img<ThemedActiveProps>`
+const BannerImage = styled.img`
 	object-fit: cover;
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	transition: opacity 0.5s ease;
-	padding-top: 54px;
-	margin-top: -54px;
-	border-bottom: solid 1px rgba(255, 255, 255, 0.2);
-	opacity: ${(props) => (props.active ? 1 : 0)};
 `;
 
 const BannerLinksContainer = styled.div`
@@ -103,33 +83,6 @@ const BannerLinksContentContainer = styled.div`
 	float: right;
 	clear: both;
 	opacity: 0.9;
-`;
-
-const BannerButton = styled(Button)`
-	height: 50px;
-	position: absolute;
-	bottom: 2px;
-`;
-
-const BannerDotsContainer = styled(Grid)`
-	position: absolute;
-	width: 100%;
-	bottom: 16px;
-	pointer-events: none;
-`;
-
-const BannerDot = styled(Grid)<ThemedActiveProps>`
-	transition: all 0.5s ease;
-	filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.3));
-	opacity: ${(props) => (props.active ? 1 : 0.5)};
-`;
-
-const BannerChevronWrapper = styled.div`
-	svg {
-		color: #fff;
-		opacity: 0.9;
-		filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.65));
-	}
 `;
 
 const ProjectHeading = styled(Typography)<ThemedWithColorProps>`
@@ -180,13 +133,10 @@ const DescriptionText = styled(Typography)`
 `;
 
 const ProjectCard = (props: ProjectProps): JSX.Element => {
-	const [bannerIndex, setBannerIndex] = useState(0);
 	const themeContext = useContext(ThemeContext);
 	const { theme, isDark } = themeContext;
 	const isMdWidth = useMediaQuery({ query: `(max-width:${mdBreakpoint}px)` });
-
 	const {
-		projectBanners,
 		heading,
 		subheading,
 		tools,
@@ -201,47 +151,16 @@ const ProjectCard = (props: ProjectProps): JSX.Element => {
 		accColor,
 	} = props;
 
-	const bannerControl = (i: number, len: number) => {
-		if (len - 1 === bannerIndex && i >= 0) {
-			i = -(len - 1);
-		}
-		if (0 === bannerIndex && i <= 0) {
-			i = len - 1;
-		}
-		setBannerIndex(bannerIndex + i);
-	};
-
 	const getBanner = () => (
 		<BannerContainer color={bgColor}>
 			<BannerImageContainer>
-				{projectBanners.map((banner: string, i: number) => (
-					<BannerImage
-						key={i}
-						alt={`${banner}${i}`}
-						active={bannerIndex === i ? 1 : 0}
-						src={banner}
-						loading="lazy"
-					/>
-				))}
+				<BannerImage
+					alt={heading}
+					// eslint-disable-next-line @typescript-eslint/no-var-requires
+					src={require(`../../assets/projects/${heading}/banner.png`).default}
+					loading="lazy"
+				/>
 			</BannerImageContainer>
-			<BannerRelativeContainer>
-				<BannerButton
-					onClick={() => bannerControl(-1, projectBanners.length)}
-					style={{ left: "8px" }}
-				>
-					<BannerChevronWrapper>
-						<ChevronLeft />
-					</BannerChevronWrapper>
-				</BannerButton>
-				<BannerButton
-					onClick={() => bannerControl(1, projectBanners.length)}
-					style={{ right: "8px" }}
-				>
-					<BannerChevronWrapper>
-						<ChevronRight />
-					</BannerChevronWrapper>
-				</BannerButton>
-			</BannerRelativeContainer>
 			<BannerLinksContainer>
 				<BannerLinksContentContainer>
 					<IconButton
@@ -264,27 +183,6 @@ const ProjectCard = (props: ProjectProps): JSX.Element => {
 					</IconButton>
 				</BannerLinksContentContainer>
 			</BannerLinksContainer>
-			<BannerRelativeContainer>
-				<BannerDotsContainer
-					container
-					spacing={8}
-					direction="row"
-					alignItems="center"
-					justify="center"
-				>
-					{projectBanners.map((banner: string, i: number) => (
-						<BannerDot
-							item
-							key={`${banner}${i}dot`}
-							active={bannerIndex === i ? 1 : 0}
-						>
-							<svg height="10" width="10">
-								<circle fill="white" cx="3" cy="3" r="3" />
-							</svg>
-						</BannerDot>
-					))}
-				</BannerDotsContainer>
-			</BannerRelativeContainer>
 		</BannerContainer>
 	);
 
@@ -339,7 +237,7 @@ const ProjectCard = (props: ProjectProps): JSX.Element => {
 	};
 
 	return (
-		<ProjectCardContainer isDark={isDark}>
+		<ProjectCardContainer isDark={isDark} isRight>
 			{!isMdWidth && getBanner()}
 			<ProjectCardContentContainer>
 				<CardContent>

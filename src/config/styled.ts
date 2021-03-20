@@ -19,3 +19,6 @@ export type ThemedWithColorProps = Omit<ThemedProps, "color"> & {
 };
 
 export type ThemedActiveColorProps = ThemedActiveProps & ThemedWithColorProps;
+export type ThemedColorDirectionalProps = ThemedWithColorProps & {
+	isRight?: boolean;
+};

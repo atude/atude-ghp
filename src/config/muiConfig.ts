@@ -3,9 +3,10 @@ import { colorsDark, ColorSet, colorsLight } from "./colors";
 
 export type ThemeScheme = {
 	bg: string;
-	bgInv: string;
-	bgSecond: string;
+	bgSecondary: string;
 	bgTertiary: string;
+	bgCard: string;
+	bgInv: string;
 	lightGray: string;
 	secondary: string;
 	muiTheme: Theme;
@@ -17,11 +18,11 @@ const muiGlobalConfig = {
 	typography: {
 		useNextVariants: true,
 		fontFamily: [
+			"Inter",
 			"-apple-system",
 			"BlinkMacSystemFont",
 			// eslint-disable-next-line prettier/prettier
 			"\"Segoe UI\"",
-			"Roboto",
 			// eslint-disable-next-line prettier/prettier
 			"\"Helvetica Neue\"",
 			"Arial",
@@ -46,9 +47,10 @@ const muiGlobalConfig = {
 
 export const lightScheme: ThemeScheme = {
 	bg: "#FFFCF9",
-	bgInv: "#000000",
-	bgSecond: "#CCC9DC",
+	bgSecondary: "#e9e9e9",
 	bgTertiary: "#CECECE",
+	bgCard: "#e9e9e9",
+	bgInv: "#000000",
 	lightGray: "#324A5F",
 	secondary: "#198c9c",
 	muiTheme: createMuiTheme({
@@ -69,12 +71,13 @@ export const lightScheme: ThemeScheme = {
 };
 
 export const darkScheme: ThemeScheme = {
-	bg: "#0C1821",
+	bg: "#171e2b",
+	bgSecondary: "#162032",
+	bgTertiary: "#23304a",
+	bgCard: "#162032",
 	bgInv: "#ffffff",
-	bgSecond: "#0C1821",
-	bgTertiary: "#616161",
 	lightGray: "#A1B9CE",
-	secondary: "#55b5c2",
+	secondary: "#00FECB",
 	muiTheme: createMuiTheme({
 		...muiGlobalConfig,
 		palette: {

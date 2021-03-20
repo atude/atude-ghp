@@ -1,17 +1,8 @@
 import React, { useContext } from "react";
 import { Typography, Fade, Slide } from "@material-ui/core";
 import styled from "styled-components";
-import {
-	ThemedActiveProps,
-	ThemedProps,
-	ThemedWithColorProps,
-} from "../config/styled";
+import { ThemedProps, ThemedWithColorProps } from "../config/styled";
 import { ThemeContext } from "../context/ThemeContext";
-
-type ThemedLineProps = {
-	right?: boolean;
-	left?: boolean;
-};
 
 type Props = {
 	title: string;

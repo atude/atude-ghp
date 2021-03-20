@@ -21,6 +21,10 @@ export const ThemeProvider = (
 
 	useEffect(() => {
 		const getIsDark = localStorage.getItem("isDark");
+		if (!getIsDark) {
+			switchTheme(true);
+			return;
+		}
 		switchTheme(getIsDark === "Dark" ? true : false);
 	}, []);
 
