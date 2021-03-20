@@ -66,6 +66,8 @@ const styles = (theme: Theme) => ({
 	toolbar: theme.mixins.toolbar,
 	drawerPaper: {
 		width: drawerWidth,
+		borderRight: "none",
+		// boxShadow: "12px 12px 24px 0 #171e2b",
 	},
 	content: {
 		flexGrow: 1,
@@ -79,13 +81,24 @@ const SidebarDrawerContainer = styled.div<ThemedWithColorProps>`
 	justify-content: space-between;
 	flex: 1;
 	background-color: ${(props) => props.styledcolor};
+	border-right: 1px solid ${(props) => props.altcolor};
 `;
 
-const SidebarRouteIconWrapper = styled(ListItemIcon)<ThemedProps>`
-	padding: 10px;
-	svg {
+const SidebarListItem = styled(ListItem)<ThemedProps>`
+	svg,
+	span {
 		color: ${(props) => props.theme.lightGray};
 	}
+	:hover {
+		svg,
+		span {
+			color: ${(props) => props.theme.secondary};
+		}
+	}
+`;
+
+const SidebarRouteIconWrapper = styled(ListItemIcon)`
+	padding: 10px;
 `;
 
 const SidebarRouteItemText = styled(ListItemText)<ThemedWithColorProps>`
@@ -93,6 +106,13 @@ const SidebarRouteItemText = styled(ListItemText)<ThemedWithColorProps>`
 		font-size: 14px;
 		color: ${(props) => props.styledcolor};
 	}
+`;
+
+const ListDivider = styled.div<ThemedProps>`
+	height: 1px;
+	width: 92%;
+	margin: -10px auto 10px;
+	background-color: ${(props) => props.color};
 `;
 
 const MainContentContainer = styled.div`
@@ -142,8 +162,13 @@ const ResponsiveDrawer = (props: any) => {
 			style={{ textDecoration: "none" }}
 			offset={-50}
 		>
-			<ListItem button onClick={() => handleTabClick()} key={header}>
-				<SidebarRouteIconWrapper theme={theme}>
+			<SidebarListItem
+				button
+				onClick={() => handleTabClick()}
+				key={header}
+				theme={theme}
+			>
+				<SidebarRouteIconWrapper>
 					{routes[routeId].icon ?? <></>}
 				</SidebarRouteIconWrapper>
 				<SidebarRouteItemText
@@ -154,13 +179,13 @@ const ResponsiveDrawer = (props: any) => {
 						</Typography>
 					}
 				/>
-			</ListItem>
+			</SidebarListItem>
 		</Link>
 	);
 
 	const SidebarRoutes = (): JSX.Element => (
 		<List>
-			<Divider />
+			<ListDivider color={theme.secondary} />
 			{Object.keys(routes).map(
 				(routeId) =>
 					routes[routeId].title &&
@@ -170,7 +195,7 @@ const ResponsiveDrawer = (props: any) => {
 	);
 
 	const SidebarDrawer = () => (
-		<SidebarDrawerContainer styledcolor={theme.bg}>
+		<SidebarDrawerContainer styledcolor={theme.bg} altcolor={theme.secondary}>
 			<MuiThemeProvider theme={theme.muiSidebarTheme}>
 				<div>
 					<SidebarHead handleTabClick={handleTabClick} />
@@ -232,6 +257,7 @@ const ResponsiveDrawer = (props: any) => {
 							onClose={handleDrawerToggle}
 							onOpen={handleDrawerToggle}
 							classes={{ paper: classes.drawerPaper }}
+							style={{ borderRight: "none" }}
 						>
 							<SidebarDrawer />
 						</SwipeableDrawer>
@@ -240,6 +266,7 @@ const ResponsiveDrawer = (props: any) => {
 						<Drawer
 							classes={{ paper: classes.drawerPaper }}
 							variant="permanent"
+							style={{ borderRight: "none" }}
 							open
 						>
 							<SidebarDrawer />

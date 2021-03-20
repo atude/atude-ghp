@@ -42,17 +42,18 @@ const SidebarNameText = styled(Typography)<ThemedWithColorProps>`
 	color: ${(props) => props.styledcolor};
 `;
 
-const SidebarIconWrapper = styled.div`
+const SidebarIconWrapper = styled.div<ThemedWithColorProps>`
 	margin-bottom: -5px;
 	svg {
 		font-size: 40px;
-		color: ${(props) => props.color};
+		color: ${(props) => props.styledcolor};
 		:not(:hover) {
 			transition: all 0.25s;
 		}
 		:hover {
 			transform: scale(1.15);
 			transition: all 0.25s;
+			color: ${(props) => props.altcolor};
 		}
 	}
 `;
@@ -97,7 +98,7 @@ const SidebarHead = (props: Props): JSX.Element => {
 								target="_blank"
 								rel="noopener noreferrer"
 							>
-								<SidebarIconWrapper color={theme.lightGray}>
+								<SidebarIconWrapper styledcolor={theme.lightGray} altcolor={theme.secondary}>
 									<Github />
 								</SidebarIconWrapper>
 							</IconButton>
@@ -110,7 +111,7 @@ const SidebarHead = (props: Props): JSX.Element => {
 								target="_blank"
 								rel="noopener noreferrer"
 							>
-								<SidebarIconWrapper color={theme.lightGray}>
+								<SidebarIconWrapper styledcolor={theme.lightGray} altcolor={theme.secondary}>
 									<Linkedin />
 								</SidebarIconWrapper>
 							</IconButton>
@@ -121,7 +122,7 @@ const SidebarHead = (props: Props): JSX.Element => {
 								component="a"
 								href={`mailto:${database.Contact.Contact.Email}`}
 							>
-								<SidebarIconWrapper color={theme.lightGray}>
+								<SidebarIconWrapper styledcolor={theme.lightGray} altcolor={theme.secondary}>
 									<EmailBox />
 								</SidebarIconWrapper>
 							</IconButton>

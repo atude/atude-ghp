@@ -71,7 +71,7 @@ export const lightScheme: ThemeScheme = {
 };
 
 export const darkScheme: ThemeScheme = {
-	bg: "#171e2b",
+	bg: "#141c29",
 	bgSecondary: "#162032",
 	bgTertiary: "#23304a",
 	bgCard: "#162032",
