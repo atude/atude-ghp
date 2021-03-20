@@ -10,7 +10,7 @@ export type ThemeScheme = {
 	lightGray: string;
 	secondary: string;
 	muiTheme: Theme;
-	muiSidebarTheme: any;
+	muiSidebarTheme: Theme;
 	colorSet: ColorSet;
 };
 

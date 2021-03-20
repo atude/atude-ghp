@@ -37,7 +37,7 @@ const ToolIconObjectWrapper = styled.div<ThemedProps>`
 			margin-left: 0px;
 			box-shadow: ${(props) =>
 				props.isDark
-					? "12px 12px 24px 0 #242323, -12px -12px 24px 0 #302f2f;"
+					? "12px 12px 24px 0 #171e2b, -12px -12px 24px 0 #171e2b"
 					: "12px 12px 24px 0 rgba(0, 0, 0, 0.2), -12px -12px 24px 0 rgba(255, 255, 255, 0.4)"};
 			background-color: ${(props) =>
 				props.isDark ? "rgba(20, 20, 20, 0.95)" : "rgba(255, 255, 255, 0.95)"};
