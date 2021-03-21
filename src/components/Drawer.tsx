@@ -13,7 +13,6 @@ import {
 	CssBaseline,
 	MuiThemeProvider,
 	Drawer,
-	Divider,
 	Grid,
 	AppBar,
 	Toolbar,
@@ -67,7 +66,6 @@ const styles = (theme: Theme) => ({
 	drawerPaper: {
 		width: drawerWidth,
 		borderRight: "none",
-		// boxShadow: "12px 12px 24px 0 #171e2b",
 	},
 	content: {
 		flexGrow: 1,
@@ -81,7 +79,6 @@ const SidebarDrawerContainer = styled.div<ThemedWithColorProps>`
 	justify-content: space-between;
 	flex: 1;
 	background-color: ${(props) => props.styledcolor};
-	border-right: 1px solid ${(props) => props.altcolor};
 `;
 
 const SidebarListItem = styled(ListItem)<ThemedProps>`
@@ -109,9 +106,10 @@ const SidebarRouteItemText = styled(ListItemText)<ThemedWithColorProps>`
 `;
 
 const ListDivider = styled.div<ThemedProps>`
-	height: 1px;
+	height: 2px;
 	width: 92%;
 	margin: -10px auto 10px;
+	border-radius: 20px;
 	background-color: ${(props) => props.color};
 `;
 
@@ -185,7 +183,7 @@ const ResponsiveDrawer = (props: any) => {
 
 	const SidebarRoutes = (): JSX.Element => (
 		<List>
-			<ListDivider color={theme.secondary} />
+			<ListDivider color={theme.lightGray} />
 			{Object.keys(routes).map(
 				(routeId) =>
 					routes[routeId].title &&
@@ -195,7 +193,7 @@ const ResponsiveDrawer = (props: any) => {
 	);
 
 	const SidebarDrawer = () => (
-		<SidebarDrawerContainer styledcolor={theme.bg} altcolor={theme.secondary}>
+		<SidebarDrawerContainer styledcolor={theme.bg}>
 			<MuiThemeProvider theme={theme.muiSidebarTheme}>
 				<div>
 					<SidebarHead handleTabClick={handleTabClick} />
