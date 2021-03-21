@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/atude-ghp/static/css/main.4b611d14.chunk.css",
-    "main.js": "/atude-ghp/static/js/main.9d5b4bd8.chunk.js",
-    "main.js.map": "/atude-ghp/static/js/main.9d5b4bd8.chunk.js.map",
+    "main.js": "/atude-ghp/static/js/main.e08eae28.chunk.js",
+    "main.js.map": "/atude-ghp/static/js/main.e08eae28.chunk.js.map",
     "runtime-main.js": "/atude-ghp/static/js/runtime-main.dad1829e.js",
     "runtime-main.js.map": "/atude-ghp/static/js/runtime-main.dad1829e.js.map",
     "static/js/2.cbbc54e0.chunk.js": "/atude-ghp/static/js/2.cbbc54e0.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.dad1829e.js",
     "static/js/2.cbbc54e0.chunk.js",
     "static/css/main.4b611d14.chunk.css",
-    "static/js/main.9d5b4bd8.chunk.js"
+    "static/js/main.e08eae28.chunk.js"
   ]
 }
