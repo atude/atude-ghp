@@ -5,7 +5,7 @@ import { ThemeContext } from "../../context/ThemeContext";
 import { smBreakpoint } from "../../utils/layouts";
 
 const StandardCardStyled = styled.div<ThemedColorDirectionalProps>`
-	transition: border 0.25s ease;
+	transition: border 0.25s cubic-bezier(0.76, 0, 0.24, 1);
 	border: 2px solid transparent;
 	:hover {
 		border-left: ${(props) =>
