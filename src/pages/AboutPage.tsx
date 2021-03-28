@@ -1,14 +1,16 @@
 import React, { useContext, useState } from "react";
 import ContentCard from "../components/ContentCard";
 import { Grid, Avatar, Fade } from "@material-ui/core";
-import { CubeOutline, HumanGreeting } from "mdi-material-ui";
 import Database from "../data/database";
 import SkillsContent from "../components/about/SkillsContent";
 import ToolsContent from "../components/about/ToolsContent";
 
 import imgProfile from "../assets/profile.jpg";
 import { ThemeContext } from "../context/ThemeContext";
+
 import styled from "styled-components";
+import CubeAnimatedIcon from "../components/icons/animated/CubeAnimatedIcon";
+import HelloAnimatedIcon from "../components/icons/animated/HelloAnimatedIcon";
 
 const AvatarContainer = styled(Grid)`
 	img {
@@ -94,7 +96,7 @@ const AboutPage = (): JSX.Element => {
 				</AvatarContainer>
 				<Grid item lg={9} sm={12} xs={12}>
 					<ContentCard
-						headingIcon={<HumanGreeting />}
+						animatedIcon={HelloAnimatedIcon}
 						heading="I'm Moz, a software engineer in Sydney, Australia."
 						paragraphs={Database["About me"]}
 						content={<SkillsContent theme={theme} />}
@@ -102,7 +104,7 @@ const AboutPage = (): JSX.Element => {
 				</Grid>
 				<Grid item xs={12}>
 					<ContentCard
-						headingIcon={<CubeOutline />}
+						animatedIcon={CubeAnimatedIcon}
 						heading="Tech I'm Familiar With"
 						paragraphs={Database["Technologies"]}
 						content={<ToolsContent theme={theme} />}

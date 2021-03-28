@@ -22,3 +22,7 @@ export type ThemedActiveColorProps = ThemedActiveProps & ThemedWithColorProps;
 export type ThemedColorDirectionalProps = ThemedWithColorProps & {
 	isRight?: boolean;
 };
+
+export type ThemedHoverProps = {
+	onHover: boolean;
+};

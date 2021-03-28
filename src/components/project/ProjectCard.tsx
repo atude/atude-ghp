@@ -36,6 +36,11 @@ const ProjectCardContainer = styled(StandardCard)<ThemedProps>`
 	flex: 1;
 	transition: border 0.25s ease;
 	filter: grayscale(0);
+	:hover {
+		.project-card-banner-container {
+			flex: 1.2;
+		}
+	}
 `;
 
 const ProjectCardContentContainer = styled.div`
@@ -51,8 +56,9 @@ const ProjectCardTextContent = styled.div`
 `;
 
 const BannerContainer = styled.div`
+	transition: flex 0.25s cubic-bezier(0.76, 0, 0.24, 1);
 	height: 100%;
-	flex: 1.2;
+	flex: 1;
 	overflow: hidden;
 	border-radius: 16px;
 	align-items: flex-end;
@@ -152,7 +158,7 @@ const ProjectCard = (props: ProjectProps): JSX.Element => {
 	} = props;
 
 	const getBanner = () => (
-		<BannerContainer color={bgColor}>
+		<BannerContainer className="project-card-banner-container" color={bgColor}>
 			<BannerImageContainer>
 				<BannerImage
 					alt={heading}

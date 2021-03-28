@@ -35,12 +35,7 @@ const StandardCard = (
 ): JSX.Element => {
 	const themeContext = useContext(ThemeContext);
 	return (
-		<StandardCardStyled
-			isDark={themeContext.isDark}
-			isRight={props.isRight}
-			className={props.className}
-			styledcolor={themeContext.theme.secondary}
-		>
+		<StandardCardStyled styledcolor={themeContext.theme.secondary} {...props}>
 			{props.children}
 		</StandardCardStyled>
 	);

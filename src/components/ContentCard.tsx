@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Typography } from "@material-ui/core";
 import { ThemeContext } from "../context/ThemeContext";
 import styled from "styled-components";
@@ -8,7 +8,7 @@ import { mdBreakpoint, smBreakpoint } from "../utils/layouts";
 
 type Props = {
 	heading: string;
-	headingIcon: JSX.Element;
+	animatedIcon: (cardHover: boolean) => JSX.Element;
 	paragraphs: string[];
 	content?: JSX.Element;
 };
@@ -50,23 +50,24 @@ const HighlightText = styled.span`
 `;
 
 const ContentCard = (props: Props): JSX.Element => {
+	const [cardHover, setCardHover] = useState(false);
 	const themeContext = useContext(ThemeContext);
 	const { theme, isDark } = themeContext;
-	const { headingIcon, heading, paragraphs, content } = props;
+	const { animatedIcon, heading, paragraphs, content } = props;
 
 	return (
-		<ContentCardContainer isDark={isDark}>
-			{headingIcon && heading && (
-				<>
-					<ContentCardHeadingIcon color={theme.secondary}>
-						{headingIcon}
-					</ContentCardHeadingIcon>
-					<ContentCardHeading styledcolor={theme.secondary} variant="h2">
-						{heading}
-					</ContentCardHeading>
-					<br />
-				</>
-			)}
+		<ContentCardContainer
+			isDark={isDark}
+			onMouseEnter={() => setCardHover(true)}
+			onMouseLeave={() => setCardHover(false)}
+		>
+			<ContentCardHeadingIcon color={theme.secondary}>
+				{animatedIcon(cardHover)}
+			</ContentCardHeadingIcon>
+			<ContentCardHeading styledcolor={theme.secondary} variant="h2">
+				{heading}
+			</ContentCardHeading>
+			<br />
 			{paragraphs.map((paragraph) => (
 				<div key={paragraph}>
 					<Typography

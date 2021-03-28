@@ -110,6 +110,7 @@ const ListDivider = styled.div<ThemedProps>`
 	width: 92%;
 	margin: -10px auto 10px;
 	border-radius: 20px;
+	opacity: 0.7;
 	background-color: ${(props) => props.color};
 `;
 
