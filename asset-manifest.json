@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/atude-ghp/static/css/main.4b611d14.chunk.css",
-    "main.js": "/atude-ghp/static/js/main.47d08005.chunk.js",
-    "main.js.map": "/atude-ghp/static/js/main.47d08005.chunk.js.map",
+    "main.js": "/atude-ghp/static/js/main.683e8513.chunk.js",
+    "main.js.map": "/atude-ghp/static/js/main.683e8513.chunk.js.map",
     "runtime-main.js": "/atude-ghp/static/js/runtime-main.dad1829e.js",
     "runtime-main.js.map": "/atude-ghp/static/js/runtime-main.dad1829e.js.map",
-    "static/js/2.b8aaaff5.chunk.js": "/atude-ghp/static/js/2.b8aaaff5.chunk.js",
-    "static/js/2.b8aaaff5.chunk.js.map": "/atude-ghp/static/js/2.b8aaaff5.chunk.js.map",
+    "static/js/2.e8ada557.chunk.js": "/atude-ghp/static/js/2.e8ada557.chunk.js",
+    "static/js/2.e8ada557.chunk.js.map": "/atude-ghp/static/js/2.e8ada557.chunk.js.map",
     "index.html": "/atude-ghp/index.html",
     "static/css/main.4b611d14.chunk.css.map": "/atude-ghp/static/css/main.4b611d14.chunk.css.map",
-    "static/js/2.b8aaaff5.chunk.js.LICENSE.txt": "/atude-ghp/static/js/2.b8aaaff5.chunk.js.LICENSE.txt",
+    "static/js/2.e8ada557.chunk.js.LICENSE.txt": "/atude-ghp/static/js/2.e8ada557.chunk.js.LICENSE.txt",
     "static/media/banner.png": "/atude-ghp/static/media/banner.d36157c2.png",
     "static/media/ic_atude.99f5c6c9.png": "/atude-ghp/static/media/ic_atude.99f5c6c9.png",
     "static/media/profile.e0c7595a.jpg": "/atude-ghp/static/media/profile.e0c7595a.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.dad1829e.js",
-    "static/js/2.b8aaaff5.chunk.js",
+    "static/js/2.e8ada557.chunk.js",
     "static/css/main.4b611d14.chunk.css",
-    "static/js/main.47d08005.chunk.js"
+    "static/js/main.683e8513.chunk.js"
   ]
 }
