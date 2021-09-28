@@ -53,7 +53,7 @@ const database: Database = {
 	Experience: [
 		{
 			company: "Google",
-			role: "Software Engineer • Google Maps",
+			role: "Software Engineer • Google Geo",
 			color: "#4285F4",
 			colorDark: "#4285F4",
 			year: "SEP 2021",
